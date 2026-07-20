@@ -1,0 +1,27 @@
+generated: '2026-07-18'
+method: searched
+source: openapi/crunchdao-tournament-openapi.json
+docs: https://docs.crunchdao.com/technical/tournament-api
+key_management: https://hub.crunchdao.com/account/api
+notes: 'Two token types accepted. API Key: header `Authorization: API-Key <token>`
+  or `?apiKey=<token>`. Access Token: header `Authorization: Bearer <token>` or
+  `?accessToken=<token>`. The crunch-cli reads the API key from the CRUNCH_API_KEY
+  environment variable.'
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - query
+schemes:
+- name: apiKey
+  type: apiKey
+  in: query
+  parameter: apiKey
+  sources:
+  - openapi/crunchdao-tournament-openapi.json
+- name: accessToken
+  type: http
+  scheme: Bearer
+  sources:
+  - openapi/crunchdao-tournament-openapi.json
