@@ -1,0 +1,79 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity todo API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: todo
+paths:
+  /v1/todos:
+    x-service-id: account-service
+    get:
+      tags:
+      - todo
+      summary: Show todos.
+      operationId: index_3
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountTasks'
+  /v1/competitions/{competitionIdentifier}/todos:
+    x-service-id: competition-service
+    get:
+      tags:
+      - todo
+      summary: Get todos.
+      operationId: getTodos
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompetitionTasks'
+components:
+  schemas:
+    AccountTasks:
+      type: object
+      properties:
+        discordConnected:
+          type: boolean
+        discordGuildJoined:
+          type: boolean
+        walletAdded:
+          type: boolean
+    CompetitionTasks:
+      type: object
+      properties:
+        firstSubmission:
+          type: boolean
+        firstRun:
+          type: boolean
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

@@ -1,0 +1,447 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity pitch:slice API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: pitch:slice
+paths:
+  /v1/seasons/{seasonNumber}/pitches/{pitchName}/slices:
+    x-service-id: competition-service
+    get:
+      tags:
+      - pitch:slice
+      operationId: listPitchSlices
+      parameters:
+      - name: seasonNumber
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      - name: pitchName
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: locale
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - ENGLISH
+          - CHINESE
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Slice'
+    post:
+      tags:
+      - pitch:slice
+      operationId: createPitchSlice
+      parameters:
+      - name: seasonNumber
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      - name: pitchName
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: locale
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - ENGLISH
+          - CHINESE
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SliceCreateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Slice'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v1/seasons/{seasonNumber}/pitches/{pitchName}/slices/~/import/markdown:
+    x-service-id: competition-service
+    post:
+      tags:
+      - pitch:slice
+      operationId: importPitchSlicesFromMarkdown
+      parameters:
+      - name: seasonNumber
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      - name: pitchName
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: locale
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - ENGLISH
+          - CHINESE
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SliceMarkdownImportForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int32
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v1/seasons/{seasonNumber}/pitches/{pitchName}/slices/~/import/gitbook:
+    x-service-id: competition-service
+    post:
+      tags:
+      - pitch:slice
+      operationId: importPitchSlicesFromGitBook
+      parameters:
+      - name: seasonNumber
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      - name: pitchName
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SliceGitBookImportForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int32
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v1/seasons/{seasonNumber}/pitches/{pitchName}/slices/{sliceName}:
+    x-service-id: competition-service
+    get:
+      tags:
+      - pitch:slice
+      operationId: getPitchSlice
+      parameters:
+      - name: seasonNumber
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      - name: pitchName
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: sliceName
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: locale
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - ENGLISH
+          - CHINESE
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Slice'
+    delete:
+      tags:
+      - pitch:slice
+      operationId: deletePitchSlice
+      parameters:
+      - name: seasonNumber
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      - name: pitchName
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: sliceName
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: locale
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - ENGLISH
+          - CHINESE
+      responses:
+        '202':
+          description: Accepted
+      security:
+      - accessToken: []
+      - apiKey: []
+    patch:
+      tags:
+      - pitch:slice
+      operationId: updatePitchSlice
+      parameters:
+      - name: seasonNumber
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      - name: pitchName
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: sliceName
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: locale
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - ENGLISH
+          - CHINESE
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SliceUpdateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Slice'
+      security:
+      - accessToken: []
+      - apiKey: []
+components:
+  schemas:
+    SliceMarkdownImportForm:
+      type: object
+      properties:
+        markdown:
+          type: string
+      required:
+      - markdown
+    SliceGitBookImportForm:
+      type: object
+      properties:
+        url:
+          type: string
+        changeRequestNumber:
+          type: integer
+          format: int64
+        titleLevel:
+          type: string
+          enum:
+          - PRIMARY
+          - SECONDARY
+        append:
+          type: boolean
+      required:
+      - append
+      - titleLevel
+      - url
+    SliceCreateForm:
+      type: object
+      properties:
+        name:
+          type: string
+        displayName:
+          type: string
+        type:
+          type: string
+          enum:
+          - CONTENT
+          - KEY_METRICS
+          - TIMELINE
+          - TEAM
+        nativeConfiguration:
+          type: string
+        order:
+          type: integer
+          format: int64
+      required:
+      - name
+      - nativeConfiguration
+      - order
+      - type
+    Slice:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name/title for cards.
+        type:
+          $ref: '#/components/schemas/SliceType'
+        nativeConfiguration:
+          type: string
+          description: Native frontend configuration for the chart.
+        order:
+          type: integer
+          format: int64
+          description: Page order.
+        updatedAt:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+    SliceType:
+      type: string
+      enum:
+      - CONTENT
+      - KEY_METRICS
+      - TIMELINE
+      - TEAM
+    SliceUpdateForm:
+      type: object
+      properties:
+        name:
+          type: string
+        displayName:
+          type: string
+        type:
+          type: string
+          enum:
+          - CONTENT
+          - KEY_METRICS
+          - TIMELINE
+          - TEAM
+        nativeConfiguration:
+          type: string
+        order:
+          type: integer
+          format: int64
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

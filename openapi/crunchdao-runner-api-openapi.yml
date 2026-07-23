@@ -1,0 +1,485 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity runner API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: runner
+paths:
+  /v1/runner/runs/{runId}/error:
+    x-service-id: competition-service
+    put:
+      tags:
+      - runner
+      summary: Report a run's trace.
+      operationId: reportRunnerError
+      parameters:
+      - name: runId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      - name: X-Run-Token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RunnerReportErrorForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+  /v1/runner/runs/{runId}/traces:
+    x-service-id: competition-service
+    post:
+      tags:
+      - runner
+      summary: Collect the traces.
+      operationId: collectRunnerTraces
+      parameters:
+      - name: runId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      - name: X-Run-Token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RunnerCollectTracesForm'
+        required: true
+      responses:
+        '202':
+          description: Accepted
+  /v1/runner/runs/{runId}/trace:
+    x-service-id: competition-service
+    post:
+      tags:
+      - runner
+      operationId: reportRunnerTrace
+      parameters:
+      - name: runId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      - name: X-Run-Token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LegacyRunnerReportTraceForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+      deprecated: true
+  /v1/runner/runs/{runId}/result:
+    x-service-id: competition-service
+    post:
+      tags:
+      - runner
+      summary: Submit a run's result.
+      operationId: submitRunnerPrediction
+      parameters:
+      - name: runId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      - name: X-Run-Token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RunnerSubmitForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+  /v1/runner/runs/{runId}/current:
+    x-service-id: competition-service
+    post:
+      tags:
+      - runner
+      operationId: reportRunnerCurrent
+      parameters:
+      - name: runId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+        required: true
+      responses:
+        '200':
+          description: OK
+      deprecated: true
+  /v1/runner/runs/{runId}/model:
+    x-service-id: competition-service
+    get:
+      tags:
+      - runner
+      summary: Get a run's model file URLs.
+      operationId: getRunnerModel
+      parameters:
+      - name: runId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      - name: X-Run-Token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+                  format: uri
+  /v1/runner/runs/{runId}/data:
+    x-service-id: competition-service
+    get:
+      tags:
+      - runner
+      summary: Get a run's data.
+      operationId: showRunnerData
+      parameters:
+      - name: runId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      - name: X-Run-Token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataRelease'
+  /v1/runner/runs/{runId}/code:
+    x-service-id: competition-service
+    get:
+      tags:
+      - runner
+      summary: Get a run's code.
+      operationId: showRunnerCode
+      parameters:
+      - name: runId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      - name: X-Run-Token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+                  format: uri
+  /v1/runner/ping:
+    x-service-id: competition-service
+    get:
+      tags:
+      - runner
+      summary: Check connectivity.
+      operationId: testRunnerPing
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+components:
+  schemas:
+    JsonNode:
+      type: object
+    RunnerSubmitForm:
+      type: object
+      properties:
+        useInitialModel:
+          type: boolean
+        deterministic:
+          type: boolean
+        predictionFiles:
+          type: object
+          additionalProperties:
+            type: string
+            format: uuid
+        modelFiles:
+          type: object
+          additionalProperties:
+            type: string
+            format: uuid
+      required:
+      - modelFiles
+      - predictionFiles
+    DataReleaseSplit:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+        group:
+          $ref: '#/components/schemas/DataReleaseSplitGroup'
+        reduced:
+          $ref: '#/components/schemas/DataReleaseSplitReduced'
+    RunnerReportErrorForm:
+      type: object
+      properties:
+        trace:
+          type: string
+    RunnerCollectTracesFormMetric:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        cpu:
+          type: number
+          format: float
+        ram:
+          type: integer
+          format: int64
+        disk:
+          type: integer
+          format: int64
+        gpu:
+          type: number
+          format: float
+        vram:
+          type: integer
+          format: int64
+      required:
+      - timestamp
+    DataReleaseSplitGroup:
+      type: string
+      enum:
+      - TRAIN
+      - TEST
+    DataReleaseTargetResolution:
+      type: string
+      enum:
+      - ALREADY
+      - PENDING
+      - RESOLVED
+    DataFile:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+        size:
+          type: integer
+          format: int64
+        signed:
+          type: boolean
+        compressed:
+          type: boolean
+    RunnerCollectTracesForm:
+      type: object
+      properties:
+        spans:
+          type: array
+          items:
+            $ref: '#/components/schemas/RunnerCollectTracesFormSpan'
+        metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/RunnerCollectTracesFormMetric'
+      required:
+      - metrics
+      - spans
+    DataReleaseSplitKey:
+      type: string
+      enum:
+      - INTEGER
+      - STRING
+    DataRelease:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        number:
+          type: integer
+          format: int64
+        name:
+          type: string
+        custom:
+          type: boolean
+        sized:
+          type: boolean
+        hasSmallVariant:
+          type: boolean
+        hasLargeVariant:
+          type: boolean
+        embargo:
+          type: integer
+          format: int32
+        numberOfFeatures:
+          type: integer
+          format: int32
+        hash:
+          type: string
+        splitKeyType:
+          $ref: '#/components/schemas/DataReleaseSplitKey'
+        resolvable:
+          type: boolean
+        splits:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataReleaseSplit'
+        targetResolution:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/DataReleaseTargetResolution'
+        createdAt:
+          type: string
+          format: date-time
+        dataFiles:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/DataFile'
+    DataReleaseSplitReduced:
+      type: string
+      enum:
+      - X
+      - XY
+    LegacyRunnerReportTraceForm:
+      type: object
+      properties:
+        moon:
+          type: string
+        content:
+          type: string
+    RunnerCollectTracesFormSpan:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        parentId:
+          type: integer
+          format: int32
+        description:
+          type: string
+        status:
+          type: string
+          enum:
+          - STARTED
+          - ENDED
+          - FAILED
+        startedAt:
+          type: string
+          format: date-time
+        endedAt:
+          type: string
+          format: date-time
+        error:
+          type: string
+        attributes:
+          $ref: '#/components/schemas/JsonNode'
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

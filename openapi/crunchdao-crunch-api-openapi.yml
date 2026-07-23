@@ -1,0 +1,386 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity crunch API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: crunch
+paths:
+  /v2/competitions/{competitionIdentifier}/rounds/{roundIdentifier}/phases/{phaseIdentifier}/crunches:
+    x-service-id: competition-service
+    get:
+      tags:
+      - crunch
+      summary: List crunches.
+      operationId: listCrunches
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: roundIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: phaseIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Crunch'
+    post:
+      tags:
+      - crunch
+      summary: Create a crunch.
+      operationId: createCrunch
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: roundIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: phaseIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CrunchCreateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Crunch'
+  /v2/competitions/{competitionIdentifier}/rounds/{roundIdentifier}/phases/{phaseIdentifier}/crunches/{crunchIdentifier}:
+    x-service-id: competition-service
+    get:
+      tags:
+      - crunch
+      summary: Show a crunch.
+      operationId: getCrunch
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: roundIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: phaseIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: crunchIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Crunch'
+    patch:
+      tags:
+      - crunch
+      summary: Update a crunch.
+      operationId: updateCrunch
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: roundIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: phaseIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: crunchIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CrunchUpdateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Crunch'
+components:
+  schemas:
+    PhaseType:
+      type: string
+      enum:
+      - SUBMISSION
+      - OUT_OF_SAMPLE
+    Crunch:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        phase:
+          $ref: '#/components/schemas/Phase'
+        number:
+          type: integer
+          format: int64
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        showRuns:
+          type: boolean
+        showMetricsDetails:
+          type: boolean
+        showRunLogs:
+          type: boolean
+        showScoresValue:
+          type: boolean
+        leaderboardSimilarityThreshold:
+          type: number
+          format: float
+        published:
+          type: boolean
+        dataReleaseId:
+          type: integer
+          format: int64
+        splits:
+          type: array
+          items:
+            $ref: '#/components/schemas/CrunchSplit'
+    PhaseSplit:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+    CrunchSplit:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+    CrunchUpdateForm:
+      type: object
+      properties:
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        showRuns:
+          type: boolean
+        showMetricsDetails:
+          type: boolean
+        showRunLogs:
+          type: boolean
+        showScoresValue:
+          type: boolean
+        leaderboardSimilarityThreshold:
+          type: number
+          format: float
+        published:
+          type: boolean
+        dataReleaseId:
+          type: integer
+          format: int64
+        splits:
+          type: array
+          items:
+            $ref: '#/components/schemas/CrunchSplitCreateForm'
+      required:
+      - dataReleaseId
+    CrunchCreateForm:
+      type: object
+      properties:
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        showRuns:
+          type: boolean
+        showMetricsDetails:
+          type: boolean
+        showRunLogs:
+          type: boolean
+        showScoresValue:
+          type: boolean
+        leaderboardSimilarityThreshold:
+          type: number
+          format: float
+        published:
+          type: boolean
+        dataReleaseId:
+          type: integer
+          format: int64
+        splits:
+          type: array
+          items:
+            $ref: '#/components/schemas/CrunchSplitCreateForm'
+      required:
+      - dataReleaseId
+      - end
+      - published
+      - showMetricsDetails
+      - showRunLogs
+      - showRuns
+      - showScoresValue
+      - splits
+      - start
+    CrunchSplitCreateForm:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+      required:
+      - key
+    Phase:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/PhaseType'
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        dataReleaseId:
+          type: integer
+          format: int64
+        localDataReleaseId:
+          type: integer
+          format: int64
+        cloudCredits:
+          anyOf:
+          - $comment: Seconds
+            example: '60'
+          - format: duration
+            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
+            $comment: ISO 8601 Duration
+            example: PT1M
+        perCrunchWeight:
+          type: number
+          format: float
+        autoCompute:
+          type: boolean
+        runDisabled:
+          type: boolean
+        showPositions:
+          type: boolean
+        showProjectNames:
+          type: boolean
+        runDeterminismCheckEnabled:
+          type: boolean
+        showOnlyRewardedProjectsDefault:
+          type: boolean
+        splits:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhaseSplit'
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

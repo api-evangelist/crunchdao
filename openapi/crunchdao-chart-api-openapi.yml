@@ -1,0 +1,223 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity chart API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: chart
+paths:
+  /v2/competitions/{competitionIdentifier}/charts:
+    x-service-id: competition-service
+    get:
+      tags:
+      - chart
+      summary: List competition chart definition sets with data.
+      operationId: listCompetitionChartsV2
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: Start date of the data.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: date-time
+          description: Start date of the data.
+      - name: end
+        in: query
+        description: End date of the data.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: date-time
+          description: End date of the data.
+      - name: targetName
+        in: query
+        description: Target name to filter the chart data by.
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Target name to filter the chart data by.
+      - name: projectIdentifiers
+        in: query
+        description: Project IDs to filter the chart data by.
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: array
+          description: Project IDs to filter the chart data by.
+          items:
+            type: string
+            description: Project IDs to filter the chart data by.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChartsWithData'
+  /v1/competitions/{competitionIdentifier}/charts:
+    x-service-id: competition-service
+    get:
+      tags:
+      - chart
+      summary: List competition chart definition sets with data.
+      operationId: listCompetitionChartsV1
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: Start date of the data.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: date-time
+          description: Start date of the data.
+      - name: end
+        in: query
+        description: End date of the data.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: date-time
+          description: End date of the data.
+      - name: targetName
+        in: query
+        description: Target name to filter the chart data by.
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Target name to filter the chart data by.
+      - name: projectIdentifiers
+        in: query
+        description: Project IDs to filter the chart data by.
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: array
+          description: Project IDs to filter the chart data by.
+          items:
+            type: string
+            description: Project IDs to filter the chart data by.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ChartDefinitionSet'
+      deprecated: true
+components:
+  schemas:
+    ChartDefinitionSet:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/ChartDefinitionSetType'
+        projectIdProperty:
+          type: string
+        nativeConfiguration:
+          type: string
+        definitions:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChartDefinition'
+        data:
+          type: string
+    ChartDefinitionSetType:
+      type: string
+      enum:
+      - CHART
+      - IFRAME
+    ChartDefinition:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          description: Slug-like name of the chart, is unique and can be used as key.
+        displayName:
+          type: string
+          description: Title of the chart, displayed in the UI.
+        type:
+          $ref: '#/components/schemas/ChartDefinitionSetType'
+          description: Type of chart to render.
+        endpointUrl:
+          type: string
+          description: Original endpoint URL.
+        dataKey:
+          type: string
+          description: Data key to find the fetched data.
+        projectIdProperty:
+          type: string
+          description: If set, generate a series per project. The project ID must be matched from the current's user projects.
+        nativeConfiguration:
+          type: string
+          description: Native (series-based or just a single series) frontend configuration for the chart.
+        order:
+          type: integer
+          format: int64
+          description: Ordering order in the UI. Lowest is first.
+    ChartsWithData:
+      type: object
+      properties:
+        definitions:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChartDefinition'
+        data:
+          type: object
+          additionalProperties:
+            type: string
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

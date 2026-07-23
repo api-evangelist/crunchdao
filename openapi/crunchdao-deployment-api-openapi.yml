@@ -1,0 +1,534 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity deployment API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: deployment
+paths:
+  /v1/competitions/{competitionIdentifier}/projects/{userLogin}/{projectIdentifier}/deployments/sign:
+    x-service-id: competition-service
+    post:
+      tags:
+      - deployment
+      summary: Get the signature for a deployment.
+      operationId: signForDeployment
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userLogin
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: projectIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentSignForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignedDeployment'
+  /v1/competitions/{competitionIdentifier}/projects/{userLogin}/{projectIdentifier}/deployments:
+    x-service-id: competition-service
+    get:
+      tags:
+      - deployment
+      summary: List the deployments of a project.
+      operationId: listDeployments
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userLogin
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: projectIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: status
+        in: query
+        description: Filter for deployments with a specific status.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/DeploymentStatus'
+          description: Filter for deployments with a specific status.
+      - name: desiredStatus
+        in: query
+        description: Filter for deployments with a specific desired status.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/DeploymentDesiredStatus'
+          description: Filter for deployments with a specific desired status.
+      - name: submissionNumber
+        in: query
+        description: Filter for deployments with a specific submission. The number is relative to the project.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int64
+          description: Filter for deployments with a specific submission. The number is relative to the project.
+      - name: runtimeType
+        in: query
+        description: Filter for deployments with a specific runtime type. Only `CPU` and `GPU` are used.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/RuntimeType'
+          description: Filter for deployments with a specific runtime type. Only `CPU` and `GPU` are used.
+      - name: page
+        in: query
+        description: Zero-based page index (0..N)
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - name: size
+        in: query
+        description: The size of the page to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      - name: sort
+        in: query
+        description: 'Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageDeployment'
+  /v1/competitions/{competitionIdentifier}/projects/{userLogin}/{projectIdentifier}/deployments/{deploymentId}:
+    x-service-id: competition-service
+    get:
+      tags:
+      - deployment
+      summary: Show a deployment.
+      operationId: getDeployment
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userLogin
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: projectIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: deploymentId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+  ? /v1/competitions/{competitionIdentifier}/projects/{userLogin}/{projectIdentifier}/deployments/{deploymentId}/logs/{deploymentLogCategory}
+  : x-service-id: competition-service
+    get:
+      tags:
+      - deployment
+      summary: Show the builder logs of a deployment.
+      operationId: getDeploymentBuilderLogs
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userLogin
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: projectIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: deploymentId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      - name: deploymentLogCategory
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          enum:
+          - BUILDER
+          - RUNNER
+      - name: all
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DeploymentLog'
+components:
+  schemas:
+    DeploymentDesiredStatus:
+      type: string
+      enum:
+      - RUNNING
+      - REPLACING
+      - STOPPED
+    SubmissionFile:
+      type: object
+      properties:
+        name:
+          type: string
+        size:
+          type: integer
+          format: int64
+        encrypted:
+          type: boolean
+        mimeType:
+          type: string
+        foundHardcodedString:
+          type: boolean
+          deprecated: true
+    GpuRequirement:
+      type: string
+      enum:
+      - OPTIONAL
+      - RECOMMENDED
+      - REQUIRED
+    Model:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        project:
+          $ref: '#/components/schemas/Project'
+        totalSize:
+          type: integer
+          format: int64
+        encrypted:
+          type: boolean
+        encryptionId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    Deployment:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        status:
+          $ref: '#/components/schemas/DeploymentStatus'
+          description: Coordinator reported deployment status.
+        statusMessage:
+          type: string
+          description: Message explaining the status, often used to report the error message if `status` ~= `*_FAILED`.
+        desiredStatus:
+          $ref: '#/components/schemas/DeploymentDesiredStatus'
+          description: Coordinator desired deployment status.
+        submission:
+          $ref: '#/components/schemas/Submission'
+        runtimeType:
+          $ref: '#/components/schemas/RuntimeType'
+        builderLogsAvailable:
+          type: boolean
+          description: Are logs from the builder available?
+        runnerLogsAvailable:
+          type: boolean
+          description: Are logs from the runner available?
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    DeploymentStatus:
+      type: string
+      enum:
+      - BUILDER_BUILDING
+      - BUILDER_SUCCESS
+      - BUILDER_FAILED
+      - RUNNER_INITIALIZING
+      - RUNNER_RUNNING
+      - RUNNER_STOPPING
+      - RUNNER_STOPPED
+      - RUNNER_RECOVERING
+      - RUNNER_FAILED
+    Submission:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        project:
+          $ref: '#/components/schemas/Project'
+        number:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/SubmissionType'
+        message:
+          type: string
+        valid:
+          type: boolean
+        mainFilePath:
+          type: string
+        modelDirectoryPath:
+          type: string
+        gpuRequirement:
+          $ref: '#/components/schemas/GpuRequirement'
+        model:
+          $ref: '#/components/schemas/Model'
+        totalSize:
+          type: integer
+          format: int64
+        librariesVerified:
+          type: boolean
+        encrypted:
+          type: boolean
+        encryptionId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubmissionFile'
+    DeploymentSignForm:
+      type: object
+      properties:
+        submissionNumber:
+          type: integer
+          format: int64
+          deprecated: true
+          description: The submission number. Must be specified if `submissionId` is not.
+        submissionId:
+          type: integer
+          format: int64
+          description: The submission id. Must be specified if `submissionNumber` is not. Must be owned by the project.
+    Project:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        competitionId:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/User'
+        name:
+          type: string
+        selected:
+          type: boolean
+        submitted:
+          type: boolean
+        note:
+          type: string
+        writeupUrl:
+          type: string
+        writeupArchived:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+    SubmissionType:
+      type: string
+      enum:
+      - CODE
+      - NOTEBOOK
+      - PREDICTION
+    RuntimeType:
+      type: string
+      enum:
+      - CPU
+      - GPU
+      - COPY
+    SignedDeploymentDetails:
+      type: object
+      properties:
+        cruncherPubkey:
+          type: string
+        modelId:
+          type: integer
+          format: int64
+          description: The `Project.id`.
+        submissionId:
+          type: integer
+          format: int64
+        resourceId:
+          type: integer
+          format: int64
+          description: The `Model.id`.
+        timestamp:
+          type: integer
+          format: int64
+          description: Timestamp when the signature occurred. In seconds since the epoch.
+        rawMessage:
+          type: string
+          description: The raw message before it is signed.
+    DeploymentLog:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        message:
+          type: string
+    SignedDeployment:
+      type: object
+      properties:
+        signature:
+          type: string
+          description: The signed the deployment details.
+        details:
+          $ref: '#/components/schemas/SignedDeploymentDetails'
+    PageDeployment:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Deployment'
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

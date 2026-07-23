@@ -1,0 +1,817 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity user API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: user
+paths:
+  /v2/users/{userIdOrLogin}:
+    x-service-id: account-service
+    get:
+      tags:
+      - user
+      operationId: show_1
+      parameters:
+      - name: userIdOrLogin
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+    patch:
+      tags:
+      - user
+      operationId: update_1
+      parameters:
+      - name: userIdOrLogin
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FullUser'
+  /v2/users/@me:
+    x-service-id: account-service
+    get:
+      tags:
+      - user
+      operationId: show_2
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FullUser'
+      deprecated: true
+      security:
+      - accessToken: []
+      - apiKey: []
+    delete:
+      tags:
+      - user
+      operationId: destroy
+      parameters:
+      - name: recaptchaResponse
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FullUser'
+      deprecated: true
+      security:
+      - accessToken: []
+    patch:
+      tags:
+      - user
+      operationId: update_2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FullUser'
+      deprecated: true
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v1/users/{userIdentifier}/profile:
+    x-service-id: account-service
+    get:
+      tags:
+      - user
+      operationId: showUserProfile
+      parameters:
+      - name: userIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+    patch:
+      tags:
+      - user
+      operationId: updateUserProfile
+      parameters:
+      - name: userIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserProfileUpdateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+  /v2/users:
+    x-service-id: account-service
+    get:
+      tags:
+      - user
+      operationId: index_2
+      parameters:
+      - name: simple
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+  /v2/users/~:
+    x-service-id: account-service
+    get:
+      tags:
+      - user
+      summary: Show multiple users.
+      operationId: batchShowUserByIdentifier
+      parameters:
+      - name: identifier
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+  /v2/users/mapping:
+    x-service-id: account-service
+    get:
+      tags:
+      - user
+      summary: Get a login-to-id mapping.
+      operationId: showMapping
+      parameters:
+      - name: reverse
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /v1/self:
+    x-service-id: competition-service
+    get:
+      tags:
+      - user
+      summary: Get yourself.
+      operationId: getSelf
+      parameters:
+      - name: competitionName
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Self'
+      security:
+      - accessToken: []
+      - apiKey: []
+components:
+  schemas:
+    Competition:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name for cards.
+        fullName:
+          type: string
+          description: Full name for the overview.
+        shortDescription:
+          type: string
+          description: Short description for cards.
+        type:
+          $ref: '#/components/schemas/CompetitionType'
+        format:
+          $ref: '#/components/schemas/CompetitionFormat'
+        mode:
+          $ref: '#/components/schemas/CompetitionMode'
+        status:
+          $ref: '#/components/schemas/CompetitionStatus'
+        splitKeyType:
+          $ref: '#/components/schemas/DataReleaseSplitKey'
+        start:
+          type: string
+          format: date-time
+          description: Start of competition.
+        end:
+          type: string
+          format: date-time
+          description: End of competition. (specified if not continuous)
+        continuous:
+          type: boolean
+          description: Will the competition never end?
+        external:
+          type: boolean
+          description: Is the competition external? If so, redirect to `url`.
+        featured:
+          type: boolean
+          description: Is the competition featured?
+        visibility:
+          $ref: '#/components/schemas/CompetitionVisibility'
+        url:
+          type: string
+          description: URL where the competition takes place.
+        onChainId:
+          type: string
+          description: On-Chain ID where the competition takes place. Only if `mode` is `REAL_TIME`.
+        cardImageUrl:
+          type: string
+          description: Image URL used for cards.
+        bannerImageUrl:
+          type: string
+          description: Image URL used for the overview.
+        documentationUrl:
+          type: string
+          description: External documentation URL.
+        notebookUrl:
+          type: string
+          description: External baseline notebook URL.
+        advancedNotebookUrl:
+          type: string
+          description: External advanced notebook URL.
+        discussionUrl:
+          type: string
+          description: External discussion platform URL. (either discord or the forum)
+        codeUrl:
+          type: string
+          description: External GitHub URL where the code is located.
+        hostedByName:
+          type: string
+          description: Name of the competition organizer/host.
+        prizePoolText:
+          type: string
+          description: Prize pool in a text form.
+        prizePoolShortText:
+          type: string
+          description: Prize pool in a short text form.
+        prizePoolUsd:
+          type: number
+          format: double
+          description: Prize pool in USD.
+        projectNameFormat:
+          type: string
+          description: Default project name format, use `{n}` for incremental.
+        teamBased:
+          type: boolean
+          description: Are the teams enabled?
+        onlyTeamLeader:
+          type: boolean
+          description: Does only the team leader appear on the leaderboard?
+        maxTeamSize:
+          type: integer
+          format: int64
+          description: Maximum size for a team.
+        projectCreationLimit:
+          type: integer
+          format: int64
+          description: Maximum number of projects per user, if one, a default project is always created when the rules are accepted.
+        projectSelectionLimit:
+          type: integer
+          format: int64
+          description: If multiple project can be created, how many should appear on the leaderboard?
+        allowPredictions:
+          type: boolean
+          description: Are direct prediction file accepted for submission?
+        encryptSubmissions:
+          type: boolean
+          description: Should the predictions be encrypted?
+        phalaKeyUrl:
+          type: string
+          description: If the prediction should be encrypted, which URL to use to fetch the public key?
+        hideDashboard:
+          type: boolean
+          description: Is the dashboard tab hidden?
+        hideChanges:
+          type: boolean
+          description: Are the dashboard change cards hidden?
+        hidePerformance:
+          type: boolean
+          description: Is the dashboard performance graph hidden?
+        hideRunPerformance:
+          type: boolean
+          description: Is the dashboard run performance graph hidden?
+        hideStatistics:
+          type: boolean
+          description: Is the statistics card hidden?
+        hideNotebookSetupCommand:
+          type: boolean
+          description: Should the setup command for the notebook be hidden? Only useful for Real Time competitions.
+        hideTrainFrequency:
+          type: boolean
+          description: Should the train frequency field be hidden?
+        hideForceFirstTrain:
+          type: boolean
+          description: Should the train field be hidden?
+        web3:
+          type: boolean
+          description: Are the web3 integrations enabled for the competitions? (e.g. team referendums)
+        order:
+          type: integer
+          format: int64
+          description: Sorting order of the competition. (descending)
+        statistics:
+          $ref: '#/components/schemas/CompetitionStatistics'
+          description: Competition submission statistics.
+        session:
+          $ref: '#/components/schemas/CompetitionSession'
+          description: Competition current session. No session if `null`.
+        createdAt:
+          type: string
+          format: date-time
+          description: Competition creation timestamp.
+        updatedAt:
+          type: string
+          format: date-time
+          description: Competition update timestamp.
+        tags:
+          type: array
+          description: Tags that describe the competition.
+          items:
+            $ref: '#/components/schemas/CompetitionTag'
+        timelineEvents:
+          type: array
+          description: Non-detailed timeline events.
+          items:
+            $ref: '#/components/schemas/TimelineEvent'
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+    TimelineEvent:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/TimelineEventType'
+        title:
+          type: string
+        description:
+          type: string
+        date:
+          type: string
+          format: date
+          description: Date on which the event will occur/has occurred.
+        color:
+          type: string
+        detailed:
+          type: boolean
+          description: Detailed event should be hidden in a space constrained UI.
+        button:
+          $ref: '#/components/schemas/TimelineEventButton'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    CompetitionStatistics:
+      type: object
+      properties:
+        entrants:
+          type: integer
+          format: int64
+        participants:
+          type: integer
+          format: int64
+        teams:
+          type: integer
+          format: int64
+        submissions:
+          type: integer
+          format: int64
+        runnables:
+          type: integer
+          format: int64
+    CompetitionStatus:
+      type: string
+      enum:
+      - PENDING
+      - OPEN
+      - CLOSED
+    ConnectionType:
+      type: string
+      enum:
+      - DISCORD
+      - TWITTER
+      - GITHUB
+      - KAGGLE
+      - REDDIT
+      - LINKEDIN
+      - GOOGLE
+    Connection:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/ConnectionType'
+        handle:
+          type: string
+        username:
+          type: string
+        profileUrl:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        public:
+          type: boolean
+    FullUser:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+        country:
+          type: string
+        quantClub:
+          $ref: '#/components/schemas/QuantClub'
+        deleted:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        university:
+          type: string
+        restriction:
+          $ref: '#/components/schemas/UserRestriction'
+        role:
+          $ref: '#/components/schemas/UserRole'
+        ethereumAddress:
+          type: string
+        solanaAddress:
+          type: string
+        deletedAt:
+          type: string
+          format: date-time
+        verified:
+          type: boolean
+        verifiedAt:
+          type: string
+          format: date-time
+        email:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        restricted:
+          type: boolean
+          deprecated: true
+    Self:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/FullUser'
+        participant:
+          $ref: '#/components/schemas/Participant'
+        ruleAgreement:
+          $ref: '#/components/schemas/RuleAgreement'
+    UserUpdateForm:
+      type: object
+      properties:
+        verified:
+          type: boolean
+        champion:
+          type: boolean
+        restriction:
+          type: string
+          enum:
+          - NONE
+          - PARTIAL
+          - FULL
+        ethereumAddress:
+          type: string
+        solanaAddress:
+          type: string
+        login:
+          type: string
+          maxLength: 40
+          minLength: 3
+        firstName:
+          type: string
+          maxLength: 100
+          minLength: 1
+        lastName:
+          type: string
+          maxLength: 100
+          minLength: 1
+        country:
+          type: string
+          maxLength: 3
+          minLength: 0
+        university:
+          type: string
+          maxLength: 200
+          minLength: 0
+        quantClub:
+          type: string
+          enum:
+          - NONE
+          - BANDUNG
+          - BENGALURU
+          - DUBAI
+          - LONDON
+          - NEW_YORK
+          - PARIS
+        restricted:
+          type: boolean
+          deprecated: true
+          writeOnly: true
+    UserProfileUpdateForm:
+      type: object
+      properties:
+        biography:
+          type: string
+          description: User biography.
+          maxLength: 2048
+          minLength: 0
+      required:
+      - biography
+    CompetitionFormat:
+      type: string
+      enum:
+      - TIMESERIES
+      - DAG
+      - STREAM
+      - SPATIAL
+      - UNSTRUCTURED
+    TimelineEventButton:
+      type: object
+      properties:
+        text:
+          type: string
+        link:
+          type: string
+        color:
+          type: string
+    UserProfile:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
+        biography:
+          type: string
+        connections:
+          type: array
+          items:
+            $ref: '#/components/schemas/Connection'
+    TimelineEventType:
+      type: string
+      enum:
+      - GENERIC
+      - LEADERBOARD
+      - RULES
+      - REWARDS
+    ParticipantRole:
+      type: string
+      enum:
+      - USER
+      - ORGANIZER
+      - ADMINISTRATOR
+    CompetitionTag:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name for the UI.
+    UserRole:
+      type: string
+      enum:
+      - USER
+      - MODERATOR
+      - ADMINISTRATOR
+    CompetitionVisibility:
+      type: string
+      enum:
+      - HIDDEN
+      - PUBLIC
+    QuantClub:
+      type: string
+      enum:
+      - NONE
+      - BANDUNG
+      - BENGALURU
+      - DUBAI
+      - LONDON
+      - NEW_YORK
+      - PARIS
+    RuleAgreement:
+      type: object
+      properties:
+        accepted:
+          type: boolean
+        acceptedAt:
+          type: string
+          format: date-time
+    DataReleaseSplitKey:
+      type: string
+      enum:
+      - INTEGER
+      - STRING
+    CompetitionType:
+      type: string
+      enum:
+      - OPEN
+      - PAUSED
+    CompetitionMode:
+      type: string
+      enum:
+      - OFFLINE
+      - REAL_TIME
+    CompetitionSession:
+      type: object
+      properties:
+        state:
+          $ref: '#/components/schemas/CompetitionType'
+          description: Current session state.
+        nextChange:
+          type: string
+          format: date-time
+          description: When should the next session state change happen. Unknown if `null`.
+    UserRestriction:
+      type: string
+      enum:
+      - NONE
+      - PARTIAL
+      - FULL
+    Participant:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        competition:
+          $ref: '#/components/schemas/Competition'
+        user:
+          $ref: '#/components/schemas/User'
+        cruncherPubkey:
+          type: string
+          description: The Cruncher Pubkey on the blockchain. Only available if `competition.type` is `REAL_TIME`.
+        hidden:
+          type: boolean
+          description: Is the participant hidden from the leaderboard?
+        role:
+          $ref: '#/components/schemas/ParticipantRole'
+          description: Role of the participant in the competition.
+        crowned:
+          type: boolean
+          description: Is the crown badge visible?
+        certified:
+          type: boolean
+          description: Is the certificate badge visible?
+        rewarded:
+          type: boolean
+          description: Is the dollar badge visible?
+        benchmarked:
+          type: boolean
+          description: Is the "benchmark" badge visible?
+        ruleAccepted:
+          type: boolean
+          description: Has the rule been accepted?
+        ruleAcceptedAt:
+          type: string
+          format: date-time
+          description: When were the rule accepted?
+        submitted:
+          type: boolean
+          description: Has the participant submitted at least once?
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

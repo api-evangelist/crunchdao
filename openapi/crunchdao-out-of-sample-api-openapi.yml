@@ -1,0 +1,107 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity out-of-sample API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: out-of-sample
+paths:
+  /v3/competitions/{competitionIdentifier}/projects/{userLogin}/{projectIdentifier}/performance:
+    x-service-id: competition-service
+    get:
+      tags:
+      - out-of-sample
+      operationId: getProjectPerformance
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userLogin
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: projectIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RoundPerformance'
+components:
+  schemas:
+    MetricPerformance:
+      type: object
+      properties:
+        mean:
+          type: number
+          format: double
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScoreDetail'
+        cumulativeDetails:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScoreDetail'
+    ScoreDetail:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+        value:
+          type: number
+          format: double
+        reduced:
+          type: boolean
+    PhasePerformance:
+      type: object
+      properties:
+        metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricPerformance'
+    RoundPerformance:
+      type: object
+      properties:
+        phases:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhasePerformance'
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

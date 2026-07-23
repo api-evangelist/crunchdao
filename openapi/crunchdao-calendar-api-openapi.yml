@@ -1,0 +1,258 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity calendar API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: calendar
+paths:
+  /v1/calendar/events:
+    x-service-id: competition-service
+    get:
+      tags:
+      - calendar
+      summary: List a calendar events.
+      operationId: listCalendarEvents
+      parameters:
+      - name: start
+        in: query
+        description: Filter events that start after a date.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: date
+          description: Filter events that start after a date.
+      - name: end
+        in: query
+        description: Filter events that end before a date.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: date
+          description: Filter events that end before a date.
+      - name: sort
+        in: query
+        description: Sort events.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Sort events.
+          enum:
+          - RECENT
+          - LATEST
+      - name: page
+        in: query
+        description: Zero-based page index (0..N)
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - name: size
+        in: query
+        description: The size of the page to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageCalendarEvent'
+    post:
+      tags:
+      - calendar
+      summary: Create a calendar event.
+      operationId: createCalendarEvent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CalendarEventCreateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarEvent'
+  /v1/calendar/events/{eventId}:
+    x-service-id: competition-service
+    get:
+      tags:
+      - calendar
+      summary: Show a calendar event.
+      operationId: show_1
+      parameters:
+      - name: eventId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarEvent'
+    delete:
+      tags:
+      - calendar
+      summary: Delete a calendar event.
+      operationId: deleteCalendarEvent
+      parameters:
+      - name: eventId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '202':
+          description: Accepted
+    patch:
+      tags:
+      - calendar
+      summary: Update a calendar event.
+      operationId: updateCalendarEvent
+      parameters:
+      - name: eventId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CalendarEventUpdateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarEvent'
+components:
+  schemas:
+    CalendarEventCreateForm:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        title:
+          type: string
+        location:
+          type: string
+        time:
+          type: string
+          format: time
+          $anchor: https://en.wikipedia.org/wiki/ISO_8601
+          $comment: ISO 8601 Time
+          example: 01:02:03
+        url:
+          type: string
+      required:
+      - date
+      - title
+    CalendarEventUpdateForm:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        title:
+          type: string
+        location:
+          type: string
+        time:
+          type: string
+          format: time
+          $anchor: https://en.wikipedia.org/wiki/ISO_8601
+          $comment: ISO 8601 Time
+          example: 01:02:03
+        url:
+          type: string
+    CalendarEvent:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        date:
+          type: string
+          format: date
+        title:
+          type: string
+        location:
+          type: string
+        time:
+          type: string
+          format: time
+          $anchor: https://en.wikipedia.org/wiki/ISO_8601
+          $comment: ISO 8601 Time
+          example: 01:02:03
+        url:
+          type: string
+    PageCalendarEvent:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/CalendarEvent'
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

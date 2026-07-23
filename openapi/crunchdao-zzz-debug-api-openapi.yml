@@ -1,0 +1,42 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity zzz-debug API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: zzz-debug
+paths:
+  /debug/auth/authorities:
+    x-service-id: account-service
+    get:
+      tags:
+      - zzz-debug
+      summary: Show principal authorities.
+      operationId: list_3
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

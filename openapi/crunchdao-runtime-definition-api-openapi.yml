@@ -1,0 +1,243 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity runtime:definition API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: runtime:definition
+paths:
+  /v1/competitions/{competitionIdentifier}/runtime-definitions:
+    x-service-id: competition-service
+    get:
+      tags:
+      - runtime:definition
+      summary: List runtime definitions for a competition.
+      operationId: listRuntimeDefinitions
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: Zero-based page index (0..N)
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - name: size
+        in: query
+        description: The size of the page to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      - name: sort
+        in: query
+        description: 'Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageRuntimeDefinition'
+  /v1/competitions/{competitionIdentifier}/runtime-definitions/{runtimeDefinitionName}:
+    x-service-id: competition-service
+    get:
+      tags:
+      - runtime:definition
+      summary: Get runtime definitions for a competition.
+      operationId: getRuntimeDefinition
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: runtimeDefinitionName
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RuntimeDefinition'
+components:
+  schemas:
+    RuntimeDefinitionSpecificationCpu:
+      type: object
+      properties:
+        coreCount:
+          type: integer
+          format: int32
+    RuntimeDefinitionPoweredBy:
+      type: object
+      properties:
+        text:
+          type: string
+        url:
+          type: string
+    RuntimeDefinitionStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - RESTRICTED
+      - DISABLED
+    RuntimeDefinitionSpecificationSize:
+      type: object
+      properties:
+        size:
+          type: integer
+          format: int32
+          description: Size in gigabytes.
+    RuntimeDefinitionSpecificationGpu:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+        model:
+          type: string
+        driver:
+          type: string
+    RuntimeDefinition:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          description: Slug-like name.
+        type:
+          $ref: '#/components/schemas/RuntimeType'
+          description: Runtime type.
+        status:
+          $ref: '#/components/schemas/RuntimeDefinitionStatus'
+          description: Runtime status.
+        recommendable:
+          type: boolean
+          description: Can the recommended badge be possible?
+        accessRequestRequired:
+          type: boolean
+          description: Does this runtime requires an approval to be used?
+        displayName:
+          type: string
+          description: Display name for cards.
+        description:
+          type: string
+          description: Description for cards.
+        poweredBy:
+          $ref: '#/components/schemas/RuntimeDefinitionPoweredBy'
+          description: Provider informations.
+        specification:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecification'
+          description: Environment specification.
+        quotaConsumptionRate:
+          type: number
+          format: double
+          description: How fast the quota is consumed for this runtime. `1` is normal speed, `<1` slower (more quota), `>1` faster (less quota).
+        order:
+          type: integer
+          format: int64
+          description: Lower values are shown first.
+    RuntimeDefinitionSpecificationSoftware:
+      type: object
+      properties:
+        python:
+          type: string
+    RuntimeDefinitionSpecificationNetwork:
+      type: object
+      properties:
+        access:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationNetworkAccess'
+    RuntimeDefinitionSpecification:
+      type: object
+      properties:
+        memory:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSize'
+        sharedMemory:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSize'
+        storage:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSize'
+        cpu:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationCpu'
+        gpu:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationGpu'
+        network:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationNetwork'
+        software:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSoftware'
+    RuntimeType:
+      type: string
+      enum:
+      - CPU
+      - GPU
+      - COPY
+    PageRuntimeDefinition:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/RuntimeDefinition'
+    RuntimeDefinitionSpecificationNetworkAccess:
+      type: string
+      enum:
+      - OPEN
+      - FORBIDDEN
+      - LOCAL_ONLY
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

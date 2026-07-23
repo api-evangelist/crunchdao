@@ -1,0 +1,506 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity quickstarter API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: quickstarter
+paths:
+  /v2/competitions/{competitionIdentifier}/quickstarters:
+    x-service-id: competition-service
+    get:
+      tags:
+      - quickstarter
+      summary: List quickstarters of a competition.
+      operationId: listCompetitionQuickstarters
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Quickstarter'
+    post:
+      tags:
+      - quickstarter
+      summary: Create a quickstarter for a competition.
+      operationId: createCompetitionQuickstarter
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuickstarterCreateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Quickstarter'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v2/competitions/{competitionIdentifier}/quickstarters/~:
+    x-service-id: competition-service
+    post:
+      tags:
+      - quickstarter
+      summary: Update the quickstarter library.
+      operationId: batchCreateQuickstarter
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchQuickstarterCreateForm'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuickstarterImporterDelta'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v2/competitions/{competitionIdentifier}/quickstarters/{quickstarterName}:
+    x-service-id: competition-service
+    get:
+      tags:
+      - quickstarter
+      summary: Show a quickstarter of a competition.
+      operationId: getCompetitionQuickstarter
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: quickstarterName
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Quickstarter'
+    post:
+      tags:
+      - quickstarter
+      summary: Update a quickstarter of a competition.
+      operationId: updateCompetitionQuickstarter
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: quickstarterName
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuickstarterUpdateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Quickstarter'
+      security:
+      - accessToken: []
+      - apiKey: []
+    delete:
+      tags:
+      - quickstarter
+      summary: Delete a quickstarter of a competition.
+      operationId: deleteCompetitionQuickstarter
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: quickstarterName
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '202':
+          description: Accepted
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v1/quickstarters/generic/{competitionFormat}:
+    x-service-id: competition-service
+    get:
+      tags:
+      - quickstarter
+      summary: List generic quickstarters.
+      operationId: listGenericQuickstartersV1
+      parameters:
+      - name: competitionFormat
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          enum:
+          - TIMESERIES
+          - DAG
+          - STREAM
+          - SPATIAL
+          - UNSTRUCTURED
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Quickstarter'
+      deprecated: true
+  /v1/quickstarters/generic/{competitionFormat}/{quickstarterName}:
+    x-service-id: competition-service
+    get:
+      tags:
+      - quickstarter
+      summary: Show a generic quickstarter.
+      operationId: getGenericQuickstarterV1
+      parameters:
+      - name: competitionFormat
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          enum:
+          - TIMESERIES
+          - DAG
+          - STREAM
+          - SPATIAL
+          - UNSTRUCTURED
+      - name: quickstarterName
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Quickstarter'
+      deprecated: true
+  /v1/quickstarters/competitions/{competitionIdentifier}:
+    x-service-id: competition-service
+    get:
+      tags:
+      - quickstarter
+      summary: List quickstarters of a competition.
+      operationId: listCompetitionQuickstartersV1
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Quickstarter'
+      deprecated: true
+  /v1/quickstarters/competitions/{competitionIdentifier}/{quickstarterName}:
+    x-service-id: competition-service
+    get:
+      tags:
+      - quickstarter
+      summary: Show a quickstarter of a competition.
+      operationId: getCompetitionQuickstarterV1
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: quickstarterName
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Quickstarter'
+      deprecated: true
+components:
+  schemas:
+    QuickstarterAuthorCreateForm:
+      type: object
+      properties:
+        name:
+          type: string
+        link:
+          type: string
+      required:
+      - name
+    QuickstarterAuthor:
+      type: object
+      properties:
+        name:
+          type: string
+        link:
+          type: string
+    QuickstarterFile:
+      type: object
+      properties:
+        name:
+          type: string
+        url:
+          type: string
+        githubUrl:
+          type: string
+    QuickstarterUpdateForm:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        authors:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuickstarterAuthorCreateForm'
+        language:
+          type: string
+          enum:
+          - PYTHON
+          - R
+        usage:
+          type: string
+          enum:
+          - SUBMISSION
+          - EXPLORATION
+        notebook:
+          type: boolean
+        entrypoint:
+          type: string
+        deprecated:
+          type: boolean
+        kaggleUrl:
+          type: string
+        files:
+          type: array
+          items:
+            type: string
+      required:
+      - authors
+      - deprecated
+      - entrypoint
+      - files
+      - language
+      - notebook
+      - title
+      - usage
+    Quickstarter:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        authors:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuickstarterAuthor'
+        language:
+          $ref: '#/components/schemas/Language'
+        usage:
+          $ref: '#/components/schemas/QuickstarterUsage'
+        notebook:
+          type: boolean
+        entrypoint:
+          type: string
+        githubUrl:
+          type: string
+        colabUrl:
+          type: string
+        kaggleUrl:
+          type: string
+        deprecated:
+          type: boolean
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuickstarterFile'
+        createdAt:
+          type: string
+          format: date-time
+    QuickstarterImporterDelta:
+      type: object
+      properties:
+        added:
+          type: integer
+          format: int32
+        updated:
+          type: integer
+          format: int32
+        deleted:
+          type: integer
+          format: int32
+    Language:
+      type: string
+      enum:
+      - PYTHON
+      - R
+    QuickstarterUsage:
+      type: string
+      enum:
+      - SUBMISSION
+      - EXPLORATION
+    BatchQuickstarterCreateForm:
+      type: object
+      properties:
+        quickstarters:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuickstarterCreateForm'
+      required:
+      - quickstarters
+    QuickstarterCreateForm:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        authors:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuickstarterAuthorCreateForm'
+        language:
+          type: string
+          enum:
+          - PYTHON
+          - R
+        usage:
+          type: string
+          enum:
+          - SUBMISSION
+          - EXPLORATION
+        notebook:
+          type: boolean
+        entrypoint:
+          type: string
+        deprecated:
+          type: boolean
+        kaggleUrl:
+          type: string
+        files:
+          type: array
+          items:
+            type: string
+        name:
+          type: string
+      required:
+      - authors
+      - deprecated
+      - entrypoint
+      - files
+      - language
+      - name
+      - notebook
+      - title
+      - usage
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

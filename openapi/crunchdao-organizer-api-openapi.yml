@@ -1,0 +1,491 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity organizer API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: organizer
+paths:
+  /v1/organizers:
+    x-service-id: competition-service
+    get:
+      tags:
+      - organizer
+      summary: List organizers with some filters.
+      operationId: listOrganizer
+      parameters:
+      - name: name
+        in: query
+        description: Filter on name and display name. Allow for a pattern (%).
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Filter on name and display name. Allow for a pattern (%).
+      - name: member
+        in: query
+        description: Filter for organizers where the currnet user is a member of.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          description: Filter for organizers where the currnet user is a member of.
+      - name: sort
+        in: query
+        description: Sort competitions.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Sort competitions.
+          enum:
+          - RECENT
+          - OLDEST
+      - name: page
+        in: query
+        description: Zero-based page index (0..N)
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - name: size
+        in: query
+        description: The size of the page to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageOrganizer'
+      security:
+      - accessToken: []
+      - apiKey: []
+    post:
+      tags:
+      - organizer
+      summary: Create an organizer.
+      operationId: createOrganizer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizerCreateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organizer'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v1/organizers/{organizerIdentifier}/members:
+    x-service-id: competition-service
+    get:
+      tags:
+      - organizer
+      summary: List an organizer's members.
+      operationId: listOrganizerMembers
+      parameters:
+      - name: organizerIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: Zero-based page index (0..N)
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - name: size
+        in: query
+        description: The size of the page to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      - name: sort
+        in: query
+        description: 'Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageOrganizerMember'
+    post:
+      tags:
+      - organizer
+      summary: Add a member to an organizer.
+      operationId: createOrganizerMember
+      parameters:
+      - name: organizerIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizerMemberCreateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizerMember'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v1/organizers/{organizerIdentifier}:
+    x-service-id: competition-service
+    get:
+      tags:
+      - organizer
+      summary: Show an organizer.
+      operationId: getOrganizer
+      parameters:
+      - name: organizerIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organizer'
+    patch:
+      tags:
+      - organizer
+      summary: Update an organizer.
+      operationId: updateOrganizer
+      parameters:
+      - name: organizerIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizerUpdateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organizer'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v1/organizers/{organizerIdentifier}/members/{userLogin}:
+    x-service-id: competition-service
+    get:
+      tags:
+      - organizer
+      summary: Show a member from an organizer.
+      operationId: getOrganizerMember
+      parameters:
+      - name: organizerIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userLogin
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizerMember'
+    delete:
+      tags:
+      - organizer
+      summary: Delete a member from an organizer.
+      operationId: deleteOrganizerMember
+      parameters:
+      - name: organizerIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userLogin
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '202':
+          description: Accepted
+      security:
+      - accessToken: []
+      - apiKey: []
+    patch:
+      tags:
+      - organizer
+      summary: Update a member from an organizer.
+      operationId: updateOrganizerMember
+      parameters:
+      - name: organizerIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userLogin
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizerMemberUpdateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizerMember'
+      security:
+      - accessToken: []
+      - apiKey: []
+components:
+  schemas:
+    OrganizerCreateForm:
+      type: object
+      properties:
+        name:
+          type: string
+        displayName:
+          type: string
+        onChainId:
+          type: string
+        logoImageUrl:
+          type: string
+        bannerImageUrl:
+          type: string
+      required:
+      - displayName
+      - name
+    PageOrganizer:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Organizer'
+    OrganizerMember:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/User'
+        role:
+          $ref: '#/components/schemas/OrganizerMemberRole'
+        createdAt:
+          type: string
+          format: date-time
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+    Organizer:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          description: Slug-like number.
+        displayName:
+          type: string
+          description: Display name for cards.
+        onChainId:
+          type: string
+          description: On chain address linked to this organizer. Only set if is a coordinator.
+        logoImageUrl:
+          type: string
+          description: Logo image URL for cards.
+        bannerImageUrl:
+          type: string
+          description: Banner URL for cards.
+        stake:
+          $ref: '#/components/schemas/Unit'
+          description: Staking information. Only set if `onChainId` is also set.
+    Unit:
+      type: object
+      properties:
+        prefix:
+          type: string
+          description: String to show before the value.
+        suffix:
+          type: string
+          description: String to show after the value.
+        scale:
+          type: integer
+          format: int32
+          description: Number of digits to keep after the comma.
+    OrganizerMemberRole:
+      type: string
+      enum:
+      - STAFF
+      - ADMINISTRATOR
+    OrganizerMemberUpdateForm:
+      type: object
+      properties:
+        role:
+          type: string
+          enum:
+          - STAFF
+          - ADMINISTRATOR
+    OrganizerUpdateForm:
+      type: object
+      properties:
+        name:
+          type: string
+        displayName:
+          type: string
+        onChainId:
+          type: string
+        logoImageUrl:
+          type: string
+        bannerImageUrl:
+          type: string
+    PageOrganizerMember:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganizerMember'
+    OrganizerMemberCreateForm:
+      type: object
+      properties:
+        userId:
+          type: integer
+          format: int64
+        role:
+          type: string
+          enum:
+          - STAFF
+          - ADMINISTRATOR
+      required:
+      - role
+      - userId
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

@@ -1,0 +1,56 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity feedback API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: feedback
+paths:
+  /v1/feedbacks:
+    x-service-id: account-service
+    post:
+      tags:
+      - feedback
+      operationId: create_2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeedbackCreateForm'
+        required: true
+      responses:
+        '202':
+          description: Accepted
+components:
+  schemas:
+    FeedbackCreateForm:
+      type: object
+      properties:
+        comment:
+          type: string
+          maxLength: 4096
+          minLength: 0
+        path:
+          type: string
+          description: Current page path.
+          maxLength: 4096
+          minLength: 0
+      required:
+      - comment
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

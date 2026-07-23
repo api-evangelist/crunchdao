@@ -1,0 +1,134 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity user:profile API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: user:profile
+paths:
+  /v1/users/{userIdentifier}/profile:
+    x-service-id: account-service
+    get:
+      tags:
+      - user:profile
+      operationId: showUserProfile
+      parameters:
+      - name: userIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+    patch:
+      tags:
+      - user:profile
+      operationId: updateUserProfile
+      parameters:
+      - name: userIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserProfileUpdateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+components:
+  schemas:
+    ConnectionType:
+      type: string
+      enum:
+      - DISCORD
+      - TWITTER
+      - GITHUB
+      - KAGGLE
+      - REDDIT
+      - LINKEDIN
+      - GOOGLE
+    Connection:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/ConnectionType'
+        handle:
+          type: string
+        username:
+          type: string
+        profileUrl:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        public:
+          type: boolean
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+    UserProfileUpdateForm:
+      type: object
+      properties:
+        biography:
+          type: string
+          description: User biography.
+          maxLength: 2048
+          minLength: 0
+      required:
+      - biography
+    UserProfile:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
+        biography:
+          type: string
+        connections:
+          type: array
+          items:
+            $ref: '#/components/schemas/Connection'
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

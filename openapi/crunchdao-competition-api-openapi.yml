@@ -1,0 +1,1025 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity competition API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: competition
+paths:
+  /v1/competitions/{competitionIdentifier}/session:
+    x-service-id: competition-service
+    post:
+      tags:
+      - competition
+      summary: Update a competition session.
+      operationId: updateCompetitionSession
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompetitionSessionUpdateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Competition'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v1/competitions/{competitionIdentifier}:
+    x-service-id: competition-service
+    get:
+      tags:
+      - competition
+      summary: Show a competition.
+      operationId: getCompetition
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Competition'
+    patch:
+      tags:
+      - competition
+      summary: Show a competition.
+      operationId: updateCompetition
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompetitionUpdateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Competition'
+  /v2/competitions:
+    x-service-id: competition-service
+    get:
+      tags:
+      - competition
+      summary: List competitions with filters.
+      operationId: listCompetitionsV2
+      parameters:
+      - name: name
+        in: query
+        description: Filter on name, display name and full name. Allow for a pattern (%).
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Filter on name, display name and full name. Allow for a pattern (%).
+      - name: format
+        in: query
+        description: Filter for competitions with a specific format.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/CompetitionFormat'
+          description: Filter for competitions with a specific format.
+      - name: mode
+        in: query
+        description: Filter for competitions with a specific mode.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/CompetitionMode'
+          description: Filter for competitions with a specific mode.
+      - name: status
+        in: query
+        description: Filter for competitions with a specific status(es).
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          description: Filter for competitions with a specific status(es).
+          items:
+            $ref: '#/components/schemas/CompetitionStatus'
+      - name: continuous
+        in: query
+        description: Filter for continuous competitions.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          description: Filter for continuous competitions.
+      - name: external
+        in: query
+        description: Filter for external competitions.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          description: Filter for external competitions.
+      - name: featured
+        in: query
+        description: Filter for featured competitions.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          description: Filter for featured competitions.
+      - name: visibility
+        in: query
+        description: Filter for competitions with a specific visibility.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/CompetitionVisibility'
+          description: Filter for competitions with a specific visibility.
+      - name: organizerName
+        in: query
+        description: Filter for competitions of a specific organizer.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Filter for competitions of a specific organizer.
+      - name: teamBased
+        in: query
+        description: Filter for team based competitions.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          description: Filter for team based competitions.
+      - name: registered
+        in: query
+        description: Filter for competitions where the user has accepted the rules.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          description: Filter for competitions where the user has accepted the rules.
+      - name: submitted
+        in: query
+        description: Filter for competitions where the user has submitted at least once.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          description: Filter for competitions where the user has submitted at least once.
+      - name: userIdentifier
+        in: query
+        description: User identifier for user-based filters, default to current authenticated user.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: User identifier for user-based filters, default to current authenticated user.
+      - name: sort
+        in: query
+        description: Sort competitions.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Sort competitions.
+          enum:
+          - OPENING
+          - POPULAR
+          - PRIZE_POOL
+      - name: page
+        in: query
+        description: Zero-based page index (0..N)
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - name: size
+        in: query
+        description: The size of the page to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageCompetition'
+  /v1/competitions:
+    x-service-id: competition-service
+    get:
+      tags:
+      - competition
+      summary: Show competitions.
+      operationId: listCompetitions
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Competition'
+  /v1/competitions/{competitionIdentifier}/current-state:
+    x-service-id: competition-service
+    get:
+      tags:
+      - competition
+      summary: Show a competition's current state.
+      operationId: getCompetitionState
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompetitionState'
+components:
+  schemas:
+    Competition:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name for cards.
+        fullName:
+          type: string
+          description: Full name for the overview.
+        shortDescription:
+          type: string
+          description: Short description for cards.
+        type:
+          $ref: '#/components/schemas/CompetitionType'
+        format:
+          $ref: '#/components/schemas/CompetitionFormat'
+        mode:
+          $ref: '#/components/schemas/CompetitionMode'
+        status:
+          $ref: '#/components/schemas/CompetitionStatus'
+        splitKeyType:
+          $ref: '#/components/schemas/DataReleaseSplitKey'
+        start:
+          type: string
+          format: date-time
+          description: Start of competition.
+        end:
+          type: string
+          format: date-time
+          description: End of competition. (specified if not continuous)
+        continuous:
+          type: boolean
+          description: Will the competition never end?
+        external:
+          type: boolean
+          description: Is the competition external? If so, redirect to `url`.
+        featured:
+          type: boolean
+          description: Is the competition featured?
+        visibility:
+          $ref: '#/components/schemas/CompetitionVisibility'
+        url:
+          type: string
+          description: URL where the competition takes place.
+        onChainId:
+          type: string
+          description: On-Chain ID where the competition takes place. Only if `mode` is `REAL_TIME`.
+        cardImageUrl:
+          type: string
+          description: Image URL used for cards.
+        bannerImageUrl:
+          type: string
+          description: Image URL used for the overview.
+        documentationUrl:
+          type: string
+          description: External documentation URL.
+        notebookUrl:
+          type: string
+          description: External baseline notebook URL.
+        advancedNotebookUrl:
+          type: string
+          description: External advanced notebook URL.
+        discussionUrl:
+          type: string
+          description: External discussion platform URL. (either discord or the forum)
+        codeUrl:
+          type: string
+          description: External GitHub URL where the code is located.
+        hostedByName:
+          type: string
+          description: Name of the competition organizer/host.
+        prizePoolText:
+          type: string
+          description: Prize pool in a text form.
+        prizePoolShortText:
+          type: string
+          description: Prize pool in a short text form.
+        prizePoolUsd:
+          type: number
+          format: double
+          description: Prize pool in USD.
+        projectNameFormat:
+          type: string
+          description: Default project name format, use `{n}` for incremental.
+        teamBased:
+          type: boolean
+          description: Are the teams enabled?
+        onlyTeamLeader:
+          type: boolean
+          description: Does only the team leader appear on the leaderboard?
+        maxTeamSize:
+          type: integer
+          format: int64
+          description: Maximum size for a team.
+        projectCreationLimit:
+          type: integer
+          format: int64
+          description: Maximum number of projects per user, if one, a default project is always created when the rules are accepted.
+        projectSelectionLimit:
+          type: integer
+          format: int64
+          description: If multiple project can be created, how many should appear on the leaderboard?
+        allowPredictions:
+          type: boolean
+          description: Are direct prediction file accepted for submission?
+        encryptSubmissions:
+          type: boolean
+          description: Should the predictions be encrypted?
+        phalaKeyUrl:
+          type: string
+          description: If the prediction should be encrypted, which URL to use to fetch the public key?
+        hideDashboard:
+          type: boolean
+          description: Is the dashboard tab hidden?
+        hideChanges:
+          type: boolean
+          description: Are the dashboard change cards hidden?
+        hidePerformance:
+          type: boolean
+          description: Is the dashboard performance graph hidden?
+        hideRunPerformance:
+          type: boolean
+          description: Is the dashboard run performance graph hidden?
+        hideStatistics:
+          type: boolean
+          description: Is the statistics card hidden?
+        hideNotebookSetupCommand:
+          type: boolean
+          description: Should the setup command for the notebook be hidden? Only useful for Real Time competitions.
+        hideTrainFrequency:
+          type: boolean
+          description: Should the train frequency field be hidden?
+        hideForceFirstTrain:
+          type: boolean
+          description: Should the train field be hidden?
+        web3:
+          type: boolean
+          description: Are the web3 integrations enabled for the competitions? (e.g. team referendums)
+        order:
+          type: integer
+          format: int64
+          description: Sorting order of the competition. (descending)
+        statistics:
+          $ref: '#/components/schemas/CompetitionStatistics'
+          description: Competition submission statistics.
+        session:
+          $ref: '#/components/schemas/CompetitionSession'
+          description: Competition current session. No session if `null`.
+        createdAt:
+          type: string
+          format: date-time
+          description: Competition creation timestamp.
+        updatedAt:
+          type: string
+          format: date-time
+          description: Competition update timestamp.
+        tags:
+          type: array
+          description: Tags that describe the competition.
+          items:
+            $ref: '#/components/schemas/CompetitionTag'
+        timelineEvents:
+          type: array
+          description: Non-detailed timeline events.
+          items:
+            $ref: '#/components/schemas/TimelineEvent'
+    Crunch:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        phase:
+          $ref: '#/components/schemas/Phase'
+        number:
+          type: integer
+          format: int64
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        showRuns:
+          type: boolean
+        showMetricsDetails:
+          type: boolean
+        showRunLogs:
+          type: boolean
+        showScoresValue:
+          type: boolean
+        leaderboardSimilarityThreshold:
+          type: number
+          format: float
+        published:
+          type: boolean
+        dataReleaseId:
+          type: integer
+          format: int64
+        splits:
+          type: array
+          items:
+            $ref: '#/components/schemas/CrunchSplit'
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+    CompetitionSessionUpdateForm:
+      type: object
+      properties:
+        state:
+          type: string
+          enum:
+          - OPEN
+          - PAUSED
+        nextChange:
+          type: string
+          format: date-time
+      required:
+      - state
+    Unit:
+      type: object
+      properties:
+        prefix:
+          type: string
+          description: String to show before the value.
+        suffix:
+          type: string
+          description: String to show after the value.
+        scale:
+          type: integer
+          format: int32
+          description: Number of digits to keep after the comma.
+    CompetitionUpdateForm:
+      type: object
+      properties:
+        name:
+          type: string
+        displayName:
+          type: string
+        fullName:
+          type: string
+        shortDescription:
+          type: string
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        visibility:
+          type: string
+          enum:
+          - HIDDEN
+          - PUBLIC
+        cardImageUrl:
+          type: string
+        bannerImageUrl:
+          type: string
+        documentationUrl:
+          type: string
+        notebookUrl:
+          type: string
+        advancedNotebookUrl:
+          type: string
+        discussionUrl:
+          type: string
+        codeUrl:
+          type: string
+        ruleContentUrl:
+          type: string
+        prizePoolText:
+          type: string
+        prizePoolShortText:
+          type: string
+        prizePoolUsd:
+          type: number
+          format: double
+    TimelineEvent:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/TimelineEventType'
+        title:
+          type: string
+        description:
+          type: string
+        date:
+          type: string
+          format: date
+          description: Date on which the event will occur/has occurred.
+        color:
+          type: string
+        detailed:
+          type: boolean
+          description: Detailed event should be hidden in a space constrained UI.
+        button:
+          $ref: '#/components/schemas/TimelineEventButton'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    CompetitionStatistics:
+      type: object
+      properties:
+        entrants:
+          type: integer
+          format: int64
+        participants:
+          type: integer
+          format: int64
+        teams:
+          type: integer
+          format: int64
+        submissions:
+          type: integer
+          format: int64
+        runnables:
+          type: integer
+          format: int64
+    CompetitionStatus:
+      type: string
+      enum:
+      - PENDING
+      - OPEN
+      - CLOSED
+    Team:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          type: string
+        leader:
+          $ref: '#/components/schemas/User'
+          description: Team leader, or `null` if leaders are disabled.
+        size:
+          type: integer
+          format: int32
+        deleted:
+          type: boolean
+        lookingForTeammates:
+          type: boolean
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamMember'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    PhaseSplit:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+    CompetitionState:
+      type: object
+      properties:
+        competition:
+          $ref: '#/components/schemas/Competition'
+        round:
+          $ref: '#/components/schemas/Round'
+        phase:
+          $ref: '#/components/schemas/Phase'
+        crunch:
+          $ref: '#/components/schemas/Crunch'
+        participant:
+          $ref: '#/components/schemas/Participant'
+        team:
+          $ref: '#/components/schemas/Team'
+        activeBroadcasts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Broadcast'
+        publishedCrunchTargets:
+          type: array
+          items:
+            $ref: '#/components/schemas/CrunchTarget'
+    LeaderboardRankOrder:
+      type: string
+      enum:
+      - DESCENDING
+      - ASCENDING
+    PhaseType:
+      type: string
+      enum:
+      - SUBMISSION
+      - OUT_OF_SAMPLE
+    Round:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        competition:
+          $ref: '#/components/schemas/Competition'
+        number:
+          type: integer
+          format: int64
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        automaticSelectionFreezeEnabled:
+          type: boolean
+        automaticSubmissionPhaseCrunchCreationEnabled:
+          type: boolean
+        automaticSubmissionPhaseLeaderboardUpdateEnabled:
+          type: boolean
+        predictionSizeLimit:
+          type: integer
+          format: int64
+        maxSubmissionsPerDay:
+          type: integer
+          format: int64
+    Phase:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/PhaseType'
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        dataReleaseId:
+          type: integer
+          format: int64
+        localDataReleaseId:
+          type: integer
+          format: int64
+        cloudCredits:
+          anyOf:
+          - $comment: Seconds
+            example: '60'
+          - format: duration
+            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
+            $comment: ISO 8601 Duration
+            example: PT1M
+        perCrunchWeight:
+          type: number
+          format: float
+        autoCompute:
+          type: boolean
+        runDisabled:
+          type: boolean
+        showPositions:
+          type: boolean
+        showProjectNames:
+          type: boolean
+        runDeterminismCheckEnabled:
+          type: boolean
+        showOnlyRewardedProjectsDefault:
+          type: boolean
+        splits:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhaseSplit'
+    CompetitionFormat:
+      type: string
+      enum:
+      - TIMESERIES
+      - DAG
+      - STREAM
+      - SPATIAL
+      - UNSTRUCTURED
+    CrunchTarget:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        target:
+          $ref: '#/components/schemas/Target'
+        crunch:
+          $ref: '#/components/schemas/Crunch'
+        published:
+          type: boolean
+    TimelineEventButton:
+      type: object
+      properties:
+        text:
+          type: string
+        link:
+          type: string
+        color:
+          type: string
+    TimelineEventType:
+      type: string
+      enum:
+      - GENERIC
+      - LEADERBOARD
+      - RULES
+      - REWARDS
+    ParticipantRole:
+      type: string
+      enum:
+      - USER
+      - ORGANIZER
+      - ADMINISTRATOR
+    PageCompetition:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Competition'
+    TeamMember:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          type: string
+          format: date-time
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
+    Target:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name for the UI.
+        weight:
+          type: number
+          format: float
+          description: Weight of the target in the global leaderboard.
+        weightedMeanUnit:
+          $ref: '#/components/schemas/Unit'
+          description: Display name for the UI of the weighted mean column.
+        primary:
+          type: boolean
+          description: Is the target displayed on the home page?
+        virtual:
+          type: boolean
+          description: Is the target based on other targets.
+        rankOrder:
+          $ref: '#/components/schemas/LeaderboardRankOrder'
+          description: Orders of the position on the leaderboard.
+        weightedMeanDisplayUnit:
+          type: string
+          deprecated: true
+    CompetitionTag:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name for the UI.
+    CompetitionVisibility:
+      type: string
+      enum:
+      - HIDDEN
+      - PUBLIC
+    CrunchSplit:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+    DataReleaseSplitKey:
+      type: string
+      enum:
+      - INTEGER
+      - STRING
+    CompetitionType:
+      type: string
+      enum:
+      - OPEN
+      - PAUSED
+    Broadcast:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        markdown:
+          type: string
+        backgroundColor:
+          type: string
+        textColor:
+          type: string
+        active:
+          type: boolean
+        position:
+          type: integer
+          format: int64
+    CompetitionMode:
+      type: string
+      enum:
+      - OFFLINE
+      - REAL_TIME
+    CompetitionSession:
+      type: object
+      properties:
+        state:
+          $ref: '#/components/schemas/CompetitionType'
+          description: Current session state.
+        nextChange:
+          type: string
+          format: date-time
+          description: When should the next session state change happen. Unknown if `null`.
+    Participant:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        competition:
+          $ref: '#/components/schemas/Competition'
+        user:
+          $ref: '#/components/schemas/User'
+        cruncherPubkey:
+          type: string
+          description: The Cruncher Pubkey on the blockchain. Only available if `competition.type` is `REAL_TIME`.
+        hidden:
+          type: boolean
+          description: Is the participant hidden from the leaderboard?
+        role:
+          $ref: '#/components/schemas/ParticipantRole'
+          description: Role of the participant in the competition.
+        crowned:
+          type: boolean
+          description: Is the crown badge visible?
+        certified:
+          type: boolean
+          description: Is the certificate badge visible?
+        rewarded:
+          type: boolean
+          description: Is the dollar badge visible?
+        benchmarked:
+          type: boolean
+          description: Is the "benchmark" badge visible?
+        ruleAccepted:
+          type: boolean
+          description: Has the rule been accepted?
+        ruleAcceptedAt:
+          type: string
+          format: date-time
+          description: When were the rule accepted?
+        submitted:
+          type: boolean
+          description: Has the participant submitted at least once?
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

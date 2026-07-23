@@ -1,0 +1,112 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity country API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: country
+paths:
+  /v1/universities/refresh:
+    x-service-id: account-service
+    post:
+      tags:
+      - country
+      summary: Refresh the university database.
+      operationId: refreshUniversities
+      responses:
+        '200':
+          description: OK
+  /v1/universities:
+    x-service-id: account-service
+    get:
+      tags:
+      - country
+      summary: List all universities.
+      operationId: listUniversities
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/University'
+  /v1/universities/names:
+    x-service-id: account-service
+    get:
+      tags:
+      - country
+      summary: List all universities' name.
+      operationId: listUniversitiesName
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+  /v1/countries:
+    x-service-id: account-service
+    get:
+      tags:
+      - country
+      summary: List all countries.
+      operationId: list_2
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Country'
+components:
+  schemas:
+    Country:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        alpha2:
+          type: string
+        alpha3:
+          type: string
+        numeric:
+          type: integer
+          format: int32
+    University:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        url:
+          type: string
+        countryAlpha3:
+          type: string
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

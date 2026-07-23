@@ -1,0 +1,1344 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity run API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: run
+paths:
+  /v3/competitions/{competitionIdentifier}/projects/{userLogin}/{projectIdentifier}/runs:
+    x-service-id: competition-service
+    get:
+      tags:
+      - run
+      summary: List runs.
+      operationId: listRunsV3
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userLogin
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: projectIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: managed
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      - name: submissionNumber
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Run'
+      security:
+      - apiKey: []
+    post:
+      tags:
+      - run
+      summary: Create a run.
+      operationId: createRunV3
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userLogin
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: projectIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RunCreateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Run'
+      security:
+      - apiKey: []
+  /v4/competitions/{competitionIdentifier}/projects/{userLogin}/{projectIdentifier}/runs:
+    x-service-id: competition-service
+    get:
+      tags:
+      - run
+      summary: List runs.
+      operationId: listRunsV4
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userLogin
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: projectIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: submissionNumber
+        in: query
+        description: Filter runs created with a submission.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int64
+          description: Filter runs created with a submission.
+      - name: runtimeType
+        in: query
+        description: Filter for runs with a specific runtime type.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Filter for runs with a specific runtime type.
+          enum:
+          - CPU
+          - GPU
+          - COPY
+      - name: trainFrequency
+        in: query
+        description: Filter for runs with a specific train frequency value.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int64
+          description: Filter for runs with a specific train frequency value.
+      - name: forceFirstTrain
+        in: query
+        description: Filter for runs with a specific force first train value.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          description: Filter for runs with a specific force first train value.
+      - name: status
+        in: query
+        description: Filter for runs with a status.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/RunStatus'
+          description: Filter for runs with a status.
+      - name: success
+        in: query
+        description: Filter for successful runs.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          description: Filter for successful runs.
+      - name: terminated
+        in: query
+        description: Filter for terminated runs.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          description: Filter for terminated runs.
+      - name: managed
+        in: query
+        description: Filter for managed runs.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          description: Filter for managed runs.
+      - name: page
+        in: query
+        description: Zero-based page index (0..N)
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - name: size
+        in: query
+        description: The size of the page to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      - name: sort
+        in: query
+        description: 'Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageRun'
+      security:
+      - apiKey: []
+  /v3/competitions/{competitionIdentifier}/projects/{userLogin}/{projectIdentifier}/runs/{runId}:
+    x-service-id: competition-service
+    get:
+      tags:
+      - run
+      summary: Show a run.
+      operationId: getRunV3
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userLogin
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: projectIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: runId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Run'
+      security:
+      - apiKey: []
+    delete:
+      tags:
+      - run
+      summary: Terminate a run.
+      operationId: terminateRunV3
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userLogin
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: projectIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: runId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Run'
+      security:
+      - apiKey: []
+  /v3/competitions/{competitionIdentifier}/projects/{userLogin}/{projectIdentifier}/runs/{runId}/traces:
+    x-service-id: competition-service
+    get:
+      tags:
+      - run
+      summary: Show a run.
+      operationId: listRunTraces
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userLogin
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: projectIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: runId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunTraces'
+      security:
+      - apiKey: []
+  /v3/competitions/{competitionIdentifier}/projects/{userLogin}/{projectIdentifier}/runs/{runId}/logs:
+    x-service-id: competition-service
+    get:
+      tags:
+      - run
+      summary: List a run's logs.
+      operationId: getRunLogs
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userLogin
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: projectIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: runId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      - name: hideAtThreshold
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RunLog'
+      security:
+      - apiKey: []
+components:
+  schemas:
+    SubmissionFile:
+      type: object
+      properties:
+        name:
+          type: string
+        size:
+          type: integer
+          format: int64
+        encrypted:
+          type: boolean
+        mimeType:
+          type: string
+        foundHardcodedString:
+          type: boolean
+          deprecated: true
+    Competition:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name for cards.
+        fullName:
+          type: string
+          description: Full name for the overview.
+        shortDescription:
+          type: string
+          description: Short description for cards.
+        type:
+          $ref: '#/components/schemas/CompetitionType'
+        format:
+          $ref: '#/components/schemas/CompetitionFormat'
+        mode:
+          $ref: '#/components/schemas/CompetitionMode'
+        status:
+          $ref: '#/components/schemas/CompetitionStatus'
+        splitKeyType:
+          $ref: '#/components/schemas/DataReleaseSplitKey'
+        start:
+          type: string
+          format: date-time
+          description: Start of competition.
+        end:
+          type: string
+          format: date-time
+          description: End of competition. (specified if not continuous)
+        continuous:
+          type: boolean
+          description: Will the competition never end?
+        external:
+          type: boolean
+          description: Is the competition external? If so, redirect to `url`.
+        featured:
+          type: boolean
+          description: Is the competition featured?
+        visibility:
+          $ref: '#/components/schemas/CompetitionVisibility'
+        url:
+          type: string
+          description: URL where the competition takes place.
+        onChainId:
+          type: string
+          description: On-Chain ID where the competition takes place. Only if `mode` is `REAL_TIME`.
+        cardImageUrl:
+          type: string
+          description: Image URL used for cards.
+        bannerImageUrl:
+          type: string
+          description: Image URL used for the overview.
+        documentationUrl:
+          type: string
+          description: External documentation URL.
+        notebookUrl:
+          type: string
+          description: External baseline notebook URL.
+        advancedNotebookUrl:
+          type: string
+          description: External advanced notebook URL.
+        discussionUrl:
+          type: string
+          description: External discussion platform URL. (either discord or the forum)
+        codeUrl:
+          type: string
+          description: External GitHub URL where the code is located.
+        hostedByName:
+          type: string
+          description: Name of the competition organizer/host.
+        prizePoolText:
+          type: string
+          description: Prize pool in a text form.
+        prizePoolShortText:
+          type: string
+          description: Prize pool in a short text form.
+        prizePoolUsd:
+          type: number
+          format: double
+          description: Prize pool in USD.
+        projectNameFormat:
+          type: string
+          description: Default project name format, use `{n}` for incremental.
+        teamBased:
+          type: boolean
+          description: Are the teams enabled?
+        onlyTeamLeader:
+          type: boolean
+          description: Does only the team leader appear on the leaderboard?
+        maxTeamSize:
+          type: integer
+          format: int64
+          description: Maximum size for a team.
+        projectCreationLimit:
+          type: integer
+          format: int64
+          description: Maximum number of projects per user, if one, a default project is always created when the rules are accepted.
+        projectSelectionLimit:
+          type: integer
+          format: int64
+          description: If multiple project can be created, how many should appear on the leaderboard?
+        allowPredictions:
+          type: boolean
+          description: Are direct prediction file accepted for submission?
+        encryptSubmissions:
+          type: boolean
+          description: Should the predictions be encrypted?
+        phalaKeyUrl:
+          type: string
+          description: If the prediction should be encrypted, which URL to use to fetch the public key?
+        hideDashboard:
+          type: boolean
+          description: Is the dashboard tab hidden?
+        hideChanges:
+          type: boolean
+          description: Are the dashboard change cards hidden?
+        hidePerformance:
+          type: boolean
+          description: Is the dashboard performance graph hidden?
+        hideRunPerformance:
+          type: boolean
+          description: Is the dashboard run performance graph hidden?
+        hideStatistics:
+          type: boolean
+          description: Is the statistics card hidden?
+        hideNotebookSetupCommand:
+          type: boolean
+          description: Should the setup command for the notebook be hidden? Only useful for Real Time competitions.
+        hideTrainFrequency:
+          type: boolean
+          description: Should the train frequency field be hidden?
+        hideForceFirstTrain:
+          type: boolean
+          description: Should the train field be hidden?
+        web3:
+          type: boolean
+          description: Are the web3 integrations enabled for the competitions? (e.g. team referendums)
+        order:
+          type: integer
+          format: int64
+          description: Sorting order of the competition. (descending)
+        statistics:
+          $ref: '#/components/schemas/CompetitionStatistics'
+          description: Competition submission statistics.
+        session:
+          $ref: '#/components/schemas/CompetitionSession'
+          description: Competition current session. No session if `null`.
+        createdAt:
+          type: string
+          format: date-time
+          description: Competition creation timestamp.
+        updatedAt:
+          type: string
+          format: date-time
+          description: Competition update timestamp.
+        tags:
+          type: array
+          description: Tags that describe the competition.
+          items:
+            $ref: '#/components/schemas/CompetitionTag'
+        timelineEvents:
+          type: array
+          description: Non-detailed timeline events.
+          items:
+            $ref: '#/components/schemas/TimelineEvent'
+    Submission:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        project:
+          $ref: '#/components/schemas/Project'
+        number:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/SubmissionType'
+        message:
+          type: string
+        valid:
+          type: boolean
+        mainFilePath:
+          type: string
+        modelDirectoryPath:
+          type: string
+        gpuRequirement:
+          $ref: '#/components/schemas/GpuRequirement'
+        model:
+          $ref: '#/components/schemas/Model'
+        totalSize:
+          type: integer
+          format: int64
+        librariesVerified:
+          type: boolean
+        encrypted:
+          type: boolean
+        encryptionId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubmissionFile'
+    Crunch:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        phase:
+          $ref: '#/components/schemas/Phase'
+        number:
+          type: integer
+          format: int64
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        showRuns:
+          type: boolean
+        showMetricsDetails:
+          type: boolean
+        showRunLogs:
+          type: boolean
+        showScoresValue:
+          type: boolean
+        leaderboardSimilarityThreshold:
+          type: number
+          format: float
+        published:
+          type: boolean
+        dataReleaseId:
+          type: integer
+          format: int64
+        splits:
+          type: array
+          items:
+            $ref: '#/components/schemas/CrunchSplit'
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+    Unit:
+      type: object
+      properties:
+        prefix:
+          type: string
+          description: String to show before the value.
+        suffix:
+          type: string
+          description: String to show after the value.
+        scale:
+          type: integer
+          format: int32
+          description: Number of digits to keep after the comma.
+    TimelineEvent:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/TimelineEventType'
+        title:
+          type: string
+        description:
+          type: string
+        date:
+          type: string
+          format: date
+          description: Date on which the event will occur/has occurred.
+        color:
+          type: string
+        detailed:
+          type: boolean
+          description: Detailed event should be hidden in a space constrained UI.
+        button:
+          $ref: '#/components/schemas/TimelineEventButton'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    PageRun:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Run'
+    CompetitionStatistics:
+      type: object
+      properties:
+        entrants:
+          type: integer
+          format: int64
+        participants:
+          type: integer
+          format: int64
+        teams:
+          type: integer
+          format: int64
+        submissions:
+          type: integer
+          format: int64
+        runnables:
+          type: integer
+          format: int64
+    CompetitionStatus:
+      type: string
+      enum:
+      - PENDING
+      - OPEN
+      - CLOSED
+    PhaseSplit:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+    Project:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        competitionId:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/User'
+        name:
+          type: string
+        selected:
+          type: boolean
+        submitted:
+          type: boolean
+        note:
+          type: string
+        writeupUrl:
+          type: string
+        writeupArchived:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
+    RuntimeType:
+      type: string
+      enum:
+      - CPU
+      - GPU
+      - COPY
+    PhaseType:
+      type: string
+      enum:
+      - SUBMISSION
+      - OUT_OF_SAMPLE
+    Round:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        competition:
+          $ref: '#/components/schemas/Competition'
+        number:
+          type: integer
+          format: int64
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        automaticSelectionFreezeEnabled:
+          type: boolean
+        automaticSubmissionPhaseCrunchCreationEnabled:
+          type: boolean
+        automaticSubmissionPhaseLeaderboardUpdateEnabled:
+          type: boolean
+        predictionSizeLimit:
+          type: integer
+          format: int64
+        maxSubmissionsPerDay:
+          type: integer
+          format: int64
+    Phase:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/PhaseType'
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        dataReleaseId:
+          type: integer
+          format: int64
+        localDataReleaseId:
+          type: integer
+          format: int64
+        cloudCredits:
+          anyOf:
+          - $comment: Seconds
+            example: '60'
+          - format: duration
+            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
+            $comment: ISO 8601 Duration
+            example: PT1M
+        perCrunchWeight:
+          type: number
+          format: float
+        autoCompute:
+          type: boolean
+        runDisabled:
+          type: boolean
+        showPositions:
+          type: boolean
+        showProjectNames:
+          type: boolean
+        runDeterminismCheckEnabled:
+          type: boolean
+        showOnlyRewardedProjectsDefault:
+          type: boolean
+        splits:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhaseSplit'
+    RunTraces:
+      type: object
+      properties:
+        spans:
+          type: array
+          items:
+            $ref: '#/components/schemas/RunTracesSpan'
+        metrics:
+          $ref: '#/components/schemas/RunTracesMetrics'
+    CompetitionFormat:
+      type: string
+      enum:
+      - TIMESERIES
+      - DAG
+      - STREAM
+      - SPATIAL
+      - UNSTRUCTURED
+    Model:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        project:
+          $ref: '#/components/schemas/Project'
+        totalSize:
+          type: integer
+          format: int64
+        encrypted:
+          type: boolean
+        encryptionId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    RunStatus:
+      type: string
+      enum:
+      - CREATED
+      - PENDING
+      - RUNNING
+      - CLEANING
+      - COMPLETED
+    RunTracesSpan:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+          description: Span ID, unique within a run.
+        parentId:
+          type: integer
+          format: int32
+          description: Parent span ID, null if high level.
+        description:
+          type: string
+          description: Description of the span.
+        status:
+          $ref: '#/components/schemas/RunTracesSpanStatus'
+          description: Status of the span.
+        startedAt:
+          type: string
+          format: date-time
+          description: Start time of the span.
+        endedAt:
+          type: string
+          format: date-time
+          description: End time of the span, null if not ended yet.
+        attributes:
+          type: string
+          description: Span attributes, null if no attributes.
+        error:
+          type: string
+          description: Error message if the span ended with an error, null otherwise.
+    TimelineEventButton:
+      type: object
+      properties:
+        text:
+          type: string
+        link:
+          type: string
+        color:
+          type: string
+    RunLog:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        eventId:
+          type: string
+        emitter:
+          type: string
+        error:
+          type: boolean
+        content:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    TimelineEventType:
+      type: string
+      enum:
+      - GENERIC
+      - LEADERBOARD
+      - RULES
+      - REWARDS
+    Run:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        round:
+          $ref: '#/components/schemas/Round'
+        crunch:
+          $ref: '#/components/schemas/Crunch'
+        submission:
+          $ref: '#/components/schemas/Submission'
+        project:
+          $ref: '#/components/schemas/Project'
+        initialModel:
+          $ref: '#/components/schemas/Model'
+        terminalModel:
+          $ref: '#/components/schemas/Model'
+        prediction:
+          $ref: '#/components/schemas/Prediction'
+        runtimeType:
+          $ref: '#/components/schemas/RuntimeType'
+        name:
+          type: string
+        trainFrequency:
+          type: integer
+          format: int64
+        forceFirstTrain:
+          type: boolean
+        chainHeight:
+          type: integer
+          format: int64
+        determinismCheckEnabled:
+          type: boolean
+        deterministic:
+          type: boolean
+        status:
+          $ref: '#/components/schemas/RunStatus'
+        success:
+          type: boolean
+        errorMessage:
+          type: string
+        errorTrace:
+          type: string
+        exitCode:
+          type: integer
+          format: int32
+        exitReason:
+          type: string
+        terminated:
+          type: boolean
+        managed:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        startedAt:
+          type: string
+          format: date-time
+        endedAt:
+          type: string
+          format: date-time
+        duration:
+          anyOf:
+          - $comment: Seconds
+            example: '60'
+          - format: duration
+            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
+            $comment: ISO 8601 Duration
+            example: PT1M
+        cpu:
+          type: integer
+          format: int32
+        memory:
+          type: integer
+          format: int32
+    Prediction:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        project:
+          $ref: '#/components/schemas/Project'
+        valid:
+          type: boolean
+        success:
+          type: boolean
+        error:
+          type: string
+        deterministic:
+          type: boolean
+        primaryMean:
+          type: number
+          format: double
+        primaryUnit:
+          $ref: '#/components/schemas/Unit'
+        means:
+          type: object
+          additionalProperties:
+            type: number
+            format: double
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/PredictionFile'
+        managed:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        bestDisplayUnit:
+          type: string
+          deprecated: true
+        bestMean:
+          type: number
+          format: double
+          deprecated: true
+        bestUnit:
+          $ref: '#/components/schemas/Unit'
+          deprecated: true
+    SubmissionType:
+      type: string
+      enum:
+      - CODE
+      - NOTEBOOK
+      - PREDICTION
+    CompetitionTag:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name for the UI.
+    GpuRequirement:
+      type: string
+      enum:
+      - OPTIONAL
+      - RECOMMENDED
+      - REQUIRED
+    CompetitionVisibility:
+      type: string
+      enum:
+      - HIDDEN
+      - PUBLIC
+    PredictionFile:
+      type: object
+      properties:
+        name:
+          type: string
+        size:
+          type: integer
+          format: int64
+    RunTracesSpanStatus:
+      type: string
+      enum:
+      - STARTED
+      - ENDED
+      - FAILED
+    CrunchSplit:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+    RunTracesMetrics:
+      type: object
+      properties:
+        timestamp:
+          type: array
+          description: Timestamps of the collected metrics.
+          items:
+            type: string
+            format: date-time
+        cpu:
+          type: array
+          description: CPU usage in percentage, one per timestamp.
+          items:
+            type: number
+            format: float
+        ram:
+          type: array
+          description: RAM usage in bytes, one per timestamp.
+          items:
+            type: integer
+            format: int64
+        disk:
+          type: array
+          description: Disk usage in bytes, one per timestamp.
+          items:
+            type: integer
+            format: int64
+        gpu:
+          type: array
+          description: GPU usage in percentage, one per timestamp. `null` if not available.
+          items:
+            type: number
+            format: float
+        vram:
+          type: array
+          description: VRAM usage in bytes, one per timestamp. `null` if not available.
+          items:
+            type: integer
+            format: int64
+    RunCreateForm:
+      type: object
+      properties:
+        runtimeDefinitionName:
+          type: string
+        submissionId:
+          type: integer
+          format: int64
+        name:
+          type: string
+          maxLength: 512
+          minLength: 0
+        modelName:
+          type: string
+          maxLength: 512
+          minLength: 0
+        predictionName:
+          type: string
+          maxLength: 512
+          minLength: 0
+        trainFrequency:
+          type: integer
+          format: int64
+        forceFirstTrain:
+          type: boolean
+        roundNumber:
+          type: integer
+          format: int64
+        crunchNumber:
+          type: integer
+          format: int64
+        phaseType:
+          type: string
+          enum:
+          - SUBMISSION
+          - OUT_OF_SAMPLE
+        dataReleaseNumber:
+          type: integer
+          format: int64
+        determinismCheck:
+          type: boolean
+      required:
+      - forceFirstTrain
+      - runtimeDefinitionName
+      - submissionId
+      - trainFrequency
+    DataReleaseSplitKey:
+      type: string
+      enum:
+      - INTEGER
+      - STRING
+    CompetitionType:
+      type: string
+      enum:
+      - OPEN
+      - PAUSED
+    CompetitionMode:
+      type: string
+      enum:
+      - OFFLINE
+      - REAL_TIME
+    CompetitionSession:
+      type: object
+      properties:
+        state:
+          $ref: '#/components/schemas/CompetitionType'
+          description: Current session state.
+        nextChange:
+          type: string
+          format: date-time
+          description: When should the next session state change happen. Unknown if `null`.
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

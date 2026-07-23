@@ -1,0 +1,340 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity season API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: season
+paths:
+  /v1/stakers:
+    x-service-id: competition-service
+    get:
+      tags:
+      - season
+      summary: List seasons with filters.
+      operationId: listSeasons
+      parameters:
+      - name: organizerName
+        in: query
+        description: Filter for a specific organizer.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Filter for a specific organizer.
+      - name: organizerOnChainId
+        in: query
+        description: Filter for a specific organizer.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Filter for a specific organizer.
+      - name: address
+        in: query
+        description: Filter for a specific organizer.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Filter for a specific organizer.
+      - name: userLogin
+        in: query
+        description: Filter for a specific organizer.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Filter for a specific organizer.
+      - name: page
+        in: query
+        description: Zero-based page index (0..N)
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - name: size
+        in: query
+        description: The size of the page to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      - name: sort
+        in: query
+        description: 'Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: includeTarget
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageStaker'
+  /v1/seasons:
+    x-service-id: competition-service
+    get:
+      tags:
+      - season
+      summary: List seasons with filters.
+      operationId: listSeasons_1
+      parameters:
+      - name: status
+        in: query
+        description: Filter for seasons with a specific status(es).
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          description: Filter for seasons with a specific status(es).
+          items:
+            $ref: '#/components/schemas/SeasonStatus'
+      - name: sort
+        in: query
+        description: Sort seasons.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Sort seasons.
+          enum:
+          - RECENT
+          - OLDEST
+      - name: page
+        in: query
+        description: Zero-based page index (0..N)
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - name: size
+        in: query
+        description: The size of the page to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageSeason'
+  /v1/seasons/{seasonNumber}:
+    x-service-id: competition-service
+    get:
+      tags:
+      - season
+      summary: Show a season.
+      operationId: getSeason
+      parameters:
+      - name: seasonNumber
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Season'
+components:
+  schemas:
+    Staker:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        address:
+          type: string
+          description: Address which placed the stakes.
+        user:
+          $ref: '#/components/schemas/User'
+          description: User who match the address. `null` if none is matching.
+        totalAmount:
+          type: integer
+          description: Total staked amount.
+        organizer:
+          $ref: '#/components/schemas/Organizer'
+          description: Target of the stake. Only included if `includeTarget=true`
+    Organizer:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          description: Slug-like number.
+        displayName:
+          type: string
+          description: Display name for cards.
+        onChainId:
+          type: string
+          description: On chain address linked to this organizer. Only set if is a coordinator.
+        logoImageUrl:
+          type: string
+          description: Logo image URL for cards.
+        bannerImageUrl:
+          type: string
+          description: Banner URL for cards.
+        stake:
+          $ref: '#/components/schemas/Unit'
+          description: Staking information. Only set if `onChainId` is also set.
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+    Unit:
+      type: object
+      properties:
+        prefix:
+          type: string
+          description: String to show before the value.
+        suffix:
+          type: string
+          description: String to show after the value.
+        scale:
+          type: integer
+          format: int32
+          description: Number of digits to keep after the comma.
+    PageStaker:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Staker'
+    Season:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        number:
+          type: integer
+          format: int64
+          description: Slug-like number.
+        displayName:
+          type: string
+          description: Display name for cards.
+        shortDescription:
+          type: string
+          description: Short description for cards.
+        description:
+          type: string
+          description: Full description.
+        status:
+          $ref: '#/components/schemas/SeasonStatus'
+        start:
+          type: string
+          format: date-time
+          description: Start of the season.
+        end:
+          type: string
+          format: date-time
+          description: End of the season.
+        stakeGoal:
+          type: integer
+          description: Staking goal to reach in the season.
+        createdAt:
+          type: string
+          format: date-time
+          description: Season creation timestamp.
+    SeasonStatus:
+      type: string
+      description: Filter for seasons with a specific status(es).
+      enum:
+      - VOTING
+      - OPEN
+      - CLOSED
+    PageSeason:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Season'
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

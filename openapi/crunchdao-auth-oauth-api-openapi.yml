@@ -1,0 +1,240 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity auth:oauth API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: auth:oauth
+paths:
+  /v2/auth/oauth2/token:
+    x-service-id: account-service
+    post:
+      tags:
+      - auth:oauth
+      operationId: consume
+      parameters:
+      - name: grant_type
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: client_id
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int64
+      - name: client_secret
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: redirect_uri
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: code
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizedToken'
+  /v2/auth/oauth2/authorize:
+    x-service-id: account-service
+    post:
+      tags:
+      - auth:oauth
+      operationId: authorize
+      parameters:
+      - name: response_type
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: client_id
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int64
+      - name: redirect_uri
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: scope
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: state
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizedCodeDto'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v2/auth/oauth2/user:
+    x-service-id: account-service
+    get:
+      tags:
+      - auth:oauth
+      operationId: info
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuthUserInfo'
+      security:
+      - accessToken: []
+  /v2/auth/oauth2/registered-clients/{clientId}:
+    x-service-id: account-service
+    get:
+      tags:
+      - auth:oauth
+      operationId: showRegisteredClient
+      parameters:
+      - name: clientId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegisteredClient'
+components:
+  schemas:
+    RegisteredClient:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          description: Descriptive name of the oauth client.
+        flow:
+          type: string
+          description: OAuth2.0 flow type.
+          enum:
+          - AUTHORIZATION_CODE
+          - IMPLICIT
+        redirectUri:
+          type: string
+          description: Redirect URI after authorization.
+        codeValidityDuration:
+          anyOf:
+          - $comment: Seconds
+            example: '60'
+          - format: duration
+            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
+            $comment: ISO 8601 Duration
+            example: PT1M
+          description: How long is the authorization code valid? (only used if `flow` is `AUTHORIZATION_CODE`)
+        jwtValidityDuration:
+          anyOf:
+          - $comment: Seconds
+            example: '60'
+          - format: duration
+            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
+            $comment: ISO 8601 Duration
+            example: PT1M
+          description: How long is the generated JWT valid?
+    AuthorizedToken:
+      type: object
+      properties:
+        access_token:
+          type: string
+        expires_in:
+          type: integer
+          format: int64
+    AuthorizedCodeDto:
+      type: object
+      discriminator:
+        propertyName: flow
+        mapping:
+          AUTHORIZATION_CODE: '#/components/schemas/AuthorizedCode'
+          IMPLICIT: '#/components/schemas/ImplicitAuthorizedCode'
+      properties:
+        flow:
+          type: string
+          enum:
+          - AUTHORIZATION_CODE
+          - IMPLICIT
+    OAuthUserInfo:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        username:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        verified:
+          type: boolean
+        avatarUrl:
+          type: string
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

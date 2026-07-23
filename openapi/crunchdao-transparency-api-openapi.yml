@@ -1,0 +1,86 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity transparency API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: transparency
+paths:
+  /v1/transparency/global/report:
+    x-service-id: competition-service
+    get:
+      tags:
+      - transparency
+      summary: Get statistics about the platform.
+      operationId: getGlobalTransparencyReport
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransparencyReport'
+components:
+  schemas:
+    TransparencyReportGroupedAndCountedValues:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransparencyReportCount'
+    TransparencyReportCount:
+      type: object
+      properties:
+        group:
+          type: string
+        value:
+          type: object
+    TransparencyReportSingleValue:
+      type: object
+      properties:
+        data:
+          type: number
+          format: double
+    TransparencyReport:
+      type: object
+      properties:
+        registrations:
+          $ref: '#/components/schemas/TransparencyReportGroupedAndCountedValues'
+        firstSubmissions:
+          $ref: '#/components/schemas/TransparencyReportGroupedAndCountedValues'
+        dailySubmissions:
+          $ref: '#/components/schemas/TransparencyReportGroupedAndCountedValues'
+        userCountries:
+          $ref: '#/components/schemas/TransparencyReportGroupedAndCountedValues'
+        userStudyLevel:
+          $ref: '#/components/schemas/TransparencyReportGroupedAndCountedValues'
+        userExperienceWithData:
+          $ref: '#/components/schemas/TransparencyReportGroupedAndCountedValues'
+        monthlyRewards:
+          $ref: '#/components/schemas/TransparencyReportGroupedAndCountedValues'
+        averageSubmissionCountPerUser:
+          $ref: '#/components/schemas/TransparencyReportSingleValue'
+        percentageOfUsersWhoSubmitted:
+          $ref: '#/components/schemas/TransparencyReportSingleValue'
+        yearToDateUserGrowthPercentage:
+          $ref: '#/components/schemas/TransparencyReportSingleValue'
+        quarterToDateUserGrowthPercentage:
+          $ref: '#/components/schemas/TransparencyReportSingleValue'
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

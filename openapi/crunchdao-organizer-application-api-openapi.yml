@@ -1,0 +1,281 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity organizer:application API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: organizer:application
+paths:
+  /v1/organizer-applications:
+    x-service-id: competition-service
+    get:
+      tags:
+      - organizer:application
+      summary: List organizer applications.
+      operationId: listOrganizerApplications
+      parameters:
+      - name: reviewStatus
+        in: query
+        description: Filter applications with specific review status.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/OrganizerApplicationReviewStatus'
+          description: Filter applications with specific review status.
+      - name: potentialSpam
+        in: query
+        description: Filter applications with that are potential spam.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          description: Filter applications with that are potential spam.
+      - name: sort
+        in: query
+        description: Sort applications.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Sort applications.
+          enum:
+          - RECENT
+          - OLDEST
+      - name: page
+        in: query
+        description: Zero-based page index (0..N)
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - name: size
+        in: query
+        description: The size of the page to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageOrganizerApplication'
+      security:
+      - accessToken: []
+      - apiKey: []
+    post:
+      tags:
+      - organizer:application
+      summary: Create an organizer application.
+      operationId: createOrganizerApplication
+      parameters:
+      - name: reCaptchaResponse
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizerApplicationCreateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizerApplication'
+  /v1/organizer-applications/{organizerApplicationId}:
+    x-service-id: competition-service
+    get:
+      tags:
+      - organizer:application
+      summary: Get an organizer application.
+      operationId: getOrganizerApplication
+      parameters:
+      - name: organizerApplicationId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizerApplication'
+      security:
+      - accessToken: []
+      - apiKey: []
+    patch:
+      tags:
+      - organizer:application
+      summary: Update an organizer application.
+      operationId: updateOrganizerApplication
+      parameters:
+      - name: organizerApplicationId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizerApplicationUpdateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizerApplication'
+      security:
+      - accessToken: []
+      - apiKey: []
+components:
+  schemas:
+    OrganizerApplicationUpdateForm:
+      type: object
+      properties:
+        reviewStatus:
+          type: string
+          enum:
+          - PENDING
+          - APPROVED
+          - REJECTED
+        potentialSpam:
+          type: boolean
+    OrganizerApplication:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        email:
+          type: string
+        discordUsername:
+          type: string
+        projectName:
+          type: string
+        goal:
+          type: string
+        evaluationMethod:
+          type: string
+        dataSources:
+          type: string
+        payoutStructure:
+          type: string
+        timeline:
+          type: string
+        reviewStatus:
+          $ref: '#/components/schemas/OrganizerApplicationReviewStatus'
+        createdAt:
+          type: string
+          format: date-time
+    OrganizerApplicationReviewStatus:
+      type: string
+      enum:
+      - PENDING
+      - APPROVED
+      - REJECTED
+    OrganizerApplicationCreateForm:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 65536
+          minLength: 0
+        email:
+          type: string
+          maxLength: 65536
+          minLength: 0
+        discordUsername:
+          type: string
+          maxLength: 65536
+          minLength: 0
+        projectName:
+          type: string
+          maxLength: 65536
+          minLength: 0
+        goal:
+          type: string
+          maxLength: 65536
+          minLength: 0
+        evaluationMethod:
+          type: string
+          maxLength: 65536
+          minLength: 0
+        dataSources:
+          type: string
+          maxLength: 65536
+          minLength: 0
+        payoutStructure:
+          type: string
+          maxLength: 65536
+          minLength: 0
+        timeline:
+          type: string
+          maxLength: 65536
+          minLength: 0
+    PageOrganizerApplication:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganizerApplication'
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

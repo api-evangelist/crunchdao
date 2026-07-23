@@ -1,0 +1,138 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity avatar API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: avatar
+paths:
+  /v3/users/{userIdentifier}/avatar:
+    x-service-id: account-service
+    get:
+      tags:
+      - avatar
+      summary: Redirect to a user's avatar.
+      operationId: redirect
+      parameters:
+      - name: userIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: temporaryRedirect
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      responses:
+        '302':
+          description: Found
+    post:
+      tags:
+      - avatar
+      summary: Upload a user avatar.
+      operationId: upload
+      parameters:
+      - name: userIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                avatarFile:
+                  type: file
+              required:
+              - avatarFile
+      responses:
+        '202':
+          description: Accepted
+  /v1/users/{userIdentifier}/banner:
+    x-service-id: account-service
+    get:
+      tags:
+      - avatar
+      summary: Redirect to a user's banner.
+      operationId: redirect_1
+      parameters:
+      - name: userIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '302':
+          description: Found
+    post:
+      tags:
+      - avatar
+      summary: Upload a user banner.
+      operationId: upload_1
+      parameters:
+      - name: userIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: file
+              required:
+              - file
+      responses:
+        '202':
+          description: Accepted
+  /v2/avatar/{idOrLogin}:
+    x-service-id: account-service
+    get:
+      tags:
+      - avatar
+      operationId: showGravatarAvatar
+      parameters:
+      - name: idOrLogin
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '302':
+          description: Found
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

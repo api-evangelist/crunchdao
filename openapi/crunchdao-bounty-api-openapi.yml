@@ -1,0 +1,1301 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity bounty API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: bounty
+paths:
+  /v1/competitions/{competitionIdentifier}/bounties:
+    x-service-id: competition-service
+    get:
+      tags:
+      - bounty
+      summary: List bounties.
+      operationId: listBounties
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: crunchId
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Bounty'
+    post:
+      tags:
+      - bounty
+      summary: Create a bounty.
+      operationId: createBounty
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BountyCreateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bounty'
+  /v1/competitions/{competitionIdentifier}/bounties/{bountyId}/rewards:
+    x-service-id: competition-service
+    get:
+      tags:
+      - bounty
+      summary: List a bounty's rewards.
+      operationId: listBountyRewards
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: bountyId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BountyReward'
+    post:
+      tags:
+      - bounty
+      summary: Compute a bounty's rewards.
+      operationId: computeBountyRewards
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: bountyId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BountyReward'
+    delete:
+      tags:
+      - bounty
+      summary: Clear a bounty's rewards.
+      operationId: clearBountyRewards
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: bountyId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '202':
+          description: Accepted
+  /v1/competitions/{competitionIdentifier}/bounties/{bountyId}:
+    x-service-id: competition-service
+    get:
+      tags:
+      - bounty
+      summary: Show a bounty.
+      operationId: getBounty
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: bountyId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bounty'
+    patch:
+      tags:
+      - bounty
+      summary: Update a bounty.
+      operationId: updateBounty
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: bountyId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BountyUpdateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bounty'
+components:
+  schemas:
+    VisualizationType:
+      type: string
+      enum:
+      - LINE
+      - HISTOGRAM
+    PositionTeam:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        lookingForTeammates:
+          type: boolean
+    Competition:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name for cards.
+        fullName:
+          type: string
+          description: Full name for the overview.
+        shortDescription:
+          type: string
+          description: Short description for cards.
+        type:
+          $ref: '#/components/schemas/CompetitionType'
+        format:
+          $ref: '#/components/schemas/CompetitionFormat'
+        mode:
+          $ref: '#/components/schemas/CompetitionMode'
+        status:
+          $ref: '#/components/schemas/CompetitionStatus'
+        splitKeyType:
+          $ref: '#/components/schemas/DataReleaseSplitKey'
+        start:
+          type: string
+          format: date-time
+          description: Start of competition.
+        end:
+          type: string
+          format: date-time
+          description: End of competition. (specified if not continuous)
+        continuous:
+          type: boolean
+          description: Will the competition never end?
+        external:
+          type: boolean
+          description: Is the competition external? If so, redirect to `url`.
+        featured:
+          type: boolean
+          description: Is the competition featured?
+        visibility:
+          $ref: '#/components/schemas/CompetitionVisibility'
+        url:
+          type: string
+          description: URL where the competition takes place.
+        onChainId:
+          type: string
+          description: On-Chain ID where the competition takes place. Only if `mode` is `REAL_TIME`.
+        cardImageUrl:
+          type: string
+          description: Image URL used for cards.
+        bannerImageUrl:
+          type: string
+          description: Image URL used for the overview.
+        documentationUrl:
+          type: string
+          description: External documentation URL.
+        notebookUrl:
+          type: string
+          description: External baseline notebook URL.
+        advancedNotebookUrl:
+          type: string
+          description: External advanced notebook URL.
+        discussionUrl:
+          type: string
+          description: External discussion platform URL. (either discord or the forum)
+        codeUrl:
+          type: string
+          description: External GitHub URL where the code is located.
+        hostedByName:
+          type: string
+          description: Name of the competition organizer/host.
+        prizePoolText:
+          type: string
+          description: Prize pool in a text form.
+        prizePoolShortText:
+          type: string
+          description: Prize pool in a short text form.
+        prizePoolUsd:
+          type: number
+          format: double
+          description: Prize pool in USD.
+        projectNameFormat:
+          type: string
+          description: Default project name format, use `{n}` for incremental.
+        teamBased:
+          type: boolean
+          description: Are the teams enabled?
+        onlyTeamLeader:
+          type: boolean
+          description: Does only the team leader appear on the leaderboard?
+        maxTeamSize:
+          type: integer
+          format: int64
+          description: Maximum size for a team.
+        projectCreationLimit:
+          type: integer
+          format: int64
+          description: Maximum number of projects per user, if one, a default project is always created when the rules are accepted.
+        projectSelectionLimit:
+          type: integer
+          format: int64
+          description: If multiple project can be created, how many should appear on the leaderboard?
+        allowPredictions:
+          type: boolean
+          description: Are direct prediction file accepted for submission?
+        encryptSubmissions:
+          type: boolean
+          description: Should the predictions be encrypted?
+        phalaKeyUrl:
+          type: string
+          description: If the prediction should be encrypted, which URL to use to fetch the public key?
+        hideDashboard:
+          type: boolean
+          description: Is the dashboard tab hidden?
+        hideChanges:
+          type: boolean
+          description: Are the dashboard change cards hidden?
+        hidePerformance:
+          type: boolean
+          description: Is the dashboard performance graph hidden?
+        hideRunPerformance:
+          type: boolean
+          description: Is the dashboard run performance graph hidden?
+        hideStatistics:
+          type: boolean
+          description: Is the statistics card hidden?
+        hideNotebookSetupCommand:
+          type: boolean
+          description: Should the setup command for the notebook be hidden? Only useful for Real Time competitions.
+        hideTrainFrequency:
+          type: boolean
+          description: Should the train frequency field be hidden?
+        hideForceFirstTrain:
+          type: boolean
+          description: Should the train field be hidden?
+        web3:
+          type: boolean
+          description: Are the web3 integrations enabled for the competitions? (e.g. team referendums)
+        order:
+          type: integer
+          format: int64
+          description: Sorting order of the competition. (descending)
+        statistics:
+          $ref: '#/components/schemas/CompetitionStatistics'
+          description: Competition submission statistics.
+        session:
+          $ref: '#/components/schemas/CompetitionSession'
+          description: Competition current session. No session if `null`.
+        createdAt:
+          type: string
+          format: date-time
+          description: Competition creation timestamp.
+        updatedAt:
+          type: string
+          format: date-time
+          description: Competition update timestamp.
+        tags:
+          type: array
+          description: Tags that describe the competition.
+          items:
+            $ref: '#/components/schemas/CompetitionTag'
+        timelineEvents:
+          type: array
+          description: Non-detailed timeline events.
+          items:
+            $ref: '#/components/schemas/TimelineEvent'
+    PayoutDetail:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/PayoutDetailType'
+        name:
+          type: string
+        value:
+          type: number
+        createdAt:
+          type: string
+          format: date-time
+    Crunch:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        phase:
+          $ref: '#/components/schemas/Phase'
+        number:
+          type: integer
+          format: int64
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        showRuns:
+          type: boolean
+        showMetricsDetails:
+          type: boolean
+        showRunLogs:
+          type: boolean
+        showScoresValue:
+          type: boolean
+        leaderboardSimilarityThreshold:
+          type: number
+          format: float
+        published:
+          type: boolean
+        dataReleaseId:
+          type: integer
+          format: int64
+        splits:
+          type: array
+          items:
+            $ref: '#/components/schemas/CrunchSplit'
+    PositionParticipant:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/PositionUser'
+        team:
+          $ref: '#/components/schemas/PositionTeam'
+        project:
+          $ref: '#/components/schemas/LeaderboardProject'
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+    Currency:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        displayName:
+          type: string
+          description: The display name of the currency.
+        symbol:
+          type: string
+          description: The symbol of the currency. Does not include the `$` prefix.
+        decimals:
+          type: integer
+          format: int32
+          description: The decimals of the currency.
+        dollarExchangeRate:
+          type: number
+          description: The current exchange rate in USD.
+        blockchain:
+          type: string
+          description: Which address should be used to receive the currency. `FIAT` is not supported.
+          enum:
+          - ETHEREUM
+          - SOLANA
+          - FIAT
+        websiteUrl:
+          type: string
+          description: Website URL giving more documentation about the currency.
+        transactionUrlFormat:
+          type: string
+          description: Explorer URL format of a transaction. Use `{transactionHash}` as a variable for the `Payout.transactionHash`.
+        addressUrlFormat:
+          type: string
+          description: Explorer URL format of an address. Use `{address}` as a variable for the `PayoutRecipient.address`.
+    Unit:
+      type: object
+      properties:
+        prefix:
+          type: string
+          description: String to show before the value.
+        suffix:
+          type: string
+          description: String to show after the value.
+        scale:
+          type: integer
+          format: int32
+          description: Number of digits to keep after the comma.
+    TimelineEvent:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/TimelineEventType'
+        title:
+          type: string
+        description:
+          type: string
+        date:
+          type: string
+          format: date
+          description: Date on which the event will occur/has occurred.
+        color:
+          type: string
+        detailed:
+          type: boolean
+          description: Detailed event should be hidden in a space constrained UI.
+        button:
+          $ref: '#/components/schemas/TimelineEventButton'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    BountyReward:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/User'
+        value:
+          type: number
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
+    PayoutStatus:
+      type: string
+      enum:
+      - CREATED
+      - PENDING
+      - PAID
+    CompetitionStatistics:
+      type: object
+      properties:
+        entrants:
+          type: integer
+          format: int64
+        participants:
+          type: integer
+          format: int64
+        teams:
+          type: integer
+          format: int64
+        submissions:
+          type: integer
+          format: int64
+        runnables:
+          type: integer
+          format: int64
+    CompetitionStatus:
+      type: string
+      enum:
+      - PENDING
+      - OPEN
+      - CLOSED
+    LeaderboardVisibility:
+      type: string
+      enum:
+      - HIDDEN
+      - PUBLIC
+    BountyCreateForm:
+      type: object
+      properties:
+        crunchId:
+          type: integer
+          format: int64
+        leaderboardName:
+          type: string
+        targetName:
+          type: string
+        rewardScheme:
+          type: string
+          enum:
+          - UNSTRUCTURED
+          - NORMALIZED_EXPONENTIAL
+        payoutId:
+          type: integer
+          format: int64
+        granted:
+          type: number
+        displayName:
+          type: string
+        tooltip:
+          type: string
+      required:
+      - crunchId
+      - displayName
+      - granted
+      - leaderboardName
+      - payoutId
+      - rewardScheme
+      - targetName
+      - tooltip
+    PayoutType:
+      type: string
+      enum:
+      - AIRDROP
+      - MONTHLY
+      - CHECKPOINT
+    BountyUpdateForm:
+      type: object
+      properties:
+        rewardScheme:
+          type: string
+          enum:
+          - UNSTRUCTURED
+          - NORMALIZED_EXPONENTIAL
+        payoutId:
+          type: integer
+          format: int64
+        granted:
+          type: number
+        displayName:
+          type: string
+        tooltip:
+          type: string
+    PhaseSplit:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+    LeaderboardProject:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        writeupUrl:
+          type: string
+          description: Writeup URL, only included on Out-of-Sample leaderboards.
+    LeaderboardRankOrder:
+      type: string
+      enum:
+      - DESCENDING
+      - ASCENDING
+    PhaseType:
+      type: string
+      enum:
+      - SUBMISSION
+      - OUT_OF_SAMPLE
+    Round:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        competition:
+          $ref: '#/components/schemas/Competition'
+        number:
+          type: integer
+          format: int64
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        automaticSelectionFreezeEnabled:
+          type: boolean
+        automaticSubmissionPhaseCrunchCreationEnabled:
+          type: boolean
+        automaticSubmissionPhaseLeaderboardUpdateEnabled:
+          type: boolean
+        predictionSizeLimit:
+          type: integer
+          format: int64
+        maxSubmissionsPerDay:
+          type: integer
+          format: int64
+    Phase:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/PhaseType'
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        dataReleaseId:
+          type: integer
+          format: int64
+        localDataReleaseId:
+          type: integer
+          format: int64
+        cloudCredits:
+          anyOf:
+          - $comment: Seconds
+            example: '60'
+          - format: duration
+            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
+            $comment: ISO 8601 Duration
+            example: PT1M
+        perCrunchWeight:
+          type: number
+          format: float
+        autoCompute:
+          type: boolean
+        runDisabled:
+          type: boolean
+        showPositions:
+          type: boolean
+        showProjectNames:
+          type: boolean
+        runDeterminismCheckEnabled:
+          type: boolean
+        showOnlyRewardedProjectsDefault:
+          type: boolean
+        splits:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhaseSplit'
+    LeaderboardTarget:
+      type: object
+      properties:
+        crunch:
+          $ref: '#/components/schemas/Crunch'
+        bounty:
+          $ref: '#/components/schemas/Bounty'
+        positions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Position'
+        metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/Metric'
+        valueColumns:
+          type: array
+          description: Columns for real-time competitions.
+          items:
+            $ref: '#/components/schemas/LeaderboardDefinitionColumn'
+    CompetitionFormat:
+      type: string
+      enum:
+      - TIMESERIES
+      - DAG
+      - STREAM
+      - SPATIAL
+      - UNSTRUCTURED
+    LeaderboardDefinition:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        displayName:
+          type: string
+        visibility:
+          $ref: '#/components/schemas/LeaderboardVisibility'
+        layout:
+          $ref: '#/components/schemas/LeaderboardLayout'
+        externalUrl:
+          type: string
+        progress:
+          $ref: '#/components/schemas/LeaderboardProgress'
+        round:
+          $ref: '#/components/schemas/Round'
+        crunch:
+          $ref: '#/components/schemas/Crunch'
+        phase:
+          $ref: '#/components/schemas/Phase'
+        targets:
+          type: array
+          description: Sub-leaderboards when the leaderboard is published.
+          items:
+            $ref: '#/components/schemas/LeaderboardTarget'
+        participants:
+          type: array
+          description: List of participants when the ranking is still hidden.
+          items:
+            $ref: '#/components/schemas/PositionParticipant'
+        positions:
+          type: array
+          deprecated: true
+          description: Position for real-time competitions.
+          items:
+            $ref: '#/components/schemas/RealTimePosition'
+        valueColumns:
+          type: array
+          deprecated: true
+          description: Columns for real-time competitions.
+          items:
+            $ref: '#/components/schemas/LeaderboardDefinitionColumn'
+        columns:
+          type: array
+          description: Columns for real-time competitions.
+          items:
+            $ref: '#/components/schemas/LeaderboardDefinitionColumn'
+        default:
+          type: boolean
+    MetricColors:
+      type: object
+      properties:
+        details:
+          type: string
+        submissionPhase:
+          type: string
+        outOfSamplePhase:
+          type: string
+    TimelineEventButton:
+      type: object
+      properties:
+        text:
+          type: string
+        link:
+          type: string
+        color:
+          type: string
+    LeaderboardLayout:
+      type: object
+      properties:
+        hideTeam:
+          type: boolean
+        hideProgress:
+          type: boolean
+        hideBest:
+          type: boolean
+        hideCrunchStartEnd:
+          type: boolean
+        hideRoundChange:
+          type: boolean
+        hidePhaseChange:
+          type: boolean
+        hideCrunchChange:
+          type: boolean
+        hideCommittedRewards:
+          type: boolean
+        hideProjectedRewards:
+          type: boolean
+        bestDisplayBy:
+          $ref: '#/components/schemas/LeaderboardBestDisplayBy'
+    LeaderboardDefinitionColumn:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/LeaderboardDefinitionColumnType'
+          description: Type of the column.
+        property:
+          type: string
+          description: Property name that must be read from the values object.
+        format:
+          type: string
+          description: Format for the value.
+        displayName:
+          type: string
+          description: Column display name used in the table header.
+        tooltip:
+          type: string
+          description: Tooltip to show when hovering on the table header column. Can be `null`.
+        nativeConfiguration:
+          type: string
+          description: Native frontend configuration for the cell. If `null`, render as regular string.
+        order:
+          type: integer
+          format: int64
+          description: Order to sort the column.
+    TimelineEventType:
+      type: string
+      enum:
+      - GENERIC
+      - LEADERBOARD
+      - RULES
+      - REWARDS
+    LeaderboardDefinitionColumnType:
+      type: string
+      enum:
+      - REWARD_RANK
+      - PROJECT
+      - VALUE
+      - TARGET
+    ScorerFunction:
+      type: string
+      enum:
+      - BALANCED_ACCURACY
+      - DOT_PRODUCT
+      - F1
+      - PRECISION
+      - RANDOM
+      - RECALL
+      - SPEARMAN
+      - META__EXECUTION_TIME
+      - CUSTOM__MID_ONE__PROFIT_AND_LOSS_WITH_TRANSACTION_COST
+      - CUSTOM__BROAD__SCORING
+    ReducerFunction:
+      type: string
+      enum:
+      - NONE
+      - SUM
+      - MEAN
+      - PRODUCT_PLUS_MINUS_1
+    Target:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name for the UI.
+        weight:
+          type: number
+          format: float
+          description: Weight of the target in the global leaderboard.
+        weightedMeanUnit:
+          $ref: '#/components/schemas/Unit'
+          description: Display name for the UI of the weighted mean column.
+        primary:
+          type: boolean
+          description: Is the target displayed on the home page?
+        virtual:
+          type: boolean
+          description: Is the target based on other targets.
+        rankOrder:
+          $ref: '#/components/schemas/LeaderboardRankOrder'
+          description: Orders of the position on the leaderboard.
+        weightedMeanDisplayUnit:
+          type: string
+          deprecated: true
+    BountyRewardScheme:
+      type: string
+      enum:
+      - UNSTRUCTURED
+      - NORMALIZED_EXPONENTIAL
+    Metric:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        target:
+          $ref: '#/components/schemas/Target'
+        metricDefinition:
+          $ref: '#/components/schemas/MetricDefinition'
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name.
+        unit:
+          $ref: '#/components/schemas/Unit'
+          description: Unit to format the value. None if `null`.
+        signless:
+          type: boolean
+          description: Ignore and hide the sign of the value.
+        weight:
+          type: integer
+          format: int32
+          description: Weight of the value used for the weighted average.
+        minimum:
+          type: number
+          format: double
+          description: Minimum value allowed before being considered out of range. `null` if there is no minimum.
+        maximum:
+          type: number
+          format: double
+          description: Maximum value allowed before being considered out of range. `null` if there is no maximum.
+        score:
+          type: boolean
+          description: Is it a score that is not considered in the weighted average?
+        multiplier:
+          type: number
+          format: double
+          description: Multiplier used to convert the raw value (divide to get the original value).
+        cumulative:
+          type: boolean
+          description: Are previous values are needed to compute the final score.
+        scorerFunction:
+          $ref: '#/components/schemas/ScorerFunction'
+          description: Scoring function to use implemented in the crunch-cli.
+        reducerFunction:
+          $ref: '#/components/schemas/ReducerFunction'
+          description: Reducer function to consume the value to get the score.
+        reducedDisplayName:
+          type: string
+          description: Display name for the reducer function.
+        visualizationType:
+          $ref: '#/components/schemas/VisualizationType'
+          description: Type of visualization used to display the values.
+        colors:
+          $ref: '#/components/schemas/MetricColors'
+          description: Colors for the lines.
+        visibleOnPerformanceGraph:
+          type: boolean
+          description: Is the line visible on the performance graph.
+        createdAt:
+          type: string
+          format: date-time
+        displayUnit:
+          type: string
+          deprecated: true
+    RealTimePosition:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Fake ID, but still unique for a leaderboard.
+        active:
+          type: boolean
+        rank:
+          type: integer
+          format: int64
+        rewardRank:
+          type: number
+          format: double
+        committedRewards:
+          type: number
+          format: double
+        values:
+          type: object
+          additionalProperties:
+            type: object
+          description: Already formatted values.
+    CompetitionTag:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name for the UI.
+    PayoutDetailType:
+      type: string
+      enum:
+      - REWARD
+      - BONUS
+    PositionUser:
+      type: object
+      properties:
+        crowned:
+          type: boolean
+        certified:
+          type: boolean
+        rewarded:
+          type: boolean
+        benchmarked:
+          type: boolean
+    Bounty:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        leaderboard:
+          $ref: '#/components/schemas/LeaderboardDefinition'
+        target:
+          $ref: '#/components/schemas/Target'
+        rewardScheme:
+          $ref: '#/components/schemas/BountyRewardScheme'
+        payout:
+          $ref: '#/components/schemas/Payout'
+        granted:
+          type: number
+        displayName:
+          type: string
+        tooltip:
+          type: string
+        rewards:
+          type: array
+          items:
+            $ref: '#/components/schemas/BountyReward'
+    CompetitionVisibility:
+      type: string
+      enum:
+      - HIDDEN
+      - PUBLIC
+    LeaderboardProgress:
+      type: object
+      properties:
+        current:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
+    Position:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        rank:
+          type: integer
+          format: int64
+        rewardRank:
+          type: number
+          format: double
+    CrunchSplit:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+    CompetitionSession:
+      type: object
+      properties:
+        state:
+          $ref: '#/components/schemas/CompetitionType'
+          description: Current session state.
+        nextChange:
+          type: string
+          format: date-time
+          description: When should the next session state change happen. Unknown if `null`.
+    LeaderboardBestDisplayBy:
+      type: string
+      enum:
+      - PER_METRIC
+      - WEIGHTED_MEAN
+    MetricDefinition:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        displayName:
+          type: string
+    CompetitionType:
+      type: string
+      enum:
+      - OPEN
+      - PAUSED
+    DataReleaseSplitKey:
+      type: string
+      enum:
+      - INTEGER
+      - STRING
+    CompetitionMode:
+      type: string
+      enum:
+      - OFFLINE
+      - REAL_TIME
+    PayoutRecipient:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/User'
+        address:
+          type: string
+          description: Address where the payout has been sent to.
+        value:
+          type: number
+          description: Amount that has been sent to the address.
+        rank:
+          type: integer
+          format: int64
+          description: Rank of the recipient in the payout.
+        claimed:
+          type: boolean
+          description: If `Payout.type` is `CHECKPOINT`, did the user claim their payout? Uses a 3-state boolean, where null corresponds to a payout that cannot be claimed.
+        claimedAt:
+          type: string
+          format: date-time
+          description: If `Payout.type` is `CHECKPOINT`, when did the user claim their payout?
+        claimTransactionHash:
+          type: string
+          description: If `Payout.type` is `CHECKPOINT`, in which transaction was the claim made?
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/PayoutDetail'
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
+    PayoutCompetitionName:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        displayName:
+          type: string
+    Payout:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        competition:
+          $ref: '#/components/schemas/PayoutCompetitionName'
+        date:
+          type: string
+          format: date
+        displayName:
+          type: string
+        granted:
+          type: number
+        minimumValueThreshold:
+          type: number
+        value:
+          type: number
+        currency:
+          $ref: '#/components/schemas/Currency'
+        type:
+          $ref: '#/components/schemas/PayoutType'
+        number:
+          type: integer
+          format: int64
+        transactionHash:
+          type: string
+        status:
+          $ref: '#/components/schemas/PayoutStatus'
+        size:
+          type: integer
+          format: int64
+        recipients:
+          type: array
+          items:
+            $ref: '#/components/schemas/PayoutRecipient'
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

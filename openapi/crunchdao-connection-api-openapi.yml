@@ -1,0 +1,331 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity connection API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: connection
+paths:
+  /v3/users/@me/connections/twitter/validate:
+    x-service-id: account-service
+    post:
+      tags:
+      - connection
+      summary: Validate the LinkedIn connection.
+      operationId: refreshTwitterConnection
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connection'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v3/users/@me/connections/linkedin/validate:
+    x-service-id: account-service
+    post:
+      tags:
+      - connection
+      summary: Validate the LinkedIn connection.
+      operationId: refreshLinkedinConnection
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connection'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v3/users/@me/connections/kaggle:
+    x-service-id: account-service
+    post:
+      tags:
+      - connection
+      summary: Create a Kaggle connection.
+      operationId: createKaggleConnection
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConnectionKaggleCreateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connection'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v3/users/@me/connections/google/validate:
+    x-service-id: account-service
+    post:
+      tags:
+      - connection
+      summary: Validate the Google connection.
+      operationId: refreshGoogleConnection
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connection'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v3/users/@me/connections/github/validate:
+    x-service-id: account-service
+    post:
+      tags:
+      - connection
+      summary: Validate the LinkedIn connection.
+      operationId: refreshGithubConnection
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connection'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v3/users/@me/connections/discord/validate:
+    x-service-id: account-service
+    post:
+      tags:
+      - connection
+      summary: Validate the Discord connection.
+      operationId: refreshDiscordConnection
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connection'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v3/users/@me/connections/{type}:
+    x-service-id: account-service
+    delete:
+      tags:
+      - connection
+      summary: Remove a connection.
+      operationId: deleteConnection
+      parameters:
+      - name: type
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          enum:
+          - DISCORD
+          - TWITTER
+          - GITHUB
+          - KAGGLE
+          - REDDIT
+          - LINKEDIN
+          - GOOGLE
+      responses:
+        '200':
+          description: OK
+      security:
+      - accessToken: []
+      - apiKey: []
+    patch:
+      tags:
+      - connection
+      summary: Update a connection.
+      operationId: updateConnection
+      parameters:
+      - name: type
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          enum:
+          - DISCORD
+          - TWITTER
+          - GITHUB
+          - KAGGLE
+          - REDDIT
+          - LINKEDIN
+          - GOOGLE
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConnectionUpdateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connection'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v3/users/{userIdentifier}/connections:
+    x-service-id: account-service
+    get:
+      tags:
+      - connection
+      summary: List connected connections.
+      operationId: index
+      parameters:
+      - name: userIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Connection'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v3/users/{userIdentifier}/connections/{connectionType}:
+    x-service-id: account-service
+    get:
+      tags:
+      - connection
+      summary: List connected connections.
+      operationId: index_1
+      parameters:
+      - name: userIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: connectionType
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          enum:
+          - DISCORD
+          - TWITTER
+          - GITHUB
+          - KAGGLE
+          - REDDIT
+          - LINKEDIN
+          - GOOGLE
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connection'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v3/users/@me/connections:
+    x-service-id: account-service
+    get:
+      tags:
+      - connection
+      summary: List available connections.
+      operationId: listConnections
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Connection'
+      security:
+      - accessToken: []
+      - apiKey: []
+components:
+  schemas:
+    ConnectionType:
+      type: string
+      enum:
+      - DISCORD
+      - TWITTER
+      - GITHUB
+      - KAGGLE
+      - REDDIT
+      - LINKEDIN
+      - GOOGLE
+    Connection:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/ConnectionType'
+        handle:
+          type: string
+        username:
+          type: string
+        profileUrl:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        public:
+          type: boolean
+    ConnectionKaggleCreateForm:
+      type: object
+      properties:
+        userName:
+          type: string
+      required:
+      - userName
+    ConnectionUpdateForm:
+      type: object
+      properties:
+        public:
+          type: boolean
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

@@ -1,0 +1,80 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity currency API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: currency
+paths:
+  /v1/currencies:
+    x-service-id: competition-service
+    get:
+      tags:
+      - currency
+      summary: List currencies.
+      operationId: listCurrencies
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Currency'
+components:
+  schemas:
+    Currency:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        displayName:
+          type: string
+          description: The display name of the currency.
+        symbol:
+          type: string
+          description: The symbol of the currency. Does not include the `$` prefix.
+        decimals:
+          type: integer
+          format: int32
+          description: The decimals of the currency.
+        dollarExchangeRate:
+          type: number
+          description: The current exchange rate in USD.
+        blockchain:
+          type: string
+          description: Which address should be used to receive the currency. `FIAT` is not supported.
+          enum:
+          - ETHEREUM
+          - SOLANA
+          - FIAT
+        websiteUrl:
+          type: string
+          description: Website URL giving more documentation about the currency.
+        transactionUrlFormat:
+          type: string
+          description: Explorer URL format of a transaction. Use `{transactionHash}` as a variable for the `Payout.transactionHash`.
+        addressUrlFormat:
+          type: string
+          description: Explorer URL format of an address. Use `{address}` as a variable for the `PayoutRecipient.address`.
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

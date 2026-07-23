@@ -1,0 +1,970 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity payout API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: payout
+paths:
+  /v1/competitions/{competitionIdentifier}/payouts:
+    x-service-id: competition-service
+    get:
+      tags:
+      - payout
+      summary: List a competition's payouts.
+      operationId: listCompetitionPayouts
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Payout'
+    post:
+      tags:
+      - payout
+      summary: Create a competition payout.
+      operationId: createCompetitionPayout
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayoutCreateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payout'
+  /v1/competitions/{competitionIdentifier}/payouts/{payoutId}/compute-from-bounties:
+    x-service-id: competition-service
+    post:
+      tags:
+      - payout
+      summary: Compute the payout from the bounties.
+      operationId: computeCompetitionPayoutFromBounties
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: payoutId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payout'
+  /v1/competitions/{competitionIdentifier}/payouts/checkpoint/{payoutNumber}/claim:
+    x-service-id: competition-service
+    post:
+      tags:
+      - payout
+      summary: Update a competition payout.
+      operationId: claimCompetitionPayout
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: payoutNumber
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayoutClaimForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payout'
+  /v1/competitions/{competitionIdentifier}/payouts/{payoutId}:
+    x-service-id: competition-service
+    patch:
+      tags:
+      - payout
+      summary: Update a competition payout.
+      operationId: updateCompetitionPayout
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: payoutId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayoutUpdateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payout'
+  /v5/payouts:
+    x-service-id: competition-service
+    get:
+      tags:
+      - payout
+      summary: List payouts with filters.
+      operationId: listPayoutsV5
+      parameters:
+      - name: competitionIdentifier
+        in: query
+        description: Filter on competition.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Filter on competition.
+      - name: currencyName
+        in: query
+        description: Filter on currency.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Filter on currency.
+      - name: type
+        in: query
+        description: Filter on type.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/PayoutType'
+          description: Filter on type.
+      - name: status
+        in: query
+        description: Filter on status.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/PayoutStatus'
+          description: Filter on status.
+      - name: recipient
+        in: query
+        description: Filter for payouts where the user is a recipient, return an empty list if not logged in.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          description: Filter for payouts where the user is a recipient, return an empty list if not logged in.
+      - name: sort
+        in: query
+        description: Sort payouts. If `recipient = true`, `AMOUNT` will sort by the received amount, not the payout amount.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Sort payouts. If `recipient = true`, `AMOUNT` will sort by the received amount, not the payout amount.
+          enum:
+          - RECENT
+          - OLDEST
+          - AMOUNT
+      - name: page
+        in: query
+        description: Zero-based page index (0..N)
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - name: size
+        in: query
+        description: The size of the page to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagePayout'
+  /v5/payouts/{payoutId}:
+    x-service-id: competition-service
+    get:
+      tags:
+      - payout
+      summary: Show a payout.
+      operationId: getPayoutV5
+      parameters:
+      - name: payoutId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payout'
+  /v4/payouts/{payoutId}:
+    x-service-id: competition-service
+    get:
+      tags:
+      - payout
+      summary: Show a payout.
+      operationId: getPayoutV4
+      parameters:
+      - name: payoutId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payout'
+      deprecated: true
+  /v1/users/{userLogin}/total-rewards:
+    x-service-id: competition-service
+    get:
+      tags:
+      - payout
+      summary: List a user total received rewards.
+      operationId: listUserTotalRewards
+      parameters:
+      - name: userLogin
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TotalUserReward'
+  /v1/competitions/{competitionIdentifier}/total-rewards:
+    x-service-id: competition-service
+    get:
+      tags:
+      - payout
+      summary: List a competition total distributed rewards.
+      operationId: listCompetitionTotalRewards
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TotalUserReward'
+components:
+  schemas:
+    Competition:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name for cards.
+        fullName:
+          type: string
+          description: Full name for the overview.
+        shortDescription:
+          type: string
+          description: Short description for cards.
+        type:
+          $ref: '#/components/schemas/CompetitionType'
+        format:
+          $ref: '#/components/schemas/CompetitionFormat'
+        mode:
+          $ref: '#/components/schemas/CompetitionMode'
+        status:
+          $ref: '#/components/schemas/CompetitionStatus'
+        splitKeyType:
+          $ref: '#/components/schemas/DataReleaseSplitKey'
+        start:
+          type: string
+          format: date-time
+          description: Start of competition.
+        end:
+          type: string
+          format: date-time
+          description: End of competition. (specified if not continuous)
+        continuous:
+          type: boolean
+          description: Will the competition never end?
+        external:
+          type: boolean
+          description: Is the competition external? If so, redirect to `url`.
+        featured:
+          type: boolean
+          description: Is the competition featured?
+        visibility:
+          $ref: '#/components/schemas/CompetitionVisibility'
+        url:
+          type: string
+          description: URL where the competition takes place.
+        onChainId:
+          type: string
+          description: On-Chain ID where the competition takes place. Only if `mode` is `REAL_TIME`.
+        cardImageUrl:
+          type: string
+          description: Image URL used for cards.
+        bannerImageUrl:
+          type: string
+          description: Image URL used for the overview.
+        documentationUrl:
+          type: string
+          description: External documentation URL.
+        notebookUrl:
+          type: string
+          description: External baseline notebook URL.
+        advancedNotebookUrl:
+          type: string
+          description: External advanced notebook URL.
+        discussionUrl:
+          type: string
+          description: External discussion platform URL. (either discord or the forum)
+        codeUrl:
+          type: string
+          description: External GitHub URL where the code is located.
+        hostedByName:
+          type: string
+          description: Name of the competition organizer/host.
+        prizePoolText:
+          type: string
+          description: Prize pool in a text form.
+        prizePoolShortText:
+          type: string
+          description: Prize pool in a short text form.
+        prizePoolUsd:
+          type: number
+          format: double
+          description: Prize pool in USD.
+        projectNameFormat:
+          type: string
+          description: Default project name format, use `{n}` for incremental.
+        teamBased:
+          type: boolean
+          description: Are the teams enabled?
+        onlyTeamLeader:
+          type: boolean
+          description: Does only the team leader appear on the leaderboard?
+        maxTeamSize:
+          type: integer
+          format: int64
+          description: Maximum size for a team.
+        projectCreationLimit:
+          type: integer
+          format: int64
+          description: Maximum number of projects per user, if one, a default project is always created when the rules are accepted.
+        projectSelectionLimit:
+          type: integer
+          format: int64
+          description: If multiple project can be created, how many should appear on the leaderboard?
+        allowPredictions:
+          type: boolean
+          description: Are direct prediction file accepted for submission?
+        encryptSubmissions:
+          type: boolean
+          description: Should the predictions be encrypted?
+        phalaKeyUrl:
+          type: string
+          description: If the prediction should be encrypted, which URL to use to fetch the public key?
+        hideDashboard:
+          type: boolean
+          description: Is the dashboard tab hidden?
+        hideChanges:
+          type: boolean
+          description: Are the dashboard change cards hidden?
+        hidePerformance:
+          type: boolean
+          description: Is the dashboard performance graph hidden?
+        hideRunPerformance:
+          type: boolean
+          description: Is the dashboard run performance graph hidden?
+        hideStatistics:
+          type: boolean
+          description: Is the statistics card hidden?
+        hideNotebookSetupCommand:
+          type: boolean
+          description: Should the setup command for the notebook be hidden? Only useful for Real Time competitions.
+        hideTrainFrequency:
+          type: boolean
+          description: Should the train frequency field be hidden?
+        hideForceFirstTrain:
+          type: boolean
+          description: Should the train field be hidden?
+        web3:
+          type: boolean
+          description: Are the web3 integrations enabled for the competitions? (e.g. team referendums)
+        order:
+          type: integer
+          format: int64
+          description: Sorting order of the competition. (descending)
+        statistics:
+          $ref: '#/components/schemas/CompetitionStatistics'
+          description: Competition submission statistics.
+        session:
+          $ref: '#/components/schemas/CompetitionSession'
+          description: Competition current session. No session if `null`.
+        createdAt:
+          type: string
+          format: date-time
+          description: Competition creation timestamp.
+        updatedAt:
+          type: string
+          format: date-time
+          description: Competition update timestamp.
+        tags:
+          type: array
+          description: Tags that describe the competition.
+          items:
+            $ref: '#/components/schemas/CompetitionTag'
+        timelineEvents:
+          type: array
+          description: Non-detailed timeline events.
+          items:
+            $ref: '#/components/schemas/TimelineEvent'
+    PayoutDetail:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/PayoutDetailType'
+        name:
+          type: string
+        value:
+          type: number
+        createdAt:
+          type: string
+          format: date-time
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+    Currency:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        displayName:
+          type: string
+          description: The display name of the currency.
+        symbol:
+          type: string
+          description: The symbol of the currency. Does not include the `$` prefix.
+        decimals:
+          type: integer
+          format: int32
+          description: The decimals of the currency.
+        dollarExchangeRate:
+          type: number
+          description: The current exchange rate in USD.
+        blockchain:
+          type: string
+          description: Which address should be used to receive the currency. `FIAT` is not supported.
+          enum:
+          - ETHEREUM
+          - SOLANA
+          - FIAT
+        websiteUrl:
+          type: string
+          description: Website URL giving more documentation about the currency.
+        transactionUrlFormat:
+          type: string
+          description: Explorer URL format of a transaction. Use `{transactionHash}` as a variable for the `Payout.transactionHash`.
+        addressUrlFormat:
+          type: string
+          description: Explorer URL format of an address. Use `{address}` as a variable for the `PayoutRecipient.address`.
+    PayoutDetailEntryForm:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - REWARD
+          - BONUS
+        name:
+          type: string
+        value:
+          type: number
+      required:
+      - name
+      - type
+      - value
+    TimelineEvent:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/TimelineEventType'
+        title:
+          type: string
+        description:
+          type: string
+        date:
+          type: string
+          format: date
+          description: Date on which the event will occur/has occurred.
+        color:
+          type: string
+        detailed:
+          type: boolean
+          description: Detailed event should be hidden in a space constrained UI.
+        button:
+          $ref: '#/components/schemas/TimelineEventButton'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    PayoutStatus:
+      type: string
+      enum:
+      - CREATED
+      - PENDING
+      - PAID
+    CompetitionStatistics:
+      type: object
+      properties:
+        entrants:
+          type: integer
+          format: int64
+        participants:
+          type: integer
+          format: int64
+        teams:
+          type: integer
+          format: int64
+        submissions:
+          type: integer
+          format: int64
+        runnables:
+          type: integer
+          format: int64
+    PayoutClaimForm:
+      type: object
+      properties:
+        transactionHash:
+          type: string
+      required:
+      - transactionHash
+    CompetitionStatus:
+      type: string
+      enum:
+      - PENDING
+      - OPEN
+      - CLOSED
+    PayoutUpdateForm:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        displayName:
+          type: string
+        granted:
+          type: number
+        minimumValueThreshold:
+          type: number
+        currencyName:
+          type: string
+        transactionHash:
+          type: string
+        type:
+          type: string
+          enum:
+          - AIRDROP
+          - MONTHLY
+          - CHECKPOINT
+        number:
+          type: integer
+          format: int64
+        recipients:
+          type: array
+          items:
+            $ref: '#/components/schemas/PayoutRecipientEntryForm'
+        recipientResolverMissingBehavior:
+          type: string
+          enum:
+          - THROWS
+          - ZERO
+          - SKIP
+      required:
+      - recipientResolverMissingBehavior
+    TotalUserReward:
+      type: object
+      properties:
+        competition:
+          $ref: '#/components/schemas/Competition'
+        user:
+          $ref: '#/components/schemas/User'
+        paid:
+          type: number
+        pending:
+          type: number
+        projected:
+          type: number
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
+    PayoutType:
+      type: string
+      enum:
+      - AIRDROP
+      - MONTHLY
+      - CHECKPOINT
+    PayoutCreateForm:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        displayName:
+          type: string
+        granted:
+          type: number
+        minimumValueThreshold:
+          type: number
+        currencyName:
+          type: string
+        transactionHash:
+          type: string
+        type:
+          type: string
+          enum:
+          - AIRDROP
+          - MONTHLY
+          - CHECKPOINT
+        number:
+          type: integer
+          format: int64
+        recipients:
+          type: array
+          items:
+            $ref: '#/components/schemas/PayoutRecipientEntryForm'
+        recipientResolverMissingBehavior:
+          type: string
+          enum:
+          - THROWS
+          - ZERO
+          - SKIP
+      required:
+      - currencyName
+      - date
+      - displayName
+      - granted
+      - minimumValueThreshold
+      - number
+      - recipientResolverMissingBehavior
+      - recipients
+      - type
+    CompetitionFormat:
+      type: string
+      enum:
+      - TIMESERIES
+      - DAG
+      - STREAM
+      - SPATIAL
+      - UNSTRUCTURED
+    PayoutRecipientEntryForm:
+      type: object
+      properties:
+        userId:
+          type: integer
+          format: int64
+        cruncherPubkey:
+          type: string
+        address:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/PayoutDetailEntryForm'
+    TimelineEventButton:
+      type: object
+      properties:
+        text:
+          type: string
+        link:
+          type: string
+        color:
+          type: string
+    CompetitionMode:
+      type: string
+      enum:
+      - OFFLINE
+      - REAL_TIME
+    TimelineEventType:
+      type: string
+      enum:
+      - GENERIC
+      - LEADERBOARD
+      - RULES
+      - REWARDS
+    PagePayout:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Payout'
+    CompetitionTag:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name for the UI.
+    PayoutDetailType:
+      type: string
+      enum:
+      - REWARD
+      - BONUS
+    CompetitionVisibility:
+      type: string
+      enum:
+      - HIDDEN
+      - PUBLIC
+    DataReleaseSplitKey:
+      type: string
+      enum:
+      - INTEGER
+      - STRING
+    CompetitionType:
+      type: string
+      enum:
+      - OPEN
+      - PAUSED
+    PayoutCompetitionName:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        displayName:
+          type: string
+    PayoutRecipient:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/User'
+        address:
+          type: string
+          description: Address where the payout has been sent to.
+        value:
+          type: number
+          description: Amount that has been sent to the address.
+        rank:
+          type: integer
+          format: int64
+          description: Rank of the recipient in the payout.
+        claimed:
+          type: boolean
+          description: If `Payout.type` is `CHECKPOINT`, did the user claim their payout? Uses a 3-state boolean, where null corresponds to a payout that cannot be claimed.
+        claimedAt:
+          type: string
+          format: date-time
+          description: If `Payout.type` is `CHECKPOINT`, when did the user claim their payout?
+        claimTransactionHash:
+          type: string
+          description: If `Payout.type` is `CHECKPOINT`, in which transaction was the claim made?
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/PayoutDetail'
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
+    CompetitionSession:
+      type: object
+      properties:
+        state:
+          $ref: '#/components/schemas/CompetitionType'
+          description: Current session state.
+        nextChange:
+          type: string
+          format: date-time
+          description: When should the next session state change happen. Unknown if `null`.
+    Payout:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        competition:
+          $ref: '#/components/schemas/PayoutCompetitionName'
+        date:
+          type: string
+          format: date
+        displayName:
+          type: string
+        granted:
+          type: number
+        minimumValueThreshold:
+          type: number
+        value:
+          type: number
+        currency:
+          $ref: '#/components/schemas/Currency'
+        type:
+          $ref: '#/components/schemas/PayoutType'
+        number:
+          type: integer
+          format: int64
+        transactionHash:
+          type: string
+        status:
+          $ref: '#/components/schemas/PayoutStatus'
+        size:
+          type: integer
+          format: int64
+        recipients:
+          type: array
+          items:
+            $ref: '#/components/schemas/PayoutRecipient'
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

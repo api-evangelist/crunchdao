@@ -1,0 +1,185 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity auth:api-key API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: auth:api-key
+paths:
+  /v2/auth/api-keys:
+    x-service-id: account-service
+    get:
+      tags:
+      - auth:api-key
+      summary: List your API Keys.
+      operationId: list_1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApiKey'
+      security:
+      - accessToken: []
+      - apiKey: []
+    post:
+      tags:
+      - auth:api-key
+      summary: Create an API Key.
+      operationId: create_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApiKeyCreateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiKey'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v2/auth/api-keys/{apiKeyId}/regenerate:
+    x-service-id: account-service
+    post:
+      tags:
+      - auth:api-key
+      summary: Regenerate an API Key.
+      operationId: refresh
+      parameters:
+      - name: apiKeyId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiKey'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v2/auth/api-keys/{apiKeyId}:
+    x-service-id: account-service
+    get:
+      tags:
+      - auth:api-key
+      summary: Show an API Key.
+      operationId: show_4
+      parameters:
+      - name: apiKeyId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiKey'
+      security:
+      - accessToken: []
+      - apiKey: []
+    delete:
+      tags:
+      - auth:api-key
+      summary: Delete an API Key.
+      operationId: delete_1
+      parameters:
+      - name: apiKeyId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+      security:
+      - accessToken: []
+      - apiKey: []
+components:
+  schemas:
+    ApiKeyCreateForm:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 120
+          minLength: 4
+        description:
+          type: string
+          maxLength: 4096
+          minLength: 0
+        ranges:
+          type: array
+          items:
+            type: string
+      required:
+      - name
+      - ranges
+    ApiKey:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          type: string
+        plain:
+          type: string
+        truncated:
+          type: string
+        legacy:
+          type: boolean
+        automated:
+          type: boolean
+        ranges:
+          type: array
+          items:
+            type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

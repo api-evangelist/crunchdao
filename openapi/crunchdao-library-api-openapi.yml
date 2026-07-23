@@ -1,0 +1,287 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity library API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: library
+paths:
+  /v2/libraries/requirements/freeze/imported:
+    x-service-id: competition-service
+    post:
+      tags:
+      - library
+      summary: Map imports to a frozen requirements.txt file.
+      operationId: freezeImportedRequirementsWithMultipleLanguage
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+      deprecated: true
+  /v1/libraries/requirements/freeze/imported:
+    x-service-id: competition-service
+    post:
+      tags:
+      - library
+      summary: Map imports to a frozen requirements.txt file.
+      operationId: freezeImportedRequirements
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+      deprecated: true
+  /v2/libraries:
+    x-service-id: competition-service
+    get:
+      tags:
+      - library
+      summary: List whitelisted libraries.
+      operationId: listLibrariesV2
+      parameters:
+      - name: standard
+        in: query
+        description: Only filter for package from the stdlib. Include all if not specified.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          description: Only filter for package from the stdlib. Include all if not specified.
+      - name: name
+        in: query
+        description: Filter on both name and alias. Allow for a pattern (%).
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Filter on both name and alias. Allow for a pattern (%).
+      - name: gpuRequirement
+        in: query
+        description: Filter for GPU requirement.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Filter for GPU requirement.
+          enum:
+          - OPTIONAL
+          - RECOMMENDED
+          - REQUIRED
+      - name: language
+        in: query
+        description: Filter for a specific language.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/Language'
+          description: Filter for a specific language.
+      - name: sort
+        in: query
+        description: Sort results.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Sort results.
+          enum:
+          - NAME
+          - CREATED_AT
+      - name: order
+        in: query
+        description: Order results.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Order results.
+          enum:
+          - ASCENDING
+          - DESCENDING
+      - name: page
+        in: query
+        description: Zero-based page index (0..N)
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - name: size
+        in: query
+        description: The size of the page to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageLibrary'
+  /v1/libraries/{libraryLanguage}/~/constraints:
+    x-service-id: competition-service
+    get:
+      tags:
+      - library
+      summary: Get the constraints document
+      operationId: getLibrariesConstraints
+      parameters:
+      - name: libraryLanguage
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          enum:
+          - PYTHON
+          - R
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string
+  /v1/libraries/{libraryLanguage}/{libraryName}/latest:
+    x-service-id: competition-service
+    get:
+      tags:
+      - library
+      summary: Get a whitelisted library its latest version.
+      operationId: getLibraryLatestVersion
+      parameters:
+      - name: libraryLanguage
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          enum:
+          - PYTHON
+          - R
+      - name: libraryName
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: beforeAt
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LibraryLatestVersion'
+components:
+  schemas:
+    GpuRequirement:
+      type: string
+      enum:
+      - OPTIONAL
+      - RECOMMENDED
+      - REQUIRED
+    Language:
+      type: string
+      enum:
+      - PYTHON
+      - R
+    LibraryLatestVersion:
+      type: object
+      properties:
+        version:
+          type: string
+    PageLibrary:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Library'
+    Library:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        language:
+          $ref: '#/components/schemas/Language'
+        name:
+          type: string
+          description: PyPI package name.
+        standard:
+          type: boolean
+          description: If the package is part of the stdlib.
+        freeze:
+          type: boolean
+          description: If the package's version need to be frozen at the time of submission.
+        gpuRequirement:
+          $ref: '#/components/schemas/GpuRequirement'
+        aliases:
+          type: array
+          items:
+            type: string
+        createdAt:
+          type: string
+          format: date-time
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

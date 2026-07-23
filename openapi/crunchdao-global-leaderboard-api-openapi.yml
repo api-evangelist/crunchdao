@@ -1,0 +1,603 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity global-leaderboard API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: global-leaderboard
+paths:
+  /v1/global-leaderboards/~/compute:
+    x-service-id: competition-service
+    post:
+      tags:
+      - global-leaderboard
+      summary: Compute some global leaderboards.
+      operationId: createGlobalLeaderboards
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GlobalLeaderboardComputeForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+  /v1/global-leaderboards/{globalLeaderboardIdentifier}:
+    x-service-id: competition-service
+    get:
+      tags:
+      - global-leaderboard
+      summary: Get a global leaderboard.
+      operationId: getGlobalLeaderboard
+      parameters:
+      - name: globalLeaderboardIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GlobalLeaderboard'
+    delete:
+      tags:
+      - global-leaderboard
+      summary: Delete a global leaderboard.
+      operationId: deleteGlobalLeaderboard
+      parameters:
+      - name: globalLeaderboardIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '202':
+          description: Accepted
+    patch:
+      tags:
+      - global-leaderboard
+      summary: Update a global leaderboard.
+      operationId: updateGlobalLeaderboard
+      parameters:
+      - name: globalLeaderboardIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GlobalLeaderboardUpdateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GlobalLeaderboard'
+  /v1/users/{userIdentifier}/global-leaderboards/history:
+    x-service-id: competition-service
+    get:
+      tags:
+      - global-leaderboard
+      summary: Get the user positions of a global leaderboard.
+      operationId: getGlobalUserHistoricalPoints
+      parameters:
+      - name: userIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GlobalUserPoint'
+  /v1/institutions/{institutionIdentifier}/global-leaderboards/history:
+    x-service-id: competition-service
+    get:
+      tags:
+      - global-leaderboard
+      summary: Get the institution positions of a global leaderboard.
+      operationId: getGlobalInstitutionHistoricalPoints
+      parameters:
+      - name: institutionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GlobalInstitutionPoint'
+  /v1/global-leaderboards:
+    x-service-id: competition-service
+    get:
+      tags:
+      - global-leaderboard
+      summary: List global leaderboards.
+      operationId: listGlobalLeaderboards
+      parameters:
+      - name: page
+        in: query
+        description: Zero-based page index (0..N)
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - name: size
+        in: query
+        description: The size of the page to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      - name: sort
+        in: query
+        description: 'Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageGlobalLeaderboard'
+  /v1/global-leaderboards/{globalLeaderboardIdentifier}/users:
+    x-service-id: competition-service
+    get:
+      tags:
+      - global-leaderboard
+      summary: Get the user positions of a global leaderboard.
+      operationId: listGlobalLeaderboardUserPositions
+      parameters:
+      - name: globalLeaderboardIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userLogin
+        in: query
+        description: Filter on user login. Allow for a pattern (%).
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Filter on user login. Allow for a pattern (%).
+      - name: institutionIdentifier
+        in: query
+        description: Filter on a specific institution.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Filter on a specific institution.
+      - name: page
+        in: query
+        description: Zero-based page index (0..N)
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - name: size
+        in: query
+        description: The size of the page to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      - name: sort
+        in: query
+        description: 'Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageGlobalUserPosition'
+  /v1/global-leaderboards/{globalLeaderboardIdentifier}/institutions:
+    x-service-id: competition-service
+    get:
+      tags:
+      - global-leaderboard
+      summary: Get the institution positions of a global leaderboard.
+      operationId: listGlobalLeaderboardInstitutionPositions_1
+      parameters:
+      - name: globalLeaderboardIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: institutionDisplayName
+        in: query
+        description: Filter on institution display name. Allow for a pattern (%).
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Filter on institution display name. Allow for a pattern (%).
+      - name: institutionCountry
+        in: query
+        description: Filter on institution in a country (ISO 3166-1 alpha-3).
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Filter on institution in a country (ISO 3166-1 alpha-3).
+          maxLength: 3
+          minLength: 3
+      - name: page
+        in: query
+        description: Zero-based page index (0..N)
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - name: size
+        in: query
+        description: The size of the page to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      - name: sort
+        in: query
+        description: 'Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageGlobalInstitutionPosition'
+components:
+  schemas:
+    GlobalLeaderboardComputeForm:
+      type: object
+      properties:
+        dates:
+          type: array
+          items:
+            type: string
+            format: date
+      required:
+      - dates
+    PageGlobalLeaderboard:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/GlobalLeaderboard'
+    GlobalUserPosition:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/GlobalUser'
+          description: Owner of the position.
+        rank:
+          type: integer
+          format: int64
+          description: Rank of the user for the requested leaderboard.
+        points:
+          type: integer
+          format: int64
+          description: Points of the user for the requested leaderboard.
+        bestRank:
+          type: integer
+          format: int64
+          description: Best rank (from previous leaderboards) of the user for the requested leaderboard.
+        participationCount:
+          type: integer
+          format: int64
+          description: Number of participated competitions for the requested leaderboard.
+        submissionCount:
+          type: integer
+          format: int64
+          description: Number of submissions of the user for the requested leaderboard.
+    GlobalUserPoint:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        rank:
+          type: integer
+          format: int64
+        points:
+          type: integer
+          format: int64
+        bestRank:
+          type: integer
+          format: int64
+        participationCount:
+          type: integer
+          format: int64
+        submissionCount:
+          type: integer
+          format: int64
+    GlobalLeaderboard:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        date:
+          type: string
+          format: date
+          description: Day of the leaderboard.
+        userCount:
+          type: integer
+          format: int64
+          description: Number of users on this leaderboard.
+        institutionCount:
+          type: integer
+          format: int64
+          description: Number of institutions on this leaderboard.
+        published:
+          type: boolean
+          description: Is the leaderboard published for everyone to see?
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    Institution:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name for cards.
+        country:
+          type: string
+          description: Country of origin.
+        totalPoints:
+          type: integer
+          format: int64
+          description: Sum of all members' points.
+        memberCount:
+          type: integer
+          format: int64
+          description: Number of members.
+        globalRank:
+          type: integer
+          format: int64
+          description: Rank of the institution in the global leaderboard. Updated daily.
+        about:
+          type: string
+          description: About description.
+        websiteUrl:
+          type: string
+          description: Website URL.
+        twitterUrl:
+          type: string
+          description: Twitter URL.
+        linkedInUrl:
+          type: string
+          description: LInkedIn URL.
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    GlobalUser:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+        country:
+          type: string
+          description: Country of the user.
+        points:
+          type: integer
+          format: int64
+          description: Number of points on the global leaderboard. Updated daily.
+        globalRank:
+          type: integer
+          format: int64
+          description: Rank of the user in the global leaderboard. Updated daily.
+    GlobalLeaderboardUpdateForm:
+      type: object
+      properties:
+        published:
+          type: boolean
+    PageGlobalUserPosition:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/GlobalUserPosition'
+    GlobalInstitutionPoint:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        rank:
+          type: integer
+          format: int64
+        totalPoints:
+          type: integer
+          format: int64
+        userCount:
+          type: integer
+          format: int64
+        averagePointsPerUser:
+          type: integer
+          format: int64
+    GlobalInstitutionPosition:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        institution:
+          $ref: '#/components/schemas/Institution'
+          description: Owner of the position.
+        rank:
+          type: integer
+          format: int64
+          description: Rank of the institution for the requested leaderboard.
+        totalPoints:
+          type: integer
+          format: int64
+          description: Sum of all the user's points of the institution for the requested leaderboard.
+        userCount:
+          type: integer
+          format: int64
+          description: Number of members of the institution for the requested leaderboard.
+        topUsers:
+          type: array
+          description: Top 3 users of the institution for the requested leaderboard.
+          items:
+            $ref: '#/components/schemas/GlobalUser'
+        averagePointsPerUser:
+          type: integer
+          format: int64
+          description: Average number of points of the institution's members for the requested leaderboard.
+    PageGlobalInstitutionPosition:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/GlobalInstitutionPosition'
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

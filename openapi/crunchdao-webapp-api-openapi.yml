@@ -1,0 +1,1031 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity webapp API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: webapp
+paths:
+  /v2/webapp/dashboard/monthly-rewards:
+    x-service-id: competition-service
+    get:
+      tags:
+      - webapp
+      summary: View a summary of a user for display on the dashboard.
+      operationId: listWebappMonthlyRewardsV2
+      parameters:
+      - name: cumulative
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MonthlyReward'
+  /v1/webapp/dashboard/summary:
+    x-service-id: competition-service
+    get:
+      tags:
+      - webapp
+      summary: View a summary of a user for display on the dashboard.
+      operationId: getWebappSummary
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebappDashboardSummary'
+  /v1/webapp/dashboard/recent-runs:
+    x-service-id: competition-service
+    get:
+      tags:
+      - webapp
+      summary: View the most recent runs.
+      operationId: listWebappRecentRuns
+      parameters:
+      - name: nDays
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          default: 14
+          maximum: 10000
+          minimum: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WebappRecentRun'
+  /v1/webapp/dashboard/monthly-rewards:
+    x-service-id: competition-service
+    get:
+      tags:
+      - webapp
+      summary: View a summary of a user for display on the dashboard.
+      operationId: listWebappMonthlyRewards
+      parameters:
+      - name: year
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MonthlyReward'
+  /v1/webapp/dashboard/last-runs:
+    x-service-id: competition-service
+    get:
+      tags:
+      - webapp
+      summary: View the latest runs of every competitions.
+      operationId: listWebappLastRuns
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WebappLastRunCompetition'
+  /v1/webapp/dashboard/last-rewards:
+    x-service-id: competition-service
+    get:
+      tags:
+      - webapp
+      summary: View a summary of a user for display on the dashboard.
+      operationId: listWebappLastRewards
+      parameters:
+      - name: n
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int64
+          default: 200
+      - name: shuffle
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WebappLastReward'
+  /v1/webapp/dashboard/calendar/{date}:
+    x-service-id: competition-service
+    get:
+      tags:
+      - webapp
+      summary: List events of a specific day for display on the dashboard.
+      operationId: getWebappCalendarAtDate
+      parameters:
+      - name: date
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: date
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebappCalandarDate'
+  /v1/webapp/dashboard/calendar/summary:
+    x-service-id: competition-service
+    get:
+      tags:
+      - webapp
+      summary: View a summary of the calendar for display on the dashboard.
+      operationId: getWebappCalendarSummary
+      parameters:
+      - name: start
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: date
+      - name: end
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: date
+      - name: ignoreZeros
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WebappCalandarSummaryDay'
+  /v1/webapp/dashboard/active-competitions:
+    x-service-id: competition-service
+    get:
+      tags:
+      - webapp
+      summary: Show competitions that the user joined.
+      operationId: listWebappActiveCompetitions
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WebappActionCompetition'
+  /v1/webapp/dashboard/active-competitions/{competitionIdentifier}:
+    x-service-id: competition-service
+    get:
+      tags:
+      - webapp
+      summary: Show competitions that the user joined.
+      operationId: showWebappActiveCompetition
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebappActionCompetition'
+components:
+  schemas:
+    Competition:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name for cards.
+        fullName:
+          type: string
+          description: Full name for the overview.
+        shortDescription:
+          type: string
+          description: Short description for cards.
+        type:
+          $ref: '#/components/schemas/CompetitionType'
+        format:
+          $ref: '#/components/schemas/CompetitionFormat'
+        mode:
+          $ref: '#/components/schemas/CompetitionMode'
+        status:
+          $ref: '#/components/schemas/CompetitionStatus'
+        splitKeyType:
+          $ref: '#/components/schemas/DataReleaseSplitKey'
+        start:
+          type: string
+          format: date-time
+          description: Start of competition.
+        end:
+          type: string
+          format: date-time
+          description: End of competition. (specified if not continuous)
+        continuous:
+          type: boolean
+          description: Will the competition never end?
+        external:
+          type: boolean
+          description: Is the competition external? If so, redirect to `url`.
+        featured:
+          type: boolean
+          description: Is the competition featured?
+        visibility:
+          $ref: '#/components/schemas/CompetitionVisibility'
+        url:
+          type: string
+          description: URL where the competition takes place.
+        onChainId:
+          type: string
+          description: On-Chain ID where the competition takes place. Only if `mode` is `REAL_TIME`.
+        cardImageUrl:
+          type: string
+          description: Image URL used for cards.
+        bannerImageUrl:
+          type: string
+          description: Image URL used for the overview.
+        documentationUrl:
+          type: string
+          description: External documentation URL.
+        notebookUrl:
+          type: string
+          description: External baseline notebook URL.
+        advancedNotebookUrl:
+          type: string
+          description: External advanced notebook URL.
+        discussionUrl:
+          type: string
+          description: External discussion platform URL. (either discord or the forum)
+        codeUrl:
+          type: string
+          description: External GitHub URL where the code is located.
+        hostedByName:
+          type: string
+          description: Name of the competition organizer/host.
+        prizePoolText:
+          type: string
+          description: Prize pool in a text form.
+        prizePoolShortText:
+          type: string
+          description: Prize pool in a short text form.
+        prizePoolUsd:
+          type: number
+          format: double
+          description: Prize pool in USD.
+        projectNameFormat:
+          type: string
+          description: Default project name format, use `{n}` for incremental.
+        teamBased:
+          type: boolean
+          description: Are the teams enabled?
+        onlyTeamLeader:
+          type: boolean
+          description: Does only the team leader appear on the leaderboard?
+        maxTeamSize:
+          type: integer
+          format: int64
+          description: Maximum size for a team.
+        projectCreationLimit:
+          type: integer
+          format: int64
+          description: Maximum number of projects per user, if one, a default project is always created when the rules are accepted.
+        projectSelectionLimit:
+          type: integer
+          format: int64
+          description: If multiple project can be created, how many should appear on the leaderboard?
+        allowPredictions:
+          type: boolean
+          description: Are direct prediction file accepted for submission?
+        encryptSubmissions:
+          type: boolean
+          description: Should the predictions be encrypted?
+        phalaKeyUrl:
+          type: string
+          description: If the prediction should be encrypted, which URL to use to fetch the public key?
+        hideDashboard:
+          type: boolean
+          description: Is the dashboard tab hidden?
+        hideChanges:
+          type: boolean
+          description: Are the dashboard change cards hidden?
+        hidePerformance:
+          type: boolean
+          description: Is the dashboard performance graph hidden?
+        hideRunPerformance:
+          type: boolean
+          description: Is the dashboard run performance graph hidden?
+        hideStatistics:
+          type: boolean
+          description: Is the statistics card hidden?
+        hideNotebookSetupCommand:
+          type: boolean
+          description: Should the setup command for the notebook be hidden? Only useful for Real Time competitions.
+        hideTrainFrequency:
+          type: boolean
+          description: Should the train frequency field be hidden?
+        hideForceFirstTrain:
+          type: boolean
+          description: Should the train field be hidden?
+        web3:
+          type: boolean
+          description: Are the web3 integrations enabled for the competitions? (e.g. team referendums)
+        order:
+          type: integer
+          format: int64
+          description: Sorting order of the competition. (descending)
+        statistics:
+          $ref: '#/components/schemas/CompetitionStatistics'
+          description: Competition submission statistics.
+        session:
+          $ref: '#/components/schemas/CompetitionSession'
+          description: Competition current session. No session if `null`.
+        createdAt:
+          type: string
+          format: date-time
+          description: Competition creation timestamp.
+        updatedAt:
+          type: string
+          format: date-time
+          description: Competition update timestamp.
+        tags:
+          type: array
+          description: Tags that describe the competition.
+          items:
+            $ref: '#/components/schemas/CompetitionTag'
+        timelineEvents:
+          type: array
+          description: Non-detailed timeline events.
+          items:
+            $ref: '#/components/schemas/TimelineEvent'
+    CompetitionPush:
+      allOf:
+      - $ref: '#/components/schemas/Activity'
+      - type: object
+        properties:
+          id:
+            type: integer
+            format: int64
+          competitionId:
+            type: integer
+            format: int64
+          competitionName:
+            type: string
+          projectId:
+            type: integer
+            format: int64
+          projectName:
+            type: string
+          submissionId:
+            type: integer
+            format: int64
+      properties:
+        type:
+          type: string
+          enum:
+          - COMPETITION_PUSH
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+    Unit:
+      type: object
+      properties:
+        prefix:
+          type: string
+          description: String to show before the value.
+        suffix:
+          type: string
+          description: String to show after the value.
+        scale:
+          type: integer
+          format: int32
+          description: Number of digits to keep after the comma.
+    WebappLastRunProject:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        submitted:
+          type: boolean
+        run:
+          $ref: '#/components/schemas/WebappLastRunRun'
+        deployment:
+          $ref: '#/components/schemas/WebappLastRunDeployment'
+    TimelineEvent:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/TimelineEventType'
+        title:
+          type: string
+        description:
+          type: string
+        date:
+          type: string
+          format: date
+          description: Date on which the event will occur/has occurred.
+        color:
+          type: string
+        detailed:
+          type: boolean
+          description: Detailed event should be hidden in a space constrained UI.
+        button:
+          $ref: '#/components/schemas/TimelineEventButton'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    WebappActiveCompetitionProjectQuota:
+      type: object
+      properties:
+        available:
+          anyOf:
+          - $comment: Seconds
+            example: '60'
+          - format: duration
+            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
+            $comment: ISO 8601 Duration
+            example: PT1M
+        used:
+          anyOf:
+          - $comment: Seconds
+            example: '60'
+          - format: duration
+            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
+            $comment: ISO 8601 Duration
+            example: PT1M
+        remaining:
+          anyOf:
+          - $comment: Seconds
+            example: '60'
+          - format: duration
+            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
+            $comment: ISO 8601 Duration
+            example: PT1M
+    MonthlyRewardValues:
+      type: object
+      properties:
+        paid:
+          type: number
+        pending:
+          type: number
+    WebappLastRunDeployment:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        state:
+          type: string
+          enum:
+          - BUILDING
+          - RUNNING
+          - STOPPED
+          - ERROR
+    Activity:
+      type: object
+      discriminator:
+        propertyName: type
+        mapping:
+          COMPETITION_PUSH: '#/components/schemas/CompetitionPush'
+          COMPETITION_RUN: '#/components/schemas/CompetitionRun'
+          DISCORD_JOIN: '#/components/schemas/DiscordJoinActivity'
+          DISCORD_MESSAGE: '#/components/schemas/DiscordMessageActivity'
+      properties:
+        type:
+          type: string
+      required:
+      - type
+    CompetitionStatistics:
+      type: object
+      properties:
+        entrants:
+          type: integer
+          format: int64
+        participants:
+          type: integer
+          format: int64
+        teams:
+          type: integer
+          format: int64
+        submissions:
+          type: integer
+          format: int64
+        runnables:
+          type: integer
+          format: int64
+    CompetitionStatus:
+      type: string
+      enum:
+      - PENDING
+      - OPEN
+      - CLOSED
+    WebappCalandarDate:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        activities:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/CompetitionPush'
+            - $ref: '#/components/schemas/CompetitionRun'
+            - $ref: '#/components/schemas/DiscordJoinActivity'
+            - $ref: '#/components/schemas/DiscordMessageActivity'
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/CalendarEvent'
+        joinedCompetitions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Competition'
+        newCompetitions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Competition'
+    MonthlyReward:
+      type: object
+      properties:
+        month:
+          type: string
+          format: year-month
+          $anchor: https://en.wikipedia.org/wiki/ISO_8601
+          $comment: ISO 8601 Year Month
+          example: 2025-02
+        payout:
+          $ref: '#/components/schemas/MonthlyRewardValues'
+        user:
+          $ref: '#/components/schemas/MonthlyRewardValues'
+    WebappActiveCompetitionProjectChange:
+      type: object
+      properties:
+        displayName:
+          type: string
+          description: Human-friendly name to display on the dashboard. Null for the `rank` property.
+        unit:
+          $ref: '#/components/schemas/Unit'
+        current:
+          type: number
+          description: Current leaderboard value.
+        change:
+          type: number
+          description: Change based on previous leaderboard value.
+        changeDirection:
+          $ref: '#/components/schemas/LeaderboardChangeDirection'
+          description: Arrow color. `GREEN` if change is `0`.
+    WebappActionCompetition:
+      type: object
+      properties:
+        competition:
+          $ref: '#/components/schemas/Competition'
+        participant:
+          $ref: '#/components/schemas/Participant'
+        projects:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebappActiveCompetitionProject'
+    DiscordMessageActivity:
+      allOf:
+      - $ref: '#/components/schemas/Activity'
+      - type: object
+        properties:
+          id:
+            type: integer
+            format: int64
+          guildId:
+            type: string
+          guildName:
+            type: string
+          channelId:
+            type: string
+          channelName:
+            type: string
+          messageId:
+            type: string
+      properties:
+        type:
+          type: string
+          enum:
+          - DISCORD_MESSAGE
+    CompetitionFormat:
+      type: string
+      enum:
+      - TIMESERIES
+      - DAG
+      - STREAM
+      - SPATIAL
+      - UNSTRUCTURED
+    WebappRecentRun:
+      type: object
+      properties:
+        competitionId:
+          type: integer
+          format: int64
+        competitionName:
+          type: string
+        competitionDisplayName:
+          type: string
+        projectId:
+          type: integer
+          format: int64
+        projectName:
+          type: string
+        runId:
+          type: integer
+          format: int64
+        state:
+          type: string
+          enum:
+          - LOADING
+          - SUCCESS
+          - ERROR
+          - BAD_PREDICTION
+    DiscordJoinActivity:
+      allOf:
+      - $ref: '#/components/schemas/Activity'
+      - type: object
+        properties:
+          id:
+            type: integer
+            format: int64
+          guildId:
+            type: string
+          guildName:
+            type: string
+      properties:
+        type:
+          type: string
+          enum:
+          - DISCORD_JOIN
+    TimelineEventButton:
+      type: object
+      properties:
+        text:
+          type: string
+        link:
+          type: string
+        color:
+          type: string
+    TimelineEventType:
+      type: string
+      enum:
+      - GENERIC
+      - LEADERBOARD
+      - RULES
+      - REWARDS
+    ParticipantRole:
+      type: string
+      enum:
+      - USER
+      - ORGANIZER
+      - ADMINISTRATOR
+    LeaderboardChangeDirection:
+      type: string
+      enum:
+      - RED
+      - GREEN
+    CompetitionTag:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name for the UI.
+    WebappDashboardSummary:
+      type: object
+      properties:
+        weeklyStreak:
+          type: integer
+          format: int64
+          description: Count of consecutive week where the current user participated.
+        totalRewards:
+          type: number
+          description: Total amount of rewards the user ever received/will receive.
+        totalRuns:
+          type: integer
+          format: int64
+          description: The total number of runs created, in any competitions.
+        nextCompetition:
+          $ref: '#/components/schemas/Competition'
+          description: The next competition to open.
+        featuredCompetition:
+          $ref: '#/components/schemas/Competition'
+          description: A featured competition.
+        lastParticipant:
+          $ref: '#/components/schemas/Participant'
+          description: The last competition the participant registered to.
+    WebappLastRunRun:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        state:
+          type: string
+          enum:
+          - LOADING
+          - SUCCESS
+          - ERROR
+          - BAD_PREDICTION
+    CompetitionVisibility:
+      type: string
+      enum:
+      - HIDDEN
+      - PUBLIC
+    WebappCalandarSummaryDay:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        activities:
+          type: integer
+          format: int64
+          description: Number of civilian activities.
+        events:
+          type: integer
+          format: int64
+          description: Number of calendar events.
+        joinedCompetitions:
+          type: integer
+          format: int64
+          description: Number of joined competitions.
+        newCompetitions:
+          type: integer
+          format: int64
+          description: Number of new competitions.
+    CompetitionRun:
+      allOf:
+      - $ref: '#/components/schemas/Activity'
+      - type: object
+        properties:
+          id:
+            type: integer
+            format: int64
+          competitionId:
+            type: integer
+            format: int64
+          competitionName:
+            type: string
+          projectId:
+            type: integer
+            format: int64
+          projectName:
+            type: string
+          runId:
+            type: integer
+            format: int64
+      properties:
+        type:
+          type: string
+          enum:
+          - COMPETITION_RUN
+    DataReleaseSplitKey:
+      type: string
+      enum:
+      - INTEGER
+      - STRING
+    CompetitionType:
+      type: string
+      enum:
+      - OPEN
+      - PAUSED
+    CalendarEvent:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        date:
+          type: string
+          format: date
+        title:
+          type: string
+        location:
+          type: string
+        time:
+          type: string
+          format: time
+          $anchor: https://en.wikipedia.org/wiki/ISO_8601
+          $comment: ISO 8601 Time
+          example: 01:02:03
+        url:
+          type: string
+    CompetitionMode:
+      type: string
+      enum:
+      - OFFLINE
+      - REAL_TIME
+    WebappLastRunCompetition:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        displayName:
+          type: string
+        status:
+          type: string
+          enum:
+          - PENDING
+          - OPEN
+          - CLOSED
+        mode:
+          type: string
+          enum:
+          - OFFLINE
+          - REAL_TIME
+        external:
+          type: boolean
+        projects:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebappLastRunProject'
+    CompetitionSession:
+      type: object
+      properties:
+        state:
+          $ref: '#/components/schemas/CompetitionType'
+          description: Current session state.
+        nextChange:
+          type: string
+          format: date-time
+          description: When should the next session state change happen. Unknown if `null`.
+    WebappLastReward:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        amount:
+          type: number
+          format: double
+          description: Amount in dollar.
+        host:
+          type: string
+          description: Competition's organizer name.
+    WebappActiveCompetitionProject:
+      type: object
+      properties:
+        rank:
+          $ref: '#/components/schemas/WebappActiveCompetitionProjectChange'
+        metric:
+          $ref: '#/components/schemas/WebappActiveCompetitionProjectChange'
+        submissionDate:
+          type: string
+          format: date
+        quota:
+          $ref: '#/components/schemas/WebappActiveCompetitionProjectQuota'
+    Participant:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        competition:
+          $ref: '#/components/schemas/Competition'
+        user:
+          $ref: '#/components/schemas/User'
+        cruncherPubkey:
+          type: string
+          description: The Cruncher Pubkey on the blockchain. Only available if `competition.type` is `REAL_TIME`.
+        hidden:
+          type: boolean
+          description: Is the participant hidden from the leaderboard?
+        role:
+          $ref: '#/components/schemas/ParticipantRole'
+          description: Role of the participant in the competition.
+        crowned:
+          type: boolean
+          description: Is the crown badge visible?
+        certified:
+          type: boolean
+          description: Is the certificate badge visible?
+        rewarded:
+          type: boolean
+          description: Is the dollar badge visible?
+        benchmarked:
+          type: boolean
+          description: Is the "benchmark" badge visible?
+        ruleAccepted:
+          type: boolean
+          description: Has the rule been accepted?
+        ruleAcceptedAt:
+          type: string
+          format: date-time
+          description: When were the rule accepted?
+        submitted:
+          type: boolean
+          description: Has the participant submitted at least once?
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

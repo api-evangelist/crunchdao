@@ -1,0 +1,384 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity library:request API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: library:request
+paths:
+  /v1/library-requests:
+    x-service-id: competition-service
+    get:
+      tags:
+      - library:request
+      summary: List library requests.
+      operationId: listLibraryRequests
+      parameters:
+      - name: verdict
+        in: query
+        description: Filter by verdict. Include all if not specified.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/LibraryRequestVerdict'
+          description: Filter by verdict. Include all if not specified.
+      - name: name
+        in: query
+        description: Filter on both name and alias. Allow for a pattern (%).
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Filter on both name and alias. Allow for a pattern (%).
+      - name: gpuRequirement
+        in: query
+        description: Filter for GPU requirement.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Filter for GPU requirement.
+          enum:
+          - OPTIONAL
+          - RECOMMENDED
+          - REQUIRED
+      - name: sort
+        in: query
+        description: Sort results.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Sort results.
+          enum:
+          - RECENT
+          - OLDEST
+      - name: page
+        in: query
+        description: Zero-based page index (0..N)
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - name: size
+        in: query
+        description: The size of the page to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageLibraryRequest'
+    post:
+      tags:
+      - library:request
+      summary: Create a library request.
+      operationId: createLibraryRequest
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LibraryRequestCreateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LibraryRequest'
+  /v1/library-requests/{libraryRequestId}/reject:
+    x-service-id: competition-service
+    post:
+      tags:
+      - library:request
+      summary: Reject a library request.
+      operationId: rejectLibraryRequest
+      parameters:
+      - name: libraryRequestId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LibraryRequestRejectForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LibraryRequest'
+  /v1/library-requests/{libraryRequestId}/approve:
+    x-service-id: competition-service
+    post:
+      tags:
+      - library:request
+      summary: Approve a library request.
+      operationId: approveLibraryRequest
+      parameters:
+      - name: libraryRequestId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LibraryRequestApproveForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LibraryRequest'
+  /v1/library-requests/query:
+    x-service-id: competition-service
+    get:
+      tags:
+      - library:request
+      summary: Test if a library on PyPI.
+      operationId: queryLibraryRequest
+      parameters:
+      - name: name
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: language
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          default: PYTHON
+          enum:
+          - PYTHON
+          - R
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueriedPackage'
+components:
+  schemas:
+    LibraryRequest:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        language:
+          $ref: '#/components/schemas/Language'
+          description: Programming language.
+        name:
+          type: string
+          description: PyPI package name.
+        alias:
+          type: string
+          description: Importable name.
+        gpuRequirement:
+          $ref: '#/components/schemas/GpuRequirement'
+          description: GPU Requirement, `null` if unknown.
+        additionalDetails:
+          type: string
+          description: User specified additional details.
+        requestedBy:
+          $ref: '#/components/schemas/User'
+          description: User who did the request.
+        requestedFor:
+          $ref: '#/components/schemas/PayoutCompetitionName'
+          description: Competition for which the library is requested.
+        verdict:
+          $ref: '#/components/schemas/LibraryRequestVerdict'
+          description: Verdict of the request.
+        verdictReason:
+          type: string
+          description: Rejection reason.
+        verdictBy:
+          $ref: '#/components/schemas/User'
+          description: Administrator who did the verdict.
+        verdictAt:
+          type: string
+          format: date-time
+          description: When was the verdict done.
+        createdAt:
+          type: string
+          format: date-time
+    LibraryRequestVerdict:
+      type: string
+      enum:
+      - PENDING
+      - APPROVED
+      - REJECTED
+    GpuRequirement:
+      type: string
+      enum:
+      - OPTIONAL
+      - RECOMMENDED
+      - REQUIRED
+    LibraryRequestApproveForm:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 200
+          minLength: 0
+        alias:
+          type: string
+          maxLength: 200
+          minLength: 0
+        gpuRequirement:
+          type: string
+          enum:
+          - OPTIONAL
+          - RECOMMENDED
+          - REQUIRED
+      required:
+      - alias
+      - gpuRequirement
+      - name
+    LibraryRequestCreateForm:
+      type: object
+      properties:
+        language:
+          type: string
+          enum:
+          - PYTHON
+          - R
+        name:
+          type: string
+          maxLength: 200
+          minLength: 1
+        alias:
+          type: string
+          maxLength: 200
+          minLength: 1
+        gpuRequirement:
+          type: string
+          enum:
+          - OPTIONAL
+          - RECOMMENDED
+          - REQUIRED
+        additionalDetails:
+          type: string
+          maxLength: 500
+          minLength: 0
+        competitionId:
+          type: integer
+          format: int64
+      required:
+      - competitionId
+      - language
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+    Language:
+      type: string
+      enum:
+      - PYTHON
+      - R
+    PageLibraryRequest:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/LibraryRequest'
+    LibraryRequestRejectForm:
+      type: object
+      properties:
+        reason:
+          type: string
+          maxLength: 500
+          minLength: 0
+      required:
+      - reason
+    PayoutCompetitionName:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        displayName:
+          type: string
+    QueriedPackage:
+      type: object
+      properties:
+        name:
+          type: string
+        alreadyAdded:
+          type: boolean
+        found:
+          type: boolean
+        lastestVersion:
+          type: string
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

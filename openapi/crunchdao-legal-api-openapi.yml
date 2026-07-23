@@ -1,0 +1,73 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity legal API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: legal
+paths:
+  /v1/legal/accept:
+    x-service-id: account-service
+    post:
+      tags:
+      - legal
+      summary: Accept current legal version.
+      operationId: acceptLegal
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LegalDto'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v1/legal:
+    x-service-id: account-service
+    get:
+      tags:
+      - legal
+      summary: Get current legal information.
+      operationId: getLegal
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LegalDto'
+      security:
+      - accessToken: []
+      - apiKey: []
+components:
+  schemas:
+    LegalDto:
+      type: object
+      properties:
+        currentVersion:
+          type: integer
+          format: int32
+        acceptedVersion:
+          type: integer
+          format: int32
+        acceptedAt:
+          type: string
+          format: date-time
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

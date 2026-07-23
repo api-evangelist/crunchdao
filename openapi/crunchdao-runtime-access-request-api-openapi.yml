@@ -1,0 +1,816 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity runtime:access-request API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: runtime:access-request
+paths:
+  /v1/runtime-access-requests:
+    x-service-id: competition-service
+    get:
+      tags:
+      - runtime:access-request
+      summary: List runtime access requests.
+      operationId: listRuntimeAccessRequests
+      parameters:
+      - name: verdict
+        in: query
+        description: Filter by verdict. Include all if not specified.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/RuntimeAccessRequestVerdict'
+          description: Filter by verdict. Include all if not specified.
+      - name: sort
+        in: query
+        description: Sort results.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Sort results.
+          enum:
+          - RECENT
+          - OLDEST
+      - name: page
+        in: query
+        description: Zero-based page index (0..N)
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - name: size
+        in: query
+        description: The size of the page to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageRuntimeAccessRequest'
+      security:
+      - accessToken: []
+      - apiKey: []
+    post:
+      tags:
+      - runtime:access-request
+      summary: Create a runtime access request.
+      operationId: createRuntimeAccessRequest
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RuntimeAccessRequestCreateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RuntimeAccessRequest'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v1/runtime-access-requests/{runtimeAccessRequestId}/reject:
+    x-service-id: competition-service
+    post:
+      tags:
+      - runtime:access-request
+      summary: Reject a runtime access request.
+      operationId: rejectRuntimeAccessRequest
+      parameters:
+      - name: runtimeAccessRequestId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RuntimeAccessRequestRejectForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RuntimeAccessRequest'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v1/runtime-access-requests/{runtimeAccessRequestId}/approve:
+    x-service-id: competition-service
+    post:
+      tags:
+      - runtime:access-request
+      summary: Approve a runtime access request.
+      operationId: approveRuntimeAccessRequest
+      parameters:
+      - name: runtimeAccessRequestId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RuntimeAccessRequestApproveForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RuntimeAccessRequest'
+      security:
+      - accessToken: []
+      - apiKey: []
+components:
+  schemas:
+    SubmissionFile:
+      type: object
+      properties:
+        name:
+          type: string
+        size:
+          type: integer
+          format: int64
+        encrypted:
+          type: boolean
+        mimeType:
+          type: string
+        foundHardcodedString:
+          type: boolean
+          deprecated: true
+    Competition:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name for cards.
+        fullName:
+          type: string
+          description: Full name for the overview.
+        shortDescription:
+          type: string
+          description: Short description for cards.
+        type:
+          $ref: '#/components/schemas/CompetitionType'
+        format:
+          $ref: '#/components/schemas/CompetitionFormat'
+        mode:
+          $ref: '#/components/schemas/CompetitionMode'
+        status:
+          $ref: '#/components/schemas/CompetitionStatus'
+        splitKeyType:
+          $ref: '#/components/schemas/DataReleaseSplitKey'
+        start:
+          type: string
+          format: date-time
+          description: Start of competition.
+        end:
+          type: string
+          format: date-time
+          description: End of competition. (specified if not continuous)
+        continuous:
+          type: boolean
+          description: Will the competition never end?
+        external:
+          type: boolean
+          description: Is the competition external? If so, redirect to `url`.
+        featured:
+          type: boolean
+          description: Is the competition featured?
+        visibility:
+          $ref: '#/components/schemas/CompetitionVisibility'
+        url:
+          type: string
+          description: URL where the competition takes place.
+        onChainId:
+          type: string
+          description: On-Chain ID where the competition takes place. Only if `mode` is `REAL_TIME`.
+        cardImageUrl:
+          type: string
+          description: Image URL used for cards.
+        bannerImageUrl:
+          type: string
+          description: Image URL used for the overview.
+        documentationUrl:
+          type: string
+          description: External documentation URL.
+        notebookUrl:
+          type: string
+          description: External baseline notebook URL.
+        advancedNotebookUrl:
+          type: string
+          description: External advanced notebook URL.
+        discussionUrl:
+          type: string
+          description: External discussion platform URL. (either discord or the forum)
+        codeUrl:
+          type: string
+          description: External GitHub URL where the code is located.
+        hostedByName:
+          type: string
+          description: Name of the competition organizer/host.
+        prizePoolText:
+          type: string
+          description: Prize pool in a text form.
+        prizePoolShortText:
+          type: string
+          description: Prize pool in a short text form.
+        prizePoolUsd:
+          type: number
+          format: double
+          description: Prize pool in USD.
+        projectNameFormat:
+          type: string
+          description: Default project name format, use `{n}` for incremental.
+        teamBased:
+          type: boolean
+          description: Are the teams enabled?
+        onlyTeamLeader:
+          type: boolean
+          description: Does only the team leader appear on the leaderboard?
+        maxTeamSize:
+          type: integer
+          format: int64
+          description: Maximum size for a team.
+        projectCreationLimit:
+          type: integer
+          format: int64
+          description: Maximum number of projects per user, if one, a default project is always created when the rules are accepted.
+        projectSelectionLimit:
+          type: integer
+          format: int64
+          description: If multiple project can be created, how many should appear on the leaderboard?
+        allowPredictions:
+          type: boolean
+          description: Are direct prediction file accepted for submission?
+        encryptSubmissions:
+          type: boolean
+          description: Should the predictions be encrypted?
+        phalaKeyUrl:
+          type: string
+          description: If the prediction should be encrypted, which URL to use to fetch the public key?
+        hideDashboard:
+          type: boolean
+          description: Is the dashboard tab hidden?
+        hideChanges:
+          type: boolean
+          description: Are the dashboard change cards hidden?
+        hidePerformance:
+          type: boolean
+          description: Is the dashboard performance graph hidden?
+        hideRunPerformance:
+          type: boolean
+          description: Is the dashboard run performance graph hidden?
+        hideStatistics:
+          type: boolean
+          description: Is the statistics card hidden?
+        hideNotebookSetupCommand:
+          type: boolean
+          description: Should the setup command for the notebook be hidden? Only useful for Real Time competitions.
+        hideTrainFrequency:
+          type: boolean
+          description: Should the train frequency field be hidden?
+        hideForceFirstTrain:
+          type: boolean
+          description: Should the train field be hidden?
+        web3:
+          type: boolean
+          description: Are the web3 integrations enabled for the competitions? (e.g. team referendums)
+        order:
+          type: integer
+          format: int64
+          description: Sorting order of the competition. (descending)
+        statistics:
+          $ref: '#/components/schemas/CompetitionStatistics'
+          description: Competition submission statistics.
+        session:
+          $ref: '#/components/schemas/CompetitionSession'
+          description: Competition current session. No session if `null`.
+        createdAt:
+          type: string
+          format: date-time
+          description: Competition creation timestamp.
+        updatedAt:
+          type: string
+          format: date-time
+          description: Competition update timestamp.
+        tags:
+          type: array
+          description: Tags that describe the competition.
+          items:
+            $ref: '#/components/schemas/CompetitionTag'
+        timelineEvents:
+          type: array
+          description: Non-detailed timeline events.
+          items:
+            $ref: '#/components/schemas/TimelineEvent'
+    RuntimeDefinitionSpecificationSize:
+      type: object
+      properties:
+        size:
+          type: integer
+          format: int32
+          description: Size in gigabytes.
+    Submission:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        project:
+          $ref: '#/components/schemas/Project'
+        number:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/SubmissionType'
+        message:
+          type: string
+        valid:
+          type: boolean
+        mainFilePath:
+          type: string
+        modelDirectoryPath:
+          type: string
+        gpuRequirement:
+          $ref: '#/components/schemas/GpuRequirement'
+        model:
+          $ref: '#/components/schemas/Model'
+        totalSize:
+          type: integer
+          format: int64
+        librariesVerified:
+          type: boolean
+        encrypted:
+          type: boolean
+        encryptionId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubmissionFile'
+    RuntimeAccessRequestCreateForm:
+      type: object
+      properties:
+        competitionId:
+          type: integer
+          format: int64
+        definitionName:
+          type: string
+        projectId:
+          type: integer
+          format: int64
+        submissionNumber:
+          type: integer
+          format: int64
+        justification:
+          type: string
+          maxLength: 1000
+          minLength: 0
+      required:
+      - competitionId
+      - definitionName
+      - projectId
+      - submissionNumber
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+    TimelineEvent:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/TimelineEventType'
+        title:
+          type: string
+        description:
+          type: string
+        date:
+          type: string
+          format: date
+          description: Date on which the event will occur/has occurred.
+        color:
+          type: string
+        detailed:
+          type: boolean
+          description: Detailed event should be hidden in a space constrained UI.
+        button:
+          $ref: '#/components/schemas/TimelineEventButton'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    RuntimeAccessRequestApproveForm:
+      type: object
+      properties:
+        reason:
+          type: string
+          maxLength: 500
+          minLength: 0
+      required:
+      - reason
+    CompetitionStatistics:
+      type: object
+      properties:
+        entrants:
+          type: integer
+          format: int64
+        participants:
+          type: integer
+          format: int64
+        teams:
+          type: integer
+          format: int64
+        submissions:
+          type: integer
+          format: int64
+        runnables:
+          type: integer
+          format: int64
+    CompetitionStatus:
+      type: string
+      enum:
+      - PENDING
+      - OPEN
+      - CLOSED
+    PageRuntimeAccessRequest:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/RuntimeAccessRequest'
+    Project:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        competitionId:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/User'
+        name:
+          type: string
+        selected:
+          type: boolean
+        submitted:
+          type: boolean
+        note:
+          type: string
+        writeupUrl:
+          type: string
+        writeupArchived:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
+    RuntimeDefinition:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          description: Slug-like name.
+        type:
+          $ref: '#/components/schemas/RuntimeType'
+          description: Runtime type.
+        status:
+          $ref: '#/components/schemas/RuntimeDefinitionStatus'
+          description: Runtime status.
+        recommendable:
+          type: boolean
+          description: Can the recommended badge be possible?
+        accessRequestRequired:
+          type: boolean
+          description: Does this runtime requires an approval to be used?
+        displayName:
+          type: string
+          description: Display name for cards.
+        description:
+          type: string
+          description: Description for cards.
+        poweredBy:
+          $ref: '#/components/schemas/RuntimeDefinitionPoweredBy'
+          description: Provider informations.
+        specification:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecification'
+          description: Environment specification.
+        quotaConsumptionRate:
+          type: number
+          format: double
+          description: How fast the quota is consumed for this runtime. `1` is normal speed, `<1` slower (more quota), `>1` faster (less quota).
+        order:
+          type: integer
+          format: int64
+          description: Lower values are shown first.
+    RuntimeDefinitionSpecificationSoftware:
+      type: object
+      properties:
+        python:
+          type: string
+    RuntimeDefinitionSpecificationNetwork:
+      type: object
+      properties:
+        access:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationNetworkAccess'
+    RuntimeAccessRequestRejectForm:
+      type: object
+      properties:
+        reason:
+          type: string
+          maxLength: 500
+          minLength: 0
+        blockFurtherRequests:
+          type: boolean
+      required:
+      - blockFurtherRequests
+      - reason
+    RuntimeType:
+      type: string
+      enum:
+      - CPU
+      - GPU
+      - COPY
+    CompetitionFormat:
+      type: string
+      enum:
+      - TIMESERIES
+      - DAG
+      - STREAM
+      - SPATIAL
+      - UNSTRUCTURED
+    RuntimeDefinitionSpecificationCpu:
+      type: object
+      properties:
+        coreCount:
+          type: integer
+          format: int32
+    Model:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        project:
+          $ref: '#/components/schemas/Project'
+        totalSize:
+          type: integer
+          format: int64
+        encrypted:
+          type: boolean
+        encryptionId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    TimelineEventButton:
+      type: object
+      properties:
+        text:
+          type: string
+        link:
+          type: string
+        color:
+          type: string
+    RuntimeDefinitionSpecificationGpu:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+        model:
+          type: string
+        driver:
+          type: string
+    TimelineEventType:
+      type: string
+      enum:
+      - GENERIC
+      - LEADERBOARD
+      - RULES
+      - REWARDS
+    RuntimeAccessRequestVerdict:
+      type: string
+      enum:
+      - PENDING
+      - APPROVED
+      - REJECTED
+    RuntimeDefinitionSpecification:
+      type: object
+      properties:
+        memory:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSize'
+        sharedMemory:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSize'
+        storage:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSize'
+        cpu:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationCpu'
+        gpu:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationGpu'
+        network:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationNetwork'
+        software:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSoftware'
+    SubmissionType:
+      type: string
+      enum:
+      - CODE
+      - NOTEBOOK
+      - PREDICTION
+    RuntimeDefinitionSpecificationNetworkAccess:
+      type: string
+      enum:
+      - OPEN
+      - FORBIDDEN
+      - LOCAL_ONLY
+    CompetitionTag:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name for the UI.
+    GpuRequirement:
+      type: string
+      enum:
+      - OPTIONAL
+      - RECOMMENDED
+      - REQUIRED
+    RuntimeDefinitionPoweredBy:
+      type: object
+      properties:
+        text:
+          type: string
+        url:
+          type: string
+    RuntimeDefinitionStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - RESTRICTED
+      - DISABLED
+    CompetitionVisibility:
+      type: string
+      enum:
+      - HIDDEN
+      - PUBLIC
+    RuntimeAccessRequest:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        competition:
+          $ref: '#/components/schemas/Competition'
+          description: Competition related to this runtime access request.
+        definition:
+          $ref: '#/components/schemas/RuntimeDefinition'
+          description: Actual requested runtime definition.
+        user:
+          $ref: '#/components/schemas/User'
+          description: User who made the request.
+        project:
+          $ref: '#/components/schemas/Project'
+          description: Project who the request made for.
+        submission:
+          $ref: '#/components/schemas/Submission'
+          description: Submission who the request made for.
+        justification:
+          type: string
+          description: Justification for this access request.
+        verdict:
+          $ref: '#/components/schemas/RuntimeAccessRequestVerdict'
+          description: Verdict of the request.
+        verdictReason:
+          type: string
+          description: Verdict reason, mandatory for rejection.
+        verdictBy:
+          $ref: '#/components/schemas/User'
+          description: Administrator who did the verdict.
+        verdictAt:
+          type: string
+          format: date-time
+          description: When was the verdict done.
+        furtherRequestBlocked:
+          type: boolean
+          description: Are further requests blocked?
+        createdAt:
+          type: string
+          format: date-time
+    DataReleaseSplitKey:
+      type: string
+      enum:
+      - INTEGER
+      - STRING
+    CompetitionType:
+      type: string
+      enum:
+      - OPEN
+      - PAUSED
+    CompetitionMode:
+      type: string
+      enum:
+      - OFFLINE
+      - REAL_TIME
+    CompetitionSession:
+      type: object
+      properties:
+        state:
+          $ref: '#/components/schemas/CompetitionType'
+          description: Current session state.
+        nextChange:
+          type: string
+          format: date-time
+          description: When should the next session state change happen. Unknown if `null`.
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

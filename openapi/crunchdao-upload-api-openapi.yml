@@ -1,0 +1,424 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity upload API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: upload
+paths:
+  /v1/uploads:
+    x-service-id: competition-service
+    post:
+      tags:
+      - upload
+      summary: Create an upload.
+      operationId: createUpload
+      parameters:
+      - name: pushToken
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: X-Run-Token
+        in: header
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UploadCreateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadDto'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v1/uploads/{uploadId}/complete:
+    x-service-id: competition-service
+    post:
+      tags:
+      - upload
+      summary: Complete an upload.
+      operationId: completeUpload
+      parameters:
+      - name: uploadId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: uuid
+      - name: pushToken
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: X-Run-Token
+        in: header
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadDto'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v1/uploads/{uploadId}/chunks/{chunkNumber}/confirm:
+    x-service-id: competition-service
+    post:
+      tags:
+      - upload
+      summary: Confirm an upload chunk.
+      operationId: confirmUploadChunk
+      parameters:
+      - name: uploadId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: uuid
+      - name: chunkNumber
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      - name: pushToken
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: X-Run-Token
+        in: header
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UploadChunkCompleteForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadChunkDto'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v1/uploads/{uploadId}/abort:
+    x-service-id: competition-service
+    post:
+      tags:
+      - upload
+      summary: Abort an upload.
+      operationId: abortUpload
+      parameters:
+      - name: uploadId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: uuid
+      - name: pushToken
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: X-Run-Token
+        in: header
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadDto'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v1/uploads/{uploadId}:
+    x-service-id: competition-service
+    get:
+      tags:
+      - upload
+      summary: Show an upload.
+      operationId: getUpload
+      parameters:
+      - name: uploadId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: uuid
+      - name: pushToken
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: X-Run-Token
+        in: header
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadDto'
+      security:
+      - accessToken: []
+      - apiKey: []
+    delete:
+      tags:
+      - upload
+      summary: Delete an upload.
+      operationId: deleteUpload
+      parameters:
+      - name: uploadId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: uuid
+      - name: pushToken
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: X-Run-Token
+        in: header
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '202':
+          description: Accepted
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v1/uploads/{uploadId}/chunks/{chunkNumber}/request:
+    x-service-id: competition-service
+    get:
+      tags:
+      - upload
+      summary: Get request information for an upload chunk.
+      operationId: getUploadChunkUri
+      parameters:
+      - name: uploadId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: uuid
+      - name: chunkNumber
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      - name: pushToken
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: X-Run-Token
+        in: header
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PresignedUploadRequest'
+      security:
+      - accessToken: []
+      - apiKey: []
+components:
+  schemas:
+    UploadProvider:
+      type: string
+      enum:
+      - AWS_S3
+    UploadDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        size:
+          type: integer
+          format: int64
+        encrypted:
+          type: boolean
+        mediaType:
+          type: string
+        chunked:
+          type: boolean
+        status:
+          $ref: '#/components/schemas/UploadStatus'
+        statusMessage:
+          type: string
+        provider:
+          $ref: '#/components/schemas/UploadProvider'
+        expiresAt:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+        chunks:
+          type: array
+          items:
+            $ref: '#/components/schemas/UploadChunkDto'
+    PresignedUploadRequest:
+      type: object
+      properties:
+        method:
+          type: string
+          enum:
+          - POST
+          - PUT
+        url:
+          type: string
+          format: uri
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+    UploadChunkDto:
+      type: object
+      properties:
+        number:
+          type: integer
+          format: int64
+        offset:
+          type: integer
+          format: int64
+        size:
+          type: integer
+          format: int64
+        last:
+          type: boolean
+        completed:
+          type: boolean
+        completedAt:
+          type: string
+          format: date-time
+    UploadChunkCompleteForm:
+      type: object
+      properties:
+        hash:
+          type: string
+      required:
+      - hash
+    UploadStatus:
+      type: string
+      enum:
+      - PENDING
+      - IN_PROGRESS
+      - SUCCEEDED
+      - FAILED
+      - EXPIRED
+    UploadCreateForm:
+      type: object
+      properties:
+        name:
+          type: string
+        size:
+          type: integer
+          format: int64
+        encrypted:
+          type: boolean
+        preferredChunkSize:
+          type: integer
+          format: int64
+      required:
+      - encrypted
+      - name
+      - size
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

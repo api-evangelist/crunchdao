@@ -1,0 +1,63 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity zzz-webhook API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: zzz-webhook
+paths:
+  /webhook/privy:
+    x-service-id: account-service
+    post:
+      tags:
+      - zzz-webhook
+      operationId: privyWebhook
+      parameters:
+      - name: svix-id
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: svix-timestamp
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: svix-signature
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        required: true
+      responses:
+        '202':
+          description: Accepted
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

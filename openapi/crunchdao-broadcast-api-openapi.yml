@@ -1,0 +1,84 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity broadcast API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: broadcast
+paths:
+  /v1/competitions/{competitionIdentifier}/broadcasts:
+    x-service-id: competition-service
+    get:
+      tags:
+      - broadcast
+      summary: List broadcasts of a competition.
+      operationId: listCompetitionBroadcasts
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Broadcast'
+  /v1/broadcasts:
+    x-service-id: competition-service
+    get:
+      tags:
+      - broadcast
+      summary: List global broadcasts.
+      operationId: listBroadcasts
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Broadcast'
+components:
+  schemas:
+    Broadcast:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        markdown:
+          type: string
+        backgroundColor:
+          type: string
+        textColor:
+          type: string
+        active:
+          type: boolean
+        position:
+          type: integer
+          format: int64
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

@@ -1,0 +1,538 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity data API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: data
+paths:
+  /v2/competitions/{competitionIdentifier}/data-releases:
+    x-service-id: competition-service
+    get:
+      tags:
+      - data
+      summary: List data releases.
+      operationId: listDataReleases
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: Zero-based page index (0..N)
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - name: size
+        in: query
+        description: The size of the page to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      - name: sort
+        in: query
+        description: 'Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageDataRelease'
+      security:
+      - accessToken: []
+      - apiKey: []
+    post:
+      tags:
+      - data
+      summary: Create a data releases.
+      operationId: createDataRelease
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataReleaseCreateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataRelease'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v2/competitions/{competitionIdentifier}/data-releases/{dataReleaseNumber}/resolve/{targetName}:
+    x-service-id: competition-service
+    post:
+      tags:
+      - data
+      summary: Resolve a data release's Y.
+      operationId: resolveDataRelease
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: dataReleaseNumber
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      - name: targetName
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataReleaseResolveForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataRelease'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v2/competitions/{competitionIdentifier}/rounds/{roundIdentifier}/phases/submission/data-release:
+    x-service-id: competition-service
+    get:
+      tags:
+      - data
+      summary: Get a run's data release.
+      operationId: getPhaseDataRelease
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: roundIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: withoutFiles
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      - name: pushToken
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: sizeVariant
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - DEFAULT
+          - SMALL
+          - LARGE
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataRelease'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v1/competitions/{competitionIdentifier}/data-releases:
+    x-service-id: competition-service
+    get:
+      tags:
+      - data
+      summary: List data releases.
+      operationId: listDataReleases_1
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DataRelease'
+      deprecated: true
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v1/competitions/{competitionIdentifier}/data-releases/{dataReleaseNumber}:
+    x-service-id: competition-service
+    get:
+      tags:
+      - data
+      summary: Show a data releases.
+      operationId: getDataRelease
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: dataReleaseNumber
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      - name: includeSplits
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      - name: sizeVariant
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - DEFAULT
+          - SMALL
+          - LARGE
+      - name: accessLocation
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - LOCAL
+          - RUNNER
+          - CHECKING
+          - SCORING
+          - COMPARING
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataRelease'
+      security:
+      - accessToken: []
+      - apiKey: []
+components:
+  schemas:
+    DataReleaseFileAccess:
+      type: object
+      properties:
+        local:
+          type: boolean
+        runner:
+          type: boolean
+        checking:
+          type: boolean
+        scoring:
+          type: boolean
+        comparing:
+          type: boolean
+    DataReleaseSplit:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+        group:
+          $ref: '#/components/schemas/DataReleaseSplitGroup'
+        reduced:
+          $ref: '#/components/schemas/DataReleaseSplitReduced'
+    DataReleaseSplitGroup:
+      type: string
+      enum:
+      - TRAIN
+      - TEST
+    DataReleaseTargetResolution:
+      type: string
+      enum:
+      - ALREADY
+      - PENDING
+      - RESOLVED
+    DataFile:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+        size:
+          type: integer
+          format: int64
+        signed:
+          type: boolean
+        compressed:
+          type: boolean
+    DataReleaseFileCreateForm:
+      type: object
+      properties:
+        uploadId:
+          type: string
+          format: uuid
+        sizeVariant:
+          type: string
+          enum:
+          - DEFAULT
+          - SMALL
+          - LARGE
+        name:
+          type: string
+        description:
+          type: string
+        access:
+          $ref: '#/components/schemas/DataReleaseFileAccess'
+        compressed:
+          type: boolean
+      required:
+      - access
+      - compressed
+      - name
+      - sizeVariant
+      - uploadId
+    DataReleaseSplitCreateForm:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+        group:
+          type: string
+          enum:
+          - TRAIN
+          - TEST
+        reduced:
+          type: string
+          enum:
+          - X
+          - XY
+      required:
+      - group
+      - key
+    DataReleaseSplitKey:
+      type: string
+      enum:
+      - INTEGER
+      - STRING
+    DataRelease:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        number:
+          type: integer
+          format: int64
+        name:
+          type: string
+        custom:
+          type: boolean
+        sized:
+          type: boolean
+        hasSmallVariant:
+          type: boolean
+        hasLargeVariant:
+          type: boolean
+        embargo:
+          type: integer
+          format: int32
+        numberOfFeatures:
+          type: integer
+          format: int32
+        hash:
+          type: string
+        splitKeyType:
+          $ref: '#/components/schemas/DataReleaseSplitKey'
+        resolvable:
+          type: boolean
+        splits:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataReleaseSplit'
+        targetResolution:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/DataReleaseTargetResolution'
+        createdAt:
+          type: string
+          format: date-time
+        dataFiles:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/DataFile'
+    DataReleaseSplitReduced:
+      type: string
+      enum:
+      - X
+      - XY
+    DataReleaseResolveForm:
+      type: object
+      properties:
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataReleaseFileResolveForm'
+      required:
+      - files
+    DataReleaseCreateForm:
+      type: object
+      properties:
+        name:
+          type: string
+        embargo:
+          type: integer
+          format: int32
+        numberOfFeatures:
+          type: integer
+          format: int32
+        hash:
+          type: string
+        splits:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataReleaseSplitCreateForm'
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataReleaseFileCreateForm'
+        resolvable:
+          type: boolean
+      required:
+      - files
+      - name
+      - resolvable
+      - splits
+    PageDataRelease:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataRelease'
+    DataReleaseFileResolveForm:
+      type: object
+      properties:
+        uploadId:
+          type: string
+          format: uuid
+        name:
+          type: string
+        access:
+          $ref: '#/components/schemas/DataReleaseFileAccess'
+        compressed:
+          type: boolean
+      required:
+      - access
+      - compressed
+      - name
+      - uploadId
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

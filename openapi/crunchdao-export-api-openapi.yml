@@ -1,0 +1,318 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity export API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: export
+paths:
+  /v2/competitions/{competitionIdentifier}/export/submissions:
+    x-service-id: competition-service
+    get:
+      tags:
+      - export
+      summary: Export all submissions as CSV.
+      operationId: exportSubmissions
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/csv:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SubmissionCsvEntry'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v2/competitions/{competitionIdentifier}/export/runs:
+    x-service-id: competition-service
+    get:
+      tags:
+      - export
+      summary: Export all runs as CSV.
+      operationId: exportRuns
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/csv:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RunCsvEntry'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v2/competitions/{competitionIdentifier}/export/predictions:
+    x-service-id: competition-service
+    get:
+      tags:
+      - export
+      summary: Export all predictions as CSV.
+      operationId: exportPredictions
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: roundIdentifier
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          default: INSTANCE
+      - name: includeFileUri
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: OK
+          content:
+            text/csv:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PredictionCsvEntry'
+      security:
+      - accessToken: []
+      - apiKey: []
+components:
+  schemas:
+    SubmissionCsvEntry:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        number:
+          type: integer
+          format: int64
+        userId:
+          type: integer
+          format: int64
+        userLogin:
+          type: string
+        projectId:
+          type: integer
+          format: int64
+        projectName:
+          type: string
+        teamId:
+          type: integer
+          format: int64
+        teamName:
+          type: string
+        gpuRequirement:
+          type: string
+        totalSize:
+          type: integer
+          format: int64
+        modelId:
+          type: integer
+          format: int64
+        modelTotalSize:
+          type: integer
+          format: int64
+        createdAt:
+          type: string
+          format: date-time
+    RunCsvEntry:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        roundNumber:
+          type: integer
+          format: int64
+        crunchNumber:
+          type: integer
+          format: int64
+        userId:
+          type: integer
+          format: int64
+        userLogin:
+          type: string
+        projectId:
+          type: integer
+          format: int64
+        projectName:
+          type: string
+        teamId:
+          type: integer
+          format: int64
+        teamName:
+          type: string
+        submissionId:
+          type: integer
+          format: int64
+        initialModelId:
+          type: integer
+          format: int64
+        initialModelTotalSize:
+          type: integer
+          format: int64
+        terminalModelId:
+          type: integer
+          format: int64
+        terminalModelTotalSize:
+          type: integer
+          format: int64
+        predictionId:
+          type: integer
+          format: int64
+        predictionValid:
+          type: boolean
+        predictionSuccess:
+          type: boolean
+        predictionError:
+          type: string
+        predictionCreatedAt:
+          type: string
+          format: date-time
+        runtimeDefinitionName:
+          type: string
+        runtimeType:
+          type: string
+        trainFrequency:
+          type: integer
+          format: int64
+        forceFirstTrain:
+          type: boolean
+        status:
+          type: string
+        errorMessage:
+          type: string
+        exitCode:
+          type: integer
+          format: int32
+        exitReason:
+          type: string
+        success:
+          type: boolean
+        terminated:
+          type: boolean
+        managed:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        startedAt:
+          type: string
+          format: date-time
+        endedAt:
+          type: string
+          format: date-time
+        duration:
+          anyOf:
+          - $comment: Seconds
+            example: '60'
+          - format: duration
+            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
+            $comment: ISO 8601 Duration
+            example: PT1M
+        timeout:
+          anyOf:
+          - $comment: Seconds
+            example: '60'
+          - format: duration
+            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
+            $comment: ISO 8601 Duration
+            example: PT1M
+        cpu:
+          type: integer
+          format: int32
+        memory:
+          type: integer
+          format: int32
+    PredictionCsvEntry:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        userId:
+          type: integer
+          format: int64
+        userLogin:
+          type: string
+        projectId:
+          type: integer
+          format: int64
+        projectName:
+          type: string
+        teamId:
+          type: integer
+          format: int64
+        teamName:
+          type: string
+        runId:
+          type: integer
+          format: int64
+        submissionId:
+          type: integer
+          format: int64
+        valid:
+          type: boolean
+        success:
+          type: boolean
+        error:
+          type: string
+        deterministic:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        fileName:
+          type: string
+        fileSize:
+          type: integer
+          format: int64
+        fileUri:
+          type: string
+          format: uri
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

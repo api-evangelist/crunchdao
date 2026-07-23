@@ -1,0 +1,352 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity news API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: news
+paths:
+  /v1/news:
+    x-service-id: competition-service
+    get:
+      tags:
+      - news
+      summary: List news.
+      operationId: listNews
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/News'
+      deprecated: true
+    post:
+      tags:
+      - news
+      summary: Create a news.
+      operationId: createNews
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewsCreateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/News'
+  /v1/competitions/{competitionIdentifier}/news:
+    x-service-id: competition-service
+    get:
+      tags:
+      - news
+      summary: List news.
+      operationId: listCompetitionNews
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: mix
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/News'
+      deprecated: true
+    post:
+      tags:
+      - news
+      summary: Create a news.
+      operationId: createCompetitionNews
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewsCreateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/News'
+  /v2/news:
+    x-service-id: competition-service
+    get:
+      tags:
+      - news
+      summary: List news.
+      operationId: listNewsV2
+      parameters:
+      - name: competitionIdentifier
+        in: query
+        description: Limit news to a specific competition. Return global news if not specified.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Limit news to a specific competition. Return global news if not specified.
+      - name: mixed
+        in: query
+        description: Should competition news be mixed with global news?
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          description: Should competition news be mixed with global news?
+      - name: sort
+        in: query
+        description: Sort news.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Sort news.
+          enum:
+          - RECENT
+          - OLDEST
+      - name: page
+        in: query
+        description: Zero-based page index (0..N)
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - name: size
+        in: query
+        description: The size of the page to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageNews'
+  /v1/news/{newsId}:
+    x-service-id: competition-service
+    get:
+      tags:
+      - news
+      summary: Show a news.
+      operationId: getNews
+      parameters:
+      - name: newsId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/News'
+    delete:
+      tags:
+      - news
+      summary: Delete a news.
+      operationId: deleteNews
+      parameters:
+      - name: newsId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+  /v1/competitions/{competitionIdentifier}/news/{newsId}:
+    x-service-id: competition-service
+    get:
+      tags:
+      - news
+      summary: Show a news.
+      operationId: getCompetitionNews
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: newsId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/News'
+    delete:
+      tags:
+      - news
+      summary: Delete a news.
+      operationId: deleteCompetitionNews
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: newsId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    PageNews:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/News'
+    NewsAuthorCreateForm:
+      type: object
+      properties:
+        name:
+          type: string
+        imageUrl:
+          type: string
+        url:
+          type: string
+      required:
+      - name
+    NewsCreateForm:
+      type: object
+      properties:
+        title:
+          type: string
+        imageUrl:
+          type: string
+        url:
+          type: string
+        author:
+          $ref: '#/components/schemas/NewsAuthorCreateForm'
+      required:
+      - author
+      - title
+    News:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        competitionId:
+          type: integer
+          format: int64
+        title:
+          type: string
+        imageUrl:
+          type: string
+        url:
+          type: string
+        author:
+          $ref: '#/components/schemas/NewsAuthor'
+        createdAt:
+          type: string
+          format: date-time
+    NewsAuthor:
+      type: object
+      properties:
+        name:
+          type: string
+        imageUrl:
+          type: string
+        url:
+          type: string
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

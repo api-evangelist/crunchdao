@@ -1,0 +1,1015 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity project API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: project
+paths:
+  /v4/projects/~:
+    x-service-id: competition-service
+    post:
+      tags:
+      - project
+      summary: Find project by ID in batch.
+      operationId: batchFindProjectById
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: integer
+                format: int64
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SimpleProject'
+  /v4/projects/search:
+    x-service-id: competition-service
+    post:
+      tags:
+      - project
+      summary: Search projects by filters
+      operationId: searchProjectV4
+      parameters:
+      - name: page
+        in: query
+        description: Zero-based page index (0..N)
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - name: size
+        in: query
+        description: The size of the page to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      - name: sort
+        in: query
+        description: 'Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectsSearchCriteria'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageProjectView'
+  /v4/competitions/{competitionIdentifier}/projects/{userLogin}/{projectIdentifier}/selection:
+    x-service-id: competition-service
+    get:
+      tags:
+      - project
+      summary: Show a project selection.
+      operationId: getProjectSelectionV3
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userLogin
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: projectIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: roundNumber
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectSelection'
+    post:
+      tags:
+      - project
+      summary: Edit a project selection.
+      operationId: updateProjectSelectionV3
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userLogin
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: projectIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: roundNumber
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectSelectionUpdateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectSelection'
+  /v3/competitions/{competitionIdentifier}/projects/{userLogin}:
+    x-service-id: competition-service
+    get:
+      tags:
+      - project
+      summary: List the projects of a user.
+      operationId: listProjectsV3
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userLogin
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Project'
+      security:
+      - accessToken: []
+      - apiKey: []
+    post:
+      tags:
+      - project
+      summary: Create a project.
+      operationId: createProjectV3
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userLogin
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectCreateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v3/competitions/{competitionIdentifier}/projects/{userLogin}/{projectIdentifier}/select:
+    x-service-id: competition-service
+    post:
+      tags:
+      - project
+      summary: Select a project for the leaderboard.
+      operationId: selectProjectV3
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userLogin
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: projectIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v3/competitions/{competitionIdentifier}/projects/{userLogin}/{projectIdentifier}:
+    x-service-id: competition-service
+    get:
+      tags:
+      - project
+      summary: Show a project.
+      operationId: showProjectV3
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userLogin
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: projectIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+      security:
+      - accessToken: []
+      - apiKey: []
+    patch:
+      tags:
+      - project
+      summary: Update a project.
+      operationId: updateProjectV3
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userLogin
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: projectIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectUpdateForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v4/projects/{projectId}/performance:
+    x-service-id: competition-service
+    get:
+      tags:
+      - project
+      summary: Performance of project
+      operationId: getProjectPerformanceV4
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProjectPerformance'
+  /v3/competitions/{competitionIdentifier}/projects/{userLogin}/{projectIdentifier}/quota:
+    x-service-id: competition-service
+    get:
+      tags:
+      - project
+      summary: Use `/compute` instead.
+      operationId: getQuota
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userLogin
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: projectIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: roundNumber
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectComputeQuota'
+      deprecated: true
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v3/competitions/{competitionIdentifier}/projects/{userLogin}/{projectIdentifier}/quota/submit:
+    x-service-id: competition-service
+    get:
+      tags:
+      - project
+      summary: Show a project's submit quota.
+      operationId: getSubmitQuota
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userLogin
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: projectIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: roundNumber
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectSubmitQuota'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v3/competitions/{competitionIdentifier}/projects/{userLogin}/{projectIdentifier}/quota/compute:
+    x-service-id: competition-service
+    get:
+      tags:
+      - project
+      summary: Show a project's quota.
+      operationId: getComputeQuota
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userLogin
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: projectIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: roundNumber
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectComputeQuota'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v1/competitions/{competitionIdentifier}/projects/{userLogin}/recommend-name:
+    x-service-id: competition-service
+    get:
+      tags:
+      - project
+      summary: Generate a random project name.
+      operationId: recommendProjectName
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userLogin
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+      security:
+      - accessToken: []
+      - apiKey: []
+components:
+  schemas:
+    PageProjectView:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProjectView'
+    ProjectSelection:
+      type: object
+      properties:
+        project:
+          $ref: '#/components/schemas/Project'
+        submission:
+          $ref: '#/components/schemas/ProjectSelectionSubmission'
+        trainFrequency:
+          type: integer
+          format: int64
+        forceFirstTrain:
+          type: boolean
+        runtimeType:
+          $ref: '#/components/schemas/RuntimeType'
+        runId:
+          type: integer
+          format: int64
+        runnable:
+          type: boolean
+        origin:
+          $ref: '#/components/schemas/ProjectSelectionOrigin'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        submissionId:
+          type: integer
+          format: int64
+          deprecated: true
+    Crunch:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        phase:
+          $ref: '#/components/schemas/Phase'
+        number:
+          type: integer
+          format: int64
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        showRuns:
+          type: boolean
+        showMetricsDetails:
+          type: boolean
+        showRunLogs:
+          type: boolean
+        showScoresValue:
+          type: boolean
+        leaderboardSimilarityThreshold:
+          type: number
+          format: float
+        published:
+          type: boolean
+        dataReleaseId:
+          type: integer
+          format: int64
+        splits:
+          type: array
+          items:
+            $ref: '#/components/schemas/CrunchSplit'
+    ProjectComputeQuota:
+      type: object
+      properties:
+        running:
+          type: boolean
+          description: Is the project currently running.
+        available:
+          anyOf:
+          - $comment: Seconds
+            example: '60'
+          - format: duration
+            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
+            $comment: ISO 8601 Duration
+            example: PT1M
+          description: Total available compute time.
+        used:
+          anyOf:
+          - $comment: Seconds
+            example: '60'
+          - format: duration
+            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
+            $comment: ISO 8601 Duration
+            example: PT1M
+          description: Used compute time.
+        remaining:
+          anyOf:
+          - $comment: Seconds
+            example: '60'
+          - format: duration
+            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
+            $comment: ISO 8601 Duration
+            example: PT1M
+          description: Remaining compute time.
+        details:
+          type: array
+          description: Detailed quota usage for each crunches.
+          items:
+            $ref: '#/components/schemas/ProjectComputeQuotaDetail'
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+    ProjectSubmitQuota:
+      type: object
+      properties:
+        codeFiles:
+          $ref: '#/components/schemas/ProjectSubmitQuotaFileLimit'
+          description: Maximum code size (sum of files).
+        modelFiles:
+          $ref: '#/components/schemas/ProjectSubmitQuotaFileLimit'
+          description: Maximum model size (sum of files).
+        notebookFile:
+          $ref: '#/components/schemas/ProjectSubmitQuotaFileLimit'
+          description: Maximum notebook size.
+        predictionFile:
+          $ref: '#/components/schemas/ProjectSubmitQuotaFileLimit'
+          description: Maximum prediction size.
+        submissionsPerDay:
+          $ref: '#/components/schemas/ProjectSubmitQuotaCountLimit'
+          description: Maximum submissions per day.
+    PhaseSplit:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+    Project:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        competitionId:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/User'
+        name:
+          type: string
+        selected:
+          type: boolean
+        submitted:
+          type: boolean
+        note:
+          type: string
+        writeupUrl:
+          type: string
+        writeupArchived:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
+    ProjectSelectionOrigin:
+      type: string
+      enum:
+      - SELECTION
+      - PREVIOUS_ROUND
+      - LAST_RUN
+    ProjectSelectionSubmission:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        number:
+          type: integer
+          format: int64
+    ProjectSubmitQuotaCountLimit:
+      type: object
+      properties:
+        current:
+          type: integer
+          format: int64
+          description: Current count of submissions.
+        maximum:
+          type: integer
+          format: int64
+          description: Maximum count allowed.
+        bypass:
+          type: boolean
+          description: Allowed to bypass the limit.
+    RuntimeType:
+      type: string
+      enum:
+      - CPU
+      - GPU
+      - COPY
+    ProjectsSearchCriteria:
+      type: object
+      properties:
+        name:
+          type: string
+        sortBy:
+          type: string
+          enum:
+          - MOST_REWARDS
+          - RECENTLY_CREATED
+          - RECENTLY_UPDATED
+    PhaseType:
+      type: string
+      enum:
+      - SUBMISSION
+      - OUT_OF_SAMPLE
+    ProjectCreateForm:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 60
+          minLength: 1
+      required:
+      - name
+    Phase:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/PhaseType'
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        dataReleaseId:
+          type: integer
+          format: int64
+        localDataReleaseId:
+          type: integer
+          format: int64
+        cloudCredits:
+          anyOf:
+          - $comment: Seconds
+            example: '60'
+          - format: duration
+            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
+            $comment: ISO 8601 Duration
+            example: PT1M
+        perCrunchWeight:
+          type: number
+          format: float
+        autoCompute:
+          type: boolean
+        runDisabled:
+          type: boolean
+        showPositions:
+          type: boolean
+        showProjectNames:
+          type: boolean
+        runDeterminismCheckEnabled:
+          type: boolean
+        showOnlyRewardedProjectsDefault:
+          type: boolean
+        splits:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhaseSplit'
+    ProjectComputeQuotaDetail:
+      type: object
+      properties:
+        crunch:
+          $ref: '#/components/schemas/Crunch'
+        available:
+          anyOf:
+          - $comment: Seconds
+            example: '60'
+          - format: duration
+            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
+            $comment: ISO 8601 Duration
+            example: PT1M
+        used:
+          anyOf:
+          - $comment: Seconds
+            example: '60'
+          - format: duration
+            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
+            $comment: ISO 8601 Duration
+            example: PT1M
+        runCount:
+          type: integer
+          format: int64
+    ProjectView:
+      type: object
+      properties:
+        name:
+          type: string
+        projectId:
+          type: integer
+          format: int64
+        projectName:
+          type: string
+        userId:
+          type: integer
+          format: int64
+        userName:
+          type: string
+        competitionsNames:
+          type: array
+          items:
+            type: string
+        totalOfRewards:
+          type: number
+        lastModified:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+        private:
+          type: boolean
+    ProjectUpdateForm:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Project name, must be a slug.
+          maxLength: 60
+          minLength: 1
+        note:
+          type: string
+          description: Personal note.
+          maxLength: 2000
+          minLength: 0
+        writeupUrl:
+          type: string
+          description: URL to the project's writeup
+          maxLength: 2048
+          minLength: 0
+      required:
+      - name
+    ProjectSelectionUpdateForm:
+      type: object
+      properties:
+        runId:
+          type: integer
+          format: int64
+      required:
+      - runId
+    ProjectPerformance:
+      type: object
+      properties:
+        roundNumber:
+          type: integer
+          format: int64
+        phaseType:
+          type: string
+        crunchNumber:
+          type: integer
+          format: int64
+        scoreValue:
+          type: number
+          format: double
+        metricId:
+          type: integer
+          format: int64
+        runId:
+          type: integer
+          format: int64
+    SimpleProject:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        competitionId:
+          type: integer
+          format: int64
+        userId:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/User'
+        name:
+          type: string
+    ProjectSubmitQuotaFileLimit:
+      type: object
+      properties:
+        totalSize:
+          type: integer
+          format: int64
+          description: Total size in bytes.
+    CrunchSplit:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

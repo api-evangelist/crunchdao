@@ -1,0 +1,123 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity rule API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: rule
+paths:
+  /v1/competitions/{competitionIdentifier}/rules/accept:
+    x-service-id: competition-service
+    post:
+      tags:
+      - rule
+      summary: Accept rules.
+      operationId: acceptRules
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RuleAcceptForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RuleAgreement'
+      security:
+      - accessToken: []
+      - apiKey: []
+  /v1/competitions/{competitionIdentifier}/rules:
+    x-service-id: competition-service
+    get:
+      tags:
+      - rule
+      summary: Show the rule of a competition.
+      operationId: showRulesContent
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/html:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string
+  /v1/competitions/{competitionIdentifier}/rules/status:
+    x-service-id: competition-service
+    get:
+      tags:
+      - rule
+      summary: Show current rule agreemeent status.
+      operationId: showRulesStatus
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RuleAgreement'
+      security:
+      - accessToken: []
+      - apiKey: []
+components:
+  schemas:
+    RuleAgreement:
+      type: object
+      properties:
+        accepted:
+          type: boolean
+        acceptedAt:
+          type: string
+          format: date-time
+    RuleAcceptForm:
+      type: object
+      properties:
+        cruncherPubkey:
+          type: string
+      required:
+      - cruncherPubkey
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com

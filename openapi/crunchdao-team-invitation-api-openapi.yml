@@ -1,0 +1,227 @@
+openapi: 3.1.0
+info:
+  title: Tournament activity team:invitation API
+  description: CrunchDAO Tournament Platform API Endpoints
+  version: v2
+servers:
+- url: http://api.hub.crunchdao.com
+  description: Generated server url
+security: []
+tags:
+- name: team:invitation
+paths:
+  /v1/competitions/{competitionIdentifier}/team-invitations/{teamIdentifier}:
+    x-service-id: competition-service
+    get:
+      tags:
+      - team:invitation
+      summary: Show an invitation.
+      operationId: getTeamInvitation
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: teamIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamInvitation'
+    delete:
+      tags:
+      - team:invitation
+      summary: Decline an invitation.
+      operationId: declineTeamInvitation
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: teamIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '202':
+          description: Accepted
+    patch:
+      tags:
+      - team:invitation
+      summary: Accept an invitation.
+      operationId: acceptTeamInvitation
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: teamIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '202':
+          description: Accepted
+  /v1/competitions/{competitionIdentifier}/teams/{teamIdentifier}/invitations:
+    x-service-id: competition-service
+    get:
+      tags:
+      - team:invitation
+      summary: List pending team invitations.
+      operationId: listPendingTeamInvitations
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: teamIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TeamInvitation'
+  /v1/competitions/{competitionIdentifier}/team-invitations:
+    x-service-id: competition-service
+    get:
+      tags:
+      - team:invitation
+      summary: List invitations.
+      operationId: listTeamInvitation
+      parameters:
+      - name: competitionIdentifier
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TeamInvitation'
+components:
+  schemas:
+    TeamInvitation:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/User'
+        team:
+          $ref: '#/components/schemas/Team'
+        createdAt:
+          type: string
+          format: date-time
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
+    TeamMember:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          type: string
+          format: date-time
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
+    Team:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          type: string
+        leader:
+          $ref: '#/components/schemas/User'
+          description: Team leader, or `null` if leaders are disabled.
+        size:
+          type: integer
+          format: int32
+        deleted:
+          type: boolean
+        lookingForTeammates:
+          type: boolean
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamMember'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: apiKey
+      in: query
+      scheme: token
+    accessToken:
+      type: http
+      in: header
+      scheme: Bearer
+externalDocs:
+  description: docs.crunchdao.com
+  url: https://docs.crunchdao.com
