@@ -1,0 +1,28 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.crunchdao.com/technical/tournament-api
+authentication:
+  styles:
+  - {type: api-key, header: 'Authorization: API-Key <token>', query: '?apiKey=<token>'}
+  - {type: access-token, header: 'Authorization: Bearer <token>', query: '?accessToken=<token>'}
+  key_management: https://hub.crunchdao.com/account/api
+  ref: authentication/crunchdao-authentication.yml
+idempotency:
+  supported: false
+  note: No Idempotency-Key header or idempotency contract is documented or present in
+    the OpenAPI.
+pagination:
+  style: page-number
+  params: [page, size, sort]
+  note: Spring-style page/size/sort query parameters on list endpoints (e.g. list competitions,
+    leaderboards, participants). No cursor pagination.
+versioning:
+  style: uri-path
+  ref: lifecycle/crunchdao-lifecycle.yml
+error_envelope:
+  format: crunchdao-error-envelope
+  shape: '{ code: UPPER_SNAKE_CASE, message: string, ...context }'
+  ref: errors/crunchdao-problem-types.yml
+rate_limiting:
+  signaled: false
+  note: No rate-limit response headers found in the OpenAPI spec.

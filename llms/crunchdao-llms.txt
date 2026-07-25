@@ -1,0 +1,62 @@
+# CrunchDAO Docs V3
+
+## 🇺🇸 English
+
+- [Welcome](https://docs.crunchdao.com/crunch-hub/welcome.md): Welcome to the global collective intelligence network.
+- [Register your account](https://docs.crunchdao.com/crunch-hub/register.md): Joining Crunch gives you access to competitions, datasets, and the global collective intelligence network. With your account, you can submit models, track results, and earn rewards.
+- [Navigate the Dashboard](https://docs.crunchdao.com/crunch-hub/dashboard.md): The gateway to the Crunch ecosystem, where it all begins.
+- [Activity Graphs](https://docs.crunchdao.com/crunch-hub/dashboard/activity-graphs.md): Understand how activities are counted.
+- [Competitions](https://docs.crunchdao.com/real-time-competitions/competitions.md)
+- [Numinous: Predictive Agents For Real World Outcome](https://docs.crunchdao.com/real-time-competitions/competitions/numinous.md)
+- [Falcon: The Collective Pricing Engine](https://docs.crunchdao.com/real-time-competitions/competitions/falcon.md): Can you outsmart the falcons and predict where the dove will go next?
+- [Synth: Synthetic Price Data](https://docs.crunchdao.com/real-time-competitions/competitions/synth.md): Forecast prices of Bitcoin, Ethereum, Solana, Tether Gold, and tokenized stocks (Apple, Nvidia, Tesla, Alphabet, S\&P 500).
+- [Participate](https://docs.crunchdao.com/real-time-competitions/participate.md): To get started and submit your first model, you will need to pass through the following steps.
+- [Competitions](https://docs.crunchdao.com/competitions/competitions.md)
+- [ADIA Lab Structural Break Challenge: Real Time Edition](https://docs.crunchdao.com/competitions/competitions/structural-break-real-time.md): Monitor time series in real time and detect when their behaviour changes.
+- [DataCrunch Equity Market Neutral #2](https://docs.crunchdao.com/competitions/competitions/datacrunch-2.md): This weekly cross-sectional problem target the expected returns of the 3000 most liquid US equities.
+- [From Dataset #1 to Dataset #2](https://docs.crunchdao.com/competitions/competitions/datacrunch-2/from-dataset-1-to-dataset-2.md)
+- [Obesity ML Competition: Tackling Metabolic Diseases](https://docs.crunchdao.com/competitions/competitions/broad-obesity.md): Can you design algorithms that identify genes driving obesity and metabolic disease?
+- [Crunch 1 – Predicting the effect of held-out single-gene perturbations](https://docs.crunchdao.com/competitions/competitions/broad-obesity/crunch-1.md): Predict the single-cell transcriptomic response to unseen single-gene perturbations.
+- [Crunch 2 – Predicting the effect of held-out double-gene perturbations](https://docs.crunchdao.com/competitions/competitions/broad-obesity/crunch-2.md): Predict the single-cell transcriptomic response to double-gene perturbations.
+- [Crunch 3 – Identifying combinatorial perturbations to drive adipocyte differentiation](https://docs.crunchdao.com/competitions/competitions/broad-obesity/crunch-3.md): Nominate combinatorial gene perturbations that are predicted to most strongly increase a target transcriptional program.
+- [Full Specifications](https://docs.crunchdao.com/competitions/competitions/broad-obesity/full-specifications.md)
+- [Crash Course](https://docs.crunchdao.com/competitions/competitions/broad-obesity/crash-course.md)
+- [ADIA Lab Structural Break Open Benchmark Challenge](https://docs.crunchdao.com/competitions/competitions/structural-break-open-benchmark.md): New edition of the ADIA Lab Structural Break Challenge with a new dataset.
+- [DataCrunch Competition](https://docs.crunchdao.com/competitions/competitions/datacrunch-competition.md): This weekly prediction contrast ranks 3000 most liquid US equities for DataCrunch's Hedge Fund.
+- [ADIA Lab Structural Break Challenge](https://docs.crunchdao.com/competitions/competitions/adia-lab-structural-break-challenge.md): Detect structural changes in time series data for accurate insights.
+- [Broad Institute Autoimmune Disease](https://docs.crunchdao.com/competitions/competitions/broad-institute-autoimmune-disease.md): Crunch Foundation, The Eric and Wendy Schmidt Center, and The Klarman Cell Observatory invite you to join the Autoimmune Disease ML Challenge to design algorithms to help millions of people.
+- [Crunch 1 – Oct 28 to Feb 9 – Predict gene expression](https://docs.crunchdao.com/competitions/competitions/broad-institute-autoimmune-disease/crunch-1.md): Predict gene expression in spatial transcriptomics data from matched pathology images
+- [Crunch 2 – Nov 18 to Mar 21 – Predicting Unseen Genes](https://docs.crunchdao.com/competitions/competitions/broad-institute-autoimmune-disease/crunch-2.md)
+- [Crunch 3 – Dec 9 to Apr 30 – Identifying Gene](https://docs.crunchdao.com/competitions/competitions/broad-institute-autoimmune-disease/crunch-3.md)
+- [Full Specifications](https://docs.crunchdao.com/competitions/competitions/broad-institute-autoimmune-disease/full-specifications.md)
+- [Lectures](https://docs.crunchdao.com/competitions/competitions/broad-institute-autoimmune-disease/lectures.md)
+- [ADIA Lab Causal Discovery](https://docs.crunchdao.com/competitions/competitions/adia-lab-causal-discovery.md)
+- [ADIA Lab Market Prediction Competition](https://docs.crunchdao.com/competitions/competitions/adia-lab-market-prediction-competition.md)
+- [Rallies](https://docs.crunchdao.com/competitions/rallies.md)
+- [Mid+One](https://docs.crunchdao.com/competitions/rallies/mid+one.md): Attacking together, make us stronger.
+- [DataCrunch Rally](https://docs.crunchdao.com/competitions/rallies/datacrunch-rally.md)
+- [X-Alpha Rally](https://docs.crunchdao.com/competitions/rallies/x-alpha-rally.md): CrunchDAO & X Alpha offer this first of a series of $10,000 Bounty to build the most Powerful, Robust and Unbiased AI-Driven VC algorithm.
+- [Participate](https://docs.crunchdao.com/competitions/participate.md): To get started and submit your first model, you will need to pass through the following steps.
+- [Notebook Processor](https://docs.crunchdao.com/competitions/participate/notebook-processor.md)
+- [Code Interface](https://docs.crunchdao.com/competitions/participate/code-interface.md)
+- [Data](https://docs.crunchdao.com/competitions/participate/data.md)
+- [Whitelisted Libraries](https://docs.crunchdao.com/competitions/participate/whitelisted-libraries.md)
+- [Resources Limit](https://docs.crunchdao.com/competitions/participate/resources-limit.md)
+- [R Usage](https://docs.crunchdao.com/competitions/participate/r-usage.md): Experimental polyglot support.
+- [Teams](https://docs.crunchdao.com/competitions/teams.md): A TLDR about the team feature.
+- [Managing](https://docs.crunchdao.com/competitions/teams/managing.md)
+- [Referendums](https://docs.crunchdao.com/competitions/teams/referendums.md)
+- [Leaderboard](https://docs.crunchdao.com/competitions/teams/leaderboard.md)
+- [Rewards](https://docs.crunchdao.com/competitions/teams/rewards.md): How are rewards distributed within a team?
+- [Leaderboard](https://docs.crunchdao.com/competitions/leaderboard.md)
+- [Duplicate Predictions](https://docs.crunchdao.com/competitions/leaderboard/duplicate-predictions.md): How is the duplicate badge triggered.
+- [FAQs](https://docs.crunchdao.com/competitions/faqs.md): Frequently Asked Questions
+- [Prize Winners](https://docs.crunchdao.com/competitions/faqs/prize-winners.md)
+- [Contact us](https://docs.crunchdao.com/competitions/faqs/contact-us.md)
+- [Known Issues](https://docs.crunchdao.com/competitions/faqs/known-issues.md): A list of known problem and how to solve them.
+- [Tournament API](https://docs.crunchdao.com/technical/tournament-api.md): How to use the API to interact with the website.
+- [Your Wallet (MetaMask)](https://docs.crunchdao.com/crunch-token-practical/metamask.md)
+- [Adding the Token](https://docs.crunchdao.com/crunch-token-practical/adding-the-token.md)
+- [Release Map](https://docs.crunchdao.com/crunch-token-practical/release-map.md)
+- [Glossary](https://docs.crunchdao.com/other/glossary.md): Technical definitions of platform concepts.
+- [Credits](https://docs.crunchdao.com/other/avatar.md)

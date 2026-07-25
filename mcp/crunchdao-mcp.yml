@@ -1,0 +1,23 @@
+generated: '2026-07-18'
+method: derived
+status: candidate
+source: openapi/crunchdao-tournament-openapi.json
+note: No official hosted/remote MCP server was found for CrunchDAO. This is a candidate
+  tool list derived from marquee Tournament API operations; auth is the CRUNCH_API_KEY
+  API key (Authorization API-Key header or ?apiKey).
+server:
+  name: crunchdao-tournament
+  transport: http
+  base_url: https://api.hub.crunchdao.com
+tools:
+- {name: list_competitions, description: List competitions, source_operation: 'openapi/crunchdao-tournament-openapi.json#listCompetitionsV2'}
+- {name: get_competition, description: Get a competition by identifier, source_operation: 'openapi/crunchdao-tournament-openapi.json#getCompetition'}
+- {name: get_competition_state, description: Get current competition state, source_operation: 'openapi/crunchdao-tournament-openapi.json#getCompetitionState'}
+- {name: list_rounds, description: List rounds of a competition, source_operation: 'openapi/crunchdao-tournament-openapi.json#listRounds'}
+- {name: list_leaderboards, description: List leaderboards for a competition, source_operation: 'openapi/crunchdao-tournament-openapi.json#listLeaderboards'}
+- {name: get_leaderboard_positions, description: Get positions for a leaderboard definition, source_operation: 'openapi/crunchdao-tournament-openapi.json#getLeaderboardPositions'}
+- {name: list_projects, description: List a user's projects in a competition, source_operation: 'openapi/crunchdao-tournament-openapi.json#listProjectsV3'}
+- {name: create_project, description: Create a project for a competition, source_operation: 'openapi/crunchdao-tournament-openapi.json#createProjectV3'}
+- {name: list_submissions, description: List submissions for a project, source_operation: 'openapi/crunchdao-tournament-openapi.json#listSubmissionsV4'}
+- {name: create_submission, description: Create a submission, source_operation: 'openapi/crunchdao-tournament-openapi.json#createSubmissionV4'}
+- {name: list_predictions, description: List predictions for a project, source_operation: 'openapi/crunchdao-tournament-openapi.json#listPredictions'}

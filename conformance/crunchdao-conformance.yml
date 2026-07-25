@@ -1,0 +1,16 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/crunchdao-tournament-openapi.json
+standards:
+- {id: openapi-3.1, conforms: true, evidence: spec is OpenAPI 3.1.0}
+- {id: apikey-auth, conforms: true, evidence: securityScheme type apiKey (query) documented}
+- {id: bearer-token, conforms: true, evidence: securityScheme http Bearer (accessToken)}
+- {id: oauth2, conforms: false, evidence: no oauth2 securityScheme declared}
+- {id: oidc, conforms: false}
+- {id: rfc9457-problem-details, conforms: false, evidence: 'uses custom code/message envelope, not application/problem+json'}
+- {id: pagination, conforms: true, evidence: Spring page/size/sort query parameters on list endpoints}
+- {id: idempotency, conforms: false, evidence: no Idempotency-Key contract}
+- {id: json-api, conforms: false}
+- {id: fhir, conforms: false}
+- {id: scim, conforms: false}
+- {id: odata, conforms: false}

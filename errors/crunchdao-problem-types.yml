@@ -1,0 +1,22 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.crunchdao.com/technical/tournament-api
+format: crunchdao-error-envelope
+note: 'The Tournament API does NOT use RFC 9457 problem+json. Any response that is
+  not a 2XX or 3XX is an error, returned as a JSON object with a stable UPPER_SNAKE_CASE
+  `code`, a human `message`, and additional context properties specific to the error.
+  The OpenAPI declares only 2xx/3xx responses per operation, so this catalog is sourced
+  from the documented error contract rather than derived from the spec.'
+envelope:
+  fields:
+  - {name: code, type: string, description: Unique machine code in UPPER_SNAKE_CASE (e.g. SUBMISSION_NOT_FOUND).}
+  - {name: message, type: string, description: Human-readable message, often with more detail.}
+  - {name: '<context>', type: any, description: 'Additional error-specific properties, e.g. submissionNumber, projectName.'}
+  example:
+    code: SUBMISSION_NOT_FOUND
+    message: submission not found
+    submissionNumber: 123
+    projectName: my-model
+problems:
+- {code: SUBMISSION_NOT_FOUND, title: Submission not found, source: docs}
+- {code: NO_RESOURCE_FOUND, title: Route/resource not found (HTTP 404), source: observed at /v3/api-docs}

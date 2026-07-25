@@ -1,0 +1,11 @@
+generated: '2026-07-18'
+method: generated
+skills:
+- file: crunchdao-submit-model.md
+  name: Submit a model to a CrunchDAO competition
+  api: openapi/crunchdao-tournament-openapi.json
+  operations: [listCompetitionsV2, getCompetition, getCompetitionState, createProjectV3, listProjectsV3, createSubmissionV4, listSubmissionsV4]
+- file: crunchdao-export-leaderboard.md
+  name: Export a CrunchDAO competition leaderboard
+  api: openapi/crunchdao-tournament-openapi.json
+  operations: [getCompetition, listRounds, listLeaderboards, getLeaderboardPositions, listPredictions]

@@ -1,0 +1,40 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.crunchdao.com/technical/tournament-api
+versioning:
+  scheme: uri-path
+  note: Endpoints are versioned per-resource in the path (v1/v2/v3/v4 coexist); the
+    spec info.version is v2. Older resource versions remain live and are marked deprecated
+    in the OpenAPI as newer versions ship.
+  current_examples: [/v4/projects, /v4/competitions/.../submissions, /v3/.../predictions]
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: 'No formal written deprecation policy or RFC 8594 Sunset/Deprecation header
+    support was found; deprecation is signaled via the OpenAPI `deprecated: true`
+    flag on superseded resource versions.'
+status_page: https://status.crunchdao.com
+sla:
+  url: null
+deprecated_operations:
+- show_2            # GET /v2/users/@me
+- destroy           # DELETE /v2/users/@me
+- update_2          # PATCH /v2/users/@me
+- freezeImportedRequirementsWithMultipleLanguage
+- listLeaderboardsV2
+- reportRunnerTrace
+- reportRunnerCurrent
+- listNews
+- freezeImportedRequirements
+- listCompetitionNews
+- getPayoutV4
+- getQuota
+- cloneProjectV3
+- getLeaderboardPositions_1
+- showUserChanges_1
+- listGenericQuickstartersV1
+- getGenericQuickstarterV1
+- listCompetitionQuickstartersV1
+- getCompetitionQuickstarterV1
+- listDataReleases_1
+- listCompetitionChartsV1

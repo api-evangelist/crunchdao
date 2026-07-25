@@ -1,0 +1,31 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/crunchdao-tournament-openapi.json
+note: Core entity graph derived from the Tournament API path hierarchy and identifier
+  parameters (competitionIdentifier, roundIdentifier, phaseIdentifier, userLogin,
+  projectIdentifier, submissionNumber, predictionId). The API nests resources under
+  competitions.
+entities:
+- {name: competition, identifier: competitionIdentifier}
+- {name: round, identifier: roundIdentifier}
+- {name: phase, identifier: phaseIdentifier}
+- {name: crunch, identifier: crunchId}
+- {name: leaderboard, identifier: leaderboardDefinitionIdentifier}
+- {name: user, identifier: userLogin}
+- {name: project, identifier: projectIdentifier}
+- {name: submission, identifier: submissionNumber}
+- {name: prediction, identifier: predictionId}
+- {name: team, identifier: teamIdentifier}
+- {name: season, identifier: seasonNumber}
+- {name: payout, identifier: payoutId}
+relationships:
+- {from: competition, type: has_many, to: round, via: roundIdentifier}
+- {from: round, type: has_many, to: phase, via: phaseIdentifier}
+- {from: phase, type: has_many, to: crunch, via: crunchId}
+- {from: competition, type: has_many, to: leaderboard, via: leaderboardDefinitionIdentifier}
+- {from: competition, type: has_many, to: project, via: projectIdentifier}
+- {from: project, type: belongs_to, to: user, via: userLogin}
+- {from: project, type: has_many, to: submission, via: submissionNumber}
+- {from: project, type: has_many, to: prediction, via: predictionId}
+- {from: competition, type: has_many, to: season, via: seasonNumber}
+- {from: user, type: has_many, to: team, via: teamIdentifier}

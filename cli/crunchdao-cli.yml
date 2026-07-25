@@ -1,0 +1,31 @@
+generated: '2026-07-18'
+method: searched
+source: https://github.com/crunchdao/crunch-cli
+name: crunch
+binary: crunch
+package: crunch-cli
+language: python
+install:
+- pip install crunch-cli --upgrade
+description: The crunch CLI gives a GitHub-like experience for Crunch Hub competitions
+  - set up a local project from a competition, load competition data, test a model
+  locally, and push code submissions from the local environment. It also ships the
+  `crunch.api.Client` Python API client for the Tournament API.
+auth:
+  env_var: CRUNCH_API_KEY
+  note: Client.from_env() reads the CRUNCH_API_KEY environment variable; generate a
+    key in the account API Management section (https://hub.crunchdao.com/account/api).
+commands:
+- name: setup
+  summary: Set up a local project directory for a competition (clones data/quickstarter,
+    wires the submission token).
+- name: test
+  summary: Run and validate a model locally against downloaded competition data before
+    submitting.
+- name: push
+  summary: Submit code to the platform from the local environment (the primary submission flow).
+api_client:
+  entrypoint: crunch.api.Client
+  from_env: crunch.api.Client.from_env()
+  docs: https://docs.crunchdao.com/technical/tournament-api
+  source: https://github.com/crunchdao/crunch-cli/tree/master/crunch/api

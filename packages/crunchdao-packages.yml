@@ -1,0 +1,16 @@
+generated: '2026-07-18'
+method: searched
+source: https://pypi.org/project/crunch-cli/
+packages:
+- language: python
+  registry: pypi
+  name: crunch-cli
+  import_name: crunch
+  version: 11.9.0
+  url: https://pypi.org/project/crunch-cli/
+  repository: https://github.com/crunchdao/crunch-cli
+  install: pip install crunch-cli --upgrade
+  official: true
+  description: Official CrunchDAO CLI and Python API client for the Crunch Hub Tournament
+    platform. Provides `crunch.api.Client` for programmatic access plus the `crunch`
+    command for setting up, testing, and pushing competition submissions.

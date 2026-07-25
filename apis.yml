@@ -1,27 +1,1779 @@
 aid: crunchdao
 name: CrunchDAO
-description: 'CrunchDAO is a company surfaced as a portfolio company of multicoin-capital and added to
-  the API Evangelist network as a stub for enrichment. Sector: crypto-web3. This profile is a lead awaiting
-  the enrichment pipeline.'
+description: 'CrunchDAO is a collective-intelligence platform that crowdsources machine-learning
+  models from a global community of data scientists and PhDs to solve forecasting,
+  classification, anomaly-detection and causal-discovery problems across finance, crypto
+  and life sciences. Participants join real-time and structured competitions (Numinous,
+  Falcon, Synth, DataCrunch, ADIA Lab, Broad Institute) on Crunch Hub, submit models
+  with the official crunch-cli, and earn rewards. The Tournament API (api.hub.crunchdao.com)
+  exposes competitions, rounds, phases, leaderboards, projects, submissions and predictions
+  as a versioned REST API secured with API keys and bearer access tokens.'
 url: https://raw.githubusercontent.com/api-evangelist/crunchdao/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://crunchdao.com/favicon.ico
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - multicoin-capital
-x-tier: stub
+x-tier: enriched
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
 - Crypto Web3
-apis: []
+- Machine Learning
+- Data Science
+- Competitions
+- Collective Intelligence
+- Quantitative Finance
+- Predictions
+apis:
+- aid: crunchdao:crunchdao-activity-api
+  name: CrunchDAO activity API
+  description: The activity API from CrunchDAO — 4 operation(s) for activity.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - activity
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-activity-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-auth-api-key-api
+  name: CrunchDAO auth:api-key API
+  description: The auth:api-key API from CrunchDAO — 3 operation(s) for auth:api-key.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - auth:api-key
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-auth-api-key-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-auth-api
+  name: CrunchDAO auth API
+  description: The auth API from CrunchDAO — 6 operation(s) for auth.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - auth
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-auth-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-auth-oauth-api
+  name: CrunchDAO auth:oauth API
+  description: The auth:oauth API from CrunchDAO — 4 operation(s) for auth:oauth.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - auth:oauth
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-auth-oauth-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-avatar-api
+  name: CrunchDAO avatar API
+  description: The avatar API from CrunchDAO — 3 operation(s) for avatar.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - avatar
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-avatar-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-bounty-api
+  name: CrunchDAO bounty API
+  description: The bounty API from CrunchDAO — 3 operation(s) for bounty.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - bounty
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-bounty-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-broadcast-api
+  name: CrunchDAO broadcast API
+  description: The broadcast API from CrunchDAO — 2 operation(s) for broadcast.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - broadcast
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-broadcast-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-calendar-api
+  name: CrunchDAO calendar API
+  description: The calendar API from CrunchDAO — 2 operation(s) for calendar.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - calendar
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-calendar-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-certificate-api
+  name: CrunchDAO certificate API
+  description: The certificate API from CrunchDAO — 3 operation(s) for certificate.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - certificate
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-certificate-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-chart-api
+  name: CrunchDAO chart API
+  description: The chart API from CrunchDAO — 2 operation(s) for chart.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - chart
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-chart-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-chart-definition-api
+  name: CrunchDAO chart-definition API
+  description: The chart-definition API from CrunchDAO — 2 operation(s) for chart-definition.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - chart-definition
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-chart-definition-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-competition-api
+  name: CrunchDAO competition API
+  description: The competition API from CrunchDAO — 5 operation(s) for competition.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - competition
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-competition-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-competition-participant-api
+  name: CrunchDAO competition:participant API
+  description: >-
+    The competition:participant API from CrunchDAO — 6 operation(s) for competition:participant.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - competition:participant
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-competition-participant-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-competition-slice-api
+  name: CrunchDAO competition:slice API
+  description: The competition:slice API from CrunchDAO — 4 operation(s) for competition:slice.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - competition:slice
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-competition-slice-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-connection-api
+  name: CrunchDAO connection API
+  description: The connection API from CrunchDAO — 10 operation(s) for connection.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - connection
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-connection-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-country-api
+  name: CrunchDAO country API
+  description: The country API from CrunchDAO — 4 operation(s) for country.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - country
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-country-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-crunch-api
+  name: CrunchDAO crunch API
+  description: The crunch API from CrunchDAO — 2 operation(s) for crunch.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - crunch
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-crunch-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-crunch-target-api
+  name: CrunchDAO crunch-target API
+  description: The crunch-target API from CrunchDAO — 2 operation(s) for crunch-target.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - crunch-target
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-crunch-target-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-currency-api
+  name: CrunchDAO currency API
+  description: The currency API from CrunchDAO — 1 operation(s) for currency.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - currency
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-currency-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-data-api
+  name: CrunchDAO data API
+  description: The data API from CrunchDAO — 5 operation(s) for data.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - data
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-data-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-deployment-api
+  name: CrunchDAO deployment API
+  description: The deployment API from CrunchDAO — 4 operation(s) for deployment.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - deployment
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-deployment-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-export-api
+  name: CrunchDAO export API
+  description: The export API from CrunchDAO — 3 operation(s) for export.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - export
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-export-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-feedback-api
+  name: CrunchDAO feedback API
+  description: The feedback API from CrunchDAO — 1 operation(s) for feedback.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - feedback
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-feedback-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-global-leaderboard-api
+  name: CrunchDAO global-leaderboard API
+  description: The global-leaderboard API from CrunchDAO — 7 operation(s) for global-leaderboard.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - global-leaderboard
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-global-leaderboard-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-institution-api
+  name: CrunchDAO institution API
+  description: The institution API from CrunchDAO — 5 operation(s) for institution.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - institution
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-institution-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-leaderboard-api
+  name: CrunchDAO leaderboard API
+  description: The leaderboard API from CrunchDAO — 8 operation(s) for leaderboard.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - leaderboard
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-leaderboard-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-leaderboard-definition-api
+  name: CrunchDAO leaderboard:definition API
+  description: >-
+    The leaderboard:definition API from CrunchDAO — 2 operation(s) for leaderboard:definition.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - leaderboard:definition
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-leaderboard-definition-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-legal-api
+  name: CrunchDAO legal API
+  description: The legal API from CrunchDAO — 2 operation(s) for legal.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - legal
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-legal-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-library-api
+  name: CrunchDAO library API
+  description: The library API from CrunchDAO — 5 operation(s) for library.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - library
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-library-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-library-request-api
+  name: CrunchDAO library:request API
+  description: The library:request API from CrunchDAO — 4 operation(s) for library:request.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - library:request
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-library-request-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-metric-api
+  name: CrunchDAO metric API
+  description: The metric API from CrunchDAO — 3 operation(s) for metric.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - metric
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-metric-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-model-api
+  name: CrunchDAO model API
+  description: The model API from CrunchDAO — 3 operation(s) for model.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - model
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-model-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-news-api
+  name: CrunchDAO news API
+  description: The news API from CrunchDAO — 5 operation(s) for news.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - news
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-news-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-onboard-api
+  name: CrunchDAO onboard API
+  description: The onboard API from CrunchDAO — 1 operation(s) for onboard.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - onboard
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-onboard-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-organizer-api
+  name: CrunchDAO organizer API
+  description: The organizer API from CrunchDAO — 4 operation(s) for organizer.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - organizer
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-organizer-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-organizer-application-api
+  name: CrunchDAO organizer:application API
+  description: The organizer:application API from CrunchDAO — 2 operation(s) for organizer:application.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - organizer:application
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-organizer-application-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-out-of-sample-api
+  name: CrunchDAO out-of-sample API
+  description: The out-of-sample API from CrunchDAO — 1 operation(s) for out-of-sample.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - out-of-sample
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-out-of-sample-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-payout-api
+  name: CrunchDAO payout API
+  description: The payout API from CrunchDAO — 9 operation(s) for payout.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - payout
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-payout-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-phase-api
+  name: CrunchDAO phase API
+  description: The phase API from CrunchDAO — 2 operation(s) for phase.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - phase
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-phase-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-pitch-api
+  name: CrunchDAO pitch API
+  description: The pitch API from CrunchDAO — 2 operation(s) for pitch.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - pitch
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-pitch-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-pitch-slice-api
+  name: CrunchDAO pitch:slice API
+  description: The pitch:slice API from CrunchDAO — 4 operation(s) for pitch:slice.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - pitch:slice
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-pitch-slice-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-prediction-api
+  name: CrunchDAO prediction API
+  description: The prediction API from CrunchDAO — 3 operation(s) for prediction.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - prediction
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-prediction-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-problem-api
+  name: CrunchDAO problem API
+  description: The problem API from CrunchDAO — 3 operation(s) for problem.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - problem
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-problem-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-project-api
+  name: CrunchDAO project API
+  description: The project API from CrunchDAO — 11 operation(s) for project.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - project
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-project-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-project-token-api
+  name: CrunchDAO project:token API
+  description: The project:token API from CrunchDAO — 4 operation(s) for project:token.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - project:token
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-project-token-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-quickstarter-api
+  name: CrunchDAO quickstarter API
+  description: The quickstarter API from CrunchDAO — 7 operation(s) for quickstarter.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - quickstarter
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-quickstarter-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-round-api
+  name: CrunchDAO round API
+  description: The round API from CrunchDAO — 2 operation(s) for round.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - round
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-round-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-rule-api
+  name: CrunchDAO rule API
+  description: The rule API from CrunchDAO — 3 operation(s) for rule.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - rule
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-rule-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-run-api
+  name: CrunchDAO run API
+  description: The run API from CrunchDAO — 5 operation(s) for run.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - run
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-run-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-runner-api
+  name: CrunchDAO runner API
+  description: The runner API from CrunchDAO — 9 operation(s) for runner.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - runner
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-runner-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-runtime-access-request-api
+  name: CrunchDAO runtime:access-request API
+  description: >-
+    The runtime:access-request API from CrunchDAO — 3 operation(s) for runtime:access-request.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - runtime:access-request
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-runtime-access-request-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-runtime-definition-api
+  name: CrunchDAO runtime:definition API
+  description: The runtime:definition API from CrunchDAO — 2 operation(s) for runtime:definition.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - runtime:definition
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-runtime-definition-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-season-api
+  name: CrunchDAO season API
+  description: The season API from CrunchDAO — 3 operation(s) for season.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - season
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-season-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-season-slice-api
+  name: CrunchDAO season:slice API
+  description: The season:slice API from CrunchDAO — 4 operation(s) for season:slice.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - season:slice
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-season-slice-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-security-credentials-api
+  name: CrunchDAO security-credentials API
+  description: The security-credentials API from CrunchDAO — 4 operation(s) for security-credentials.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - security-credentials
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-security-credentials-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-submission-api
+  name: CrunchDAO submission API
+  description: The submission API from CrunchDAO — 8 operation(s) for submission.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - submission
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-submission-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-target-api
+  name: CrunchDAO target API
+  description: The target API from CrunchDAO — 2 operation(s) for target.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - target
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-target-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-team-api
+  name: CrunchDAO team API
+  description: The team API from CrunchDAO — 4 operation(s) for team.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - team
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-team-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-team-invitation-api
+  name: CrunchDAO team:invitation API
+  description: The team:invitation API from CrunchDAO — 3 operation(s) for team:invitation.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - team:invitation
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-team-invitation-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-team-referendum-api
+  name: CrunchDAO team:referendum API
+  description: The team:referendum API from CrunchDAO — 5 operation(s) for team:referendum.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - team:referendum
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-team-referendum-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-timeline-api
+  name: CrunchDAO timeline API
+  description: The timeline API from CrunchDAO — 2 operation(s) for timeline.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - timeline
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-timeline-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-todo-api
+  name: CrunchDAO todo API
+  description: The todo API from CrunchDAO — 2 operation(s) for todo.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - todo
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-todo-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-transparency-api
+  name: CrunchDAO transparency API
+  description: The transparency API from CrunchDAO — 1 operation(s) for transparency.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - transparency
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-transparency-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-upload-api
+  name: CrunchDAO upload API
+  description: The upload API from CrunchDAO — 6 operation(s) for upload.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - upload
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-upload-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-user-api
+  name: CrunchDAO user API
+  description: The user API from CrunchDAO — 7 operation(s) for user.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - user
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-user-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-user-profile-api
+  name: CrunchDAO user:profile API
+  description: The user:profile API from CrunchDAO — 1 operation(s) for user:profile.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - user:profile
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-user-profile-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-webapp-api
+  name: CrunchDAO webapp API
+  description: The webapp API from CrunchDAO — 10 operation(s) for webapp.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - webapp
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-webapp-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-zzz-admin-api
+  name: CrunchDAO zzz-admin API
+  description: The zzz-admin API from CrunchDAO — 12 operation(s) for zzz-admin.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - zzz-admin
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-zzz-admin-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-zzz-debug-api
+  name: CrunchDAO zzz-debug API
+  description: The zzz-debug API from CrunchDAO — 1 operation(s) for zzz-debug.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - zzz-debug
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-zzz-debug-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
+- aid: crunchdao:crunchdao-zzz-webhook-api
+  name: CrunchDAO zzz-webhook API
+  description: The zzz-webhook API from CrunchDAO — 1 operation(s) for zzz-webhook.
+  humanURL: https://docs.crunchdao.com/technical/tournament-api
+  baseURL: https://api.hub.crunchdao.com
+  tags:
+  - zzz-webhook
+  properties:
+  - type: OpenAPI
+    url: openapi/crunchdao-zzz-webhook-api-openapi.yml
+  - type: Swagger
+    url: https://api.hub.crunchdao.com/swagger-ui/index.html
+  - type: Authentication
+    url: authentication/crunchdao-authentication.yml
+  - type: Conventions
+    url: conventions/crunchdao-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crunchdao-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/crunchdao-lifecycle.yml
+  - type: DataModel
+    url: data-model/crunchdao-data-model.yml
+  - type: Conformance
+    url: conformance/crunchdao-conformance.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/crunchdao-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/crunchdao-agentic-access.yml
+- type: Authentication
+  url: authentication/crunchdao-authentication.yml
+- type: MCPServer
+  url: mcp/crunchdao-mcp.yml
+- type: Packages
+  url: packages/crunchdao-packages.yml
+- type: SDKs
+  url: packages/crunchdao-packages.yml
+- type: CLI
+  url: cli/crunchdao-cli.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/crunchdao-llms.txt
+- type: StatusPage
+  url: https://status.crunchdao.com
+- type: DeveloperPortal
+  url: https://hub.crunchdao.com
+- type: Documentation
+  url: https://docs.crunchdao.com
+- type: APIReference
+  url: https://api.hub.crunchdao.com/swagger-ui/index.html
+- type: GettingStarted
+  url: https://docs.crunchdao.com/competitions/participate
+- type: Blog
+  url: https://blog.crunchdao.com
+- type: Support
+  url: https://forum.crunchdao.com
+- type: GitHubOrganization
+  url: https://github.com/crunchdao
+- type: SignUp
+  url: https://hub.crunchdao.com/signup
+- type: TermsOfService
+  url: https://hub.crunchdao.com/legal/terms
+- type: PrivacyPolicy
+  url: https://hub.crunchdao.com/legal/privacy
 - type: Website
   url: https://crunchdao.com
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
