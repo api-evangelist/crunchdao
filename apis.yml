@@ -1730,6 +1730,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/crunchdao-tournament-overlay.yaml
 - type: DomainSecurity
   url: security/crunchdao-domain-security.yml
 - type: AgenticAccess
