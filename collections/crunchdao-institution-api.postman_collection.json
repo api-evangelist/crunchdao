@@ -1,0 +1,576 @@
+{
+  "item": [
+    {
+      "id": "c860a58a-54cf-4b92-bc9f-f637e9fb7dad",
+      "name": "institution",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8ad211e2-5df7-4bf6-a54f-d484543b88ac",
+          "name": "Show an institution.",
+          "request": {
+            "name": "Show an institution.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "institutions",
+                ":institutionIdentifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "institutionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e7691b02-3c95-4048-89eb-eb7735a1cfce",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "institutions",
+                    ":institutionIdentifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "institutionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1405,\n  \"name\": \"string\",\n  \"displayName\": \"string\",\n  \"country\": \"string\",\n  \"totalPoints\": 8686,\n  \"memberCount\": 9335,\n  \"globalRank\": 8923,\n  \"about\": \"string\",\n  \"websiteUrl\": \"string\",\n  \"twitterUrl\": \"string\",\n  \"linkedInUrl\": \"string\",\n  \"createdAt\": \"1966-08-10T20:53:43.100Z\",\n  \"updatedAt\": \"2004-08-27T11:32:30.896Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2cbd3a2b-8a70-4fd9-a521-a7242b3c867d",
+          "name": "Get the institution positions of a global leaderboard.",
+          "request": {
+            "name": "Get the institution positions of a global leaderboard.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "institutions",
+                ":institutionIdentifier",
+                "participations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "globalLeaderboardIdentifier",
+                  "value": "INSTANCE"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Zero-based page index (0..N)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "The size of the page to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "institutionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "619f1980-5dbf-4eb6-b530-b8e1a047a7d2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "institutions",
+                    ":institutionIdentifier",
+                    "participations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "globalLeaderboardIdentifier",
+                      "value": "INSTANCE"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "institutionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageNumber\": 2580,\n  \"pageSize\": 7935,\n  \"totalElements\": 4353,\n  \"totalPages\": 8374,\n  \"content\": [\n    {\n      \"id\": 6634,\n      \"competition\": {\n        \"id\": 6814,\n        \"name\": \"string\",\n        \"displayName\": \"string\",\n        \"fullName\": \"string\",\n        \"shortDescription\": \"string\",\n        \"type\": \"PAUSED\",\n        \"format\": \"DAG\",\n        \"mode\": \"REAL_TIME\",\n        \"status\": \"PENDING\",\n        \"splitKeyType\": \"INTEGER\",\n        \"start\": \"1987-08-29T08:02:56.537Z\",\n        \"end\": \"1965-12-20T18:50:15.406Z\",\n        \"continuous\": true,\n        \"external\": false,\n        \"featured\": false,\n        \"visibility\": \"PUBLIC\",\n        \"url\": \"string\",\n        \"onChainId\": \"string\",\n        \"cardImageUrl\": \"string\",\n        \"bannerImageUrl\": \"string\",\n        \"documentationUrl\": \"string\",\n        \"notebookUrl\": \"string\",\n        \"advancedNotebookUrl\": \"string\",\n        \"discussionUrl\": \"string\",\n        \"codeUrl\": \"string\",\n        \"hostedByName\": \"string\",\n        \"prizePoolText\": \"string\",\n        \"prizePoolShortText\": \"string\",\n        \"prizePoolUsd\": 8616.185678302441,\n        \"projectNameFormat\": \"string\",\n        \"teamBased\": false,\n        \"onlyTeamLeader\": true,\n        \"maxTeamSize\": 5641,\n        \"projectCreationLimit\": 6210,\n        \"projectSelectionLimit\": 7486,\n        \"allowPredictions\": false,\n        \"encryptSubmissions\": false,\n        \"phalaKeyUrl\": \"string\",\n        \"hideDashboard\": false,\n        \"hideChanges\": false,\n        \"hidePerformance\": true,\n        \"hideRunPerformance\": false,\n        \"hideStatistics\": false,\n        \"hideNotebookSetupCommand\": false,\n        \"hideTrainFrequency\": false,\n        \"hideForceFirstTrain\": false,\n        \"web3\": true,\n        \"order\": 3769,\n        \"statistics\": {\n          \"entrants\": 4532,\n          \"participants\": 8185,\n          \"teams\": 1005,\n          \"submissions\": 6838,\n          \"runnables\": 3865\n        },\n        \"session\": {\n          \"state\": \"PAUSED\",\n          \"nextChange\": \"1957-08-15T16:12:20.938Z\"\n        },\n        \"createdAt\": \"2018-01-16T15:37:41.389Z\",\n        \"updatedAt\": \"2009-06-18T10:32:23.045Z\",\n        \"tags\": [\n          {\n            \"name\": \"string\",\n            \"displayName\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"displayName\": \"string\"\n          }\n        ],\n        \"timelineEvents\": [\n          {\n            \"id\": 8413,\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"title\": \"string\",\n            \"description\": \"string\",\n            \"date\": \"1988-04-24\",\n            \"color\": \"string\",\n            \"detailed\": true,\n            \"button\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdAt\": \"1978-10-13T20:17:06.611Z\",\n            \"updatedAt\": \"2021-02-03T08:07:12.569Z\"\n          },\n          {\n            \"id\": 3836,\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"title\": \"string\",\n            \"description\": \"string\",\n            \"date\": \"1976-02-22\",\n            \"color\": \"string\",\n            \"detailed\": true,\n            \"button\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdAt\": \"1986-04-27T05:39:57.141Z\",\n            \"updatedAt\": \"2000-10-26T14:18:10.805Z\"\n          }\n        ]\n      },\n      \"performance\": {\n        \"bestMember\": {\n          \"user\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"login\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"leaderboardRank\": 9039.790744871463\n        },\n        \"memberCount\": 4280,\n        \"totalPoints\": 7959\n      },\n      \"createdAt\": \"1973-01-09T06:30:28.582Z\"\n    },\n    {\n      \"id\": 2093,\n      \"competition\": {\n        \"id\": 447,\n        \"name\": \"string\",\n        \"displayName\": \"string\",\n        \"fullName\": \"string\",\n        \"shortDescription\": \"string\",\n        \"type\": \"OPEN\",\n        \"format\": \"TIMESERIES\",\n        \"mode\": \"REAL_TIME\",\n        \"status\": \"PENDING\",\n        \"splitKeyType\": \"STRING\",\n        \"start\": \"2020-11-07T04:10:49.238Z\",\n        \"end\": \"1955-07-28T08:14:26.936Z\",\n        \"continuous\": true,\n        \"external\": true,\n        \"featured\": false,\n        \"visibility\": \"HIDDEN\",\n        \"url\": \"string\",\n        \"onChainId\": \"string\",\n        \"cardImageUrl\": \"string\",\n        \"bannerImageUrl\": \"string\",\n        \"documentationUrl\": \"string\",\n        \"notebookUrl\": \"string\",\n        \"advancedNotebookUrl\": \"string\",\n        \"discussionUrl\": \"string\",\n        \"codeUrl\": \"string\",\n        \"hostedByName\": \"string\",\n        \"prizePoolText\": \"string\",\n        \"prizePoolShortText\": \"string\",\n        \"prizePoolUsd\": 4368.9365901933,\n        \"projectNameFormat\": \"string\",\n        \"teamBased\": false,\n        \"onlyTeamLeader\": false,\n        \"maxTeamSize\": 9872,\n        \"projectCreationLimit\": 9750,\n        \"projectSelectionLimit\": 85,\n        \"allowPredictions\": false,\n        \"encryptSubmissions\": false,\n        \"phalaKeyUrl\": \"string\",\n        \"hideDashboard\": false,\n        \"hideChanges\": true,\n        \"hidePerformance\": true,\n        \"hideRunPerformance\": true,\n        \"hideStatistics\": false,\n        \"hideNotebookSetupCommand\": false,\n        \"hideTrainFrequency\": true,\n        \"hideForceFirstTrain\": true,\n        \"web3\": false,\n        \"order\": 5177,\n        \"statistics\": {\n          \"entrants\": 7898,\n          \"participants\": 7431,\n          \"teams\": 4370,\n          \"submissions\": 5850,\n          \"runnables\": 4445\n        },\n        \"session\": {\n          \"state\": \"PAUSED\",\n          \"nextChange\": \"1976-12-01T04:30:31.507Z\"\n        },\n        \"createdAt\": \"1974-05-31T09:59:42.941Z\",\n        \"updatedAt\": \"1989-10-04T12:07:50.019Z\",\n        \"tags\": [\n          {\n            \"name\": \"string\",\n            \"displayName\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"displayName\": \"string\"\n          }\n        ],\n        \"timelineEvents\": [\n          {\n            \"id\": 594,\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"title\": \"string\",\n            \"description\": \"string\",\n            \"date\": \"1990-07-25\",\n            \"color\": \"string\",\n            \"detailed\": false,\n            \"button\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdAt\": \"1994-07-25T12:05:26.289Z\",\n            \"updatedAt\": \"1971-11-09T20:03:04.312Z\"\n          },\n          {\n            \"id\": 4362,\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"title\": \"string\",\n            \"description\": \"string\",\n            \"date\": \"2003-11-17\",\n            \"color\": \"string\",\n            \"detailed\": true,\n            \"button\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdAt\": \"1994-05-16T14:45:23.474Z\",\n            \"updatedAt\": \"1984-11-17T12:11:25.888Z\"\n          }\n        ]\n      },\n      \"performance\": {\n        \"bestMember\": {\n          \"user\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"login\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"leaderboardRank\": 7746.402765300709\n        },\n        \"memberCount\": 3283,\n        \"totalPoints\": 2738\n      },\n      \"createdAt\": \"1996-12-30T14:59:54.120Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73ef8806-6a20-4002-9113-14499e0a8b64",
+          "name": "Show an institution.",
+          "request": {
+            "name": "Show an institution.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "institutions",
+                ":institutionIdentifier",
+                "members"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Zero-based page index (0..N)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "The size of the page to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+                },
+                {
+                  "disabled": false,
+                  "key": "userLogin",
+                  "value": "<boolean>",
+                  "description": "Filter on user's login. Allow for a pattern (%)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "institutionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "569fc81d-1eb0-4186-a4a9-d6559024aee6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "institutions",
+                    ":institutionIdentifier",
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userLogin",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "institutionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageNumber\": 9115,\n  \"pageSize\": 8215,\n  \"totalElements\": 5295,\n  \"totalPages\": 6103,\n  \"content\": [\n    {\n      \"id\": 1529,\n      \"user\": {\n        \"id\": 4551,\n        \"login\": \"string\",\n        \"country\": \"string\",\n        \"points\": 4270,\n        \"globalRank\": 8574\n      },\n      \"rank\": 7692,\n      \"createdAt\": \"1963-04-12T07:23:45.933Z\",\n      \"updatedAt\": \"1959-05-28T09:03:29.619Z\"\n    },\n    {\n      \"id\": 53,\n      \"user\": {\n        \"id\": 899,\n        \"login\": \"string\",\n        \"country\": \"string\",\n        \"points\": 2199,\n        \"globalRank\": 8207\n      },\n      \"rank\": 5339,\n      \"createdAt\": \"2001-08-26T19:00:53.260Z\",\n      \"updatedAt\": \"1985-07-31T05:27:01.208Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b5d1bd6-61da-4a91-9e5e-348e3f7ea038",
+          "name": "Show an institution's banner.",
+          "request": {
+            "name": "Show an institution's banner.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "institutions",
+                ":institutionIdentifier",
+                "banner"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "temporaryRedirect",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "institutionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ef01257a-25ed-4012-bc4f-045064231acf",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "institutions",
+                    ":institutionIdentifier",
+                    "banner"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "temporaryRedirect",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "institutionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2477ae5a-7046-4205-a715-6e5a7eab8b7e",
+          "name": "Show an institution's avatar.",
+          "request": {
+            "name": "Show an institution's avatar.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "institutions",
+                ":institutionIdentifier",
+                "avatar"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "temporaryRedirect",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "institutionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "49781baf-0794-4232-b656-6096beb0a73b",
+              "name": "Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "institutions",
+                    ":institutionIdentifier",
+                    "avatar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "temporaryRedirect",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "institutionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.hub.crunchdao.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2306a367-754f-47f6-8f76-8b3189eb5c96",
+    "name": "Tournament activity institution API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CrunchDAO Tournament Platform API Endpoints",
+      "type": "text/plain"
+    }
+  }
+}

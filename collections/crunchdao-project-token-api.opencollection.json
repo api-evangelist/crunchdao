@@ -1,0 +1,146 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity project:token API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "project:token",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a temporary project token.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v3/competitions/:competitionIdentifier/projects/:userLogin/:projectIdentifier/tokens",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "projectIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a temporary project token."
+        },
+        {
+          "info": {
+            "name": "Upgrade a temporary project token to a permanent token.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v2/project-tokens/upgrade",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upgrade a temporary project token to a permanent token."
+        },
+        {
+          "info": {
+            "name": "Clone a project.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v4/competitions/:competitionIdentifier/projects/:userLogin/:projectIdentifier/clone",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "projectIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pushToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "submissionNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "includeModel",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Clone a project."
+        },
+        {
+          "info": {
+            "name": "Clone a project.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v3/competitions/:competitionIdentifier/projects/:userLogin/clone",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pushToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "submissionNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "includeModel",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Clone a project."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

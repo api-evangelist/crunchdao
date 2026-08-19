@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity legal API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "legal",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Accept current legal version.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/legal/accept"
+          },
+          "docs": "Accept current legal version."
+        },
+        {
+          "info": {
+            "name": "Get current legal information.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/legal"
+          },
+          "docs": "Get current legal information."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

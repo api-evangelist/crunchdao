@@ -1,0 +1,148 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity crunch API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "crunch",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List crunches.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v2/competitions/:competitionIdentifier/rounds/:roundIdentifier/phases/:phaseIdentifier/crunches",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "roundIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "phaseIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List crunches."
+        },
+        {
+          "info": {
+            "name": "Create a crunch.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v2/competitions/:competitionIdentifier/rounds/:roundIdentifier/phases/:phaseIdentifier/crunches",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "roundIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "phaseIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a crunch."
+        },
+        {
+          "info": {
+            "name": "Show a crunch.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v2/competitions/:competitionIdentifier/rounds/:roundIdentifier/phases/:phaseIdentifier/crunches/:crunchIdentifier",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "roundIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "phaseIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "crunchIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Show a crunch."
+        },
+        {
+          "info": {
+            "name": "Update a crunch.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://api.hub.crunchdao.com/v2/competitions/:competitionIdentifier/rounds/:roundIdentifier/phases/:phaseIdentifier/crunches/:crunchIdentifier",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "roundIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "phaseIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "crunchIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a crunch."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

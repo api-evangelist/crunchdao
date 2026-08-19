@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity metric API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "metric",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List metrics of this competitions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/targets/:targetName/metrics",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "targetName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List metrics of this competitions."
+        },
+        {
+          "info": {
+            "name": "getMetric",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/targets/:targetName/metrics/:metricName",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "targetName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "metricName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "List all metrics of this competitions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/metrics",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List all metrics of this competitions."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

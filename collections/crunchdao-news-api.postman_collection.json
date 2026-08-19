@@ -1,0 +1,882 @@
+{
+  "item": [
+    {
+      "id": "ca37b838-4659-4042-9278-15ccb8ac17e0",
+      "name": "news",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "01086f08-6f57-4d01-8d61-e6cb93de0603",
+          "name": "List news.",
+          "request": {
+            "name": "List news.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "news"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ac9e6e28-86a3-4962-af32-7e2837a1bcaa",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "news"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 9522,\n    \"competitionId\": 6841,\n    \"title\": \"string\",\n    \"imageUrl\": \"string\",\n    \"url\": \"string\",\n    \"author\": {\n      \"name\": \"string\",\n      \"imageUrl\": \"string\",\n      \"url\": \"string\"\n    },\n    \"createdAt\": \"2018-06-14T00:13:37.412Z\"\n  },\n  {\n    \"id\": 4921,\n    \"competitionId\": 9304,\n    \"title\": \"string\",\n    \"imageUrl\": \"string\",\n    \"url\": \"string\",\n    \"author\": {\n      \"name\": \"string\",\n      \"imageUrl\": \"string\",\n      \"url\": \"string\"\n    },\n    \"createdAt\": \"2002-04-10T06:05:16.434Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5586dec6-b3c2-4e11-9aef-142ede55487f",
+          "name": "Create a news.",
+          "request": {
+            "name": "Create a news.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "news"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"author\": {\n    \"name\": \"<string>\",\n    \"imageUrl\": \"<string>\",\n    \"url\": \"<string>\"\n  },\n  \"title\": \"<string>\",\n  \"imageUrl\": \"<string>\",\n  \"url\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b1f7bea1-7b2c-4094-abef-420eefbe6e31",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "news"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"author\": {\n    \"name\": \"string\",\n    \"imageUrl\": \"string\",\n    \"url\": \"string\"\n  },\n  \"title\": \"<string>\",\n  \"imageUrl\": \"<string>\",\n  \"url\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 4050,\n  \"competitionId\": 1661,\n  \"title\": \"string\",\n  \"imageUrl\": \"string\",\n  \"url\": \"string\",\n  \"author\": {\n    \"name\": \"string\",\n    \"imageUrl\": \"string\",\n    \"url\": \"string\"\n  },\n  \"createdAt\": \"1959-04-01T19:34:22.891Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "818ee6fb-2e84-4ee0-a5b9-376a629f8b96",
+          "name": "List news.",
+          "request": {
+            "name": "List news.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "news"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "mix",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f3492d36-9888-4ef8-8a87-47418b46a241",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "news"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mix",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 9522,\n    \"competitionId\": 6841,\n    \"title\": \"string\",\n    \"imageUrl\": \"string\",\n    \"url\": \"string\",\n    \"author\": {\n      \"name\": \"string\",\n      \"imageUrl\": \"string\",\n      \"url\": \"string\"\n    },\n    \"createdAt\": \"2018-06-14T00:13:37.412Z\"\n  },\n  {\n    \"id\": 4921,\n    \"competitionId\": 9304,\n    \"title\": \"string\",\n    \"imageUrl\": \"string\",\n    \"url\": \"string\",\n    \"author\": {\n      \"name\": \"string\",\n      \"imageUrl\": \"string\",\n      \"url\": \"string\"\n    },\n    \"createdAt\": \"2002-04-10T06:05:16.434Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c7c5e66e-730f-4112-bfb6-e28c79f0b5cb",
+          "name": "Create a news.",
+          "request": {
+            "name": "Create a news.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "news"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"author\": {\n    \"name\": \"<string>\",\n    \"imageUrl\": \"<string>\",\n    \"url\": \"<string>\"\n  },\n  \"title\": \"<string>\",\n  \"imageUrl\": \"<string>\",\n  \"url\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3936701c-9e50-4ee2-bc44-b9e097bda2a4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "news"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"author\": {\n    \"name\": \"string\",\n    \"imageUrl\": \"string\",\n    \"url\": \"string\"\n  },\n  \"title\": \"<string>\",\n  \"imageUrl\": \"<string>\",\n  \"url\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 4050,\n  \"competitionId\": 1661,\n  \"title\": \"string\",\n  \"imageUrl\": \"string\",\n  \"url\": \"string\",\n  \"author\": {\n    \"name\": \"string\",\n    \"imageUrl\": \"string\",\n    \"url\": \"string\"\n  },\n  \"createdAt\": \"1959-04-01T19:34:22.891Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2855af81-f871-4e71-a894-c48a6394579b",
+          "name": "List news.",
+          "request": {
+            "name": "List news.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "news"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "competitionIdentifier",
+                  "value": "<string>",
+                  "description": "Limit news to a specific competition. Return global news if not specified."
+                },
+                {
+                  "disabled": false,
+                  "key": "mixed",
+                  "value": "<boolean>",
+                  "description": "Should competition news be mixed with global news?"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort news."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Zero-based page index (0..N)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "The size of the page to be returned"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "afde30d1-15ae-499e-92a3-d55673029df2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "news"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "competitionIdentifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mixed",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageNumber\": 556,\n  \"pageSize\": 4730,\n  \"totalElements\": 2182,\n  \"totalPages\": 7940,\n  \"content\": [\n    {\n      \"id\": 6871,\n      \"competitionId\": 3756,\n      \"title\": \"string\",\n      \"imageUrl\": \"string\",\n      \"url\": \"string\",\n      \"author\": {\n        \"name\": \"string\",\n        \"imageUrl\": \"string\",\n        \"url\": \"string\"\n      },\n      \"createdAt\": \"1964-06-08T05:28:07.201Z\"\n    },\n    {\n      \"id\": 204,\n      \"competitionId\": 5571,\n      \"title\": \"string\",\n      \"imageUrl\": \"string\",\n      \"url\": \"string\",\n      \"author\": {\n        \"name\": \"string\",\n        \"imageUrl\": \"string\",\n        \"url\": \"string\"\n      },\n      \"createdAt\": \"1982-11-09T15:00:43.614Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ed2d7b03-7e9c-4b0d-a984-9c6ed7cee033",
+          "name": "Show a news.",
+          "request": {
+            "name": "Show a news.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "news",
+                ":newsId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "newsId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "830d3909-4750-4de4-a75a-55d552c785a3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "news",
+                    ":newsId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "newsId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 4050,\n  \"competitionId\": 1661,\n  \"title\": \"string\",\n  \"imageUrl\": \"string\",\n  \"url\": \"string\",\n  \"author\": {\n    \"name\": \"string\",\n    \"imageUrl\": \"string\",\n    \"url\": \"string\"\n  },\n  \"createdAt\": \"1959-04-01T19:34:22.891Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8e9b1d02-c8ce-468a-8aac-af9d474a6bc5",
+          "name": "Delete a news.",
+          "request": {
+            "name": "Delete a news.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "news",
+                ":newsId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "newsId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6bc2e821-da8c-401e-9c65-ca27c193117a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "news",
+                    ":newsId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "newsId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "db84f64f-b7b8-40a5-8573-38cdf3cd772e",
+          "name": "Show a news.",
+          "request": {
+            "name": "Show a news.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "news",
+                ":newsId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "newsId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6072f16b-2569-4077-b2f7-bcbfbb0d1f7b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "news",
+                    ":newsId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "newsId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 4050,\n  \"competitionId\": 1661,\n  \"title\": \"string\",\n  \"imageUrl\": \"string\",\n  \"url\": \"string\",\n  \"author\": {\n    \"name\": \"string\",\n    \"imageUrl\": \"string\",\n    \"url\": \"string\"\n  },\n  \"createdAt\": \"1959-04-01T19:34:22.891Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ebfb275a-9e12-4b3f-80c6-b809b7f102dd",
+          "name": "Delete a news.",
+          "request": {
+            "name": "Delete a news.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "news",
+                ":newsId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "newsId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1f39df1a-84b1-4d61-80c2-5ec2dc7bf9e9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "news",
+                    ":newsId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "newsId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.hub.crunchdao.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "edddf4c0-cb98-4321-862c-d4ba79d4d12d",
+    "name": "Tournament activity news API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CrunchDAO Tournament Platform API Endpoints",
+      "type": "text/plain"
+    }
+  }
+}

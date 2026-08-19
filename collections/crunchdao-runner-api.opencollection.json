@@ -1,0 +1,233 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity runner API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "runner",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Report a run's trace.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://api.hub.crunchdao.com/v1/runner/runs/:runId/error",
+            "headers": [
+              {
+                "name": "X-Run-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "runId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Report a run's trace."
+        },
+        {
+          "info": {
+            "name": "Collect the traces.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/runner/runs/:runId/traces",
+            "headers": [
+              {
+                "name": "X-Run-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "runId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Collect the traces."
+        },
+        {
+          "info": {
+            "name": "reportRunnerTrace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/runner/runs/:runId/trace",
+            "headers": [
+              {
+                "name": "X-Run-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "runId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "Submit a run's result.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/runner/runs/:runId/result",
+            "headers": [
+              {
+                "name": "X-Run-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "runId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit a run's result."
+        },
+        {
+          "info": {
+            "name": "reportRunnerCurrent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/runner/runs/:runId/current",
+            "params": [
+              {
+                "name": "runId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "Get a run's model file URLs.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/runner/runs/:runId/model",
+            "headers": [
+              {
+                "name": "X-Run-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "runId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a run's model file URLs."
+        },
+        {
+          "info": {
+            "name": "Get a run's data.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/runner/runs/:runId/data",
+            "headers": [
+              {
+                "name": "X-Run-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "runId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a run's data."
+        },
+        {
+          "info": {
+            "name": "Get a run's code.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/runner/runs/:runId/code",
+            "headers": [
+              {
+                "name": "X-Run-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "runId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a run's code."
+        },
+        {
+          "info": {
+            "name": "Check connectivity.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/runner/ping"
+          },
+          "docs": "Check connectivity."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

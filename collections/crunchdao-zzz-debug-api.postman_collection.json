@@ -1,0 +1,103 @@
+{
+  "item": [
+    {
+      "id": "5d3549e2-066f-4c74-94f1-47ef10510c9e",
+      "name": "zzz-debug",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "216aead4-a395-493d-8a00-f14ea28c8642",
+          "name": "Show principal authorities.",
+          "request": {
+            "name": "Show principal authorities.",
+            "description": {},
+            "url": {
+              "path": [
+                "debug",
+                "auth",
+                "authorities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7e44e85f-8544-4b90-8024-e96ebe0d447b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "debug",
+                    "auth",
+                    "authorities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"string\",\n  \"string\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.hub.crunchdao.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "71ac0755-2649-4842-8abc-011c314b1a67",
+    "name": "Tournament activity zzz-debug API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CrunchDAO Tournament Platform API Endpoints",
+      "type": "text/plain"
+    }
+  }
+}

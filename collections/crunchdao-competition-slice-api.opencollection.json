@@ -1,0 +1,198 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity competition:slice API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "competition:slice",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "listCompetitionSlices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/slices",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "createCompetitionSlice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/slices",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "importCompetitionSlicesFromMarkdown",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/slices/~/import/markdown",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "importCompetitionSlicesFromGitBook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/slices/~/import/gitbook",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "getCompetitionSlice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/slices/:sliceName",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "sliceName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "updateCompetitionSlice",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/slices/:sliceName",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "sliceName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "deleteCompetitionSlice",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/slices/:sliceName",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "sliceName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

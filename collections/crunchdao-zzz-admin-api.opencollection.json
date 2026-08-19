@@ -1,0 +1,309 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity zzz-admin API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "zzz-admin",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search users.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/admin/users",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "deleted",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              }
+            ]
+          },
+          "docs": "Search users."
+        },
+        {
+          "info": {
+            "name": "Compute predictions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/admin/predictions/compute",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Compute predictions."
+        },
+        {
+          "info": {
+            "name": "Archive a run's logs.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/admin/runs/:runId/logs/archive",
+            "params": [
+              {
+                "name": "runId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Archive a run's logs."
+        },
+        {
+          "info": {
+            "name": "Try to map lost logs to their original runs.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/admin/runs/try-map-lost-logs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Try to map lost logs to their original runs."
+        },
+        {
+          "info": {
+            "name": "Archive old runs.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/admin/runs/archive-old-runs"
+          },
+          "docs": "Archive old runs."
+        },
+        {
+          "info": {
+            "name": "Freeze project parameters selection.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/admin/out-of-sample/selections/freeze",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Freeze project parameters selection."
+        },
+        {
+          "info": {
+            "name": "Create all runs.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/admin/out-of-sample/runs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create all runs."
+        },
+        {
+          "info": {
+            "name": "List all runs.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/admin/runs",
+            "params": [
+              {
+                "name": "roundId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "crunchId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List all runs."
+        },
+        {
+          "info": {
+            "name": "Terminate all runs.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://api.hub.crunchdao.com/admin/runs",
+            "params": [
+              {
+                "name": "roundId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "crunchId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Terminate all runs."
+        },
+        {
+          "info": {
+            "name": "Get a summary of all runs.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/admin/runs/summary",
+            "params": [
+              {
+                "name": "roundId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "crunchId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a summary of all runs."
+        },
+        {
+          "info": {
+            "name": "List selections.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/admin/out-of-sample/selections",
+            "params": [
+              {
+                "name": "roundId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List selections."
+        },
+        {
+          "info": {
+            "name": "Preview execution parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/admin/out-of-sample/runs/execution-parameters",
+            "params": [
+              {
+                "name": "crunchId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "dataReleaseId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "test",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "userIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "all",
+                "value": "",
+                "type": "query",
+                "description": "Include ALL runs, not only thoses who failed or don't have a score."
+              },
+              {
+                "name": "forceFirstTrainMode",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "determinismCheckEnabled",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Preview execution parameters"
+        },
+        {
+          "info": {
+            "name": "Delete a run.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://api.hub.crunchdao.com/admin/runs/:runId",
+            "params": [
+              {
+                "name": "runId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a run."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

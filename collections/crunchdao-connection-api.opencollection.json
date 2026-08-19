@@ -1,0 +1,180 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity connection API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "connection",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Validate the LinkedIn connection.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v3/users/@me/connections/twitter/validate"
+          },
+          "docs": "Validate the LinkedIn connection."
+        },
+        {
+          "info": {
+            "name": "Validate the LinkedIn connection.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v3/users/@me/connections/linkedin/validate"
+          },
+          "docs": "Validate the LinkedIn connection."
+        },
+        {
+          "info": {
+            "name": "Create a Kaggle connection.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v3/users/@me/connections/kaggle",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Kaggle connection."
+        },
+        {
+          "info": {
+            "name": "Validate the Google connection.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v3/users/@me/connections/google/validate"
+          },
+          "docs": "Validate the Google connection."
+        },
+        {
+          "info": {
+            "name": "Validate the LinkedIn connection.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v3/users/@me/connections/github/validate"
+          },
+          "docs": "Validate the LinkedIn connection."
+        },
+        {
+          "info": {
+            "name": "Validate the Discord connection.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v3/users/@me/connections/discord/validate"
+          },
+          "docs": "Validate the Discord connection."
+        },
+        {
+          "info": {
+            "name": "Update a connection.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://api.hub.crunchdao.com/v3/users/@me/connections/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a connection."
+        },
+        {
+          "info": {
+            "name": "Remove a connection.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://api.hub.crunchdao.com/v3/users/@me/connections/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove a connection."
+        },
+        {
+          "info": {
+            "name": "List connected connections.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v3/users/:userIdentifier/connections",
+            "params": [
+              {
+                "name": "userIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List connected connections."
+        },
+        {
+          "info": {
+            "name": "List connected connections.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v3/users/:userIdentifier/connections/:connectionType",
+            "params": [
+              {
+                "name": "userIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "connectionType",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List connected connections."
+        },
+        {
+          "info": {
+            "name": "List available connections.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v3/users/@me/connections"
+          },
+          "docs": "List available connections."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

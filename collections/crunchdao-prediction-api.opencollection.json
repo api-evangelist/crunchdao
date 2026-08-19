@@ -1,0 +1,112 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity prediction API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "prediction",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List predictions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v3/competitions/:competitionIdentifier/projects/:userLogin/:projectIdentifier/predictions",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "projectIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List predictions."
+        },
+        {
+          "info": {
+            "name": "Show a prediction.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v3/competitions/:competitionIdentifier/projects/:userLogin/:projectIdentifier/predictions/:predictionId",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "projectIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "predictionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Show a prediction."
+        },
+        {
+          "info": {
+            "name": "List a prediction's scores.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v3/competitions/:competitionIdentifier/projects/:userLogin/:projectIdentifier/predictions/:predictionId/scores",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "projectIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "predictionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List a prediction's scores."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,534 @@
+{
+  "item": [
+    {
+      "id": "dc664722-7120-4afa-a0e9-3d7d1c3de373",
+      "name": "phase",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "36ec2767-6201-47e2-a167-328d9a8015cf",
+          "name": "List phases.",
+          "request": {
+            "name": "List phases.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "competitions",
+                ":competitionIdentifier",
+                "rounds",
+                ":roundIdentifier",
+                "phases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "roundIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "172776bc-fcd2-4121-88ea-c52bacaed52c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "rounds",
+                    ":roundIdentifier",
+                    "phases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roundIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 7490,\n    \"type\": \"SUBMISSION\",\n    \"start\": \"1997-09-07T10:26:15.092Z\",\n    \"end\": \"2002-10-09T00:15:54.840Z\",\n    \"dataReleaseId\": 752,\n    \"localDataReleaseId\": 292,\n    \"cloudCredits\": {},\n    \"perCrunchWeight\": 3004.223983764377,\n    \"autoCompute\": false,\n    \"runDisabled\": true,\n    \"showPositions\": true,\n    \"showProjectNames\": false,\n    \"runDeterminismCheckEnabled\": true,\n    \"showOnlyRewardedProjectsDefault\": false,\n    \"splits\": [\n      {\n        \"key\": 8960\n      },\n      {\n        \"key\": 469\n      }\n    ]\n  },\n  {\n    \"id\": 2252,\n    \"type\": \"OUT_OF_SAMPLE\",\n    \"start\": \"1973-08-29T16:44:21.083Z\",\n    \"end\": \"1959-06-18T20:53:34.767Z\",\n    \"dataReleaseId\": 7065,\n    \"localDataReleaseId\": 640,\n    \"cloudCredits\": {},\n    \"perCrunchWeight\": 7842.450861584329,\n    \"autoCompute\": true,\n    \"runDisabled\": false,\n    \"showPositions\": true,\n    \"showProjectNames\": false,\n    \"runDeterminismCheckEnabled\": true,\n    \"showOnlyRewardedProjectsDefault\": false,\n    \"splits\": [\n      {\n        \"key\": 7017\n      },\n      {\n        \"key\": 8483\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "554d6d3b-dde1-48bc-b814-364d244c3389",
+          "name": "Create a phase.",
+          "request": {
+            "name": "Create a phase.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "competitions",
+                ":competitionIdentifier",
+                "rounds",
+                ":roundIdentifier",
+                "phases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "roundIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"autoCompute\": \"<boolean>\",\n  \"cloudCredits\": {},\n  \"end\": \"<dateTime>\",\n  \"perCrunchWeight\": \"<number>\",\n  \"runDeterminismCheckEnabled\": \"<boolean>\",\n  \"runDisabled\": \"<boolean>\",\n  \"showOnlyRewardedProjectsDefault\": \"<boolean>\",\n  \"showPositions\": \"<boolean>\",\n  \"showProjectNames\": \"<boolean>\",\n  \"splits\": [\n    {\n      \"key\": \"<long>\"\n    },\n    {\n      \"key\": \"<long>\"\n    }\n  ],\n  \"start\": \"<dateTime>\",\n  \"type\": \"<string>\",\n  \"dataReleaseId\": \"<long>\",\n  \"localDataReleaseId\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c254e139-5f49-4c9a-a31e-c62f97100654",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "rounds",
+                    ":roundIdentifier",
+                    "phases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roundIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"autoCompute\": \"<boolean>\",\n  \"cloudCredits\": {},\n  \"end\": \"<dateTime>\",\n  \"perCrunchWeight\": \"<number>\",\n  \"runDeterminismCheckEnabled\": \"<boolean>\",\n  \"runDisabled\": \"<boolean>\",\n  \"showOnlyRewardedProjectsDefault\": \"<boolean>\",\n  \"showPositions\": \"<boolean>\",\n  \"showProjectNames\": \"<boolean>\",\n  \"splits\": [\n    {\n      \"key\": 4425\n    },\n    {\n      \"key\": 6531\n    }\n  ],\n  \"start\": \"<dateTime>\",\n  \"type\": \"OUT_OF_SAMPLE\",\n  \"dataReleaseId\": \"<long>\",\n  \"localDataReleaseId\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1399,\n  \"type\": \"SUBMISSION\",\n  \"start\": \"2021-05-18T14:08:50.783Z\",\n  \"end\": \"2025-12-07T13:41:02.053Z\",\n  \"dataReleaseId\": 77,\n  \"localDataReleaseId\": 8019,\n  \"cloudCredits\": {},\n  \"perCrunchWeight\": 6772.9146071257555,\n  \"autoCompute\": true,\n  \"runDisabled\": true,\n  \"showPositions\": false,\n  \"showProjectNames\": true,\n  \"runDeterminismCheckEnabled\": false,\n  \"showOnlyRewardedProjectsDefault\": false,\n  \"splits\": [\n    {\n      \"key\": 6363\n    },\n    {\n      \"key\": 7809\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "835bf861-b7c7-4c61-a956-8d1121537b1b",
+          "name": "Show a phase.",
+          "request": {
+            "name": "Show a phase.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "competitions",
+                ":competitionIdentifier",
+                "rounds",
+                ":roundIdentifier",
+                "phases",
+                ":phaseIdentifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "roundIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "phaseIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c5044299-9507-4b8e-9067-c150f7bb5d3a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "rounds",
+                    ":roundIdentifier",
+                    "phases",
+                    ":phaseIdentifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roundIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "phaseIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1399,\n  \"type\": \"SUBMISSION\",\n  \"start\": \"2021-05-18T14:08:50.783Z\",\n  \"end\": \"2025-12-07T13:41:02.053Z\",\n  \"dataReleaseId\": 77,\n  \"localDataReleaseId\": 8019,\n  \"cloudCredits\": {},\n  \"perCrunchWeight\": 6772.9146071257555,\n  \"autoCompute\": true,\n  \"runDisabled\": true,\n  \"showPositions\": false,\n  \"showProjectNames\": true,\n  \"runDeterminismCheckEnabled\": false,\n  \"showOnlyRewardedProjectsDefault\": false,\n  \"splits\": [\n    {\n      \"key\": 6363\n    },\n    {\n      \"key\": 7809\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a33cf9b7-3cb9-4886-ad47-c595dd1cea9d",
+          "name": "Show a phase.",
+          "request": {
+            "name": "Show a phase.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "competitions",
+                ":competitionIdentifier",
+                "rounds",
+                ":roundIdentifier",
+                "phases",
+                ":phaseIdentifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "roundIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "phaseIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"start\": \"<dateTime>\",\n  \"end\": \"<dateTime>\",\n  \"dataReleaseId\": \"<long>\",\n  \"localDataReleaseId\": \"<long>\",\n  \"cloudCredits\": {},\n  \"perCrunchWeight\": \"<number>\",\n  \"autoCompute\": \"<boolean>\",\n  \"runDisabled\": \"<boolean>\",\n  \"showPositions\": \"<boolean>\",\n  \"showProjectNames\": \"<boolean>\",\n  \"runDeterminismCheckEnabled\": \"<boolean>\",\n  \"showOnlyRewardedProjectsDefault\": \"<boolean>\",\n  \"splits\": [\n    {\n      \"key\": \"<long>\"\n    },\n    {\n      \"key\": \"<long>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "13c51cc9-3625-49c7-8f35-e0890f617f5d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "rounds",
+                    ":roundIdentifier",
+                    "phases",
+                    ":phaseIdentifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roundIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "phaseIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<dateTime>\",\n  \"end\": \"<dateTime>\",\n  \"dataReleaseId\": \"<long>\",\n  \"localDataReleaseId\": \"<long>\",\n  \"cloudCredits\": {},\n  \"perCrunchWeight\": \"<number>\",\n  \"autoCompute\": \"<boolean>\",\n  \"runDisabled\": \"<boolean>\",\n  \"showPositions\": \"<boolean>\",\n  \"showProjectNames\": \"<boolean>\",\n  \"runDeterminismCheckEnabled\": \"<boolean>\",\n  \"showOnlyRewardedProjectsDefault\": \"<boolean>\",\n  \"splits\": [\n    {\n      \"key\": 6641\n    },\n    {\n      \"key\": 5719\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1399,\n  \"type\": \"SUBMISSION\",\n  \"start\": \"2021-05-18T14:08:50.783Z\",\n  \"end\": \"2025-12-07T13:41:02.053Z\",\n  \"dataReleaseId\": 77,\n  \"localDataReleaseId\": 8019,\n  \"cloudCredits\": {},\n  \"perCrunchWeight\": 6772.9146071257555,\n  \"autoCompute\": true,\n  \"runDisabled\": true,\n  \"showPositions\": false,\n  \"showProjectNames\": true,\n  \"runDeterminismCheckEnabled\": false,\n  \"showOnlyRewardedProjectsDefault\": false,\n  \"splits\": [\n    {\n      \"key\": 6363\n    },\n    {\n      \"key\": 7809\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.hub.crunchdao.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b4a804aa-2cad-4aac-b624-60a6b0890d5e",
+    "name": "Tournament activity phase API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CrunchDAO Tournament Platform API Endpoints",
+      "type": "text/plain"
+    }
+  }
+}

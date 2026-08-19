@@ -1,0 +1,483 @@
+{
+  "item": [
+    {
+      "id": "72ba8373-3ef2-4bb3-8eb2-749b25faf5e5",
+      "name": "prediction",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "19f2d185-fb44-4ac9-97d3-81e41c4bd967",
+          "name": "List predictions.",
+          "request": {
+            "name": "List predictions.",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "competitions",
+                ":competitionIdentifier",
+                "projects",
+                ":userLogin",
+                ":projectIdentifier",
+                "predictions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userLogin",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ded25f46-0eed-455a-8cb0-f84aafbad3f0",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "projects",
+                    ":userLogin",
+                    ":projectIdentifier",
+                    "predictions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userLogin",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 3780,\n    \"name\": \"string\",\n    \"project\": {\n      \"id\": 8385,\n      \"competitionId\": 7978,\n      \"user\": {\n        \"id\": 8591,\n        \"login\": \"string\"\n      },\n      \"name\": \"string\",\n      \"selected\": false,\n      \"submitted\": true,\n      \"note\": \"string\",\n      \"writeupUrl\": \"string\",\n      \"writeupArchived\": false,\n      \"createdAt\": \"2005-03-18T06:07:42.257Z\",\n      \"updatedAt\": \"1997-10-13T11:28:55.180Z\",\n      \"userId\": 5964\n    },\n    \"valid\": false,\n    \"success\": true,\n    \"error\": \"string\",\n    \"deterministic\": true,\n    \"primaryMean\": 1079.030150080409,\n    \"primaryUnit\": {\n      \"prefix\": \"string\",\n      \"suffix\": \"string\",\n      \"scale\": 9354\n    },\n    \"means\": {\n      \"key_0\": 2504.2204077085826,\n      \"key_1\": 5620.029491887857\n    },\n    \"files\": [\n      {\n        \"name\": \"string\",\n        \"size\": 7535\n      },\n      {\n        \"name\": \"string\",\n        \"size\": 9302\n      }\n    ],\n    \"managed\": false,\n    \"createdAt\": \"1981-02-09T17:44:46.716Z\",\n    \"bestDisplayUnit\": \"string\",\n    \"bestMean\": 755.6618784514479,\n    \"bestUnit\": {\n      \"prefix\": \"string\",\n      \"suffix\": \"string\",\n      \"scale\": 5293\n    }\n  },\n  {\n    \"id\": 6204,\n    \"name\": \"string\",\n    \"project\": {\n      \"id\": 5208,\n      \"competitionId\": 6665,\n      \"user\": {\n        \"id\": 7615,\n        \"login\": \"string\"\n      },\n      \"name\": \"string\",\n      \"selected\": false,\n      \"submitted\": false,\n      \"note\": \"string\",\n      \"writeupUrl\": \"string\",\n      \"writeupArchived\": true,\n      \"createdAt\": \"1971-09-20T14:30:29.182Z\",\n      \"updatedAt\": \"2018-12-01T13:45:02.486Z\",\n      \"userId\": 5258\n    },\n    \"valid\": false,\n    \"success\": false,\n    \"error\": \"string\",\n    \"deterministic\": false,\n    \"primaryMean\": 4889.698432570922,\n    \"primaryUnit\": {\n      \"prefix\": \"string\",\n      \"suffix\": \"string\",\n      \"scale\": 9085\n    },\n    \"means\": {\n      \"key_0\": 9840.555292944086,\n      \"key_1\": 5257.296275760739\n    },\n    \"files\": [\n      {\n        \"name\": \"string\",\n        \"size\": 9061\n      },\n      {\n        \"name\": \"string\",\n        \"size\": 8050\n      }\n    ],\n    \"managed\": false,\n    \"createdAt\": \"1968-07-09T10:00:15.761Z\",\n    \"bestDisplayUnit\": \"string\",\n    \"bestMean\": 1592.5064920021048,\n    \"bestUnit\": {\n      \"prefix\": \"string\",\n      \"suffix\": \"string\",\n      \"scale\": 4416\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fb72aeab-3ccb-4230-9c12-9686bddf20b4",
+          "name": "Show a prediction.",
+          "request": {
+            "name": "Show a prediction.",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "competitions",
+                ":competitionIdentifier",
+                "projects",
+                ":userLogin",
+                ":projectIdentifier",
+                "predictions",
+                ":predictionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userLogin",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "predictionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8cc570f0-54a4-4b5c-9dd8-edb6101dffc2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "projects",
+                    ":userLogin",
+                    ":projectIdentifier",
+                    "predictions",
+                    ":predictionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userLogin",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "predictionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 3967,\n  \"name\": \"string\",\n  \"project\": {\n    \"id\": 2788,\n    \"competitionId\": 1573,\n    \"user\": {\n      \"id\": 5063,\n      \"login\": \"string\"\n    },\n    \"name\": \"string\",\n    \"selected\": false,\n    \"submitted\": true,\n    \"note\": \"string\",\n    \"writeupUrl\": \"string\",\n    \"writeupArchived\": true,\n    \"createdAt\": \"1992-03-21T13:04:03.373Z\",\n    \"updatedAt\": \"2025-09-07T18:16:30.823Z\",\n    \"userId\": 556\n  },\n  \"valid\": true,\n  \"success\": true,\n  \"error\": \"string\",\n  \"deterministic\": false,\n  \"primaryMean\": 1959.71202980756,\n  \"primaryUnit\": {\n    \"prefix\": \"string\",\n    \"suffix\": \"string\",\n    \"scale\": 319\n  },\n  \"means\": {\n    \"key_0\": 980.7651878311796,\n    \"key_1\": 5373.511572110844\n  },\n  \"files\": [\n    {\n      \"name\": \"string\",\n      \"size\": 4429\n    },\n    {\n      \"name\": \"string\",\n      \"size\": 1204\n    }\n  ],\n  \"managed\": true,\n  \"createdAt\": \"1973-08-15T18:21:12.589Z\",\n  \"bestDisplayUnit\": \"string\",\n  \"bestMean\": 9954.461971223895,\n  \"bestUnit\": {\n    \"prefix\": \"string\",\n    \"suffix\": \"string\",\n    \"scale\": 241\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "63395295-be61-4802-9e78-69a66085e4d4",
+          "name": "List a prediction's scores.",
+          "request": {
+            "name": "List a prediction's scores.",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "competitions",
+                ":competitionIdentifier",
+                "projects",
+                ":userLogin",
+                ":projectIdentifier",
+                "predictions",
+                ":predictionId",
+                "scores"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userLogin",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "predictionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5e419484-f867-46a0-b6fc-129d7d10908a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "projects",
+                    ":userLogin",
+                    ":projectIdentifier",
+                    "predictions",
+                    ":predictionId",
+                    "scores"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userLogin",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "predictionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 9896,\n    \"success\": true,\n    \"metric\": {\n      \"id\": 384,\n      \"target\": {\n        \"id\": 8029,\n        \"name\": \"string\",\n        \"displayName\": \"string\",\n        \"weight\": 2422.171484756761,\n        \"weightedMeanUnit\": {\n          \"prefix\": \"string\",\n          \"suffix\": \"string\",\n          \"scale\": 8612\n        },\n        \"primary\": false,\n        \"virtual\": false,\n        \"rankOrder\": \"DESCENDING\",\n        \"weightedMeanDisplayUnit\": \"string\"\n      },\n      \"metricDefinition\": {\n        \"id\": 9243,\n        \"name\": \"string\",\n        \"displayName\": \"string\"\n      },\n      \"name\": \"string\",\n      \"displayName\": \"string\",\n      \"unit\": {\n        \"prefix\": \"string\",\n        \"suffix\": \"string\",\n        \"scale\": 1230\n      },\n      \"signless\": false,\n      \"weight\": 3647,\n      \"minimum\": 4871.915885348707,\n      \"maximum\": 7971.3022766942295,\n      \"score\": true,\n      \"multiplier\": 6064.408074538223,\n      \"cumulative\": false,\n      \"scorerFunction\": \"RECALL\",\n      \"reducerFunction\": \"PRODUCT_PLUS_MINUS_1\",\n      \"reducedDisplayName\": \"string\",\n      \"visualizationType\": \"LINE\",\n      \"colors\": {\n        \"details\": \"string\",\n        \"submissionPhase\": \"string\",\n        \"outOfSamplePhase\": \"string\"\n      },\n      \"visibleOnPerformanceGraph\": true,\n      \"createdAt\": \"2015-06-16T10:14:52.472Z\",\n      \"displayUnit\": \"string\"\n    },\n    \"value\": 7445.590114391039,\n    \"details\": [\n      {\n        \"key\": 1396,\n        \"value\": 9609.630904275604,\n        \"reduced\": true\n      },\n      {\n        \"key\": 1912,\n        \"value\": 8535.729591513784,\n        \"reduced\": true\n      }\n    ],\n    \"createdAt\": \"1981-11-30T20:39:55.740Z\"\n  },\n  {\n    \"id\": 552,\n    \"success\": true,\n    \"metric\": {\n      \"id\": 1923,\n      \"target\": {\n        \"id\": 8306,\n        \"name\": \"string\",\n        \"displayName\": \"string\",\n        \"weight\": 3868.604026993271,\n        \"weightedMeanUnit\": {\n          \"prefix\": \"string\",\n          \"suffix\": \"string\",\n          \"scale\": 1089\n        },\n        \"primary\": true,\n        \"virtual\": true,\n        \"rankOrder\": \"ASCENDING\",\n        \"weightedMeanDisplayUnit\": \"string\"\n      },\n      \"metricDefinition\": {\n        \"id\": 9780,\n        \"name\": \"string\",\n        \"displayName\": \"string\"\n      },\n      \"name\": \"string\",\n      \"displayName\": \"string\",\n      \"unit\": {\n        \"prefix\": \"string\",\n        \"suffix\": \"string\",\n        \"scale\": 3756\n      },\n      \"signless\": false,\n      \"weight\": 2837,\n      \"minimum\": 4814.663175980609,\n      \"maximum\": 3321.6159894845455,\n      \"score\": false,\n      \"multiplier\": 8053.896202046191,\n      \"cumulative\": false,\n      \"scorerFunction\": \"BALANCED_ACCURACY\",\n      \"reducerFunction\": \"SUM\",\n      \"reducedDisplayName\": \"string\",\n      \"visualizationType\": \"LINE\",\n      \"colors\": {\n        \"details\": \"string\",\n        \"submissionPhase\": \"string\",\n        \"outOfSamplePhase\": \"string\"\n      },\n      \"visibleOnPerformanceGraph\": false,\n      \"createdAt\": \"1984-12-28T17:29:38.272Z\",\n      \"displayUnit\": \"string\"\n    },\n    \"value\": 6400.062133716464,\n    \"details\": [\n      {\n        \"key\": 8173,\n        \"value\": 9011.056289180227,\n        \"reduced\": false\n      },\n      {\n        \"key\": 7018,\n        \"value\": 5569.690845280703,\n        \"reduced\": true\n      }\n    ],\n    \"createdAt\": \"2015-02-25T12:57:12.017Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.hub.crunchdao.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "bb570104-83aa-4267-acfe-7073f16bf4c8",
+    "name": "Tournament activity prediction API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CrunchDAO Tournament Platform API Endpoints",
+      "type": "text/plain"
+    }
+  }
+}

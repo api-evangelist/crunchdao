@@ -1,0 +1,606 @@
+{
+  "item": [
+    {
+      "id": "db418351-9272-4ed9-be67-0cdb02c328f4",
+      "name": "crunch",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3ed0acf3-e5e8-4340-9061-9891dc03860b",
+          "name": "List crunches.",
+          "request": {
+            "name": "List crunches.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "competitions",
+                ":competitionIdentifier",
+                "rounds",
+                ":roundIdentifier",
+                "phases",
+                ":phaseIdentifier",
+                "crunches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "roundIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "phaseIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "23708876-e58b-414a-bb02-6ea821c12ae1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "rounds",
+                    ":roundIdentifier",
+                    "phases",
+                    ":phaseIdentifier",
+                    "crunches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roundIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "phaseIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 9091,\n    \"phase\": {\n      \"id\": 5089,\n      \"type\": \"SUBMISSION\",\n      \"start\": \"2006-09-28T18:13:12.384Z\",\n      \"end\": \"1991-09-01T19:17:31.463Z\",\n      \"dataReleaseId\": 1837,\n      \"localDataReleaseId\": 2642,\n      \"cloudCredits\": {},\n      \"perCrunchWeight\": 1054.846532392446,\n      \"autoCompute\": false,\n      \"runDisabled\": false,\n      \"showPositions\": false,\n      \"showProjectNames\": true,\n      \"runDeterminismCheckEnabled\": false,\n      \"showOnlyRewardedProjectsDefault\": true,\n      \"splits\": [\n        {\n          \"key\": 4305\n        },\n        {\n          \"key\": 2614\n        }\n      ]\n    },\n    \"number\": 5978,\n    \"start\": \"2006-09-28T03:09:22.772Z\",\n    \"end\": \"1974-06-30T06:03:03.877Z\",\n    \"showRuns\": true,\n    \"showMetricsDetails\": true,\n    \"showRunLogs\": false,\n    \"showScoresValue\": true,\n    \"leaderboardSimilarityThreshold\": 5046.124099165548,\n    \"published\": true,\n    \"dataReleaseId\": 761,\n    \"splits\": [\n      {\n        \"key\": 3825\n      },\n      {\n        \"key\": 3134\n      }\n    ]\n  },\n  {\n    \"id\": 5076,\n    \"phase\": {\n      \"id\": 7150,\n      \"type\": \"SUBMISSION\",\n      \"start\": \"2019-12-20T10:22:48.744Z\",\n      \"end\": \"1967-09-09T14:43:48.734Z\",\n      \"dataReleaseId\": 1631,\n      \"localDataReleaseId\": 2779,\n      \"cloudCredits\": {},\n      \"perCrunchWeight\": 4305.614737626897,\n      \"autoCompute\": true,\n      \"runDisabled\": false,\n      \"showPositions\": true,\n      \"showProjectNames\": false,\n      \"runDeterminismCheckEnabled\": false,\n      \"showOnlyRewardedProjectsDefault\": false,\n      \"splits\": [\n        {\n          \"key\": 3039\n        },\n        {\n          \"key\": 6936\n        }\n      ]\n    },\n    \"number\": 340,\n    \"start\": \"1971-02-27T04:48:57.593Z\",\n    \"end\": \"1954-10-31T08:03:44.424Z\",\n    \"showRuns\": false,\n    \"showMetricsDetails\": false,\n    \"showRunLogs\": true,\n    \"showScoresValue\": false,\n    \"leaderboardSimilarityThreshold\": 7952.818311930076,\n    \"published\": false,\n    \"dataReleaseId\": 5818,\n    \"splits\": [\n      {\n        \"key\": 1727\n      },\n      {\n        \"key\": 224\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a0d943df-e1a5-4bc0-a636-e839c1e8b753",
+          "name": "Create a crunch.",
+          "request": {
+            "name": "Create a crunch.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "competitions",
+                ":competitionIdentifier",
+                "rounds",
+                ":roundIdentifier",
+                "phases",
+                ":phaseIdentifier",
+                "crunches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "roundIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "phaseIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataReleaseId\": \"<long>\",\n  \"end\": \"<dateTime>\",\n  \"published\": \"<boolean>\",\n  \"showMetricsDetails\": \"<boolean>\",\n  \"showRunLogs\": \"<boolean>\",\n  \"showRuns\": \"<boolean>\",\n  \"showScoresValue\": \"<boolean>\",\n  \"splits\": [\n    {\n      \"key\": \"<long>\"\n    },\n    {\n      \"key\": \"<long>\"\n    }\n  ],\n  \"start\": \"<dateTime>\",\n  \"leaderboardSimilarityThreshold\": \"<float>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "245490a9-ff2c-465c-a867-fd72ae53cc8c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "rounds",
+                    ":roundIdentifier",
+                    "phases",
+                    ":phaseIdentifier",
+                    "crunches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roundIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "phaseIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataReleaseId\": \"<long>\",\n  \"end\": \"<dateTime>\",\n  \"published\": \"<boolean>\",\n  \"showMetricsDetails\": \"<boolean>\",\n  \"showRunLogs\": \"<boolean>\",\n  \"showRuns\": \"<boolean>\",\n  \"showScoresValue\": \"<boolean>\",\n  \"splits\": [\n    {\n      \"key\": 9755\n    },\n    {\n      \"key\": 1696\n    }\n  ],\n  \"start\": \"<dateTime>\",\n  \"leaderboardSimilarityThreshold\": \"<float>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2110,\n  \"phase\": {\n    \"id\": 2467,\n    \"type\": \"OUT_OF_SAMPLE\",\n    \"start\": \"1983-08-01T08:22:39.891Z\",\n    \"end\": \"1996-09-19T18:58:37.760Z\",\n    \"dataReleaseId\": 8070,\n    \"localDataReleaseId\": 9190,\n    \"cloudCredits\": {},\n    \"perCrunchWeight\": 4871.593639058631,\n    \"autoCompute\": false,\n    \"runDisabled\": false,\n    \"showPositions\": true,\n    \"showProjectNames\": true,\n    \"runDeterminismCheckEnabled\": false,\n    \"showOnlyRewardedProjectsDefault\": true,\n    \"splits\": [\n      {\n        \"key\": 110\n      },\n      {\n        \"key\": 5965\n      }\n    ]\n  },\n  \"number\": 9151,\n  \"start\": \"2014-04-04T04:15:18.249Z\",\n  \"end\": \"1952-07-10T01:41:01.277Z\",\n  \"showRuns\": true,\n  \"showMetricsDetails\": true,\n  \"showRunLogs\": true,\n  \"showScoresValue\": true,\n  \"leaderboardSimilarityThreshold\": 2533.599908553601,\n  \"published\": true,\n  \"dataReleaseId\": 1250,\n  \"splits\": [\n    {\n      \"key\": 7323\n    },\n    {\n      \"key\": 4945\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "76e8001a-99bc-4af1-9604-0fe50bea143e",
+          "name": "Show a crunch.",
+          "request": {
+            "name": "Show a crunch.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "competitions",
+                ":competitionIdentifier",
+                "rounds",
+                ":roundIdentifier",
+                "phases",
+                ":phaseIdentifier",
+                "crunches",
+                ":crunchIdentifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "roundIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "phaseIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "crunchIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cd1891c8-d772-4763-a29f-e03899dd2a69",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "rounds",
+                    ":roundIdentifier",
+                    "phases",
+                    ":phaseIdentifier",
+                    "crunches",
+                    ":crunchIdentifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roundIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "phaseIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "crunchIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2110,\n  \"phase\": {\n    \"id\": 2467,\n    \"type\": \"OUT_OF_SAMPLE\",\n    \"start\": \"1983-08-01T08:22:39.891Z\",\n    \"end\": \"1996-09-19T18:58:37.760Z\",\n    \"dataReleaseId\": 8070,\n    \"localDataReleaseId\": 9190,\n    \"cloudCredits\": {},\n    \"perCrunchWeight\": 4871.593639058631,\n    \"autoCompute\": false,\n    \"runDisabled\": false,\n    \"showPositions\": true,\n    \"showProjectNames\": true,\n    \"runDeterminismCheckEnabled\": false,\n    \"showOnlyRewardedProjectsDefault\": true,\n    \"splits\": [\n      {\n        \"key\": 110\n      },\n      {\n        \"key\": 5965\n      }\n    ]\n  },\n  \"number\": 9151,\n  \"start\": \"2014-04-04T04:15:18.249Z\",\n  \"end\": \"1952-07-10T01:41:01.277Z\",\n  \"showRuns\": true,\n  \"showMetricsDetails\": true,\n  \"showRunLogs\": true,\n  \"showScoresValue\": true,\n  \"leaderboardSimilarityThreshold\": 2533.599908553601,\n  \"published\": true,\n  \"dataReleaseId\": 1250,\n  \"splits\": [\n    {\n      \"key\": 7323\n    },\n    {\n      \"key\": 4945\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "96aa333b-5dc4-47ad-9aec-ad91eb81ad2f",
+          "name": "Update a crunch.",
+          "request": {
+            "name": "Update a crunch.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "competitions",
+                ":competitionIdentifier",
+                "rounds",
+                ":roundIdentifier",
+                "phases",
+                ":phaseIdentifier",
+                "crunches",
+                ":crunchIdentifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "roundIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "phaseIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "crunchIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataReleaseId\": \"<long>\",\n  \"start\": \"<dateTime>\",\n  \"end\": \"<dateTime>\",\n  \"showRuns\": \"<boolean>\",\n  \"showMetricsDetails\": \"<boolean>\",\n  \"showRunLogs\": \"<boolean>\",\n  \"showScoresValue\": \"<boolean>\",\n  \"leaderboardSimilarityThreshold\": \"<float>\",\n  \"published\": \"<boolean>\",\n  \"splits\": [\n    {\n      \"key\": \"<long>\"\n    },\n    {\n      \"key\": \"<long>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9aee527f-2690-47dc-b65e-68b99a813ba9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "rounds",
+                    ":roundIdentifier",
+                    "phases",
+                    ":phaseIdentifier",
+                    "crunches",
+                    ":crunchIdentifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roundIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "phaseIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "crunchIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataReleaseId\": \"<long>\",\n  \"start\": \"<dateTime>\",\n  \"end\": \"<dateTime>\",\n  \"showRuns\": \"<boolean>\",\n  \"showMetricsDetails\": \"<boolean>\",\n  \"showRunLogs\": \"<boolean>\",\n  \"showScoresValue\": \"<boolean>\",\n  \"leaderboardSimilarityThreshold\": \"<float>\",\n  \"published\": \"<boolean>\",\n  \"splits\": [\n    {\n      \"key\": 5400\n    },\n    {\n      \"key\": 7760\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2110,\n  \"phase\": {\n    \"id\": 2467,\n    \"type\": \"OUT_OF_SAMPLE\",\n    \"start\": \"1983-08-01T08:22:39.891Z\",\n    \"end\": \"1996-09-19T18:58:37.760Z\",\n    \"dataReleaseId\": 8070,\n    \"localDataReleaseId\": 9190,\n    \"cloudCredits\": {},\n    \"perCrunchWeight\": 4871.593639058631,\n    \"autoCompute\": false,\n    \"runDisabled\": false,\n    \"showPositions\": true,\n    \"showProjectNames\": true,\n    \"runDeterminismCheckEnabled\": false,\n    \"showOnlyRewardedProjectsDefault\": true,\n    \"splits\": [\n      {\n        \"key\": 110\n      },\n      {\n        \"key\": 5965\n      }\n    ]\n  },\n  \"number\": 9151,\n  \"start\": \"2014-04-04T04:15:18.249Z\",\n  \"end\": \"1952-07-10T01:41:01.277Z\",\n  \"showRuns\": true,\n  \"showMetricsDetails\": true,\n  \"showRunLogs\": true,\n  \"showScoresValue\": true,\n  \"leaderboardSimilarityThreshold\": 2533.599908553601,\n  \"published\": true,\n  \"dataReleaseId\": 1250,\n  \"splits\": [\n    {\n      \"key\": 7323\n    },\n    {\n      \"key\": 4945\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.hub.crunchdao.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c1abc48d-6280-4de3-a361-313cbdeb167f",
+    "name": "Tournament activity crunch API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CrunchDAO Tournament Platform API Endpoints",
+      "type": "text/plain"
+    }
+  }
+}

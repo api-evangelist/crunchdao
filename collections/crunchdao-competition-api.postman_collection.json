@@ -1,0 +1,752 @@
+{
+  "item": [
+    {
+      "id": "a5acf8f8-9cb5-4865-9124-58ccdfe7813d",
+      "name": "competition",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8e49344d-f037-4857-976e-9eb70938925e",
+          "name": "Update a competition session.",
+          "request": {
+            "name": "Update a competition session.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "session"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"state\": \"<string>\",\n  \"nextChange\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "40c97cd2-f91c-41bf-9081-fd8337910240",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "session"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"state\": \"<string>\",\n  \"nextChange\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 9399,\n  \"name\": \"string\",\n  \"displayName\": \"string\",\n  \"fullName\": \"string\",\n  \"shortDescription\": \"string\",\n  \"type\": \"PAUSED\",\n  \"format\": \"UNSTRUCTURED\",\n  \"mode\": \"OFFLINE\",\n  \"status\": \"PENDING\",\n  \"splitKeyType\": \"INTEGER\",\n  \"start\": \"1997-06-03T02:02:43.943Z\",\n  \"end\": \"1988-08-03T00:10:24.821Z\",\n  \"continuous\": true,\n  \"external\": true,\n  \"featured\": false,\n  \"visibility\": \"HIDDEN\",\n  \"url\": \"string\",\n  \"onChainId\": \"string\",\n  \"cardImageUrl\": \"string\",\n  \"bannerImageUrl\": \"string\",\n  \"documentationUrl\": \"string\",\n  \"notebookUrl\": \"string\",\n  \"advancedNotebookUrl\": \"string\",\n  \"discussionUrl\": \"string\",\n  \"codeUrl\": \"string\",\n  \"hostedByName\": \"string\",\n  \"prizePoolText\": \"string\",\n  \"prizePoolShortText\": \"string\",\n  \"prizePoolUsd\": 3712.0999241164586,\n  \"projectNameFormat\": \"string\",\n  \"teamBased\": false,\n  \"onlyTeamLeader\": true,\n  \"maxTeamSize\": 8979,\n  \"projectCreationLimit\": 2406,\n  \"projectSelectionLimit\": 2051,\n  \"allowPredictions\": false,\n  \"encryptSubmissions\": false,\n  \"phalaKeyUrl\": \"string\",\n  \"hideDashboard\": true,\n  \"hideChanges\": false,\n  \"hidePerformance\": false,\n  \"hideRunPerformance\": true,\n  \"hideStatistics\": false,\n  \"hideNotebookSetupCommand\": true,\n  \"hideTrainFrequency\": false,\n  \"hideForceFirstTrain\": false,\n  \"web3\": false,\n  \"order\": 9686,\n  \"statistics\": {\n    \"entrants\": 152,\n    \"participants\": 7777,\n    \"teams\": 6492,\n    \"submissions\": 4023,\n    \"runnables\": 72\n  },\n  \"session\": {\n    \"state\": \"PAUSED\",\n    \"nextChange\": \"1954-02-19T06:10:22.953Z\"\n  },\n  \"createdAt\": \"1979-07-14T11:20:28.405Z\",\n  \"updatedAt\": \"2009-07-16T02:30:18.869Z\",\n  \"tags\": [\n    {\n      \"name\": \"string\",\n      \"displayName\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"displayName\": \"string\"\n    }\n  ],\n  \"timelineEvents\": [\n    {\n      \"id\": 7452,\n      \"type\": \"REWARDS\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"date\": \"1950-08-17\",\n      \"color\": \"string\",\n      \"detailed\": false,\n      \"button\": {\n        \"text\": \"string\",\n        \"link\": \"string\",\n        \"color\": \"string\"\n      },\n      \"createdAt\": \"1962-09-25T14:11:33.107Z\",\n      \"updatedAt\": \"1960-06-05T11:14:55.868Z\"\n    },\n    {\n      \"id\": 1653,\n      \"type\": \"REWARDS\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"date\": \"2022-03-05\",\n      \"color\": \"string\",\n      \"detailed\": true,\n      \"button\": {\n        \"text\": \"string\",\n        \"link\": \"string\",\n        \"color\": \"string\"\n      },\n      \"createdAt\": \"1995-07-17T03:03:21.853Z\",\n      \"updatedAt\": \"1951-08-17T04:54:28.633Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3870e485-3268-45a8-966e-4aa6f2fe6ac4",
+          "name": "Show a competition.",
+          "request": {
+            "name": "Show a competition.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "792cac80-89c0-4ab0-a83a-fabcc4536680",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 9399,\n  \"name\": \"string\",\n  \"displayName\": \"string\",\n  \"fullName\": \"string\",\n  \"shortDescription\": \"string\",\n  \"type\": \"PAUSED\",\n  \"format\": \"UNSTRUCTURED\",\n  \"mode\": \"OFFLINE\",\n  \"status\": \"PENDING\",\n  \"splitKeyType\": \"INTEGER\",\n  \"start\": \"1997-06-03T02:02:43.943Z\",\n  \"end\": \"1988-08-03T00:10:24.821Z\",\n  \"continuous\": true,\n  \"external\": true,\n  \"featured\": false,\n  \"visibility\": \"HIDDEN\",\n  \"url\": \"string\",\n  \"onChainId\": \"string\",\n  \"cardImageUrl\": \"string\",\n  \"bannerImageUrl\": \"string\",\n  \"documentationUrl\": \"string\",\n  \"notebookUrl\": \"string\",\n  \"advancedNotebookUrl\": \"string\",\n  \"discussionUrl\": \"string\",\n  \"codeUrl\": \"string\",\n  \"hostedByName\": \"string\",\n  \"prizePoolText\": \"string\",\n  \"prizePoolShortText\": \"string\",\n  \"prizePoolUsd\": 3712.0999241164586,\n  \"projectNameFormat\": \"string\",\n  \"teamBased\": false,\n  \"onlyTeamLeader\": true,\n  \"maxTeamSize\": 8979,\n  \"projectCreationLimit\": 2406,\n  \"projectSelectionLimit\": 2051,\n  \"allowPredictions\": false,\n  \"encryptSubmissions\": false,\n  \"phalaKeyUrl\": \"string\",\n  \"hideDashboard\": true,\n  \"hideChanges\": false,\n  \"hidePerformance\": false,\n  \"hideRunPerformance\": true,\n  \"hideStatistics\": false,\n  \"hideNotebookSetupCommand\": true,\n  \"hideTrainFrequency\": false,\n  \"hideForceFirstTrain\": false,\n  \"web3\": false,\n  \"order\": 9686,\n  \"statistics\": {\n    \"entrants\": 152,\n    \"participants\": 7777,\n    \"teams\": 6492,\n    \"submissions\": 4023,\n    \"runnables\": 72\n  },\n  \"session\": {\n    \"state\": \"PAUSED\",\n    \"nextChange\": \"1954-02-19T06:10:22.953Z\"\n  },\n  \"createdAt\": \"1979-07-14T11:20:28.405Z\",\n  \"updatedAt\": \"2009-07-16T02:30:18.869Z\",\n  \"tags\": [\n    {\n      \"name\": \"string\",\n      \"displayName\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"displayName\": \"string\"\n    }\n  ],\n  \"timelineEvents\": [\n    {\n      \"id\": 7452,\n      \"type\": \"REWARDS\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"date\": \"1950-08-17\",\n      \"color\": \"string\",\n      \"detailed\": false,\n      \"button\": {\n        \"text\": \"string\",\n        \"link\": \"string\",\n        \"color\": \"string\"\n      },\n      \"createdAt\": \"1962-09-25T14:11:33.107Z\",\n      \"updatedAt\": \"1960-06-05T11:14:55.868Z\"\n    },\n    {\n      \"id\": 1653,\n      \"type\": \"REWARDS\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"date\": \"2022-03-05\",\n      \"color\": \"string\",\n      \"detailed\": true,\n      \"button\": {\n        \"text\": \"string\",\n        \"link\": \"string\",\n        \"color\": \"string\"\n      },\n      \"createdAt\": \"1995-07-17T03:03:21.853Z\",\n      \"updatedAt\": \"1951-08-17T04:54:28.633Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3ebff662-13f3-4fd2-93ad-b874afa2fd2f",
+          "name": "Show a competition.",
+          "request": {
+            "name": "Show a competition.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"fullName\": \"<string>\",\n  \"shortDescription\": \"<string>\",\n  \"start\": \"<dateTime>\",\n  \"end\": \"<dateTime>\",\n  \"visibility\": \"<string>\",\n  \"cardImageUrl\": \"<string>\",\n  \"bannerImageUrl\": \"<string>\",\n  \"documentationUrl\": \"<string>\",\n  \"notebookUrl\": \"<string>\",\n  \"advancedNotebookUrl\": \"<string>\",\n  \"discussionUrl\": \"<string>\",\n  \"codeUrl\": \"<string>\",\n  \"ruleContentUrl\": \"<string>\",\n  \"prizePoolText\": \"<string>\",\n  \"prizePoolShortText\": \"<string>\",\n  \"prizePoolUsd\": \"<double>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ccc14aaf-3048-42e5-acbf-3125df046884",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"fullName\": \"<string>\",\n  \"shortDescription\": \"<string>\",\n  \"start\": \"<dateTime>\",\n  \"end\": \"<dateTime>\",\n  \"visibility\": \"<string>\",\n  \"cardImageUrl\": \"<string>\",\n  \"bannerImageUrl\": \"<string>\",\n  \"documentationUrl\": \"<string>\",\n  \"notebookUrl\": \"<string>\",\n  \"advancedNotebookUrl\": \"<string>\",\n  \"discussionUrl\": \"<string>\",\n  \"codeUrl\": \"<string>\",\n  \"ruleContentUrl\": \"<string>\",\n  \"prizePoolText\": \"<string>\",\n  \"prizePoolShortText\": \"<string>\",\n  \"prizePoolUsd\": \"<double>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 9399,\n  \"name\": \"string\",\n  \"displayName\": \"string\",\n  \"fullName\": \"string\",\n  \"shortDescription\": \"string\",\n  \"type\": \"PAUSED\",\n  \"format\": \"UNSTRUCTURED\",\n  \"mode\": \"OFFLINE\",\n  \"status\": \"PENDING\",\n  \"splitKeyType\": \"INTEGER\",\n  \"start\": \"1997-06-03T02:02:43.943Z\",\n  \"end\": \"1988-08-03T00:10:24.821Z\",\n  \"continuous\": true,\n  \"external\": true,\n  \"featured\": false,\n  \"visibility\": \"HIDDEN\",\n  \"url\": \"string\",\n  \"onChainId\": \"string\",\n  \"cardImageUrl\": \"string\",\n  \"bannerImageUrl\": \"string\",\n  \"documentationUrl\": \"string\",\n  \"notebookUrl\": \"string\",\n  \"advancedNotebookUrl\": \"string\",\n  \"discussionUrl\": \"string\",\n  \"codeUrl\": \"string\",\n  \"hostedByName\": \"string\",\n  \"prizePoolText\": \"string\",\n  \"prizePoolShortText\": \"string\",\n  \"prizePoolUsd\": 3712.0999241164586,\n  \"projectNameFormat\": \"string\",\n  \"teamBased\": false,\n  \"onlyTeamLeader\": true,\n  \"maxTeamSize\": 8979,\n  \"projectCreationLimit\": 2406,\n  \"projectSelectionLimit\": 2051,\n  \"allowPredictions\": false,\n  \"encryptSubmissions\": false,\n  \"phalaKeyUrl\": \"string\",\n  \"hideDashboard\": true,\n  \"hideChanges\": false,\n  \"hidePerformance\": false,\n  \"hideRunPerformance\": true,\n  \"hideStatistics\": false,\n  \"hideNotebookSetupCommand\": true,\n  \"hideTrainFrequency\": false,\n  \"hideForceFirstTrain\": false,\n  \"web3\": false,\n  \"order\": 9686,\n  \"statistics\": {\n    \"entrants\": 152,\n    \"participants\": 7777,\n    \"teams\": 6492,\n    \"submissions\": 4023,\n    \"runnables\": 72\n  },\n  \"session\": {\n    \"state\": \"PAUSED\",\n    \"nextChange\": \"1954-02-19T06:10:22.953Z\"\n  },\n  \"createdAt\": \"1979-07-14T11:20:28.405Z\",\n  \"updatedAt\": \"2009-07-16T02:30:18.869Z\",\n  \"tags\": [\n    {\n      \"name\": \"string\",\n      \"displayName\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"displayName\": \"string\"\n    }\n  ],\n  \"timelineEvents\": [\n    {\n      \"id\": 7452,\n      \"type\": \"REWARDS\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"date\": \"1950-08-17\",\n      \"color\": \"string\",\n      \"detailed\": false,\n      \"button\": {\n        \"text\": \"string\",\n        \"link\": \"string\",\n        \"color\": \"string\"\n      },\n      \"createdAt\": \"1962-09-25T14:11:33.107Z\",\n      \"updatedAt\": \"1960-06-05T11:14:55.868Z\"\n    },\n    {\n      \"id\": 1653,\n      \"type\": \"REWARDS\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"date\": \"2022-03-05\",\n      \"color\": \"string\",\n      \"detailed\": true,\n      \"button\": {\n        \"text\": \"string\",\n        \"link\": \"string\",\n        \"color\": \"string\"\n      },\n      \"createdAt\": \"1995-07-17T03:03:21.853Z\",\n      \"updatedAt\": \"1951-08-17T04:54:28.633Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8fd3f220-5de9-4260-a1c6-b6cafe99de70",
+          "name": "List competitions with filters.",
+          "request": {
+            "name": "List competitions with filters.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "competitions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter on name, display name and full name. Allow for a pattern (%)."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "Filter for competitions with a specific format."
+                },
+                {
+                  "disabled": false,
+                  "key": "mode",
+                  "value": "<string>",
+                  "description": "Filter for competitions with a specific mode."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter for competitions with a specific status(es)."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter for competitions with a specific status(es)."
+                },
+                {
+                  "disabled": false,
+                  "key": "continuous",
+                  "value": "<boolean>",
+                  "description": "Filter for continuous competitions."
+                },
+                {
+                  "disabled": false,
+                  "key": "external",
+                  "value": "<boolean>",
+                  "description": "Filter for external competitions."
+                },
+                {
+                  "disabled": false,
+                  "key": "featured",
+                  "value": "<boolean>",
+                  "description": "Filter for featured competitions."
+                },
+                {
+                  "disabled": false,
+                  "key": "visibility",
+                  "value": "<string>",
+                  "description": "Filter for competitions with a specific visibility."
+                },
+                {
+                  "disabled": false,
+                  "key": "organizerName",
+                  "value": "<string>",
+                  "description": "Filter for competitions of a specific organizer."
+                },
+                {
+                  "disabled": false,
+                  "key": "teamBased",
+                  "value": "<boolean>",
+                  "description": "Filter for team based competitions."
+                },
+                {
+                  "disabled": false,
+                  "key": "registered",
+                  "value": "<boolean>",
+                  "description": "Filter for competitions where the user has accepted the rules."
+                },
+                {
+                  "disabled": false,
+                  "key": "submitted",
+                  "value": "<boolean>",
+                  "description": "Filter for competitions where the user has submitted at least once."
+                },
+                {
+                  "disabled": false,
+                  "key": "userIdentifier",
+                  "value": "<string>",
+                  "description": "User identifier for user-based filters, default to current authenticated user."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort competitions."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Zero-based page index (0..N)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "The size of the page to be returned"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "97ab1e7e-c577-4913-83e6-2f0dae25d107",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "competitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "STREAM"
+                    },
+                    {
+                      "key": "mode",
+                      "value": "REAL_TIME"
+                    },
+                    {
+                      "key": "status",
+                      "value": "OPEN"
+                    },
+                    {
+                      "key": "status",
+                      "value": "OPEN"
+                    },
+                    {
+                      "key": "continuous",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "external",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "featured",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "visibility",
+                      "value": "PUBLIC"
+                    },
+                    {
+                      "key": "organizerName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "teamBased",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "registered",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "submitted",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "userIdentifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageNumber\": 8730,\n  \"pageSize\": 8837,\n  \"totalElements\": 5216,\n  \"totalPages\": 9735,\n  \"content\": [\n    {\n      \"id\": 7667,\n      \"name\": \"string\",\n      \"displayName\": \"string\",\n      \"fullName\": \"string\",\n      \"shortDescription\": \"string\",\n      \"type\": \"OPEN\",\n      \"format\": \"UNSTRUCTURED\",\n      \"mode\": \"REAL_TIME\",\n      \"status\": \"CLOSED\",\n      \"splitKeyType\": \"STRING\",\n      \"start\": \"1964-07-28T03:23:32.366Z\",\n      \"end\": \"2005-02-01T20:23:01.706Z\",\n      \"continuous\": true,\n      \"external\": true,\n      \"featured\": false,\n      \"visibility\": \"HIDDEN\",\n      \"url\": \"string\",\n      \"onChainId\": \"string\",\n      \"cardImageUrl\": \"string\",\n      \"bannerImageUrl\": \"string\",\n      \"documentationUrl\": \"string\",\n      \"notebookUrl\": \"string\",\n      \"advancedNotebookUrl\": \"string\",\n      \"discussionUrl\": \"string\",\n      \"codeUrl\": \"string\",\n      \"hostedByName\": \"string\",\n      \"prizePoolText\": \"string\",\n      \"prizePoolShortText\": \"string\",\n      \"prizePoolUsd\": 9332.4457956773,\n      \"projectNameFormat\": \"string\",\n      \"teamBased\": true,\n      \"onlyTeamLeader\": true,\n      \"maxTeamSize\": 1235,\n      \"projectCreationLimit\": 5939,\n      \"projectSelectionLimit\": 4107,\n      \"allowPredictions\": true,\n      \"encryptSubmissions\": true,\n      \"phalaKeyUrl\": \"string\",\n      \"hideDashboard\": true,\n      \"hideChanges\": true,\n      \"hidePerformance\": false,\n      \"hideRunPerformance\": true,\n      \"hideStatistics\": true,\n      \"hideNotebookSetupCommand\": true,\n      \"hideTrainFrequency\": false,\n      \"hideForceFirstTrain\": true,\n      \"web3\": false,\n      \"order\": 9773,\n      \"statistics\": {\n        \"entrants\": 7229,\n        \"participants\": 4739,\n        \"teams\": 5220,\n        \"submissions\": 2472,\n        \"runnables\": 9049\n      },\n      \"session\": {\n        \"state\": \"OPEN\",\n        \"nextChange\": \"1999-12-29T14:37:32.454Z\"\n      },\n      \"createdAt\": \"2020-10-20T22:54:03.380Z\",\n      \"updatedAt\": \"1955-10-21T19:25:30.760Z\",\n      \"tags\": [\n        {\n          \"name\": \"string\",\n          \"displayName\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"displayName\": \"string\"\n        }\n      ],\n      \"timelineEvents\": [\n        {\n          \"id\": 5032,\n          \"type\": \"REWARDS\",\n          \"title\": \"string\",\n          \"description\": \"string\",\n          \"date\": \"1990-07-22\",\n          \"color\": \"string\",\n          \"detailed\": true,\n          \"button\": {\n            \"text\": \"string\",\n            \"link\": \"string\",\n            \"color\": \"string\"\n          },\n          \"createdAt\": \"2018-11-02T04:40:56.355Z\",\n          \"updatedAt\": \"1990-11-22T08:21:52.848Z\"\n        },\n        {\n          \"id\": 607,\n          \"type\": \"LEADERBOARD\",\n          \"title\": \"string\",\n          \"description\": \"string\",\n          \"date\": \"2007-12-12\",\n          \"color\": \"string\",\n          \"detailed\": false,\n          \"button\": {\n            \"text\": \"string\",\n            \"link\": \"string\",\n            \"color\": \"string\"\n          },\n          \"createdAt\": \"1984-12-16T10:01:51.693Z\",\n          \"updatedAt\": \"1972-12-28T01:31:36.235Z\"\n        }\n      ]\n    },\n    {\n      \"id\": 1675,\n      \"name\": \"string\",\n      \"displayName\": \"string\",\n      \"fullName\": \"string\",\n      \"shortDescription\": \"string\",\n      \"type\": \"OPEN\",\n      \"format\": \"DAG\",\n      \"mode\": \"OFFLINE\",\n      \"status\": \"OPEN\",\n      \"splitKeyType\": \"INTEGER\",\n      \"start\": \"1954-05-13T00:44:31.413Z\",\n      \"end\": \"1977-02-06T14:24:19.330Z\",\n      \"continuous\": false,\n      \"external\": false,\n      \"featured\": false,\n      \"visibility\": \"PUBLIC\",\n      \"url\": \"string\",\n      \"onChainId\": \"string\",\n      \"cardImageUrl\": \"string\",\n      \"bannerImageUrl\": \"string\",\n      \"documentationUrl\": \"string\",\n      \"notebookUrl\": \"string\",\n      \"advancedNotebookUrl\": \"string\",\n      \"discussionUrl\": \"string\",\n      \"codeUrl\": \"string\",\n      \"hostedByName\": \"string\",\n      \"prizePoolText\": \"string\",\n      \"prizePoolShortText\": \"string\",\n      \"prizePoolUsd\": 1793.7687368073196,\n      \"projectNameFormat\": \"string\",\n      \"teamBased\": false,\n      \"onlyTeamLeader\": true,\n      \"maxTeamSize\": 1308,\n      \"projectCreationLimit\": 1389,\n      \"projectSelectionLimit\": 5910,\n      \"allowPredictions\": false,\n      \"encryptSubmissions\": false,\n      \"phalaKeyUrl\": \"string\",\n      \"hideDashboard\": true,\n      \"hideChanges\": false,\n      \"hidePerformance\": true,\n      \"hideRunPerformance\": false,\n      \"hideStatistics\": false,\n      \"hideNotebookSetupCommand\": false,\n      \"hideTrainFrequency\": false,\n      \"hideForceFirstTrain\": false,\n      \"web3\": true,\n      \"order\": 1109,\n      \"statistics\": {\n        \"entrants\": 4161,\n        \"participants\": 5986,\n        \"teams\": 4721,\n        \"submissions\": 6659,\n        \"runnables\": 5763\n      },\n      \"session\": {\n        \"state\": \"PAUSED\",\n        \"nextChange\": \"1964-08-08T10:02:19.438Z\"\n      },\n      \"createdAt\": \"1964-09-16T10:45:21.037Z\",\n      \"updatedAt\": \"1947-02-05T03:22:18.003Z\",\n      \"tags\": [\n        {\n          \"name\": \"string\",\n          \"displayName\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"displayName\": \"string\"\n        }\n      ],\n      \"timelineEvents\": [\n        {\n          \"id\": 4080,\n          \"type\": \"RULES\",\n          \"title\": \"string\",\n          \"description\": \"string\",\n          \"date\": \"1959-08-27\",\n          \"color\": \"string\",\n          \"detailed\": false,\n          \"button\": {\n            \"text\": \"string\",\n            \"link\": \"string\",\n            \"color\": \"string\"\n          },\n          \"createdAt\": \"2012-12-31T18:31:50.309Z\",\n          \"updatedAt\": \"1960-01-03T20:40:30.723Z\"\n        },\n        {\n          \"id\": 1317,\n          \"type\": \"LEADERBOARD\",\n          \"title\": \"string\",\n          \"description\": \"string\",\n          \"date\": \"2014-05-04\",\n          \"color\": \"string\",\n          \"detailed\": true,\n          \"button\": {\n            \"text\": \"string\",\n            \"link\": \"string\",\n            \"color\": \"string\"\n          },\n          \"createdAt\": \"1964-02-12T09:26:17.187Z\",\n          \"updatedAt\": \"1947-12-24T23:32:39.955Z\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "63ba333e-f7a5-40d9-9e5b-b556692c5779",
+          "name": "Show competitions.",
+          "request": {
+            "name": "Show competitions.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a5904eef-6c71-4964-8322-36744e449f9c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 4593,\n    \"name\": \"string\",\n    \"displayName\": \"string\",\n    \"fullName\": \"string\",\n    \"shortDescription\": \"string\",\n    \"type\": \"OPEN\",\n    \"format\": \"SPATIAL\",\n    \"mode\": \"REAL_TIME\",\n    \"status\": \"PENDING\",\n    \"splitKeyType\": \"INTEGER\",\n    \"start\": \"1960-07-27T23:29:35.987Z\",\n    \"end\": \"2015-07-12T19:06:04.574Z\",\n    \"continuous\": true,\n    \"external\": false,\n    \"featured\": false,\n    \"visibility\": \"HIDDEN\",\n    \"url\": \"string\",\n    \"onChainId\": \"string\",\n    \"cardImageUrl\": \"string\",\n    \"bannerImageUrl\": \"string\",\n    \"documentationUrl\": \"string\",\n    \"notebookUrl\": \"string\",\n    \"advancedNotebookUrl\": \"string\",\n    \"discussionUrl\": \"string\",\n    \"codeUrl\": \"string\",\n    \"hostedByName\": \"string\",\n    \"prizePoolText\": \"string\",\n    \"prizePoolShortText\": \"string\",\n    \"prizePoolUsd\": 8311.72938464945,\n    \"projectNameFormat\": \"string\",\n    \"teamBased\": true,\n    \"onlyTeamLeader\": false,\n    \"maxTeamSize\": 2075,\n    \"projectCreationLimit\": 1264,\n    \"projectSelectionLimit\": 2425,\n    \"allowPredictions\": false,\n    \"encryptSubmissions\": true,\n    \"phalaKeyUrl\": \"string\",\n    \"hideDashboard\": true,\n    \"hideChanges\": true,\n    \"hidePerformance\": false,\n    \"hideRunPerformance\": true,\n    \"hideStatistics\": false,\n    \"hideNotebookSetupCommand\": true,\n    \"hideTrainFrequency\": true,\n    \"hideForceFirstTrain\": true,\n    \"web3\": true,\n    \"order\": 5335,\n    \"statistics\": {\n      \"entrants\": 3183,\n      \"participants\": 1281,\n      \"teams\": 6492,\n      \"submissions\": 9307,\n      \"runnables\": 9075\n    },\n    \"session\": {\n      \"state\": \"PAUSED\",\n      \"nextChange\": \"1990-02-04T16:50:45.644Z\"\n    },\n    \"createdAt\": \"2025-10-22T12:10:21.191Z\",\n    \"updatedAt\": \"1971-01-01T10:59:43.355Z\",\n    \"tags\": [\n      {\n        \"name\": \"string\",\n        \"displayName\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"displayName\": \"string\"\n      }\n    ],\n    \"timelineEvents\": [\n      {\n        \"id\": 753,\n        \"type\": \"LEADERBOARD\",\n        \"title\": \"string\",\n        \"description\": \"string\",\n        \"date\": \"1978-08-11\",\n        \"color\": \"string\",\n        \"detailed\": true,\n        \"button\": {\n          \"text\": \"string\",\n          \"link\": \"string\",\n          \"color\": \"string\"\n        },\n        \"createdAt\": \"1978-03-28T11:32:42.566Z\",\n        \"updatedAt\": \"2017-08-13T03:16:27.708Z\"\n      },\n      {\n        \"id\": 7822,\n        \"type\": \"RULES\",\n        \"title\": \"string\",\n        \"description\": \"string\",\n        \"date\": \"1962-04-14\",\n        \"color\": \"string\",\n        \"detailed\": false,\n        \"button\": {\n          \"text\": \"string\",\n          \"link\": \"string\",\n          \"color\": \"string\"\n        },\n        \"createdAt\": \"1967-06-28T13:33:53.822Z\",\n        \"updatedAt\": \"2003-03-05T23:49:41.149Z\"\n      }\n    ]\n  },\n  {\n    \"id\": 6905,\n    \"name\": \"string\",\n    \"displayName\": \"string\",\n    \"fullName\": \"string\",\n    \"shortDescription\": \"string\",\n    \"type\": \"OPEN\",\n    \"format\": \"TIMESERIES\",\n    \"mode\": \"REAL_TIME\",\n    \"status\": \"OPEN\",\n    \"splitKeyType\": \"STRING\",\n    \"start\": \"1965-02-28T16:10:27.772Z\",\n    \"end\": \"1977-02-27T22:51:09.234Z\",\n    \"continuous\": false,\n    \"external\": true,\n    \"featured\": true,\n    \"visibility\": \"HIDDEN\",\n    \"url\": \"string\",\n    \"onChainId\": \"string\",\n    \"cardImageUrl\": \"string\",\n    \"bannerImageUrl\": \"string\",\n    \"documentationUrl\": \"string\",\n    \"notebookUrl\": \"string\",\n    \"advancedNotebookUrl\": \"string\",\n    \"discussionUrl\": \"string\",\n    \"codeUrl\": \"string\",\n    \"hostedByName\": \"string\",\n    \"prizePoolText\": \"string\",\n    \"prizePoolShortText\": \"string\",\n    \"prizePoolUsd\": 5797.643020042898,\n    \"projectNameFormat\": \"string\",\n    \"teamBased\": true,\n    \"onlyTeamLeader\": false,\n    \"maxTeamSize\": 2719,\n    \"projectCreationLimit\": 3066,\n    \"projectSelectionLimit\": 7514,\n    \"allowPredictions\": true,\n    \"encryptSubmissions\": false,\n    \"phalaKeyUrl\": \"string\",\n    \"hideDashboard\": false,\n    \"hideChanges\": true,\n    \"hidePerformance\": true,\n    \"hideRunPerformance\": false,\n    \"hideStatistics\": true,\n    \"hideNotebookSetupCommand\": true,\n    \"hideTrainFrequency\": true,\n    \"hideForceFirstTrain\": false,\n    \"web3\": true,\n    \"order\": 6591,\n    \"statistics\": {\n      \"entrants\": 4434,\n      \"participants\": 364,\n      \"teams\": 2005,\n      \"submissions\": 9044,\n      \"runnables\": 8273\n    },\n    \"session\": {\n      \"state\": \"PAUSED\",\n      \"nextChange\": \"2015-03-15T12:46:48.007Z\"\n    },\n    \"createdAt\": \"1954-01-27T10:51:58.324Z\",\n    \"updatedAt\": \"1985-04-15T10:52:19.654Z\",\n    \"tags\": [\n      {\n        \"name\": \"string\",\n        \"displayName\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"displayName\": \"string\"\n      }\n    ],\n    \"timelineEvents\": [\n      {\n        \"id\": 4743,\n        \"type\": \"REWARDS\",\n        \"title\": \"string\",\n        \"description\": \"string\",\n        \"date\": \"1954-12-11\",\n        \"color\": \"string\",\n        \"detailed\": true,\n        \"button\": {\n          \"text\": \"string\",\n          \"link\": \"string\",\n          \"color\": \"string\"\n        },\n        \"createdAt\": \"1994-07-22T15:07:38.270Z\",\n        \"updatedAt\": \"2021-10-20T18:36:08.167Z\"\n      },\n      {\n        \"id\": 656,\n        \"type\": \"LEADERBOARD\",\n        \"title\": \"string\",\n        \"description\": \"string\",\n        \"date\": \"1984-03-17\",\n        \"color\": \"string\",\n        \"detailed\": true,\n        \"button\": {\n          \"text\": \"string\",\n          \"link\": \"string\",\n          \"color\": \"string\"\n        },\n        \"createdAt\": \"2016-07-30T09:00:04.521Z\",\n        \"updatedAt\": \"1967-07-01T22:46:50.024Z\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b888f659-1233-494e-b6ca-557ec2f85f67",
+          "name": "Show a competition's current state.",
+          "request": {
+            "name": "Show a competition's current state.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "current-state"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "13932aff-579b-444a-a674-92a6ad722ac1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "current-state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"competition\": {\n    \"id\": 2786,\n    \"name\": \"string\",\n    \"displayName\": \"string\",\n    \"fullName\": \"string\",\n    \"shortDescription\": \"string\",\n    \"type\": \"OPEN\",\n    \"format\": \"SPATIAL\",\n    \"mode\": \"OFFLINE\",\n    \"status\": \"PENDING\",\n    \"splitKeyType\": \"STRING\",\n    \"start\": \"2007-11-30T21:59:05.606Z\",\n    \"end\": \"1960-03-03T08:25:04.771Z\",\n    \"continuous\": true,\n    \"external\": false,\n    \"featured\": false,\n    \"visibility\": \"HIDDEN\",\n    \"url\": \"string\",\n    \"onChainId\": \"string\",\n    \"cardImageUrl\": \"string\",\n    \"bannerImageUrl\": \"string\",\n    \"documentationUrl\": \"string\",\n    \"notebookUrl\": \"string\",\n    \"advancedNotebookUrl\": \"string\",\n    \"discussionUrl\": \"string\",\n    \"codeUrl\": \"string\",\n    \"hostedByName\": \"string\",\n    \"prizePoolText\": \"string\",\n    \"prizePoolShortText\": \"string\",\n    \"prizePoolUsd\": 5476.682037406333,\n    \"projectNameFormat\": \"string\",\n    \"teamBased\": false,\n    \"onlyTeamLeader\": false,\n    \"maxTeamSize\": 1575,\n    \"projectCreationLimit\": 4323,\n    \"projectSelectionLimit\": 6605,\n    \"allowPredictions\": true,\n    \"encryptSubmissions\": true,\n    \"phalaKeyUrl\": \"string\",\n    \"hideDashboard\": false,\n    \"hideChanges\": true,\n    \"hidePerformance\": true,\n    \"hideRunPerformance\": false,\n    \"hideStatistics\": true,\n    \"hideNotebookSetupCommand\": true,\n    \"hideTrainFrequency\": true,\n    \"hideForceFirstTrain\": false,\n    \"web3\": false,\n    \"order\": 4072,\n    \"statistics\": {\n      \"entrants\": 4471,\n      \"participants\": 4182,\n      \"teams\": 1520,\n      \"submissions\": 8728,\n      \"runnables\": 2371\n    },\n    \"session\": {\n      \"state\": \"OPEN\",\n      \"nextChange\": \"1953-08-01T14:02:14.370Z\"\n    },\n    \"createdAt\": \"2015-05-07T11:23:12.820Z\",\n    \"updatedAt\": \"1990-03-30T14:25:01.183Z\",\n    \"tags\": [\n      {\n        \"name\": \"string\",\n        \"displayName\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"displayName\": \"string\"\n      }\n    ],\n    \"timelineEvents\": [\n      {\n        \"id\": 1896,\n        \"type\": \"LEADERBOARD\",\n        \"title\": \"string\",\n        \"description\": \"string\",\n        \"date\": \"1987-05-21\",\n        \"color\": \"string\",\n        \"detailed\": true,\n        \"button\": {\n          \"text\": \"string\",\n          \"link\": \"string\",\n          \"color\": \"string\"\n        },\n        \"createdAt\": \"1967-01-13T18:20:11.385Z\",\n        \"updatedAt\": \"2006-10-01T09:35:08.257Z\"\n      },\n      {\n        \"id\": 4128,\n        \"type\": \"REWARDS\",\n        \"title\": \"string\",\n        \"description\": \"string\",\n        \"date\": \"1989-12-07\",\n        \"color\": \"string\",\n        \"detailed\": true,\n        \"button\": {\n          \"text\": \"string\",\n          \"link\": \"string\",\n          \"color\": \"string\"\n        },\n        \"createdAt\": \"2024-09-09T11:12:14.990Z\",\n        \"updatedAt\": \"1968-07-26T05:30:39.654Z\"\n      }\n    ]\n  },\n  \"round\": {\n    \"id\": 6478,\n    \"competition\": {\n      \"id\": 5542,\n      \"name\": \"string\",\n      \"displayName\": \"string\",\n      \"fullName\": \"string\",\n      \"shortDescription\": \"string\",\n      \"type\": \"OPEN\",\n      \"format\": \"UNSTRUCTURED\",\n      \"mode\": \"REAL_TIME\",\n      \"status\": \"PENDING\",\n      \"splitKeyType\": \"INTEGER\",\n      \"start\": \"1957-12-12T14:05:59.942Z\",\n      \"end\": \"1994-05-15T06:29:05.846Z\",\n      \"continuous\": true,\n      \"external\": true,\n      \"featured\": false,\n      \"visibility\": \"PUBLIC\",\n      \"url\": \"string\",\n      \"onChainId\": \"string\",\n      \"cardImageUrl\": \"string\",\n      \"bannerImageUrl\": \"string\",\n      \"documentationUrl\": \"string\",\n      \"notebookUrl\": \"string\",\n      \"advancedNotebookUrl\": \"string\",\n      \"discussionUrl\": \"string\",\n      \"codeUrl\": \"string\",\n      \"hostedByName\": \"string\",\n      \"prizePoolText\": \"string\",\n      \"prizePoolShortText\": \"string\",\n      \"prizePoolUsd\": 5793.070206351689,\n      \"projectNameFormat\": \"string\",\n      \"teamBased\": false,\n      \"onlyTeamLeader\": true,\n      \"maxTeamSize\": 3149,\n      \"projectCreationLimit\": 9174,\n      \"projectSelectionLimit\": 4629,\n      \"allowPredictions\": true,\n      \"encryptSubmissions\": true,\n      \"phalaKeyUrl\": \"string\",\n      \"hideDashboard\": false,\n      \"hideChanges\": false,\n      \"hidePerformance\": false,\n      \"hideRunPerformance\": false,\n      \"hideStatistics\": false,\n      \"hideNotebookSetupCommand\": true,\n      \"hideTrainFrequency\": true,\n      \"hideForceFirstTrain\": true,\n      \"web3\": false,\n      \"order\": 7413,\n      \"statistics\": {\n        \"entrants\": 1600,\n        \"participants\": 7963,\n        \"teams\": 2027,\n        \"submissions\": 8134,\n        \"runnables\": 8039\n      },\n      \"session\": {\n        \"state\": \"OPEN\",\n        \"nextChange\": \"2005-02-19T13:31:57.846Z\"\n      },\n      \"createdAt\": \"2011-01-30T12:22:01.365Z\",\n      \"updatedAt\": \"2023-04-17T22:18:55.366Z\",\n      \"tags\": [\n        {\n          \"name\": \"string\",\n          \"displayName\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"displayName\": \"string\"\n        }\n      ],\n      \"timelineEvents\": [\n        {\n          \"id\": 7903,\n          \"type\": \"RULES\",\n          \"title\": \"string\",\n          \"description\": \"string\",\n          \"date\": \"1962-12-15\",\n          \"color\": \"string\",\n          \"detailed\": false,\n          \"button\": {\n            \"text\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"link\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"color\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"createdAt\": \"2021-03-11T04:00:51.974Z\",\n          \"updatedAt\": \"2024-12-11T06:28:01.266Z\"\n        },\n        {\n          \"id\": 7331,\n          \"type\": \"RULES\",\n          \"title\": \"string\",\n          \"description\": \"string\",\n          \"date\": \"1999-04-27\",\n          \"color\": \"string\",\n          \"detailed\": true,\n          \"button\": {\n            \"text\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"link\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"color\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"createdAt\": \"1968-03-29T00:18:25.147Z\",\n          \"updatedAt\": \"1987-03-01T08:52:41.555Z\"\n        }\n      ]\n    },\n    \"number\": 2953,\n    \"start\": \"1995-09-11T19:21:45.800Z\",\n    \"end\": \"1989-09-11T10:19:49.750Z\",\n    \"automaticSelectionFreezeEnabled\": false,\n    \"automaticSubmissionPhaseCrunchCreationEnabled\": true,\n    \"automaticSubmissionPhaseLeaderboardUpdateEnabled\": true,\n    \"predictionSizeLimit\": 3055,\n    \"maxSubmissionsPerDay\": 6461\n  },\n  \"phase\": {\n    \"id\": 5942,\n    \"type\": \"OUT_OF_SAMPLE\",\n    \"start\": \"1951-08-05T18:00:38.937Z\",\n    \"end\": \"2020-08-22T21:40:32.814Z\",\n    \"dataReleaseId\": 2994,\n    \"localDataReleaseId\": 4782,\n    \"cloudCredits\": {},\n    \"perCrunchWeight\": 3361.430893467964,\n    \"autoCompute\": false,\n    \"runDisabled\": false,\n    \"showPositions\": false,\n    \"showProjectNames\": true,\n    \"runDeterminismCheckEnabled\": false,\n    \"showOnlyRewardedProjectsDefault\": true,\n    \"splits\": [\n      {\n        \"key\": 8394\n      },\n      {\n        \"key\": 8906\n      }\n    ]\n  },\n  \"crunch\": {\n    \"id\": 3716,\n    \"phase\": {\n      \"id\": 3152,\n      \"type\": \"SUBMISSION\",\n      \"start\": \"2013-09-19T09:11:02.529Z\",\n      \"end\": \"1970-05-16T09:28:29.874Z\",\n      \"dataReleaseId\": 8163,\n      \"localDataReleaseId\": 9093,\n      \"cloudCredits\": {},\n      \"perCrunchWeight\": 9189.919391490266,\n      \"autoCompute\": true,\n      \"runDisabled\": true,\n      \"showPositions\": false,\n      \"showProjectNames\": false,\n      \"runDeterminismCheckEnabled\": true,\n      \"showOnlyRewardedProjectsDefault\": true,\n      \"splits\": [\n        {\n          \"key\": 739\n        },\n        {\n          \"key\": 404\n        }\n      ]\n    },\n    \"number\": 3315,\n    \"start\": \"1996-06-02T04:26:52.172Z\",\n    \"end\": \"1975-04-24T20:03:00.055Z\",\n    \"showRuns\": true,\n    \"showMetricsDetails\": false,\n    \"showRunLogs\": false,\n    \"showScoresValue\": false,\n    \"leaderboardSimilarityThreshold\": 6471.530214496539,\n    \"published\": true,\n    \"dataReleaseId\": 5791,\n    \"splits\": [\n      {\n        \"key\": 437\n      },\n      {\n        \"key\": 486\n      }\n    ]\n  },\n  \"participant\": {\n    \"id\": 524,\n    \"competition\": {\n      \"id\": 3025,\n      \"name\": \"string\",\n      \"displayName\": \"string\",\n      \"fullName\": \"string\",\n      \"shortDescription\": \"string\",\n      \"type\": \"OPEN\",\n      \"format\": \"UNSTRUCTURED\",\n      \"mode\": \"REAL_TIME\",\n      \"status\": \"OPEN\",\n      \"splitKeyType\": \"STRING\",\n      \"start\": \"1994-11-21T09:03:34.118Z\",\n      \"end\": \"1985-02-07T00:20:24.527Z\",\n      \"continuous\": true,\n      \"external\": true,\n      \"featured\": true,\n      \"visibility\": \"HIDDEN\",\n      \"url\": \"string\",\n      \"onChainId\": \"string\",\n      \"cardImageUrl\": \"string\",\n      \"bannerImageUrl\": \"string\",\n      \"documentationUrl\": \"string\",\n      \"notebookUrl\": \"string\",\n      \"advancedNotebookUrl\": \"string\",\n      \"discussionUrl\": \"string\",\n      \"codeUrl\": \"string\",\n      \"hostedByName\": \"string\",\n      \"prizePoolText\": \"string\",\n      \"prizePoolShortText\": \"string\",\n      \"prizePoolUsd\": 116.91089936975652,\n      \"projectNameFormat\": \"string\",\n      \"teamBased\": false,\n      \"onlyTeamLeader\": true,\n      \"maxTeamSize\": 2971,\n      \"projectCreationLimit\": 7230,\n      \"projectSelectionLimit\": 6779,\n      \"allowPredictions\": false,\n      \"encryptSubmissions\": true,\n      \"phalaKeyUrl\": \"string\",\n      \"hideDashboard\": true,\n      \"hideChanges\": true,\n      \"hidePerformance\": true,\n      \"hideRunPerformance\": false,\n      \"hideStatistics\": false,\n      \"hideNotebookSetupCommand\": true,\n      \"hideTrainFrequency\": false,\n      \"hideForceFirstTrain\": true,\n      \"web3\": true,\n      \"order\": 488,\n      \"statistics\": {\n        \"entrants\": 1442,\n        \"participants\": 6914,\n        \"teams\": 7400,\n        \"submissions\": 9748,\n        \"runnables\": 2134\n      },\n      \"session\": {\n        \"state\": \"PAUSED\",\n        \"nextChange\": \"2009-12-15T18:32:28.201Z\"\n      },\n      \"createdAt\": \"1973-05-04T12:59:49.372Z\",\n      \"updatedAt\": \"1998-02-27T22:01:50.536Z\",\n      \"tags\": [\n        {\n          \"name\": \"string\",\n          \"displayName\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"displayName\": \"string\"\n        }\n      ],\n      \"timelineEvents\": [\n        {\n          \"id\": 3963,\n          \"type\": \"REWARDS\",\n          \"title\": \"string\",\n          \"description\": \"string\",\n          \"date\": \"1976-07-24\",\n          \"color\": \"string\",\n          \"detailed\": false,\n          \"button\": {\n            \"text\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"link\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"color\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"createdAt\": \"1996-06-07T04:35:46.272Z\",\n          \"updatedAt\": \"1987-07-09T22:04:50.518Z\"\n        },\n        {\n          \"id\": 3537,\n          \"type\": \"LEADERBOARD\",\n          \"title\": \"string\",\n          \"description\": \"string\",\n          \"date\": \"1991-01-31\",\n          \"color\": \"string\",\n          \"detailed\": false,\n          \"button\": {\n            \"text\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"link\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"color\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"createdAt\": \"1953-05-10T04:35:14.130Z\",\n          \"updatedAt\": \"2021-10-22T19:27:53.679Z\"\n        }\n      ]\n    },\n    \"user\": {\n      \"id\": 8100,\n      \"login\": \"string\"\n    },\n    \"cruncherPubkey\": \"string\",\n    \"hidden\": false,\n    \"role\": \"USER\",\n    \"crowned\": true,\n    \"certified\": false,\n    \"rewarded\": false,\n    \"benchmarked\": true,\n    \"ruleAccepted\": false,\n    \"ruleAcceptedAt\": \"2015-01-30T21:36:19.577Z\",\n    \"submitted\": false,\n    \"createdAt\": \"1998-10-27T14:01:30.158Z\",\n    \"updatedAt\": \"1993-01-17T12:48:55.688Z\",\n    \"userId\": 462\n  },\n  \"team\": {\n    \"id\": 9164,\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"leader\": {\n      \"id\": 9091,\n      \"login\": \"string\"\n    },\n    \"size\": 8684,\n    \"deleted\": true,\n    \"lookingForTeammates\": true,\n    \"members\": [\n      {\n        \"id\": 8488,\n        \"user\": {\n          \"id\": 9307,\n          \"login\": \"string\"\n        },\n        \"createdAt\": \"1948-04-19T16:29:10.002Z\",\n        \"userId\": 8683\n      },\n      {\n        \"id\": 5380,\n        \"user\": {\n          \"id\": 3016,\n          \"login\": \"string\"\n        },\n        \"createdAt\": \"2008-08-28T00:30:46.705Z\",\n        \"userId\": 4786\n      }\n    ],\n    \"createdAt\": \"1962-11-08T12:09:50.456Z\",\n    \"updatedAt\": \"1973-12-12T02:02:51.853Z\"\n  },\n  \"activeBroadcasts\": [\n    {\n      \"id\": 7069,\n      \"markdown\": \"string\",\n      \"backgroundColor\": \"string\",\n      \"textColor\": \"string\",\n      \"active\": true,\n      \"position\": 6480\n    },\n    {\n      \"id\": 4176,\n      \"markdown\": \"string\",\n      \"backgroundColor\": \"string\",\n      \"textColor\": \"string\",\n      \"active\": false,\n      \"position\": 9852\n    }\n  ],\n  \"publishedCrunchTargets\": [\n    {\n      \"id\": 3451,\n      \"target\": {\n        \"id\": 7556,\n        \"name\": \"string\",\n        \"displayName\": \"string\",\n        \"weight\": 8630.485751294364,\n        \"weightedMeanUnit\": {\n          \"prefix\": \"string\",\n          \"suffix\": \"string\",\n          \"scale\": 6732\n        },\n        \"primary\": false,\n        \"virtual\": true,\n        \"rankOrder\": \"DESCENDING\",\n        \"weightedMeanDisplayUnit\": \"string\"\n      },\n      \"crunch\": {\n        \"id\": 9774,\n        \"phase\": {\n          \"id\": 8790,\n          \"type\": \"SUBMISSION\",\n          \"start\": \"2001-07-04T13:17:01.527Z\",\n          \"end\": \"1951-10-07T00:12:28.752Z\",\n          \"dataReleaseId\": 8621,\n          \"localDataReleaseId\": 1574,\n          \"cloudCredits\": {},\n          \"perCrunchWeight\": 3748.4008965234516,\n          \"autoCompute\": true,\n          \"runDisabled\": false,\n          \"showPositions\": true,\n          \"showProjectNames\": false,\n          \"runDeterminismCheckEnabled\": true,\n          \"showOnlyRewardedProjectsDefault\": false,\n          \"splits\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"number\": 786,\n        \"start\": \"1957-04-23T23:24:35.742Z\",\n        \"end\": \"1975-11-03T22:42:49.925Z\",\n        \"showRuns\": true,\n        \"showMetricsDetails\": true,\n        \"showRunLogs\": false,\n        \"showScoresValue\": false,\n        \"leaderboardSimilarityThreshold\": 520.2555276654808,\n        \"published\": true,\n        \"dataReleaseId\": 6019,\n        \"splits\": [\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"published\": false\n    },\n    {\n      \"id\": 7651,\n      \"target\": {\n        \"id\": 5143,\n        \"name\": \"string\",\n        \"displayName\": \"string\",\n        \"weight\": 582.7791415049211,\n        \"weightedMeanUnit\": {\n          \"prefix\": \"string\",\n          \"suffix\": \"string\",\n          \"scale\": 7191\n        },\n        \"primary\": false,\n        \"virtual\": false,\n        \"rankOrder\": \"DESCENDING\",\n        \"weightedMeanDisplayUnit\": \"string\"\n      },\n      \"crunch\": {\n        \"id\": 2167,\n        \"phase\": {\n          \"id\": 8978,\n          \"type\": \"SUBMISSION\",\n          \"start\": \"1963-07-09T21:44:53.682Z\",\n          \"end\": \"2021-04-26T19:57:11.755Z\",\n          \"dataReleaseId\": 9596,\n          \"localDataReleaseId\": 9141,\n          \"cloudCredits\": {},\n          \"perCrunchWeight\": 2611.2769539471738,\n          \"autoCompute\": false,\n          \"runDisabled\": true,\n          \"showPositions\": false,\n          \"showProjectNames\": false,\n          \"runDeterminismCheckEnabled\": true,\n          \"showOnlyRewardedProjectsDefault\": true,\n          \"splits\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"number\": 4330,\n        \"start\": \"1986-08-05T10:05:08.461Z\",\n        \"end\": \"1968-05-19T08:16:40.042Z\",\n        \"showRuns\": true,\n        \"showMetricsDetails\": true,\n        \"showRunLogs\": true,\n        \"showScoresValue\": true,\n        \"leaderboardSimilarityThreshold\": 7237.880668341058,\n        \"published\": false,\n        \"dataReleaseId\": 4106,\n        \"splits\": [\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"published\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.hub.crunchdao.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6012d2cc-68ed-4d22-b8a8-e8c6f788c34f",
+    "name": "Tournament activity competition API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CrunchDAO Tournament Platform API Endpoints",
+      "type": "text/plain"
+    }
+  }
+}

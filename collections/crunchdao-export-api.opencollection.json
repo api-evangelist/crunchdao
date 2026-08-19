@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity export API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "export",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Export all submissions as CSV.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v2/competitions/:competitionIdentifier/export/submissions",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Export all submissions as CSV."
+        },
+        {
+          "info": {
+            "name": "Export all runs as CSV.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v2/competitions/:competitionIdentifier/export/runs",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Export all runs as CSV."
+        },
+        {
+          "info": {
+            "name": "Export all predictions as CSV.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v2/competitions/:competitionIdentifier/export/predictions",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "roundIdentifier",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "includeFileUri",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Export all predictions as CSV."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

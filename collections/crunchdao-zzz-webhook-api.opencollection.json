@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity zzz-webhook API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "zzz-webhook",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "privyWebhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/webhook/privy",
+            "headers": [
+              {
+                "name": "svix-id",
+                "value": ""
+              },
+              {
+                "name": "svix-timestamp",
+                "value": ""
+              },
+              {
+                "name": "svix-signature",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

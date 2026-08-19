@@ -1,0 +1,228 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity team:referendum API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "team:referendum",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List referendums.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/teams/:teamIdentifier/referendums",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "teamIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List referendums."
+        },
+        {
+          "info": {
+            "name": "Create a referendums.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/teams/:teamIdentifier/referendums",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "teamIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a referendums."
+        },
+        {
+          "info": {
+            "name": "Vote for a referendum.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/teams/:teamIdentifier/referendums/:referendumNumber/vote",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "teamIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "referendumNumber",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Vote for a referendum."
+        },
+        {
+          "info": {
+            "name": "Create a referendum asking to join the team.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/teams/:teamIdentifier/referendums/ask-to-join",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "teamIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a referendum asking to join the team."
+        },
+        {
+          "info": {
+            "name": "List referendums.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v2/competitions/:competitionIdentifier/teams/:teamIdentifier/referendums",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "teamIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter on type."
+              },
+              {
+                "name": "consensus",
+                "value": "",
+                "type": "query",
+                "description": "Filter on consensus."
+              },
+              {
+                "name": "targetUser",
+                "value": "",
+                "type": "query",
+                "description": "Filter on target user identifier."
+              },
+              {
+                "name": "targetTeam",
+                "value": "",
+                "type": "query",
+                "description": "Filter on target team identifier."
+              },
+              {
+                "name": "verdict",
+                "value": "",
+                "type": "query",
+                "description": "Filter on verdict."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort referendums."
+              },
+              {
+                "name": "includeVotes",
+                "value": "",
+                "type": "query",
+                "description": "Include the votes in the response."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              }
+            ]
+          },
+          "docs": "List referendums."
+        },
+        {
+          "info": {
+            "name": "Show a referendum.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/teams/:teamIdentifier/referendums/:referendumNumber",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "teamIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "referendumNumber",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Show a referendum."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

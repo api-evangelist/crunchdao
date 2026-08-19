@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity out-of-sample API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "out-of-sample",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getProjectPerformance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v3/competitions/:competitionIdentifier/projects/:userLogin/:projectIdentifier/performance",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "projectIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

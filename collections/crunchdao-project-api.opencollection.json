@@ -1,0 +1,416 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity project API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "project",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Find project by ID in batch.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v4/projects/~",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Find project by ID in batch."
+        },
+        {
+          "info": {
+            "name": "Search projects by filters",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v4/projects/search",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search projects by filters"
+        },
+        {
+          "info": {
+            "name": "Show a project selection.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v4/competitions/:competitionIdentifier/projects/:userLogin/:projectIdentifier/selection",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "projectIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "roundNumber",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Show a project selection."
+        },
+        {
+          "info": {
+            "name": "Edit a project selection.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v4/competitions/:competitionIdentifier/projects/:userLogin/:projectIdentifier/selection",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "projectIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "roundNumber",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Edit a project selection."
+        },
+        {
+          "info": {
+            "name": "List the projects of a user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v3/competitions/:competitionIdentifier/projects/:userLogin",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List the projects of a user."
+        },
+        {
+          "info": {
+            "name": "Create a project.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v3/competitions/:competitionIdentifier/projects/:userLogin",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a project."
+        },
+        {
+          "info": {
+            "name": "Select a project for the leaderboard.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v3/competitions/:competitionIdentifier/projects/:userLogin/:projectIdentifier/select",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "projectIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Select a project for the leaderboard."
+        },
+        {
+          "info": {
+            "name": "Show a project.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v3/competitions/:competitionIdentifier/projects/:userLogin/:projectIdentifier",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "projectIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Show a project."
+        },
+        {
+          "info": {
+            "name": "Update a project.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://api.hub.crunchdao.com/v3/competitions/:competitionIdentifier/projects/:userLogin/:projectIdentifier",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "projectIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a project."
+        },
+        {
+          "info": {
+            "name": "Performance of project",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v4/projects/:projectId/performance",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Performance of project"
+        },
+        {
+          "info": {
+            "name": "Use `/compute` instead.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v3/competitions/:competitionIdentifier/projects/:userLogin/:projectIdentifier/quota",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "projectIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "roundNumber",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Use `/compute` instead."
+        },
+        {
+          "info": {
+            "name": "Show a project's submit quota.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v3/competitions/:competitionIdentifier/projects/:userLogin/:projectIdentifier/quota/submit",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "projectIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "roundNumber",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Show a project's submit quota."
+        },
+        {
+          "info": {
+            "name": "Show a project's quota.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v3/competitions/:competitionIdentifier/projects/:userLogin/:projectIdentifier/quota/compute",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "projectIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "roundNumber",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Show a project's quota."
+        },
+        {
+          "info": {
+            "name": "Generate a random project name.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/projects/:userLogin/recommend-name",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Generate a random project name."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

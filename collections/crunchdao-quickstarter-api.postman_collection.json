@@ -1,0 +1,1121 @@
+{
+  "item": [
+    {
+      "id": "faa730c7-c254-406b-99c6-1858aa22c7de",
+      "name": "quickstarter",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b76b66fa-1255-4331-ac50-242c6ffa9df4",
+          "name": "List quickstarters of a competition.",
+          "request": {
+            "name": "List quickstarters of a competition.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "competitions",
+                ":competitionIdentifier",
+                "quickstarters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3928e11e-6a4c-48c3-8553-9c027b22ce8b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "quickstarters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 7132,\n    \"name\": \"string\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"authors\": [\n      {\n        \"name\": \"string\",\n        \"link\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"link\": \"string\"\n      }\n    ],\n    \"language\": \"R\",\n    \"usage\": \"SUBMISSION\",\n    \"notebook\": true,\n    \"entrypoint\": \"string\",\n    \"githubUrl\": \"string\",\n    \"colabUrl\": \"string\",\n    \"kaggleUrl\": \"string\",\n    \"deprecated\": false,\n    \"files\": [\n      {\n        \"name\": \"string\",\n        \"url\": \"string\",\n        \"githubUrl\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"url\": \"string\",\n        \"githubUrl\": \"string\"\n      }\n    ],\n    \"createdAt\": \"1952-12-19T06:21:05.087Z\"\n  },\n  {\n    \"id\": 3117,\n    \"name\": \"string\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"authors\": [\n      {\n        \"name\": \"string\",\n        \"link\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"link\": \"string\"\n      }\n    ],\n    \"language\": \"PYTHON\",\n    \"usage\": \"EXPLORATION\",\n    \"notebook\": true,\n    \"entrypoint\": \"string\",\n    \"githubUrl\": \"string\",\n    \"colabUrl\": \"string\",\n    \"kaggleUrl\": \"string\",\n    \"deprecated\": false,\n    \"files\": [\n      {\n        \"name\": \"string\",\n        \"url\": \"string\",\n        \"githubUrl\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"url\": \"string\",\n        \"githubUrl\": \"string\"\n      }\n    ],\n    \"createdAt\": \"2007-06-13T23:51:47.211Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a7c2eaa7-ad04-4ac1-aa22-9d1d2874d601",
+          "name": "Create a quickstarter for a competition.",
+          "request": {
+            "name": "Create a quickstarter for a competition.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "competitions",
+                ":competitionIdentifier",
+                "quickstarters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"authors\": [\n    {\n      \"name\": \"<string>\",\n      \"link\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"link\": \"<string>\"\n    }\n  ],\n  \"deprecated\": \"<boolean>\",\n  \"entrypoint\": \"<string>\",\n  \"files\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"language\": \"<string>\",\n  \"name\": \"<string>\",\n  \"notebook\": \"<boolean>\",\n  \"title\": \"<string>\",\n  \"usage\": \"<string>\",\n  \"description\": \"<string>\",\n  \"kaggleUrl\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d8344cff-4516-48d1-91ef-31f4ed79d26d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "quickstarters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authors\": [\n    {\n      \"name\": \"string\",\n      \"link\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"link\": \"string\"\n    }\n  ],\n  \"deprecated\": \"<boolean>\",\n  \"entrypoint\": \"<string>\",\n  \"files\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"language\": \"<string>\",\n  \"name\": \"<string>\",\n  \"notebook\": \"<boolean>\",\n  \"title\": \"<string>\",\n  \"usage\": \"<string>\",\n  \"description\": \"<string>\",\n  \"kaggleUrl\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2977,\n  \"name\": \"string\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"authors\": [\n    {\n      \"name\": \"string\",\n      \"link\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"link\": \"string\"\n    }\n  ],\n  \"language\": \"R\",\n  \"usage\": \"EXPLORATION\",\n  \"notebook\": true,\n  \"entrypoint\": \"string\",\n  \"githubUrl\": \"string\",\n  \"colabUrl\": \"string\",\n  \"kaggleUrl\": \"string\",\n  \"deprecated\": true,\n  \"files\": [\n    {\n      \"name\": \"string\",\n      \"url\": \"string\",\n      \"githubUrl\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"url\": \"string\",\n      \"githubUrl\": \"string\"\n    }\n  ],\n  \"createdAt\": \"1976-05-02T23:07:12.323Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "14018735-70ab-4789-b756-9566c0cdd690",
+          "name": "Update the quickstarter library.",
+          "request": {
+            "name": "Update the quickstarter library.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "competitions",
+                ":competitionIdentifier",
+                "quickstarters",
+                "~"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quickstarters\": [\n    {\n      \"authors\": [\n        {\n          \"name\": \"<string>\",\n          \"link\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"link\": \"<string>\"\n        }\n      ],\n      \"deprecated\": \"<boolean>\",\n      \"entrypoint\": \"<string>\",\n      \"files\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"language\": \"<string>\",\n      \"name\": \"<string>\",\n      \"notebook\": \"<boolean>\",\n      \"title\": \"<string>\",\n      \"usage\": \"<string>\",\n      \"description\": \"<string>\",\n      \"kaggleUrl\": \"<string>\"\n    },\n    {\n      \"authors\": [\n        {\n          \"name\": \"<string>\",\n          \"link\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"link\": \"<string>\"\n        }\n      ],\n      \"deprecated\": \"<boolean>\",\n      \"entrypoint\": \"<string>\",\n      \"files\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"language\": \"<string>\",\n      \"name\": \"<string>\",\n      \"notebook\": \"<boolean>\",\n      \"title\": \"<string>\",\n      \"usage\": \"<string>\",\n      \"description\": \"<string>\",\n      \"kaggleUrl\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ef117d0a-015c-4f60-bc6e-c7cae429bdfb",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "quickstarters",
+                    "~"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"quickstarters\": [\n    {\n      \"authors\": [\n        {\n          \"name\": \"string\",\n          \"link\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"link\": \"string\"\n        }\n      ],\n      \"deprecated\": true,\n      \"entrypoint\": \"string\",\n      \"files\": [\n        \"string\",\n        \"string\"\n      ],\n      \"language\": \"PYTHON\",\n      \"name\": \"string\",\n      \"notebook\": false,\n      \"title\": \"string\",\n      \"usage\": \"SUBMISSION\",\n      \"description\": \"string\",\n      \"kaggleUrl\": \"string\"\n    },\n    {\n      \"authors\": [\n        {\n          \"name\": \"string\",\n          \"link\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"link\": \"string\"\n        }\n      ],\n      \"deprecated\": true,\n      \"entrypoint\": \"string\",\n      \"files\": [\n        \"string\",\n        \"string\"\n      ],\n      \"language\": \"PYTHON\",\n      \"name\": \"string\",\n      \"notebook\": true,\n      \"title\": \"string\",\n      \"usage\": \"SUBMISSION\",\n      \"description\": \"string\",\n      \"kaggleUrl\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"added\": 7037,\n  \"updated\": 9682,\n  \"deleted\": 2665\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fcc36c47-cd24-4f45-88ef-1ea70ffdeafa",
+          "name": "Show a quickstarter of a competition.",
+          "request": {
+            "name": "Show a quickstarter of a competition.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "competitions",
+                ":competitionIdentifier",
+                "quickstarters",
+                ":quickstarterName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "quickstarterName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1d1be494-d075-42ad-90f3-6063cde8d87c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "quickstarters",
+                    ":quickstarterName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quickstarterName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2977,\n  \"name\": \"string\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"authors\": [\n    {\n      \"name\": \"string\",\n      \"link\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"link\": \"string\"\n    }\n  ],\n  \"language\": \"R\",\n  \"usage\": \"EXPLORATION\",\n  \"notebook\": true,\n  \"entrypoint\": \"string\",\n  \"githubUrl\": \"string\",\n  \"colabUrl\": \"string\",\n  \"kaggleUrl\": \"string\",\n  \"deprecated\": true,\n  \"files\": [\n    {\n      \"name\": \"string\",\n      \"url\": \"string\",\n      \"githubUrl\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"url\": \"string\",\n      \"githubUrl\": \"string\"\n    }\n  ],\n  \"createdAt\": \"1976-05-02T23:07:12.323Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4b5fdedf-7541-4107-825d-2599336c7633",
+          "name": "Update a quickstarter of a competition.",
+          "request": {
+            "name": "Update a quickstarter of a competition.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "competitions",
+                ":competitionIdentifier",
+                "quickstarters",
+                ":quickstarterName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "quickstarterName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"authors\": [\n    {\n      \"name\": \"<string>\",\n      \"link\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"link\": \"<string>\"\n    }\n  ],\n  \"deprecated\": \"<boolean>\",\n  \"entrypoint\": \"<string>\",\n  \"files\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"language\": \"<string>\",\n  \"notebook\": \"<boolean>\",\n  \"title\": \"<string>\",\n  \"usage\": \"<string>\",\n  \"description\": \"<string>\",\n  \"kaggleUrl\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5c39aa62-db4a-4d27-89b6-988b0cbf6269",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "quickstarters",
+                    ":quickstarterName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quickstarterName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authors\": [\n    {\n      \"name\": \"string\",\n      \"link\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"link\": \"string\"\n    }\n  ],\n  \"deprecated\": \"<boolean>\",\n  \"entrypoint\": \"<string>\",\n  \"files\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"language\": \"<string>\",\n  \"notebook\": \"<boolean>\",\n  \"title\": \"<string>\",\n  \"usage\": \"<string>\",\n  \"description\": \"<string>\",\n  \"kaggleUrl\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2977,\n  \"name\": \"string\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"authors\": [\n    {\n      \"name\": \"string\",\n      \"link\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"link\": \"string\"\n    }\n  ],\n  \"language\": \"R\",\n  \"usage\": \"EXPLORATION\",\n  \"notebook\": true,\n  \"entrypoint\": \"string\",\n  \"githubUrl\": \"string\",\n  \"colabUrl\": \"string\",\n  \"kaggleUrl\": \"string\",\n  \"deprecated\": true,\n  \"files\": [\n    {\n      \"name\": \"string\",\n      \"url\": \"string\",\n      \"githubUrl\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"url\": \"string\",\n      \"githubUrl\": \"string\"\n    }\n  ],\n  \"createdAt\": \"1976-05-02T23:07:12.323Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "976bd69c-6c80-4df8-aedd-6e7ad63ed10b",
+          "name": "Delete a quickstarter of a competition.",
+          "request": {
+            "name": "Delete a quickstarter of a competition.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "competitions",
+                ":competitionIdentifier",
+                "quickstarters",
+                ":quickstarterName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "quickstarterName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f44a7a25-0f3d-42fe-b22d-f5bf1dc983c7",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "quickstarters",
+                    ":quickstarterName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quickstarterName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "61769bc9-8006-4fc6-969c-fe23ccf622ad",
+          "name": "List generic quickstarters.",
+          "request": {
+            "name": "List generic quickstarters.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "quickstarters",
+                "generic",
+                ":competitionFormat"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionFormat",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0360ad77-d0a2-48f3-8809-ef090bb61977",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "quickstarters",
+                    "generic",
+                    ":competitionFormat"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionFormat",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 7132,\n    \"name\": \"string\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"authors\": [\n      {\n        \"name\": \"string\",\n        \"link\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"link\": \"string\"\n      }\n    ],\n    \"language\": \"R\",\n    \"usage\": \"SUBMISSION\",\n    \"notebook\": true,\n    \"entrypoint\": \"string\",\n    \"githubUrl\": \"string\",\n    \"colabUrl\": \"string\",\n    \"kaggleUrl\": \"string\",\n    \"deprecated\": false,\n    \"files\": [\n      {\n        \"name\": \"string\",\n        \"url\": \"string\",\n        \"githubUrl\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"url\": \"string\",\n        \"githubUrl\": \"string\"\n      }\n    ],\n    \"createdAt\": \"1952-12-19T06:21:05.087Z\"\n  },\n  {\n    \"id\": 3117,\n    \"name\": \"string\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"authors\": [\n      {\n        \"name\": \"string\",\n        \"link\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"link\": \"string\"\n      }\n    ],\n    \"language\": \"PYTHON\",\n    \"usage\": \"EXPLORATION\",\n    \"notebook\": true,\n    \"entrypoint\": \"string\",\n    \"githubUrl\": \"string\",\n    \"colabUrl\": \"string\",\n    \"kaggleUrl\": \"string\",\n    \"deprecated\": false,\n    \"files\": [\n      {\n        \"name\": \"string\",\n        \"url\": \"string\",\n        \"githubUrl\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"url\": \"string\",\n        \"githubUrl\": \"string\"\n      }\n    ],\n    \"createdAt\": \"2007-06-13T23:51:47.211Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "44456f64-4a75-4ce6-bb5c-3188c25a3971",
+          "name": "Show a generic quickstarter.",
+          "request": {
+            "name": "Show a generic quickstarter.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "quickstarters",
+                "generic",
+                ":competitionFormat",
+                ":quickstarterName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionFormat",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "quickstarterName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "555854aa-ac34-4f1b-bd4b-88c4910c16ee",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "quickstarters",
+                    "generic",
+                    ":competitionFormat",
+                    ":quickstarterName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionFormat",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quickstarterName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2977,\n  \"name\": \"string\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"authors\": [\n    {\n      \"name\": \"string\",\n      \"link\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"link\": \"string\"\n    }\n  ],\n  \"language\": \"R\",\n  \"usage\": \"EXPLORATION\",\n  \"notebook\": true,\n  \"entrypoint\": \"string\",\n  \"githubUrl\": \"string\",\n  \"colabUrl\": \"string\",\n  \"kaggleUrl\": \"string\",\n  \"deprecated\": true,\n  \"files\": [\n    {\n      \"name\": \"string\",\n      \"url\": \"string\",\n      \"githubUrl\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"url\": \"string\",\n      \"githubUrl\": \"string\"\n    }\n  ],\n  \"createdAt\": \"1976-05-02T23:07:12.323Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "206802a3-5152-4199-a52e-8eb656e3093c",
+          "name": "List quickstarters of a competition.",
+          "request": {
+            "name": "List quickstarters of a competition.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "quickstarters",
+                "competitions",
+                ":competitionIdentifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bcf8a7d6-8574-482f-84b4-73651c2b4ee4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "quickstarters",
+                    "competitions",
+                    ":competitionIdentifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 7132,\n    \"name\": \"string\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"authors\": [\n      {\n        \"name\": \"string\",\n        \"link\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"link\": \"string\"\n      }\n    ],\n    \"language\": \"R\",\n    \"usage\": \"SUBMISSION\",\n    \"notebook\": true,\n    \"entrypoint\": \"string\",\n    \"githubUrl\": \"string\",\n    \"colabUrl\": \"string\",\n    \"kaggleUrl\": \"string\",\n    \"deprecated\": false,\n    \"files\": [\n      {\n        \"name\": \"string\",\n        \"url\": \"string\",\n        \"githubUrl\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"url\": \"string\",\n        \"githubUrl\": \"string\"\n      }\n    ],\n    \"createdAt\": \"1952-12-19T06:21:05.087Z\"\n  },\n  {\n    \"id\": 3117,\n    \"name\": \"string\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"authors\": [\n      {\n        \"name\": \"string\",\n        \"link\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"link\": \"string\"\n      }\n    ],\n    \"language\": \"PYTHON\",\n    \"usage\": \"EXPLORATION\",\n    \"notebook\": true,\n    \"entrypoint\": \"string\",\n    \"githubUrl\": \"string\",\n    \"colabUrl\": \"string\",\n    \"kaggleUrl\": \"string\",\n    \"deprecated\": false,\n    \"files\": [\n      {\n        \"name\": \"string\",\n        \"url\": \"string\",\n        \"githubUrl\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"url\": \"string\",\n        \"githubUrl\": \"string\"\n      }\n    ],\n    \"createdAt\": \"2007-06-13T23:51:47.211Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "874de853-5e05-48e0-867e-4f0205d7d12f",
+          "name": "Show a quickstarter of a competition.",
+          "request": {
+            "name": "Show a quickstarter of a competition.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "quickstarters",
+                "competitions",
+                ":competitionIdentifier",
+                ":quickstarterName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "quickstarterName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8b8e1e9a-8504-4823-a84d-07656c0d4b54",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "quickstarters",
+                    "competitions",
+                    ":competitionIdentifier",
+                    ":quickstarterName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quickstarterName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2977,\n  \"name\": \"string\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"authors\": [\n    {\n      \"name\": \"string\",\n      \"link\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"link\": \"string\"\n    }\n  ],\n  \"language\": \"R\",\n  \"usage\": \"EXPLORATION\",\n  \"notebook\": true,\n  \"entrypoint\": \"string\",\n  \"githubUrl\": \"string\",\n  \"colabUrl\": \"string\",\n  \"kaggleUrl\": \"string\",\n  \"deprecated\": true,\n  \"files\": [\n    {\n      \"name\": \"string\",\n      \"url\": \"string\",\n      \"githubUrl\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"url\": \"string\",\n      \"githubUrl\": \"string\"\n    }\n  ],\n  \"createdAt\": \"1976-05-02T23:07:12.323Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.hub.crunchdao.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0155d2d1-80bc-480f-8874-2becbce1dbbc",
+    "name": "Tournament activity quickstarter API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CrunchDAO Tournament Platform API Endpoints",
+      "type": "text/plain"
+    }
+  }
+}

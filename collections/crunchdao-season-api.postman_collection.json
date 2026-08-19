@@ -1,0 +1,400 @@
+{
+  "item": [
+    {
+      "id": "03cea355-8d99-41d7-8b71-8f7fa0c7ea47",
+      "name": "season",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "01c69af8-f1da-45d4-b6d1-3bcf82e432d5",
+          "name": "List seasons with filters.",
+          "request": {
+            "name": "List seasons with filters.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "stakers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "organizerName",
+                  "value": "<string>",
+                  "description": "Filter for a specific organizer."
+                },
+                {
+                  "disabled": false,
+                  "key": "organizerOnChainId",
+                  "value": "<string>",
+                  "description": "Filter for a specific organizer."
+                },
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "Filter for a specific organizer."
+                },
+                {
+                  "disabled": false,
+                  "key": "userLogin",
+                  "value": "<string>",
+                  "description": "Filter for a specific organizer."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Zero-based page index (0..N)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "The size of the page to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeTarget",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b635bb17-ebd6-476b-936f-0fedb140b941",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "stakers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organizerName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organizerOnChainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeTarget",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageNumber\": 8294,\n  \"pageSize\": 4182,\n  \"totalElements\": 8605,\n  \"totalPages\": 9748,\n  \"content\": [\n    {\n      \"id\": 2626,\n      \"address\": \"string\",\n      \"user\": {\n        \"id\": 6712,\n        \"login\": \"string\"\n      },\n      \"totalAmount\": 9513,\n      \"organizer\": {\n        \"id\": 5597,\n        \"name\": \"string\",\n        \"displayName\": \"string\",\n        \"onChainId\": \"string\",\n        \"logoImageUrl\": \"string\",\n        \"bannerImageUrl\": \"string\",\n        \"stake\": {\n          \"prefix\": \"string\",\n          \"suffix\": \"string\",\n          \"scale\": 7764\n        }\n      }\n    },\n    {\n      \"id\": 975,\n      \"address\": \"string\",\n      \"user\": {\n        \"id\": 4145,\n        \"login\": \"string\"\n      },\n      \"totalAmount\": 4874,\n      \"organizer\": {\n        \"id\": 7457,\n        \"name\": \"string\",\n        \"displayName\": \"string\",\n        \"onChainId\": \"string\",\n        \"logoImageUrl\": \"string\",\n        \"bannerImageUrl\": \"string\",\n        \"stake\": {\n          \"prefix\": \"string\",\n          \"suffix\": \"string\",\n          \"scale\": 1030\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6741b46b-2b82-4d29-8ee2-c5b185dbf8c4",
+          "name": "List seasons with filters.",
+          "request": {
+            "name": "List seasons with filters.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "seasons"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter for seasons with a specific status(es)."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter for seasons with a specific status(es)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort seasons."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Zero-based page index (0..N)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "The size of the page to be returned"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "00e7cf30-f797-4dd9-8edd-6fbd01614ed7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "seasons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "VOTING"
+                    },
+                    {
+                      "key": "status",
+                      "value": "CLOSED"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageNumber\": 4995,\n  \"pageSize\": 5310,\n  \"totalElements\": 2414,\n  \"totalPages\": 3074,\n  \"content\": [\n    {\n      \"id\": 1892,\n      \"number\": 2172,\n      \"displayName\": \"string\",\n      \"shortDescription\": \"string\",\n      \"description\": \"string\",\n      \"status\": \"VOTING\",\n      \"start\": \"2024-02-28T13:46:21.166Z\",\n      \"end\": \"1974-07-02T11:31:09.160Z\",\n      \"stakeGoal\": 636,\n      \"createdAt\": \"2012-01-07T05:47:58.610Z\"\n    },\n    {\n      \"id\": 5870,\n      \"number\": 1606,\n      \"displayName\": \"string\",\n      \"shortDescription\": \"string\",\n      \"description\": \"string\",\n      \"status\": \"VOTING\",\n      \"start\": \"1979-06-25T02:35:32.437Z\",\n      \"end\": \"1963-05-27T14:01:53.662Z\",\n      \"stakeGoal\": 6178,\n      \"createdAt\": \"1950-06-17T11:27:05.632Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "12b542a7-c9ec-49a0-9599-ac3aca75b7a2",
+          "name": "Show a season.",
+          "request": {
+            "name": "Show a season.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "seasons",
+                ":seasonNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "seasonNumber",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "299cf50f-dacf-4351-92c3-0a66a9bb1e94",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "seasons",
+                    ":seasonNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "seasonNumber",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 182,\n  \"number\": 593,\n  \"displayName\": \"string\",\n  \"shortDescription\": \"string\",\n  \"description\": \"string\",\n  \"status\": \"OPEN\",\n  \"start\": \"2024-05-17T13:36:58.217Z\",\n  \"end\": \"1993-11-07T03:22:51.973Z\",\n  \"stakeGoal\": 8248,\n  \"createdAt\": \"2004-04-19T08:10:15.251Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.hub.crunchdao.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8fbb4a4e-19c5-4632-a7dd-d96cf53a6902",
+    "name": "Tournament activity season API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CrunchDAO Tournament Platform API Endpoints",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,565 @@
+{
+  "item": [
+    {
+      "id": "7570de15-b105-41c2-b1be-50b23644fba1",
+      "name": "timeline",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bc1d537d-f1da-45d4-90a7-f34c3c047971",
+          "name": "List a timeline events.",
+          "request": {
+            "name": "List a timeline events.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "competitions",
+                ":competitionIdentifier",
+                "timeline",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "77f21ad8-a016-4c44-bf05-2aab19e5b2d5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "timeline",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 2827,\n    \"type\": \"REWARDS\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"date\": \"2004-11-11\",\n    \"color\": \"string\",\n    \"detailed\": false,\n    \"button\": {\n      \"text\": \"string\",\n      \"link\": \"string\",\n      \"color\": \"string\"\n    },\n    \"createdAt\": \"1980-03-10T07:21:53.475Z\",\n    \"updatedAt\": \"1968-04-04T06:35:06.168Z\"\n  },\n  {\n    \"id\": 9121,\n    \"type\": \"REWARDS\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"date\": \"2000-06-24\",\n    \"color\": \"string\",\n    \"detailed\": true,\n    \"button\": {\n      \"text\": \"string\",\n      \"link\": \"string\",\n      \"color\": \"string\"\n    },\n    \"createdAt\": \"1999-01-19T10:11:40.197Z\",\n    \"updatedAt\": \"1979-05-29T22:24:23.253Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "82db4295-bad2-4e56-a6be-007e90285b6d",
+          "name": "Create a timeline event.",
+          "request": {
+            "name": "Create a timeline event.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "competitions",
+                ":competitionIdentifier",
+                "timeline",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"date\": \"<date>\",\n  \"detailed\": \"<boolean>\",\n  \"title\": \"<string>\",\n  \"type\": \"<string>\",\n  \"description\": \"<string>\",\n  \"color\": \"<string>\",\n  \"button\": {\n    \"link\": \"<string>\",\n    \"text\": \"<string>\",\n    \"color\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dfa87399-4c5a-4859-b2dc-0b6491636f2c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "timeline",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"<date>\",\n  \"detailed\": \"<boolean>\",\n  \"title\": \"<string>\",\n  \"type\": \"<string>\",\n  \"description\": \"<string>\",\n  \"color\": \"<string>\",\n  \"button\": {\n    \"link\": \"string\",\n    \"text\": \"string\",\n    \"color\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 3578,\n  \"type\": \"LEADERBOARD\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"date\": \"1953-11-08\",\n  \"color\": \"string\",\n  \"detailed\": true,\n  \"button\": {\n    \"text\": \"string\",\n    \"link\": \"string\",\n    \"color\": \"string\"\n  },\n  \"createdAt\": \"2006-12-19T15:22:31.132Z\",\n  \"updatedAt\": \"1993-10-22T08:47:01.802Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bfa08aa8-445f-4ec6-8115-47dc74c8b4a5",
+          "name": "Show a timeline event.",
+          "request": {
+            "name": "Show a timeline event.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "competitions",
+                ":competitionIdentifier",
+                "timeline",
+                "events",
+                ":eventId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "eventId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a2f9ab7-6200-466f-ad00-f1df0b744f45",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "timeline",
+                    "events",
+                    ":eventId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "eventId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 3578,\n  \"type\": \"LEADERBOARD\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"date\": \"1953-11-08\",\n  \"color\": \"string\",\n  \"detailed\": true,\n  \"button\": {\n    \"text\": \"string\",\n    \"link\": \"string\",\n    \"color\": \"string\"\n  },\n  \"createdAt\": \"2006-12-19T15:22:31.132Z\",\n  \"updatedAt\": \"1993-10-22T08:47:01.802Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "82ffd63f-eb0b-4a38-9771-69fb9f1233e3",
+          "name": "Delete a timeline event.",
+          "request": {
+            "name": "Delete a timeline event.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "competitions",
+                ":competitionIdentifier",
+                "timeline",
+                "events",
+                ":eventId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "eventId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7574c34b-c7a6-41fc-9b02-f02f66e56c92",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "timeline",
+                    "events",
+                    ":eventId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "eventId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7115846b-fd5e-4b14-aa00-e3e29f537e05",
+          "name": "Update a timeline event.",
+          "request": {
+            "name": "Update a timeline event.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "competitions",
+                ":competitionIdentifier",
+                "timeline",
+                "events",
+                ":eventId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "eventId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"date\": \"<date>\",\n  \"color\": \"<string>\",\n  \"detailed\": \"<boolean>\",\n  \"button\": {\n    \"text\": \"<string>\",\n    \"link\": \"<string>\",\n    \"color\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8330c76a-6c3f-4414-9f22-e2d13990e0a7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "timeline",
+                    "events",
+                    ":eventId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "eventId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"date\": \"<date>\",\n  \"color\": \"<string>\",\n  \"detailed\": \"<boolean>\",\n  \"button\": {\n    \"text\": \"string\",\n    \"link\": \"string\",\n    \"color\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 3578,\n  \"type\": \"LEADERBOARD\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"date\": \"1953-11-08\",\n  \"color\": \"string\",\n  \"detailed\": true,\n  \"button\": {\n    \"text\": \"string\",\n    \"link\": \"string\",\n    \"color\": \"string\"\n  },\n  \"createdAt\": \"2006-12-19T15:22:31.132Z\",\n  \"updatedAt\": \"1993-10-22T08:47:01.802Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.hub.crunchdao.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8c645247-99f9-493e-bdae-aa4081352984",
+    "name": "Tournament activity timeline API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CrunchDAO Tournament Platform API Endpoints",
+      "type": "text/plain"
+    }
+  }
+}

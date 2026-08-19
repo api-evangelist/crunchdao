@@ -1,0 +1,114 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity runtime:access-request API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "runtime:access-request",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List runtime access requests.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/runtime-access-requests",
+            "params": [
+              {
+                "name": "verdict",
+                "value": "",
+                "type": "query",
+                "description": "Filter by verdict. Include all if not specified."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort results."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              }
+            ]
+          },
+          "docs": "List runtime access requests."
+        },
+        {
+          "info": {
+            "name": "Create a runtime access request.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/runtime-access-requests",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a runtime access request."
+        },
+        {
+          "info": {
+            "name": "Reject a runtime access request.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/runtime-access-requests/:runtimeAccessRequestId/reject",
+            "params": [
+              {
+                "name": "runtimeAccessRequestId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reject a runtime access request."
+        },
+        {
+          "info": {
+            "name": "Approve a runtime access request.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/runtime-access-requests/:runtimeAccessRequestId/approve",
+            "params": [
+              {
+                "name": "runtimeAccessRequestId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Approve a runtime access request."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

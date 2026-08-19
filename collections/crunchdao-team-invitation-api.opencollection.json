@@ -1,0 +1,128 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity team:invitation API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "team:invitation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Show an invitation.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/team-invitations/:teamIdentifier",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "teamIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Show an invitation."
+        },
+        {
+          "info": {
+            "name": "Accept an invitation.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/team-invitations/:teamIdentifier",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "teamIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Accept an invitation."
+        },
+        {
+          "info": {
+            "name": "Decline an invitation.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/team-invitations/:teamIdentifier",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "teamIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Decline an invitation."
+        },
+        {
+          "info": {
+            "name": "List pending team invitations.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/teams/:teamIdentifier/invitations",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "teamIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List pending team invitations."
+        },
+        {
+          "info": {
+            "name": "List invitations.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/team-invitations",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List invitations."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

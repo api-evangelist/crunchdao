@@ -1,0 +1,132 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity avatar API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "avatar",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Redirect to a user's avatar.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v3/users/:userIdentifier/avatar",
+            "params": [
+              {
+                "name": "userIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "temporaryRedirect",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Redirect to a user's avatar."
+        },
+        {
+          "info": {
+            "name": "Upload a user avatar.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v3/users/:userIdentifier/avatar",
+            "params": [
+              {
+                "name": "userIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "avatarFile",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Upload a user avatar."
+        },
+        {
+          "info": {
+            "name": "Redirect to a user's banner.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/users/:userIdentifier/banner",
+            "params": [
+              {
+                "name": "userIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Redirect to a user's banner."
+        },
+        {
+          "info": {
+            "name": "Upload a user banner.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/users/:userIdentifier/banner",
+            "params": [
+              {
+                "name": "userIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Upload a user banner."
+        },
+        {
+          "info": {
+            "name": "showGravatarAvatar",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v2/avatar/:idOrLogin",
+            "params": [
+              {
+                "name": "idOrLogin",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

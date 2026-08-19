@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity rule API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "rule",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Accept rules.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/rules/accept",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Accept rules."
+        },
+        {
+          "info": {
+            "name": "Show the rule of a competition.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/rules",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Show the rule of a competition."
+        },
+        {
+          "info": {
+            "name": "Show current rule agreemeent status.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/rules/status",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Show current rule agreemeent status."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,565 @@
+{
+  "item": [
+    {
+      "id": "794bd8c6-caba-4e91-890a-31999cd1ccdb",
+      "name": "library:request",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fc569b3f-0741-4832-a670-0ca263f3ab54",
+          "name": "List library requests.",
+          "request": {
+            "name": "List library requests.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "library-requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "verdict",
+                  "value": "<string>",
+                  "description": "Filter by verdict. Include all if not specified."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter on both name and alias. Allow for a pattern (%)."
+                },
+                {
+                  "disabled": false,
+                  "key": "gpuRequirement",
+                  "value": "<string>",
+                  "description": "Filter for GPU requirement."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort results."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Zero-based page index (0..N)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "The size of the page to be returned"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "012a0c51-d55b-4fc6-ba2e-907aa0fddc8d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "library-requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "verdict",
+                      "value": "REJECTED"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gpuRequirement",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageNumber\": 7911,\n  \"pageSize\": 2549,\n  \"totalElements\": 2128,\n  \"totalPages\": 1446,\n  \"content\": [\n    {\n      \"id\": 7170,\n      \"language\": \"R\",\n      \"name\": \"string\",\n      \"alias\": \"string\",\n      \"gpuRequirement\": \"OPTIONAL\",\n      \"additionalDetails\": \"string\",\n      \"requestedBy\": {\n        \"id\": 1880,\n        \"login\": \"string\"\n      },\n      \"requestedFor\": {\n        \"id\": 5074,\n        \"name\": \"string\",\n        \"displayName\": \"string\"\n      },\n      \"verdict\": \"REJECTED\",\n      \"verdictReason\": \"string\",\n      \"verdictBy\": {\n        \"id\": 2627,\n        \"login\": \"string\"\n      },\n      \"verdictAt\": \"1989-09-03T22:09:57.811Z\",\n      \"createdAt\": \"2025-09-20T21:16:20.957Z\"\n    },\n    {\n      \"id\": 7401,\n      \"language\": \"R\",\n      \"name\": \"string\",\n      \"alias\": \"string\",\n      \"gpuRequirement\": \"RECOMMENDED\",\n      \"additionalDetails\": \"string\",\n      \"requestedBy\": {\n        \"id\": 4609,\n        \"login\": \"string\"\n      },\n      \"requestedFor\": {\n        \"id\": 8852,\n        \"name\": \"string\",\n        \"displayName\": \"string\"\n      },\n      \"verdict\": \"REJECTED\",\n      \"verdictReason\": \"string\",\n      \"verdictBy\": {\n        \"id\": 1277,\n        \"login\": \"string\"\n      },\n      \"verdictAt\": \"2003-05-15T16:00:32.647Z\",\n      \"createdAt\": \"2000-01-20T12:37:38.941Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be60798d-cfe8-4de6-aaf5-c1303f5c1e50",
+          "name": "Create a library request.",
+          "request": {
+            "name": "Create a library request.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "library-requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"competitionId\": \"<long>\",\n  \"language\": \"<string>\",\n  \"name\": \"<string>\",\n  \"alias\": \"<string>\",\n  \"gpuRequirement\": \"<string>\",\n  \"additionalDetails\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "238f02ed-9130-4acb-bad0-312860915376",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "library-requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"competitionId\": \"<long>\",\n  \"language\": \"<string>\",\n  \"name\": \"<string>\",\n  \"alias\": \"<string>\",\n  \"gpuRequirement\": \"<string>\",\n  \"additionalDetails\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 263,\n  \"language\": \"R\",\n  \"name\": \"string\",\n  \"alias\": \"string\",\n  \"gpuRequirement\": \"OPTIONAL\",\n  \"additionalDetails\": \"string\",\n  \"requestedBy\": {\n    \"id\": 8348,\n    \"login\": \"string\"\n  },\n  \"requestedFor\": {\n    \"id\": 9759,\n    \"name\": \"string\",\n    \"displayName\": \"string\"\n  },\n  \"verdict\": \"PENDING\",\n  \"verdictReason\": \"string\",\n  \"verdictBy\": {\n    \"id\": 3940,\n    \"login\": \"string\"\n  },\n  \"verdictAt\": \"2019-01-01T10:58:36.302Z\",\n  \"createdAt\": \"1983-10-18T00:56:56.241Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c6fc59c6-83ff-49dc-b4ba-c5d2eeb005a4",
+          "name": "Reject a library request.",
+          "request": {
+            "name": "Reject a library request.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "library-requests",
+                ":libraryRequestId",
+                "reject"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "libraryRequestId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e56d4d5b-9273-4f4e-a653-f50e6420c0f0",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "library-requests",
+                    ":libraryRequestId",
+                    "reject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "libraryRequestId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 263,\n  \"language\": \"R\",\n  \"name\": \"string\",\n  \"alias\": \"string\",\n  \"gpuRequirement\": \"OPTIONAL\",\n  \"additionalDetails\": \"string\",\n  \"requestedBy\": {\n    \"id\": 8348,\n    \"login\": \"string\"\n  },\n  \"requestedFor\": {\n    \"id\": 9759,\n    \"name\": \"string\",\n    \"displayName\": \"string\"\n  },\n  \"verdict\": \"PENDING\",\n  \"verdictReason\": \"string\",\n  \"verdictBy\": {\n    \"id\": 3940,\n    \"login\": \"string\"\n  },\n  \"verdictAt\": \"2019-01-01T10:58:36.302Z\",\n  \"createdAt\": \"1983-10-18T00:56:56.241Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "adf13539-777d-4888-9aff-c5064bb5af64",
+          "name": "Approve a library request.",
+          "request": {
+            "name": "Approve a library request.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "library-requests",
+                ":libraryRequestId",
+                "approve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "libraryRequestId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"alias\": \"<string>\",\n  \"gpuRequirement\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3344a387-66cd-4e52-a551-aad038aeb325",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "library-requests",
+                    ":libraryRequestId",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "libraryRequestId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alias\": \"<string>\",\n  \"gpuRequirement\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 263,\n  \"language\": \"R\",\n  \"name\": \"string\",\n  \"alias\": \"string\",\n  \"gpuRequirement\": \"OPTIONAL\",\n  \"additionalDetails\": \"string\",\n  \"requestedBy\": {\n    \"id\": 8348,\n    \"login\": \"string\"\n  },\n  \"requestedFor\": {\n    \"id\": 9759,\n    \"name\": \"string\",\n    \"displayName\": \"string\"\n  },\n  \"verdict\": \"PENDING\",\n  \"verdictReason\": \"string\",\n  \"verdictBy\": {\n    \"id\": 3940,\n    \"login\": \"string\"\n  },\n  \"verdictAt\": \"2019-01-01T10:58:36.302Z\",\n  \"createdAt\": \"1983-10-18T00:56:56.241Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c2a18e82-f442-4c9b-be5d-4b2ea32462bf",
+          "name": "Test if a library on PyPI.",
+          "request": {
+            "name": "Test if a library on PyPI.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "library-requests",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "PYTHON"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c4d819a7-4a70-4381-93ad-a186e615a366",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "library-requests",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "language",
+                      "value": "PYTHON"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"alreadyAdded\": true,\n  \"found\": false,\n  \"lastestVersion\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.hub.crunchdao.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "16a23288-56a3-46f1-b006-d6115b8600b1",
+    "name": "Tournament activity library:request API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CrunchDAO Tournament Platform API Endpoints",
+      "type": "text/plain"
+    }
+  }
+}

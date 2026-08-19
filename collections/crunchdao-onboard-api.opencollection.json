@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity onboard API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "onboard",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Show onboard process.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/onboard"
+          },
+          "docs": "Show onboard process."
+        },
+        {
+          "info": {
+            "name": "Update onboard process.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/onboard",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update onboard process."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

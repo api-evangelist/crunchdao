@@ -1,0 +1,202 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity data API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List data releases.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v2/competitions/:competitionIdentifier/data-releases",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+              }
+            ]
+          },
+          "docs": "List data releases."
+        },
+        {
+          "info": {
+            "name": "Create a data releases.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v2/competitions/:competitionIdentifier/data-releases",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a data releases."
+        },
+        {
+          "info": {
+            "name": "Resolve a data release's Y.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v2/competitions/:competitionIdentifier/data-releases/:dataReleaseNumber/resolve/:targetName",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dataReleaseNumber",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "targetName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Resolve a data release's Y."
+        },
+        {
+          "info": {
+            "name": "Get a run's data release.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v2/competitions/:competitionIdentifier/rounds/:roundIdentifier/phases/submission/data-release",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "roundIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "withoutFiles",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pushToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sizeVariant",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a run's data release."
+        },
+        {
+          "info": {
+            "name": "List data releases.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/data-releases",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List data releases."
+        },
+        {
+          "info": {
+            "name": "Show a data releases.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/data-releases/:dataReleaseNumber",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dataReleaseNumber",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "includeSplits",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sizeVariant",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "accessLocation",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Show a data releases."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

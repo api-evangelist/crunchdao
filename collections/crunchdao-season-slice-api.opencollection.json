@@ -1,0 +1,198 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity season:slice API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "season:slice",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "listSeasonSlices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/seasons/:seasonNumber/slices",
+            "params": [
+              {
+                "name": "seasonNumber",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "createSeasonSlice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/seasons/:seasonNumber/slices",
+            "params": [
+              {
+                "name": "seasonNumber",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "importSeasonSlicesFromMarkdown",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/seasons/:seasonNumber/slices/~/import/markdown",
+            "params": [
+              {
+                "name": "seasonNumber",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "importSeasonSlicesFromGitBook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/seasons/:seasonNumber/slices/~/import/gitbook",
+            "params": [
+              {
+                "name": "seasonNumber",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "getSeasonSlice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/seasons/:seasonNumber/slices/:sliceName",
+            "params": [
+              {
+                "name": "seasonNumber",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "sliceName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "updateSeasonSlice",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://api.hub.crunchdao.com/v1/seasons/:seasonNumber/slices/:sliceName",
+            "params": [
+              {
+                "name": "seasonNumber",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "sliceName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "deleteSeasonSlice",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://api.hub.crunchdao.com/v1/seasons/:seasonNumber/slices/:sliceName",
+            "params": [
+              {
+                "name": "seasonNumber",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "sliceName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

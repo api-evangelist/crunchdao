@@ -1,0 +1,876 @@
+{
+  "item": [
+    {
+      "id": "f46650ed-8b0f-47cf-98a5-00cfc0739a46",
+      "name": "data",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8637907a-58b4-4b54-b038-c494e1360744",
+          "name": "List data releases.",
+          "request": {
+            "name": "List data releases.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "competitions",
+                ":competitionIdentifier",
+                "data-releases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Zero-based page index (0..N)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "The size of the page to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5c752c1d-b667-416b-8d27-ff9bbbaec746",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "data-releases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageNumber\": 9521,\n  \"pageSize\": 7760,\n  \"totalElements\": 7519,\n  \"totalPages\": 8273,\n  \"content\": [\n    {\n      \"id\": 3837,\n      \"number\": 5695,\n      \"name\": \"string\",\n      \"custom\": true,\n      \"sized\": true,\n      \"hasSmallVariant\": true,\n      \"hasLargeVariant\": false,\n      \"embargo\": 87,\n      \"numberOfFeatures\": 9625,\n      \"hash\": \"string\",\n      \"splitKeyType\": \"INTEGER\",\n      \"resolvable\": false,\n      \"splits\": [\n        {\n          \"key\": 2998,\n          \"group\": \"TEST\",\n          \"reduced\": \"XY\"\n        },\n        {\n          \"key\": 2957,\n          \"group\": \"TEST\",\n          \"reduced\": \"X\"\n        }\n      ],\n      \"targetResolution\": {\n        \"key_0\": \"ALREADY\",\n        \"key_1\": \"PENDING\"\n      },\n      \"createdAt\": \"2020-06-17T10:41:44.900Z\",\n      \"dataFiles\": {\n        \"key_0\": {\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"url\": \"string\",\n          \"size\": 5667,\n          \"signed\": true,\n          \"compressed\": false\n        },\n        \"key_1\": {\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"url\": \"string\",\n          \"size\": 3399,\n          \"signed\": true,\n          \"compressed\": false\n        }\n      }\n    },\n    {\n      \"id\": 2372,\n      \"number\": 9949,\n      \"name\": \"string\",\n      \"custom\": false,\n      \"sized\": true,\n      \"hasSmallVariant\": false,\n      \"hasLargeVariant\": false,\n      \"embargo\": 7297,\n      \"numberOfFeatures\": 362,\n      \"hash\": \"string\",\n      \"splitKeyType\": \"STRING\",\n      \"resolvable\": false,\n      \"splits\": [\n        {\n          \"key\": 2121,\n          \"group\": \"TRAIN\",\n          \"reduced\": \"X\"\n        },\n        {\n          \"key\": 8699,\n          \"group\": \"TEST\",\n          \"reduced\": \"X\"\n        }\n      ],\n      \"targetResolution\": {\n        \"key_0\": \"RESOLVED\"\n      },\n      \"createdAt\": \"1965-08-09T06:17:10.977Z\",\n      \"dataFiles\": {\n        \"key_0\": {\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"url\": \"string\",\n          \"size\": 7071,\n          \"signed\": true,\n          \"compressed\": true\n        },\n        \"key_1\": {\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"url\": \"string\",\n          \"size\": 8735,\n          \"signed\": false,\n          \"compressed\": true\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "41a8f58e-aef9-4713-a437-d4e373a772c3",
+          "name": "Create a data releases.",
+          "request": {
+            "name": "Create a data releases.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "competitions",
+                ":competitionIdentifier",
+                "data-releases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"files\": [\n    {\n      \"access\": {\n        \"local\": \"<boolean>\",\n        \"runner\": \"<boolean>\",\n        \"checking\": \"<boolean>\",\n        \"scoring\": \"<boolean>\",\n        \"comparing\": \"<boolean>\"\n      },\n      \"compressed\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"sizeVariant\": \"<string>\",\n      \"uploadId\": \"<uuid>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"access\": {\n        \"local\": \"<boolean>\",\n        \"runner\": \"<boolean>\",\n        \"checking\": \"<boolean>\",\n        \"scoring\": \"<boolean>\",\n        \"comparing\": \"<boolean>\"\n      },\n      \"compressed\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"sizeVariant\": \"<string>\",\n      \"uploadId\": \"<uuid>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"resolvable\": \"<boolean>\",\n  \"splits\": [\n    {\n      \"group\": \"<string>\",\n      \"key\": \"<long>\",\n      \"reduced\": \"<string>\"\n    },\n    {\n      \"group\": \"<string>\",\n      \"key\": \"<long>\",\n      \"reduced\": \"<string>\"\n    }\n  ],\n  \"embargo\": \"<integer>\",\n  \"numberOfFeatures\": \"<integer>\",\n  \"hash\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d3935392-d251-4585-a662-aca2308b8e64",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "data-releases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"files\": [\n    {\n      \"access\": {\n        \"local\": false,\n        \"runner\": false,\n        \"checking\": true,\n        \"scoring\": true,\n        \"comparing\": true\n      },\n      \"compressed\": true,\n      \"name\": \"string\",\n      \"sizeVariant\": \"SMALL\",\n      \"uploadId\": \"db1cbad1-0c94-3230-da82-e28d27736738\",\n      \"description\": \"string\"\n    },\n    {\n      \"access\": {\n        \"local\": false,\n        \"runner\": false,\n        \"checking\": false,\n        \"scoring\": false,\n        \"comparing\": false\n      },\n      \"compressed\": false,\n      \"name\": \"string\",\n      \"sizeVariant\": \"LARGE\",\n      \"uploadId\": \"7fd828ab-1a8c-e006-c11d-9f727574bd38\",\n      \"description\": \"string\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"resolvable\": \"<boolean>\",\n  \"splits\": [\n    {\n      \"group\": \"TEST\",\n      \"key\": 8409,\n      \"reduced\": \"X\"\n    },\n    {\n      \"group\": \"TEST\",\n      \"key\": 2774,\n      \"reduced\": \"XY\"\n    }\n  ],\n  \"embargo\": \"<integer>\",\n  \"numberOfFeatures\": \"<integer>\",\n  \"hash\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8826,\n  \"number\": 7184,\n  \"name\": \"string\",\n  \"custom\": false,\n  \"sized\": true,\n  \"hasSmallVariant\": true,\n  \"hasLargeVariant\": true,\n  \"embargo\": 7038,\n  \"numberOfFeatures\": 6402,\n  \"hash\": \"string\",\n  \"splitKeyType\": \"STRING\",\n  \"resolvable\": true,\n  \"splits\": [\n    {\n      \"key\": 9854,\n      \"group\": \"TRAIN\",\n      \"reduced\": \"X\"\n    },\n    {\n      \"key\": 3562,\n      \"group\": \"TRAIN\",\n      \"reduced\": \"XY\"\n    }\n  ],\n  \"targetResolution\": {\n    \"key_0\": \"RESOLVED\"\n  },\n  \"createdAt\": \"1982-11-18T09:08:43.402Z\",\n  \"dataFiles\": {\n    \"key_0\": {\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"url\": \"string\",\n      \"size\": 1419,\n      \"signed\": false,\n      \"compressed\": true\n    },\n    \"key_1\": {\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"url\": \"string\",\n      \"size\": 6926,\n      \"signed\": true,\n      \"compressed\": false\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4529ba1e-6dfd-4420-95e1-453267a40af6",
+          "name": "Resolve a data release's Y.",
+          "request": {
+            "name": "Resolve a data release's Y.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "competitions",
+                ":competitionIdentifier",
+                "data-releases",
+                ":dataReleaseNumber",
+                "resolve",
+                ":targetName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "dataReleaseNumber",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "targetName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"files\": [\n    {\n      \"access\": {\n        \"local\": \"<boolean>\",\n        \"runner\": \"<boolean>\",\n        \"checking\": \"<boolean>\",\n        \"scoring\": \"<boolean>\",\n        \"comparing\": \"<boolean>\"\n      },\n      \"compressed\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"uploadId\": \"<uuid>\"\n    },\n    {\n      \"access\": {\n        \"local\": \"<boolean>\",\n        \"runner\": \"<boolean>\",\n        \"checking\": \"<boolean>\",\n        \"scoring\": \"<boolean>\",\n        \"comparing\": \"<boolean>\"\n      },\n      \"compressed\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"uploadId\": \"<uuid>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ffac973b-f5da-4ac1-849a-43f1225edd5e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "data-releases",
+                    ":dataReleaseNumber",
+                    "resolve",
+                    ":targetName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "dataReleaseNumber",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "targetName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"files\": [\n    {\n      \"access\": {\n        \"local\": true,\n        \"runner\": true,\n        \"checking\": true,\n        \"scoring\": true,\n        \"comparing\": true\n      },\n      \"compressed\": true,\n      \"name\": \"string\",\n      \"uploadId\": \"f54bbf36-f8f9-2947-69e2-87d1b513f067\"\n    },\n    {\n      \"access\": {\n        \"local\": true,\n        \"runner\": true,\n        \"checking\": true,\n        \"scoring\": false,\n        \"comparing\": false\n      },\n      \"compressed\": true,\n      \"name\": \"string\",\n      \"uploadId\": \"598231ac-0929-4347-6671-2e5f3c614591\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8826,\n  \"number\": 7184,\n  \"name\": \"string\",\n  \"custom\": false,\n  \"sized\": true,\n  \"hasSmallVariant\": true,\n  \"hasLargeVariant\": true,\n  \"embargo\": 7038,\n  \"numberOfFeatures\": 6402,\n  \"hash\": \"string\",\n  \"splitKeyType\": \"STRING\",\n  \"resolvable\": true,\n  \"splits\": [\n    {\n      \"key\": 9854,\n      \"group\": \"TRAIN\",\n      \"reduced\": \"X\"\n    },\n    {\n      \"key\": 3562,\n      \"group\": \"TRAIN\",\n      \"reduced\": \"XY\"\n    }\n  ],\n  \"targetResolution\": {\n    \"key_0\": \"RESOLVED\"\n  },\n  \"createdAt\": \"1982-11-18T09:08:43.402Z\",\n  \"dataFiles\": {\n    \"key_0\": {\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"url\": \"string\",\n      \"size\": 1419,\n      \"signed\": false,\n      \"compressed\": true\n    },\n    \"key_1\": {\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"url\": \"string\",\n      \"size\": 6926,\n      \"signed\": true,\n      \"compressed\": false\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f75cb4c8-a103-4cb0-bd80-e4e22f62e393",
+          "name": "Get a run's data release.",
+          "request": {
+            "name": "Get a run's data release.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "competitions",
+                ":competitionIdentifier",
+                "rounds",
+                ":roundIdentifier",
+                "phases",
+                "submission",
+                "data-release"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "withoutFiles",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pushToken",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sizeVariant",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "roundIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3a59db0b-d277-4072-8103-49598b894cbe",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "rounds",
+                    ":roundIdentifier",
+                    "phases",
+                    "submission",
+                    "data-release"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "withoutFiles",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pushToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sizeVariant",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roundIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8826,\n  \"number\": 7184,\n  \"name\": \"string\",\n  \"custom\": false,\n  \"sized\": true,\n  \"hasSmallVariant\": true,\n  \"hasLargeVariant\": true,\n  \"embargo\": 7038,\n  \"numberOfFeatures\": 6402,\n  \"hash\": \"string\",\n  \"splitKeyType\": \"STRING\",\n  \"resolvable\": true,\n  \"splits\": [\n    {\n      \"key\": 9854,\n      \"group\": \"TRAIN\",\n      \"reduced\": \"X\"\n    },\n    {\n      \"key\": 3562,\n      \"group\": \"TRAIN\",\n      \"reduced\": \"XY\"\n    }\n  ],\n  \"targetResolution\": {\n    \"key_0\": \"RESOLVED\"\n  },\n  \"createdAt\": \"1982-11-18T09:08:43.402Z\",\n  \"dataFiles\": {\n    \"key_0\": {\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"url\": \"string\",\n      \"size\": 1419,\n      \"signed\": false,\n      \"compressed\": true\n    },\n    \"key_1\": {\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"url\": \"string\",\n      \"size\": 6926,\n      \"signed\": true,\n      \"compressed\": false\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf2c373f-f76b-452c-aaa8-b671bd3f4422",
+          "name": "List data releases.",
+          "request": {
+            "name": "List data releases.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "data-releases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "564cedd9-bf60-482f-8489-86e32b404804",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "data-releases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 1220,\n    \"number\": 6755,\n    \"name\": \"string\",\n    \"custom\": false,\n    \"sized\": true,\n    \"hasSmallVariant\": true,\n    \"hasLargeVariant\": true,\n    \"embargo\": 1630,\n    \"numberOfFeatures\": 3461,\n    \"hash\": \"string\",\n    \"splitKeyType\": \"INTEGER\",\n    \"resolvable\": true,\n    \"splits\": [\n      {\n        \"key\": 5147,\n        \"group\": \"TRAIN\",\n        \"reduced\": \"X\"\n      },\n      {\n        \"key\": 7137,\n        \"group\": \"TEST\",\n        \"reduced\": \"X\"\n      }\n    ],\n    \"targetResolution\": {\n      \"key_0\": \"RESOLVED\",\n      \"key_1\": \"PENDING\",\n      \"key_2\": \"PENDING\"\n    },\n    \"createdAt\": \"1981-10-20T05:50:22.429Z\",\n    \"dataFiles\": {\n      \"key_0\": {\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"url\": \"string\",\n        \"size\": 8513,\n        \"signed\": true,\n        \"compressed\": false\n      },\n      \"key_1\": {\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"url\": \"string\",\n        \"size\": 4938,\n        \"signed\": false,\n        \"compressed\": true\n      }\n    }\n  },\n  {\n    \"id\": 5367,\n    \"number\": 9302,\n    \"name\": \"string\",\n    \"custom\": false,\n    \"sized\": true,\n    \"hasSmallVariant\": true,\n    \"hasLargeVariant\": false,\n    \"embargo\": 1385,\n    \"numberOfFeatures\": 7495,\n    \"hash\": \"string\",\n    \"splitKeyType\": \"INTEGER\",\n    \"resolvable\": true,\n    \"splits\": [\n      {\n        \"key\": 5085,\n        \"group\": \"TEST\",\n        \"reduced\": \"X\"\n      },\n      {\n        \"key\": 625,\n        \"group\": \"TRAIN\",\n        \"reduced\": \"X\"\n      }\n    ],\n    \"targetResolution\": {\n      \"key_0\": \"PENDING\"\n    },\n    \"createdAt\": \"1956-08-26T14:14:33.740Z\",\n    \"dataFiles\": {\n      \"key_0\": {\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"url\": \"string\",\n        \"size\": 2805,\n        \"signed\": false,\n        \"compressed\": false\n      },\n      \"key_1\": {\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"url\": \"string\",\n        \"size\": 2371,\n        \"signed\": false,\n        \"compressed\": false\n      }\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "388ec10f-f092-431a-8f63-ff61d7141bdb",
+          "name": "Show a data releases.",
+          "request": {
+            "name": "Show a data releases.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "data-releases",
+                ":dataReleaseNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "includeSplits",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sizeVariant",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "accessLocation",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "dataReleaseNumber",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9590f20c-b3cf-4ec6-a254-bde37e2139a1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "data-releases",
+                    ":dataReleaseNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeSplits",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sizeVariant",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "accessLocation",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "dataReleaseNumber",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8826,\n  \"number\": 7184,\n  \"name\": \"string\",\n  \"custom\": false,\n  \"sized\": true,\n  \"hasSmallVariant\": true,\n  \"hasLargeVariant\": true,\n  \"embargo\": 7038,\n  \"numberOfFeatures\": 6402,\n  \"hash\": \"string\",\n  \"splitKeyType\": \"STRING\",\n  \"resolvable\": true,\n  \"splits\": [\n    {\n      \"key\": 9854,\n      \"group\": \"TRAIN\",\n      \"reduced\": \"X\"\n    },\n    {\n      \"key\": 3562,\n      \"group\": \"TRAIN\",\n      \"reduced\": \"XY\"\n    }\n  ],\n  \"targetResolution\": {\n    \"key_0\": \"RESOLVED\"\n  },\n  \"createdAt\": \"1982-11-18T09:08:43.402Z\",\n  \"dataFiles\": {\n    \"key_0\": {\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"url\": \"string\",\n      \"size\": 1419,\n      \"signed\": false,\n      \"compressed\": true\n    },\n    \"key_1\": {\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"url\": \"string\",\n      \"size\": 6926,\n      \"signed\": true,\n      \"compressed\": false\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.hub.crunchdao.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "70da1700-7021-4c21-a22e-749d294cf224",
+    "name": "Tournament activity data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CrunchDAO Tournament Platform API Endpoints",
+      "type": "text/plain"
+    }
+  }
+}

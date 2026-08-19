@@ -1,0 +1,248 @@
+{
+  "item": [
+    {
+      "id": "9ad97c55-57df-48cd-9a3f-9bf751981c7b",
+      "name": "target",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ed8f644f-2c92-4b5e-833a-e28e4a51c462",
+          "name": "List competition targets.",
+          "request": {
+            "name": "List competition targets.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "targets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter on the message. Allow for a pattern (%)."
+                },
+                {
+                  "disabled": false,
+                  "key": "virtual",
+                  "value": "<boolean>",
+                  "description": "Filter for virtual targets."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f9281bef-f068-4816-85c1-784f35900f50",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "targets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "virtual",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 6508,\n    \"name\": \"string\",\n    \"displayName\": \"string\",\n    \"weight\": 2746.5687303182685,\n    \"weightedMeanUnit\": {\n      \"prefix\": \"string\",\n      \"suffix\": \"string\",\n      \"scale\": 910\n    },\n    \"primary\": false,\n    \"virtual\": true,\n    \"rankOrder\": \"ASCENDING\",\n    \"weightedMeanDisplayUnit\": \"string\"\n  },\n  {\n    \"id\": 7169,\n    \"name\": \"string\",\n    \"displayName\": \"string\",\n    \"weight\": 9546.118384879292,\n    \"weightedMeanUnit\": {\n      \"prefix\": \"string\",\n      \"suffix\": \"string\",\n      \"scale\": 1495\n    },\n    \"primary\": false,\n    \"virtual\": true,\n    \"rankOrder\": \"DESCENDING\",\n    \"weightedMeanDisplayUnit\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc59418b-20ca-4c6a-bd0e-ca80b4ed830d",
+          "name": "Show a competition target.",
+          "request": {
+            "name": "Show a competition target.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "targets",
+                ":targetName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "targetName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a5fcee55-4562-4de0-806a-04064b29a977",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "targets",
+                    ":targetName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "targetName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2544,\n  \"name\": \"string\",\n  \"displayName\": \"string\",\n  \"weight\": 6868.561288957612,\n  \"weightedMeanUnit\": {\n    \"prefix\": \"string\",\n    \"suffix\": \"string\",\n    \"scale\": 5573\n  },\n  \"primary\": true,\n  \"virtual\": false,\n  \"rankOrder\": \"DESCENDING\",\n  \"weightedMeanDisplayUnit\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.hub.crunchdao.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7e7ce36c-a675-4955-8280-0bdc7febdfc9",
+    "name": "Tournament activity target API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CrunchDAO Tournament Platform API Endpoints",
+      "type": "text/plain"
+    }
+  }
+}

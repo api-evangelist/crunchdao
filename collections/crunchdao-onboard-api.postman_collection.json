@@ -1,0 +1,223 @@
+{
+  "item": [
+    {
+      "id": "64a1a16d-f349-4430-a041-ceb0def83f34",
+      "name": "onboard",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f4621c40-9da7-4819-813c-55c70e34b00d",
+          "name": "Show onboard process.",
+          "request": {
+            "name": "Show onboard process.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "onboard"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2c6b6611-226f-4ccc-8653-8a0971f73f8c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "onboard"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user\": {\n    \"id\": 4915,\n    \"login\": \"string\"\n  },\n  \"questions\": {\n    \"studyLevel\": \"UNDERGRADUATE\",\n    \"experienceWithData\": \"MORE_THAN_5_YEARS\",\n    \"workingInFinancialInstitution\": false,\n    \"participationReason\": \"IMPROVE\",\n    \"isMachineLearningEngineer\": false,\n    \"isQuant\": false,\n    \"isEmployerEngagedInAlgorithmicTradingServices\": false,\n    \"employerProvidedServices\": \"string\",\n    \"university\": \"string\",\n    \"quantClub\": \"NEW_YORK\"\n  },\n  \"completed\": true,\n  \"completedAt\": \"1972-07-19T22:22:50.060Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b8d91d60-3cf4-4937-82b7-8dfc78e9b713",
+          "name": "Update onboard process.",
+          "request": {
+            "name": "Update onboard process.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "onboard"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"completed\": \"<boolean>\",\n  \"studyLevel\": \"<string>\",\n  \"experienceWithData\": \"<string>\",\n  \"workingInFinancialInstitution\": \"<boolean>\",\n  \"participationReason\": \"<string>\",\n  \"isMachineLearningEngineer\": \"<boolean>\",\n  \"isQuant\": \"<boolean>\",\n  \"isEmployerEngagedInAlgorithmicTradingServices\": \"<boolean>\",\n  \"employerProvidedServices\": \"<string>\",\n  \"university\": \"<string>\",\n  \"quantClub\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "960d77b2-3cfe-4000-aa5f-8ea28e7eb9ad",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "onboard"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"completed\": \"<boolean>\",\n  \"studyLevel\": \"<string>\",\n  \"experienceWithData\": \"<string>\",\n  \"workingInFinancialInstitution\": \"<boolean>\",\n  \"participationReason\": \"<string>\",\n  \"isMachineLearningEngineer\": \"<boolean>\",\n  \"isQuant\": \"<boolean>\",\n  \"isEmployerEngagedInAlgorithmicTradingServices\": \"<boolean>\",\n  \"employerProvidedServices\": \"<string>\",\n  \"university\": \"<string>\",\n  \"quantClub\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user\": {\n    \"id\": 4915,\n    \"login\": \"string\"\n  },\n  \"questions\": {\n    \"studyLevel\": \"UNDERGRADUATE\",\n    \"experienceWithData\": \"MORE_THAN_5_YEARS\",\n    \"workingInFinancialInstitution\": false,\n    \"participationReason\": \"IMPROVE\",\n    \"isMachineLearningEngineer\": false,\n    \"isQuant\": false,\n    \"isEmployerEngagedInAlgorithmicTradingServices\": false,\n    \"employerProvidedServices\": \"string\",\n    \"university\": \"string\",\n    \"quantClub\": \"NEW_YORK\"\n  },\n  \"completed\": true,\n  \"completedAt\": \"1972-07-19T22:22:50.060Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.hub.crunchdao.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "49585117-0378-4ba6-b02b-6a4324da3bc6",
+    "name": "Tournament activity onboard API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CrunchDAO Tournament Platform API Endpoints",
+      "type": "text/plain"
+    }
+  }
+}

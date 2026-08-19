@@ -1,0 +1,519 @@
+{
+  "item": [
+    {
+      "id": "841f7f26-8942-440e-9551-a739e6ae24a7",
+      "name": "team:invitation",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2f09a19e-e5f4-4615-8156-7edd68857a35",
+          "name": "Show an invitation.",
+          "request": {
+            "name": "Show an invitation.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "team-invitations",
+                ":teamIdentifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "teamIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d40f9fb6-4fd3-4009-8090-78dc13b928c7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "team-invitations",
+                    ":teamIdentifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "teamIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 4020,\n  \"user\": {\n    \"id\": 2813,\n    \"login\": \"string\"\n  },\n  \"team\": {\n    \"id\": 8922,\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"leader\": {\n      \"id\": 3584,\n      \"login\": \"string\"\n    },\n    \"size\": 9590,\n    \"deleted\": true,\n    \"lookingForTeammates\": false,\n    \"members\": [\n      {\n        \"id\": 2019,\n        \"user\": {\n          \"id\": 1163,\n          \"login\": \"string\"\n        },\n        \"createdAt\": \"1980-10-19T02:58:49.503Z\",\n        \"userId\": 2742\n      },\n      {\n        \"id\": 7187,\n        \"user\": {\n          \"id\": 5329,\n          \"login\": \"string\"\n        },\n        \"createdAt\": \"1990-11-22T14:59:37.899Z\",\n        \"userId\": 6185\n      }\n    ],\n    \"createdAt\": \"2019-11-20T18:53:19.868Z\",\n    \"updatedAt\": \"2013-03-17T01:23:14.016Z\"\n  },\n  \"createdAt\": \"1991-02-23T08:02:23.729Z\",\n  \"userId\": 5920\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "87e2634e-53f8-445c-9e1a-b6b3eb8d88a1",
+          "name": "Decline an invitation.",
+          "request": {
+            "name": "Decline an invitation.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "team-invitations",
+                ":teamIdentifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "teamIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "368e4455-81ae-4075-86c3-cf2046ccf56f",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "team-invitations",
+                    ":teamIdentifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "teamIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c47cf39b-2d9c-43e3-b82e-9a24d0c2941e",
+          "name": "Accept an invitation.",
+          "request": {
+            "name": "Accept an invitation.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "team-invitations",
+                ":teamIdentifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "teamIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "98df71f6-7173-4e60-92b1-dd21345a09da",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "team-invitations",
+                    ":teamIdentifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "teamIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8858b227-5ae9-42d0-b5bd-28cb6d43f97d",
+          "name": "List pending team invitations.",
+          "request": {
+            "name": "List pending team invitations.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "teams",
+                ":teamIdentifier",
+                "invitations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "teamIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3ac4a371-364a-482e-bf99-b7bce27671d5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "teams",
+                    ":teamIdentifier",
+                    "invitations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "teamIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 625,\n    \"user\": {\n      \"id\": 9257,\n      \"login\": \"string\"\n    },\n    \"team\": {\n      \"id\": 5480,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"leader\": {\n        \"id\": 2799,\n        \"login\": \"string\"\n      },\n      \"size\": 4913,\n      \"deleted\": true,\n      \"lookingForTeammates\": true,\n      \"members\": [\n        {\n          \"id\": 802,\n          \"user\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"login\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"createdAt\": \"1994-11-28T14:14:41.793Z\",\n          \"userId\": 5567\n        },\n        {\n          \"id\": 6721,\n          \"user\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"login\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"createdAt\": \"2005-01-07T01:20:28.130Z\",\n          \"userId\": 9315\n        }\n      ],\n      \"createdAt\": \"2012-04-17T04:56:55.327Z\",\n      \"updatedAt\": \"1974-03-28T19:19:19.840Z\"\n    },\n    \"createdAt\": \"2009-12-17T19:09:59.894Z\",\n    \"userId\": 3411\n  },\n  {\n    \"id\": 7873,\n    \"user\": {\n      \"id\": 4490,\n      \"login\": \"string\"\n    },\n    \"team\": {\n      \"id\": 7518,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"leader\": {\n        \"id\": 9884,\n        \"login\": \"string\"\n      },\n      \"size\": 7086,\n      \"deleted\": true,\n      \"lookingForTeammates\": false,\n      \"members\": [\n        {\n          \"id\": 8566,\n          \"user\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"login\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"createdAt\": \"2021-03-12T05:36:59.991Z\",\n          \"userId\": 4027\n        },\n        {\n          \"id\": 4415,\n          \"user\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"login\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"createdAt\": \"1948-02-04T12:51:22.362Z\",\n          \"userId\": 2422\n        }\n      ],\n      \"createdAt\": \"2023-01-15T23:31:45.609Z\",\n      \"updatedAt\": \"2001-05-18T23:25:56.787Z\"\n    },\n    \"createdAt\": \"2016-07-06T15:44:04.999Z\",\n    \"userId\": 3556\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eba7fd5c-f360-4b06-9366-45b65aa02b76",
+          "name": "List invitations.",
+          "request": {
+            "name": "List invitations.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "team-invitations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "582f3329-e319-452f-81df-f6250f9dc822",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "team-invitations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 625,\n    \"user\": {\n      \"id\": 9257,\n      \"login\": \"string\"\n    },\n    \"team\": {\n      \"id\": 5480,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"leader\": {\n        \"id\": 2799,\n        \"login\": \"string\"\n      },\n      \"size\": 4913,\n      \"deleted\": true,\n      \"lookingForTeammates\": true,\n      \"members\": [\n        {\n          \"id\": 802,\n          \"user\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"login\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"createdAt\": \"1994-11-28T14:14:41.793Z\",\n          \"userId\": 5567\n        },\n        {\n          \"id\": 6721,\n          \"user\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"login\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"createdAt\": \"2005-01-07T01:20:28.130Z\",\n          \"userId\": 9315\n        }\n      ],\n      \"createdAt\": \"2012-04-17T04:56:55.327Z\",\n      \"updatedAt\": \"1974-03-28T19:19:19.840Z\"\n    },\n    \"createdAt\": \"2009-12-17T19:09:59.894Z\",\n    \"userId\": 3411\n  },\n  {\n    \"id\": 7873,\n    \"user\": {\n      \"id\": 4490,\n      \"login\": \"string\"\n    },\n    \"team\": {\n      \"id\": 7518,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"leader\": {\n        \"id\": 9884,\n        \"login\": \"string\"\n      },\n      \"size\": 7086,\n      \"deleted\": true,\n      \"lookingForTeammates\": false,\n      \"members\": [\n        {\n          \"id\": 8566,\n          \"user\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"login\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"createdAt\": \"2021-03-12T05:36:59.991Z\",\n          \"userId\": 4027\n        },\n        {\n          \"id\": 4415,\n          \"user\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"login\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"createdAt\": \"1948-02-04T12:51:22.362Z\",\n          \"userId\": 2422\n        }\n      ],\n      \"createdAt\": \"2023-01-15T23:31:45.609Z\",\n      \"updatedAt\": \"2001-05-18T23:25:56.787Z\"\n    },\n    \"createdAt\": \"2016-07-06T15:44:04.999Z\",\n    \"userId\": 3556\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.hub.crunchdao.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c82b6646-0e5c-4bcf-ae17-431f707c3136",
+    "name": "Tournament activity team:invitation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CrunchDAO Tournament Platform API Endpoints",
+      "type": "text/plain"
+    }
+  }
+}

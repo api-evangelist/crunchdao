@@ -1,0 +1,493 @@
+{
+  "item": [
+    {
+      "id": "fd0e65c3-7b71-4c1e-811d-58bae23fd153",
+      "name": "model",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9ad60f6d-9780-4363-84e0-0c3c754eaadb",
+          "name": "List models.",
+          "request": {
+            "name": "List models.",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "competitions",
+                ":competitionIdentifier",
+                "projects",
+                ":userLogin",
+                ":projectIdentifier",
+                "models"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userLogin",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "apiKey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "45ca174f-d8a6-40dc-b622-c93d77dd4475",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "projects",
+                    ":userLogin",
+                    ":projectIdentifier",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userLogin",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 1440,\n    \"name\": \"string\",\n    \"project\": {\n      \"id\": 530,\n      \"competitionId\": 1158,\n      \"user\": {\n        \"id\": 4149,\n        \"login\": \"string\"\n      },\n      \"name\": \"string\",\n      \"selected\": false,\n      \"submitted\": true,\n      \"note\": \"string\",\n      \"writeupUrl\": \"string\",\n      \"writeupArchived\": false,\n      \"createdAt\": \"1967-02-17T14:01:22.617Z\",\n      \"updatedAt\": \"1968-09-08T20:16:13.531Z\",\n      \"userId\": 3628\n    },\n    \"totalSize\": 4294,\n    \"encrypted\": true,\n    \"encryptionId\": \"string\",\n    \"createdAt\": \"1982-07-18T11:14:26.693Z\"\n  },\n  {\n    \"id\": 4280,\n    \"name\": \"string\",\n    \"project\": {\n      \"id\": 7901,\n      \"competitionId\": 9911,\n      \"user\": {\n        \"id\": 8561,\n        \"login\": \"string\"\n      },\n      \"name\": \"string\",\n      \"selected\": true,\n      \"submitted\": false,\n      \"note\": \"string\",\n      \"writeupUrl\": \"string\",\n      \"writeupArchived\": true,\n      \"createdAt\": \"2010-10-29T06:56:25.616Z\",\n      \"updatedAt\": \"2006-05-20T20:38:46.794Z\",\n      \"userId\": 8127\n    },\n    \"totalSize\": 9007,\n    \"encrypted\": false,\n    \"encryptionId\": \"string\",\n    \"createdAt\": \"1961-02-08T23:56:48.766Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "101e4731-f3ac-4ab4-8257-b79a0a9568ac",
+          "name": "Show a model.",
+          "request": {
+            "name": "Show a model.",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "competitions",
+                ":competitionIdentifier",
+                "projects",
+                ":userLogin",
+                ":projectIdentifier",
+                "models",
+                ":modelId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userLogin",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "modelId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "apiKey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a678dbe4-ce60-40ce-9842-d73c2e8d0f66",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "projects",
+                    ":userLogin",
+                    ":projectIdentifier",
+                    "models",
+                    ":modelId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userLogin",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "modelId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 4459,\n  \"name\": \"string\",\n  \"project\": {\n    \"id\": 2275,\n    \"competitionId\": 8502,\n    \"user\": {\n      \"id\": 8901,\n      \"login\": \"string\"\n    },\n    \"name\": \"string\",\n    \"selected\": false,\n    \"submitted\": false,\n    \"note\": \"string\",\n    \"writeupUrl\": \"string\",\n    \"writeupArchived\": true,\n    \"createdAt\": \"1983-01-18T14:15:18.235Z\",\n    \"updatedAt\": \"1999-08-21T19:27:21.092Z\",\n    \"userId\": 3279\n  },\n  \"totalSize\": 9926,\n  \"encrypted\": false,\n  \"encryptionId\": \"string\",\n  \"createdAt\": \"2013-07-04T05:34:18.149Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "21c1ca47-0d3b-42a2-ab23-c8abf1429d37",
+          "name": "List a model's files.",
+          "request": {
+            "name": "List a model's files.",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "competitions",
+                ":competitionIdentifier",
+                "projects",
+                ":userLogin",
+                ":projectIdentifier",
+                "models",
+                ":modelId",
+                "files"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userLogin",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "modelId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "970bf923-1ad7-4797-a207-dabb24bd13f0",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "projects",
+                    ":userLogin",
+                    ":projectIdentifier",
+                    "models",
+                    ":modelId",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userLogin",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "modelId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"size\": 1097,\n    \"encrypted\": true,\n    \"mimeType\": \"string\"\n  },\n  {\n    \"name\": \"string\",\n    \"size\": 2860,\n    \"encrypted\": true,\n    \"mimeType\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.hub.crunchdao.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c7369b7f-e741-4455-ad57-088806cce2a2",
+    "name": "Tournament activity model API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CrunchDAO Tournament Platform API Endpoints",
+      "type": "text/plain"
+    }
+  }
+}

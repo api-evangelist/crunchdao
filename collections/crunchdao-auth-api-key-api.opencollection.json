@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity auth:api-key API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "auth:api-key",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List your API Keys.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v2/auth/api-keys"
+          },
+          "docs": "List your API Keys."
+        },
+        {
+          "info": {
+            "name": "Create an API Key.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v2/auth/api-keys",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an API Key."
+        },
+        {
+          "info": {
+            "name": "Regenerate an API Key.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v2/auth/api-keys/:apiKeyId/regenerate",
+            "params": [
+              {
+                "name": "apiKeyId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Regenerate an API Key."
+        },
+        {
+          "info": {
+            "name": "Show an API Key.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v2/auth/api-keys/:apiKeyId",
+            "params": [
+              {
+                "name": "apiKeyId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Show an API Key."
+        },
+        {
+          "info": {
+            "name": "Delete an API Key.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://api.hub.crunchdao.com/v2/auth/api-keys/:apiKeyId",
+            "params": [
+              {
+                "name": "apiKeyId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an API Key."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,251 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity competition:participant API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "competition:participant",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Show a participant.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/participants/:userLogin",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Show a participant."
+        },
+        {
+          "info": {
+            "name": "Update a participant.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/participants/:userLogin",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a participant."
+        },
+        {
+          "info": {
+            "name": "Search participants.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v2/competitions/:competitionIdentifier/participants",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "query",
+                "description": "Filter on user login. Allow for a pattern (%)."
+              },
+              {
+                "name": "cruncherPubkey",
+                "value": "",
+                "type": "query",
+                "description": "Filter on cruncher pubkey. Allow for a pattern (%)."
+              },
+              {
+                "name": "hidden",
+                "value": "",
+                "type": "query",
+                "description": "Filter for hidden participants."
+              },
+              {
+                "name": "role",
+                "value": "",
+                "type": "query",
+                "description": "Filter for participant's role."
+              },
+              {
+                "name": "crowned",
+                "value": "",
+                "type": "query",
+                "description": "Filter for crowned participants."
+              },
+              {
+                "name": "certified",
+                "value": "",
+                "type": "query",
+                "description": "Filter for certified participants."
+              },
+              {
+                "name": "rewarded",
+                "value": "",
+                "type": "query",
+                "description": "Filter for rewarded participants."
+              },
+              {
+                "name": "benchmarked",
+                "value": "",
+                "type": "query",
+                "description": "Filter for benchmarked participants."
+              },
+              {
+                "name": "ruleAccepted",
+                "value": "",
+                "type": "query",
+                "description": "Filter for participants who accepted the rules."
+              },
+              {
+                "name": "submitted",
+                "value": "",
+                "type": "query",
+                "description": "Filter for participants who submitted."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort competitions."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              }
+            ]
+          },
+          "docs": "Search participants."
+        },
+        {
+          "info": {
+            "name": "Show competitions that the user joined.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/users/:userLogin/participations",
+            "params": [
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Show competitions that the user joined."
+        },
+        {
+          "info": {
+            "name": "List all participants.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/participants",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "includeHidden",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List all participants."
+        },
+        {
+          "info": {
+            "name": "Show a participant's status.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/participants/:userLogin/status",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Show a participant's status."
+        },
+        {
+          "info": {
+            "name": "Show a participant by its email.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/participants/by-email/:userEmail",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userEmail",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Show a participant by its email."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

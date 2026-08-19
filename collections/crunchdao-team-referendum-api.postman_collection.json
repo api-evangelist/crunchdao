@@ -1,0 +1,844 @@
+{
+  "item": [
+    {
+      "id": "3104933c-6065-43d6-b80c-44fe13cdc7fe",
+      "name": "team:referendum",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "aef27ce7-95ac-4ca6-9bce-0e543a5869ab",
+          "name": "List referendums.",
+          "request": {
+            "name": "List referendums.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "teams",
+                ":teamIdentifier",
+                "referendums"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "teamIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a0ee2e08-a57c-4729-b258-372d709352bb",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "teams",
+                    ":teamIdentifier",
+                    "referendums"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "teamIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 3401,\n    \"number\": 940,\n    \"type\": \"INVITE\",\n    \"consensus\": \"UNANIMITY\",\n    \"target\": \"TEAM\",\n    \"targetUser\": {\n      \"id\": 8280,\n      \"login\": \"string\"\n    },\n    \"targetTeam\": {\n      \"id\": 9189,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"leader\": {\n        \"id\": 5060,\n        \"login\": \"string\"\n      },\n      \"size\": 3798,\n      \"deleted\": true,\n      \"lookingForTeammates\": false,\n      \"members\": [\n        {\n          \"id\": 4391,\n          \"user\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"login\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"createdAt\": \"2002-05-01T16:22:08.442Z\",\n          \"userId\": 1483\n        },\n        {\n          \"id\": 7080,\n          \"user\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"login\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"createdAt\": \"1973-02-23T04:55:24.179Z\",\n          \"userId\": 5593\n        }\n      ],\n      \"createdAt\": \"1971-05-14T12:09:40.992Z\",\n      \"updatedAt\": \"1949-07-12T12:29:47.580Z\"\n    },\n    \"votes\": [\n      {\n        \"id\": 9852,\n        \"user\": {\n          \"id\": 6796,\n          \"login\": \"string\"\n        },\n        \"choice\": \"AGAINST\",\n        \"createdAt\": \"2004-02-15T02:35:37.637Z\",\n        \"signature\": \"string\",\n        \"address\": \"string\",\n        \"userId\": 6963,\n        \"ipfsHash\": \"string\",\n        \"verifyUrl\": \"string\"\n      },\n      {\n        \"id\": 5315,\n        \"user\": {\n          \"id\": 5404,\n          \"login\": \"string\"\n        },\n        \"choice\": \"FOR\",\n        \"createdAt\": \"2000-08-13T20:10:58.736Z\",\n        \"signature\": \"string\",\n        \"address\": \"string\",\n        \"userId\": 968,\n        \"ipfsHash\": \"string\",\n        \"verifyUrl\": \"string\"\n      }\n    ],\n    \"teamSize\": 5085,\n    \"verdict\": \"APPROVED\",\n    \"status\": \"string\",\n    \"createdAt\": \"2008-09-15T20:02:04.064Z\",\n    \"targetUserId\": 2496\n  },\n  {\n    \"id\": 467,\n    \"number\": 5226,\n    \"type\": \"ACCEPT_USER\",\n    \"consensus\": \"MAJORITY\",\n    \"target\": \"SELF\",\n    \"targetUser\": {\n      \"id\": 3663,\n      \"login\": \"string\"\n    },\n    \"targetTeam\": {\n      \"id\": 1725,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"leader\": {\n        \"id\": 820,\n        \"login\": \"string\"\n      },\n      \"size\": 4861,\n      \"deleted\": true,\n      \"lookingForTeammates\": true,\n      \"members\": [\n        {\n          \"id\": 4399,\n          \"user\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"login\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"createdAt\": \"1954-02-03T16:26:12.523Z\",\n          \"userId\": 6859\n        },\n        {\n          \"id\": 7180,\n          \"user\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"login\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"createdAt\": \"1949-08-10T13:43:24.316Z\",\n          \"userId\": 1068\n        }\n      ],\n      \"createdAt\": \"1987-01-24T16:25:18.452Z\",\n      \"updatedAt\": \"1969-05-11T02:51:40.954Z\"\n    },\n    \"votes\": [\n      {\n        \"id\": 2439,\n        \"user\": {\n          \"id\": 9224,\n          \"login\": \"string\"\n        },\n        \"choice\": \"FOR\",\n        \"createdAt\": \"2020-12-09T11:15:52.475Z\",\n        \"signature\": \"string\",\n        \"address\": \"string\",\n        \"userId\": 3683,\n        \"ipfsHash\": \"string\",\n        \"verifyUrl\": \"string\"\n      },\n      {\n        \"id\": 2876,\n        \"user\": {\n          \"id\": 6365,\n          \"login\": \"string\"\n        },\n        \"choice\": \"FOR\",\n        \"createdAt\": \"2011-08-17T23:22:35.050Z\",\n        \"signature\": \"string\",\n        \"address\": \"string\",\n        \"userId\": 3025,\n        \"ipfsHash\": \"string\",\n        \"verifyUrl\": \"string\"\n      }\n    ],\n    \"teamSize\": 6286,\n    \"verdict\": \"PENDING\",\n    \"status\": \"string\",\n    \"createdAt\": \"2011-02-18T10:32:51.547Z\",\n    \"targetUserId\": 1136\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "287a3245-327a-4dd2-ad4a-14fda5f7274e",
+          "name": "Create a referendums.",
+          "request": {
+            "name": "Create a referendums.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "teams",
+                ":teamIdentifier",
+                "referendums"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "teamIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"targetTeamId\": \"<long>\",\n  \"targetUserId\": \"<long>\",\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "814f6575-fc46-4711-9b84-02563cb90ed1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "teams",
+                    ":teamIdentifier",
+                    "referendums"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "teamIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"targetTeamId\": \"<long>\",\n  \"targetUserId\": \"<long>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 6042,\n  \"number\": 7410,\n  \"type\": \"INVITE\",\n  \"consensus\": \"MAJORITY\",\n  \"target\": \"TEAM\",\n  \"targetUser\": {\n    \"id\": 3924,\n    \"login\": \"string\"\n  },\n  \"targetTeam\": {\n    \"id\": 637,\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"leader\": {\n      \"id\": 1954,\n      \"login\": \"string\"\n    },\n    \"size\": 1637,\n    \"deleted\": false,\n    \"lookingForTeammates\": true,\n    \"members\": [\n      {\n        \"id\": 846,\n        \"user\": {\n          \"id\": 8516,\n          \"login\": \"string\"\n        },\n        \"createdAt\": \"1996-02-25T21:19:24.688Z\",\n        \"userId\": 3279\n      },\n      {\n        \"id\": 2786,\n        \"user\": {\n          \"id\": 7887,\n          \"login\": \"string\"\n        },\n        \"createdAt\": \"1978-01-06T17:09:39.192Z\",\n        \"userId\": 3629\n      }\n    ],\n    \"createdAt\": \"2018-07-16T07:40:21.585Z\",\n    \"updatedAt\": \"1953-04-12T10:17:40.737Z\"\n  },\n  \"votes\": [\n    {\n      \"id\": 1228,\n      \"user\": {\n        \"id\": 4241,\n        \"login\": \"string\"\n      },\n      \"choice\": \"AGAINST\",\n      \"createdAt\": \"1978-10-14T13:44:02.679Z\",\n      \"signature\": \"string\",\n      \"address\": \"string\",\n      \"userId\": 6580,\n      \"ipfsHash\": \"string\",\n      \"verifyUrl\": \"string\"\n    },\n    {\n      \"id\": 9625,\n      \"user\": {\n        \"id\": 1018,\n        \"login\": \"string\"\n      },\n      \"choice\": \"FOR\",\n      \"createdAt\": \"1955-07-16T18:37:26.452Z\",\n      \"signature\": \"string\",\n      \"address\": \"string\",\n      \"userId\": 4734,\n      \"ipfsHash\": \"string\",\n      \"verifyUrl\": \"string\"\n    }\n  ],\n  \"teamSize\": 2550,\n  \"verdict\": \"REJECTED\",\n  \"status\": \"string\",\n  \"createdAt\": \"1967-04-11T10:57:57.613Z\",\n  \"targetUserId\": 6892\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "06d29b57-e8fe-46aa-9b90-f052a268670f",
+          "name": "Vote for a referendum.",
+          "request": {
+            "name": "Vote for a referendum.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "teams",
+                ":teamIdentifier",
+                "referendums",
+                ":referendumNumber",
+                "vote"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "teamIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "referendumNumber",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"choice\": \"<string>\",\n  \"signature\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ad33fc35-72c4-4ef6-8fe5-82208c837c75",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "teams",
+                    ":teamIdentifier",
+                    "referendums",
+                    ":referendumNumber",
+                    "vote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "teamIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "referendumNumber",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"choice\": \"<string>\",\n  \"signature\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 5536,\n  \"user\": {\n    \"id\": 1655,\n    \"login\": \"string\"\n  },\n  \"choice\": \"AGAINST\",\n  \"createdAt\": \"1974-09-26T16:33:49.612Z\",\n  \"signature\": \"string\",\n  \"address\": \"string\",\n  \"userId\": 9229,\n  \"ipfsHash\": \"string\",\n  \"verifyUrl\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4fe563ef-5825-4813-bfdf-c87c2764c1e2",
+          "name": "Create a referendum asking to join the team.",
+          "request": {
+            "name": "Create a referendum asking to join the team.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "teams",
+                ":teamIdentifier",
+                "referendums",
+                "ask-to-join"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "teamIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5f842a38-7f70-4558-a70c-b1b8438992ba",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "teams",
+                    ":teamIdentifier",
+                    "referendums",
+                    "ask-to-join"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "teamIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 6042,\n  \"number\": 7410,\n  \"type\": \"INVITE\",\n  \"consensus\": \"MAJORITY\",\n  \"target\": \"TEAM\",\n  \"targetUser\": {\n    \"id\": 3924,\n    \"login\": \"string\"\n  },\n  \"targetTeam\": {\n    \"id\": 637,\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"leader\": {\n      \"id\": 1954,\n      \"login\": \"string\"\n    },\n    \"size\": 1637,\n    \"deleted\": false,\n    \"lookingForTeammates\": true,\n    \"members\": [\n      {\n        \"id\": 846,\n        \"user\": {\n          \"id\": 8516,\n          \"login\": \"string\"\n        },\n        \"createdAt\": \"1996-02-25T21:19:24.688Z\",\n        \"userId\": 3279\n      },\n      {\n        \"id\": 2786,\n        \"user\": {\n          \"id\": 7887,\n          \"login\": \"string\"\n        },\n        \"createdAt\": \"1978-01-06T17:09:39.192Z\",\n        \"userId\": 3629\n      }\n    ],\n    \"createdAt\": \"2018-07-16T07:40:21.585Z\",\n    \"updatedAt\": \"1953-04-12T10:17:40.737Z\"\n  },\n  \"votes\": [\n    {\n      \"id\": 1228,\n      \"user\": {\n        \"id\": 4241,\n        \"login\": \"string\"\n      },\n      \"choice\": \"AGAINST\",\n      \"createdAt\": \"1978-10-14T13:44:02.679Z\",\n      \"signature\": \"string\",\n      \"address\": \"string\",\n      \"userId\": 6580,\n      \"ipfsHash\": \"string\",\n      \"verifyUrl\": \"string\"\n    },\n    {\n      \"id\": 9625,\n      \"user\": {\n        \"id\": 1018,\n        \"login\": \"string\"\n      },\n      \"choice\": \"FOR\",\n      \"createdAt\": \"1955-07-16T18:37:26.452Z\",\n      \"signature\": \"string\",\n      \"address\": \"string\",\n      \"userId\": 4734,\n      \"ipfsHash\": \"string\",\n      \"verifyUrl\": \"string\"\n    }\n  ],\n  \"teamSize\": 2550,\n  \"verdict\": \"REJECTED\",\n  \"status\": \"string\",\n  \"createdAt\": \"1967-04-11T10:57:57.613Z\",\n  \"targetUserId\": 6892\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "afcc96f5-483b-4265-9cb8-04620da5f52d",
+          "name": "List referendums.",
+          "request": {
+            "name": "List referendums.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "competitions",
+                ":competitionIdentifier",
+                "teams",
+                ":teamIdentifier",
+                "referendums"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter on type."
+                },
+                {
+                  "disabled": false,
+                  "key": "consensus",
+                  "value": "<string>",
+                  "description": "Filter on consensus."
+                },
+                {
+                  "disabled": false,
+                  "key": "targetUser",
+                  "value": "<string>",
+                  "description": "Filter on target user identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "targetTeam",
+                  "value": "<string>",
+                  "description": "Filter on target team identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "verdict",
+                  "value": "<string>",
+                  "description": "Filter on verdict."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort referendums."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeVotes",
+                  "value": "<boolean>",
+                  "description": "Include the votes in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Zero-based page index (0..N)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "The size of the page to be returned"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "teamIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "38c6ff2c-4093-4770-966c-4c9a574c1626",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "teams",
+                    ":teamIdentifier",
+                    "referendums"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "consensus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "targetUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "targetTeam",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "verdict",
+                      "value": "PENDING"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeVotes",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "teamIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageNumber\": 1356,\n  \"pageSize\": 8554,\n  \"totalElements\": 3411,\n  \"totalPages\": 823,\n  \"content\": [\n    {\n      \"id\": 3184,\n      \"number\": 3340,\n      \"type\": \"KICK\",\n      \"consensus\": \"MAJORITY\",\n      \"target\": \"TEAM\",\n      \"targetUser\": {\n        \"id\": 685,\n        \"login\": \"string\"\n      },\n      \"targetTeam\": {\n        \"id\": 9274,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"leader\": {\n          \"id\": 9794,\n          \"login\": \"string\"\n        },\n        \"size\": 5757,\n        \"deleted\": false,\n        \"lookingForTeammates\": false,\n        \"members\": [\n          {\n            \"id\": 7018,\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdAt\": \"1959-09-14T12:42:13.444Z\",\n            \"userId\": 3913\n          },\n          {\n            \"id\": 9133,\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdAt\": \"1962-01-04T15:07:38.446Z\",\n            \"userId\": 5010\n          }\n        ],\n        \"createdAt\": \"1986-01-18T10:29:48.929Z\",\n        \"updatedAt\": \"2003-02-19T03:36:04.028Z\"\n      },\n      \"votes\": [\n        {\n          \"id\": 7192,\n          \"user\": {\n            \"id\": 9371,\n            \"login\": \"string\"\n          },\n          \"choice\": \"FOR\",\n          \"createdAt\": \"1998-01-17T23:30:15.900Z\",\n          \"signature\": \"string\",\n          \"address\": \"string\",\n          \"userId\": 8280,\n          \"ipfsHash\": \"string\",\n          \"verifyUrl\": \"string\"\n        },\n        {\n          \"id\": 7041,\n          \"user\": {\n            \"id\": 6235,\n            \"login\": \"string\"\n          },\n          \"choice\": \"FOR\",\n          \"createdAt\": \"1957-03-09T01:45:47.728Z\",\n          \"signature\": \"string\",\n          \"address\": \"string\",\n          \"userId\": 6284,\n          \"ipfsHash\": \"string\",\n          \"verifyUrl\": \"string\"\n        }\n      ],\n      \"teamSize\": 9859,\n      \"verdict\": \"PENDING\",\n      \"status\": \"string\",\n      \"createdAt\": \"1956-11-03T18:32:22.991Z\",\n      \"targetUserId\": 5513\n    },\n    {\n      \"id\": 1429,\n      \"number\": 3277,\n      \"type\": \"ACCEPT_MERGE\",\n      \"consensus\": \"UNANIMITY\",\n      \"target\": \"USER\",\n      \"targetUser\": {\n        \"id\": 1237,\n        \"login\": \"string\"\n      },\n      \"targetTeam\": {\n        \"id\": 7485,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"leader\": {\n          \"id\": 5258,\n          \"login\": \"string\"\n        },\n        \"size\": 4611,\n        \"deleted\": true,\n        \"lookingForTeammates\": false,\n        \"members\": [\n          {\n            \"id\": 3201,\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdAt\": \"2014-11-12T21:55:19.665Z\",\n            \"userId\": 4374\n          },\n          {\n            \"id\": 4646,\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdAt\": \"1978-05-28T14:56:19.741Z\",\n            \"userId\": 9440\n          }\n        ],\n        \"createdAt\": \"1990-10-18T13:54:47.352Z\",\n        \"updatedAt\": \"1964-02-16T02:43:22.742Z\"\n      },\n      \"votes\": [\n        {\n          \"id\": 7025,\n          \"user\": {\n            \"id\": 455,\n            \"login\": \"string\"\n          },\n          \"choice\": \"AGAINST\",\n          \"createdAt\": \"2015-11-09T10:37:54.468Z\",\n          \"signature\": \"string\",\n          \"address\": \"string\",\n          \"userId\": 957,\n          \"ipfsHash\": \"string\",\n          \"verifyUrl\": \"string\"\n        },\n        {\n          \"id\": 5541,\n          \"user\": {\n            \"id\": 5182,\n            \"login\": \"string\"\n          },\n          \"choice\": \"FOR\",\n          \"createdAt\": \"2025-03-23T02:58:33.582Z\",\n          \"signature\": \"string\",\n          \"address\": \"string\",\n          \"userId\": 1511,\n          \"ipfsHash\": \"string\",\n          \"verifyUrl\": \"string\"\n        }\n      ],\n      \"teamSize\": 644,\n      \"verdict\": \"PENDING\",\n      \"status\": \"string\",\n      \"createdAt\": \"2021-07-05T16:59:42.591Z\",\n      \"targetUserId\": 9436\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c117b6d7-bd2c-4c7f-a32c-657d1e5c77ee",
+          "name": "Show a referendum.",
+          "request": {
+            "name": "Show a referendum.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "teams",
+                ":teamIdentifier",
+                "referendums",
+                ":referendumNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "teamIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "referendumNumber",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "813e61d3-c9f9-468c-8612-b9c413ec9dee",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "teams",
+                    ":teamIdentifier",
+                    "referendums",
+                    ":referendumNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "teamIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "referendumNumber",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 6042,\n  \"number\": 7410,\n  \"type\": \"INVITE\",\n  \"consensus\": \"MAJORITY\",\n  \"target\": \"TEAM\",\n  \"targetUser\": {\n    \"id\": 3924,\n    \"login\": \"string\"\n  },\n  \"targetTeam\": {\n    \"id\": 637,\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"leader\": {\n      \"id\": 1954,\n      \"login\": \"string\"\n    },\n    \"size\": 1637,\n    \"deleted\": false,\n    \"lookingForTeammates\": true,\n    \"members\": [\n      {\n        \"id\": 846,\n        \"user\": {\n          \"id\": 8516,\n          \"login\": \"string\"\n        },\n        \"createdAt\": \"1996-02-25T21:19:24.688Z\",\n        \"userId\": 3279\n      },\n      {\n        \"id\": 2786,\n        \"user\": {\n          \"id\": 7887,\n          \"login\": \"string\"\n        },\n        \"createdAt\": \"1978-01-06T17:09:39.192Z\",\n        \"userId\": 3629\n      }\n    ],\n    \"createdAt\": \"2018-07-16T07:40:21.585Z\",\n    \"updatedAt\": \"1953-04-12T10:17:40.737Z\"\n  },\n  \"votes\": [\n    {\n      \"id\": 1228,\n      \"user\": {\n        \"id\": 4241,\n        \"login\": \"string\"\n      },\n      \"choice\": \"AGAINST\",\n      \"createdAt\": \"1978-10-14T13:44:02.679Z\",\n      \"signature\": \"string\",\n      \"address\": \"string\",\n      \"userId\": 6580,\n      \"ipfsHash\": \"string\",\n      \"verifyUrl\": \"string\"\n    },\n    {\n      \"id\": 9625,\n      \"user\": {\n        \"id\": 1018,\n        \"login\": \"string\"\n      },\n      \"choice\": \"FOR\",\n      \"createdAt\": \"1955-07-16T18:37:26.452Z\",\n      \"signature\": \"string\",\n      \"address\": \"string\",\n      \"userId\": 4734,\n      \"ipfsHash\": \"string\",\n      \"verifyUrl\": \"string\"\n    }\n  ],\n  \"teamSize\": 2550,\n  \"verdict\": \"REJECTED\",\n  \"status\": \"string\",\n  \"createdAt\": \"1967-04-11T10:57:57.613Z\",\n  \"targetUserId\": 6892\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.hub.crunchdao.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "551b6d1c-c3ac-4f6c-9188-dc13ff5b18c4",
+    "name": "Tournament activity team:referendum API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CrunchDAO Tournament Platform API Endpoints",
+      "type": "text/plain"
+    }
+  }
+}

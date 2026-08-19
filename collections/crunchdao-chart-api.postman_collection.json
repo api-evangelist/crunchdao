@@ -1,0 +1,314 @@
+{
+  "item": [
+    {
+      "id": "f52c5631-5c2e-4129-9c4d-e648448d1481",
+      "name": "chart",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "30b8d22f-4bb4-42a6-bb02-35c628f1015f",
+          "name": "List competition chart definition sets with data.",
+          "request": {
+            "name": "List competition chart definition sets with data.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "competitions",
+                ":competitionIdentifier",
+                "charts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<dateTime>",
+                  "description": "Start date of the data."
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<dateTime>",
+                  "description": "End date of the data."
+                },
+                {
+                  "disabled": false,
+                  "key": "targetName",
+                  "value": "<string>",
+                  "description": "(Required) Target name to filter the chart data by."
+                },
+                {
+                  "disabled": false,
+                  "key": "projectIdentifiers",
+                  "value": "<string>",
+                  "description": "(Required) Project IDs to filter the chart data by."
+                },
+                {
+                  "disabled": false,
+                  "key": "projectIdentifiers",
+                  "value": "<string>",
+                  "description": "(Required) Project IDs to filter the chart data by."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9f2ffa7f-d864-4cf2-bf7a-fbf37460bbfb",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "charts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "targetName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "projectIdentifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "projectIdentifiers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"definitions\": {\n    \"type\": \"array\",\n    \"maxItems\": 2,\n    \"items\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"id\": {\n          \"type\": \"integer\",\n          \"format\": \"int64\"\n        },\n        \"name\": {\n          \"type\": \"string\",\n          \"description\": \"Slug-like name of the chart, is unique and can be used as key.\"\n        },\n        \"displayName\": {\n          \"type\": \"string\",\n          \"description\": \"Title of the chart, displayed in the UI.\"\n        },\n        \"type\": {\n          \"type\": \"string\",\n          \"enum\": [\n            \"CHART\",\n            \"IFRAME\"\n          ],\n          \"description\": \"Type of chart to render.\"\n        },\n        \"endpointUrl\": {\n          \"type\": \"string\",\n          \"description\": \"Original endpoint URL.\"\n        },\n        \"dataKey\": {\n          \"type\": \"string\",\n          \"description\": \"Data key to find the fetched data.\"\n        },\n        \"projectIdProperty\": {\n          \"type\": \"string\",\n          \"description\": \"If set, generate a series per project. The project ID must be matched from the current's user projects.\"\n        },\n        \"nativeConfiguration\": {\n          \"type\": \"string\",\n          \"description\": \"Native (series-based or just a single series) frontend configuration for the chart.\"\n        },\n        \"order\": {\n          \"type\": \"integer\",\n          \"format\": \"int64\",\n          \"description\": \"Ordering order in the UI. Lowest is first.\"\n        }\n      }\n    }\n  },\n  \"data\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5e2ba4d2-d655-42cf-8bea-2775a8e7e65c",
+          "name": "List competition chart definition sets with data.",
+          "request": {
+            "name": "List competition chart definition sets with data.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "charts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<dateTime>",
+                  "description": "Start date of the data."
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<dateTime>",
+                  "description": "End date of the data."
+                },
+                {
+                  "disabled": false,
+                  "key": "targetName",
+                  "value": "<string>",
+                  "description": "(Required) Target name to filter the chart data by."
+                },
+                {
+                  "disabled": false,
+                  "key": "projectIdentifiers",
+                  "value": "<string>",
+                  "description": "(Required) Project IDs to filter the chart data by."
+                },
+                {
+                  "disabled": false,
+                  "key": "projectIdentifiers",
+                  "value": "<string>",
+                  "description": "(Required) Project IDs to filter the chart data by."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5b8f7cca-fa95-4245-8451-bdab93c47481",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "charts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "targetName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "projectIdentifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "projectIdentifiers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 8384,\n    \"name\": \"string\",\n    \"type\": \"CHART\",\n    \"projectIdProperty\": \"string\",\n    \"nativeConfiguration\": \"string\",\n    \"definitions\": {\n      \"type\": \"array\",\n      \"maxItems\": 2,\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"id\": {\n            \"type\": \"integer\",\n            \"format\": \"int64\"\n          },\n          \"name\": {\n            \"type\": \"string\",\n            \"description\": \"Slug-like name of the chart, is unique and can be used as key.\"\n          },\n          \"displayName\": {\n            \"type\": \"string\",\n            \"description\": \"Title of the chart, displayed in the UI.\"\n          },\n          \"type\": {\n            \"type\": \"string\",\n            \"enum\": [\n              \"CHART\",\n              \"IFRAME\"\n            ],\n            \"description\": \"Type of chart to render.\"\n          },\n          \"endpointUrl\": {\n            \"type\": \"string\",\n            \"description\": \"Original endpoint URL.\"\n          },\n          \"dataKey\": {\n            \"type\": \"string\",\n            \"description\": \"Data key to find the fetched data.\"\n          },\n          \"projectIdProperty\": {\n            \"type\": \"string\",\n            \"description\": \"If set, generate a series per project. The project ID must be matched from the current's user projects.\"\n          },\n          \"nativeConfiguration\": {\n            \"type\": \"string\",\n            \"description\": \"Native (series-based or just a single series) frontend configuration for the chart.\"\n          },\n          \"order\": {\n            \"type\": \"integer\",\n            \"format\": \"int64\",\n            \"description\": \"Ordering order in the UI. Lowest is first.\"\n          }\n        }\n      }\n    },\n    \"data\": \"string\"\n  },\n  {\n    \"id\": 3047,\n    \"name\": \"string\",\n    \"type\": \"CHART\",\n    \"projectIdProperty\": \"string\",\n    \"nativeConfiguration\": \"string\",\n    \"definitions\": {\n      \"type\": \"array\",\n      \"maxItems\": 2,\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"id\": {\n            \"type\": \"integer\",\n            \"format\": \"int64\"\n          },\n          \"name\": {\n            \"type\": \"string\",\n            \"description\": \"Slug-like name of the chart, is unique and can be used as key.\"\n          },\n          \"displayName\": {\n            \"type\": \"string\",\n            \"description\": \"Title of the chart, displayed in the UI.\"\n          },\n          \"type\": {\n            \"type\": \"string\",\n            \"enum\": [\n              \"CHART\",\n              \"IFRAME\"\n            ],\n            \"description\": \"Type of chart to render.\"\n          },\n          \"endpointUrl\": {\n            \"type\": \"string\",\n            \"description\": \"Original endpoint URL.\"\n          },\n          \"dataKey\": {\n            \"type\": \"string\",\n            \"description\": \"Data key to find the fetched data.\"\n          },\n          \"projectIdProperty\": {\n            \"type\": \"string\",\n            \"description\": \"If set, generate a series per project. The project ID must be matched from the current's user projects.\"\n          },\n          \"nativeConfiguration\": {\n            \"type\": \"string\",\n            \"description\": \"Native (series-based or just a single series) frontend configuration for the chart.\"\n          },\n          \"order\": {\n            \"type\": \"integer\",\n            \"format\": \"int64\",\n            \"description\": \"Ordering order in the UI. Lowest is first.\"\n          }\n        }\n      }\n    },\n    \"data\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.hub.crunchdao.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "29be749e-02eb-43ff-9771-2474003f8474",
+    "name": "Tournament activity chart API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CrunchDAO Tournament Platform API Endpoints",
+      "type": "text/plain"
+    }
+  }
+}

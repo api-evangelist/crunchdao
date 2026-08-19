@@ -1,0 +1,254 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity global-leaderboard API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "global-leaderboard",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Compute some global leaderboards.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/global-leaderboards/~/compute",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Compute some global leaderboards."
+        },
+        {
+          "info": {
+            "name": "Get a global leaderboard.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/global-leaderboards/:globalLeaderboardIdentifier",
+            "params": [
+              {
+                "name": "globalLeaderboardIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a global leaderboard."
+        },
+        {
+          "info": {
+            "name": "Update a global leaderboard.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://api.hub.crunchdao.com/v1/global-leaderboards/:globalLeaderboardIdentifier",
+            "params": [
+              {
+                "name": "globalLeaderboardIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a global leaderboard."
+        },
+        {
+          "info": {
+            "name": "Delete a global leaderboard.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://api.hub.crunchdao.com/v1/global-leaderboards/:globalLeaderboardIdentifier",
+            "params": [
+              {
+                "name": "globalLeaderboardIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a global leaderboard."
+        },
+        {
+          "info": {
+            "name": "Get the user positions of a global leaderboard.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/users/:userIdentifier/global-leaderboards/history",
+            "params": [
+              {
+                "name": "userIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the user positions of a global leaderboard."
+        },
+        {
+          "info": {
+            "name": "Get the institution positions of a global leaderboard.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/institutions/:institutionIdentifier/global-leaderboards/history",
+            "params": [
+              {
+                "name": "institutionIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the institution positions of a global leaderboard."
+        },
+        {
+          "info": {
+            "name": "List global leaderboards.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/global-leaderboards",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+              }
+            ]
+          },
+          "docs": "List global leaderboards."
+        },
+        {
+          "info": {
+            "name": "Get the user positions of a global leaderboard.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/global-leaderboards/:globalLeaderboardIdentifier/users",
+            "params": [
+              {
+                "name": "globalLeaderboardIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "query",
+                "description": "Filter on user login. Allow for a pattern (%)."
+              },
+              {
+                "name": "institutionIdentifier",
+                "value": "",
+                "type": "query",
+                "description": "Filter on a specific institution."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+              }
+            ]
+          },
+          "docs": "Get the user positions of a global leaderboard."
+        },
+        {
+          "info": {
+            "name": "Get the institution positions of a global leaderboard.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/global-leaderboards/:globalLeaderboardIdentifier/institutions",
+            "params": [
+              {
+                "name": "globalLeaderboardIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "institutionDisplayName",
+                "value": "",
+                "type": "query",
+                "description": "Filter on institution display name. Allow for a pattern (%)."
+              },
+              {
+                "name": "institutionCountry",
+                "value": "",
+                "type": "query",
+                "description": "Filter on institution in a country (ISO 3166-1 alpha-3)."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+              }
+            ]
+          },
+          "docs": "Get the institution positions of a global leaderboard."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

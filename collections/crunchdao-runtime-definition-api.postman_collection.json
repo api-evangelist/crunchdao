@@ -1,0 +1,268 @@
+{
+  "item": [
+    {
+      "id": "66631d68-7d70-449d-8ee3-73b69507ec57",
+      "name": "runtime:definition",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "64abcdd2-06cf-47ec-9837-814e1c243e4a",
+          "name": "List runtime definitions for a competition.",
+          "request": {
+            "name": "List runtime definitions for a competition.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "runtime-definitions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Zero-based page index (0..N)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "The size of the page to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ff9a6860-2480-4625-98c4-23c51187ad42",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "runtime-definitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageNumber\": 7579,\n  \"pageSize\": 8066,\n  \"totalElements\": 6018,\n  \"totalPages\": 2556,\n  \"content\": [\n    {\n      \"id\": 5299,\n      \"name\": \"string\",\n      \"type\": \"CPU\",\n      \"status\": \"DISABLED\",\n      \"recommendable\": true,\n      \"accessRequestRequired\": false,\n      \"displayName\": \"string\",\n      \"description\": \"string\",\n      \"poweredBy\": {\n        \"text\": \"string\",\n        \"url\": \"string\"\n      },\n      \"specification\": {\n        \"memory\": {\n          \"size\": 4664\n        },\n        \"sharedMemory\": {\n          \"size\": 6918\n        },\n        \"storage\": {\n          \"size\": 5710\n        },\n        \"cpu\": {\n          \"coreCount\": 3420\n        },\n        \"gpu\": {\n          \"count\": 7158,\n          \"model\": \"string\",\n          \"driver\": \"string\"\n        },\n        \"network\": {\n          \"access\": \"FORBIDDEN\"\n        },\n        \"software\": {\n          \"python\": \"string\"\n        }\n      },\n      \"quotaConsumptionRate\": 9161.66248556139,\n      \"order\": 732\n    },\n    {\n      \"id\": 3863,\n      \"name\": \"string\",\n      \"type\": \"GPU\",\n      \"status\": \"ACTIVE\",\n      \"recommendable\": true,\n      \"accessRequestRequired\": false,\n      \"displayName\": \"string\",\n      \"description\": \"string\",\n      \"poweredBy\": {\n        \"text\": \"string\",\n        \"url\": \"string\"\n      },\n      \"specification\": {\n        \"memory\": {\n          \"size\": 530\n        },\n        \"sharedMemory\": {\n          \"size\": 7988\n        },\n        \"storage\": {\n          \"size\": 3896\n        },\n        \"cpu\": {\n          \"coreCount\": 9229\n        },\n        \"gpu\": {\n          \"count\": 3350,\n          \"model\": \"string\",\n          \"driver\": \"string\"\n        },\n        \"network\": {\n          \"access\": \"FORBIDDEN\"\n        },\n        \"software\": {\n          \"python\": \"string\"\n        }\n      },\n      \"quotaConsumptionRate\": 7709.5944018848995,\n      \"order\": 3721\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe8917e5-b2b2-437e-9573-fc482a4232f2",
+          "name": "Get runtime definitions for a competition.",
+          "request": {
+            "name": "Get runtime definitions for a competition.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "runtime-definitions",
+                ":runtimeDefinitionName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "runtimeDefinitionName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7900053d-e19d-4c18-bf56-740c73dfa262",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "runtime-definitions",
+                    ":runtimeDefinitionName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "runtimeDefinitionName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8002,\n  \"name\": \"string\",\n  \"type\": \"COPY\",\n  \"status\": \"ACTIVE\",\n  \"recommendable\": false,\n  \"accessRequestRequired\": false,\n  \"displayName\": \"string\",\n  \"description\": \"string\",\n  \"poweredBy\": {\n    \"text\": \"string\",\n    \"url\": \"string\"\n  },\n  \"specification\": {\n    \"memory\": {\n      \"size\": 5211\n    },\n    \"sharedMemory\": {\n      \"size\": 8474\n    },\n    \"storage\": {\n      \"size\": 5163\n    },\n    \"cpu\": {\n      \"coreCount\": 8306\n    },\n    \"gpu\": {\n      \"count\": 7187,\n      \"model\": \"string\",\n      \"driver\": \"string\"\n    },\n    \"network\": {\n      \"access\": \"OPEN\"\n    },\n    \"software\": {\n      \"python\": \"string\"\n    }\n  },\n  \"quotaConsumptionRate\": 3456.060497867738,\n  \"order\": 721\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.hub.crunchdao.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "203c783c-900e-4fb6-ac64-1eea1ea68990",
+    "name": "Tournament activity runtime:definition API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CrunchDAO Tournament Platform API Endpoints",
+      "type": "text/plain"
+    }
+  }
+}

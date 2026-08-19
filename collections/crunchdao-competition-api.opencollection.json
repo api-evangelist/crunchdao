@@ -1,0 +1,218 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity competition API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "competition",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update a competition session.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/session",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a competition session."
+        },
+        {
+          "info": {
+            "name": "Show a competition.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Show a competition."
+        },
+        {
+          "info": {
+            "name": "Show a competition.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Show a competition."
+        },
+        {
+          "info": {
+            "name": "List competitions with filters.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v2/competitions",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter on name, display name and full name. Allow for a pattern (%)."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Filter for competitions with a specific format."
+              },
+              {
+                "name": "mode",
+                "value": "",
+                "type": "query",
+                "description": "Filter for competitions with a specific mode."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter for competitions with a specific status(es)."
+              },
+              {
+                "name": "continuous",
+                "value": "",
+                "type": "query",
+                "description": "Filter for continuous competitions."
+              },
+              {
+                "name": "external",
+                "value": "",
+                "type": "query",
+                "description": "Filter for external competitions."
+              },
+              {
+                "name": "featured",
+                "value": "",
+                "type": "query",
+                "description": "Filter for featured competitions."
+              },
+              {
+                "name": "visibility",
+                "value": "",
+                "type": "query",
+                "description": "Filter for competitions with a specific visibility."
+              },
+              {
+                "name": "organizerName",
+                "value": "",
+                "type": "query",
+                "description": "Filter for competitions of a specific organizer."
+              },
+              {
+                "name": "teamBased",
+                "value": "",
+                "type": "query",
+                "description": "Filter for team based competitions."
+              },
+              {
+                "name": "registered",
+                "value": "",
+                "type": "query",
+                "description": "Filter for competitions where the user has accepted the rules."
+              },
+              {
+                "name": "submitted",
+                "value": "",
+                "type": "query",
+                "description": "Filter for competitions where the user has submitted at least once."
+              },
+              {
+                "name": "userIdentifier",
+                "value": "",
+                "type": "query",
+                "description": "User identifier for user-based filters, default to current authenticated user."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort competitions."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              }
+            ]
+          },
+          "docs": "List competitions with filters."
+        },
+        {
+          "info": {
+            "name": "Show competitions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions"
+          },
+          "docs": "Show competitions."
+        },
+        {
+          "info": {
+            "name": "Show a competition's current state.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/current-state",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Show a competition's current state."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity leaderboard:definition API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "leaderboard:definition",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a leaderboard definition.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/leaderboard-definitions/:leaderboardDefinitionIdentifier",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "leaderboardDefinitionIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a leaderboard definition."
+        },
+        {
+          "info": {
+            "name": "Update a leaderboard definition.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/leaderboard-definitions/:leaderboardDefinitionIdentifier",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "leaderboardDefinitionIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a leaderboard definition."
+        },
+        {
+          "info": {
+            "name": "List leaderboard definitions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/leaderboard-definitions",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List leaderboard definitions."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

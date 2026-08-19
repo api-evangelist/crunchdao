@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity zzz-debug API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "zzz-debug",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Show principal authorities.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/debug/auth/authorities"
+          },
+          "docs": "Show principal authorities."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

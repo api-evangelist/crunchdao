@@ -1,0 +1,278 @@
+{
+  "item": [
+    {
+      "id": "d7f771f7-ee38-45e4-ad1f-ad54047cad69",
+      "name": "pitch",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3f10a14b-b767-4804-bcf7-72ae3318609a",
+          "name": "List pitches with filters.",
+          "request": {
+            "name": "List pitches with filters.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "seasons",
+                ":seasonNumber",
+                "pitches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter for pitches with a specific status(es)."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter for pitches with a specific status(es)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort pitches."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Zero-based page index (0..N)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "The size of the page to be returned"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "seasonNumber",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "26677385-1f78-41ce-afd3-6e86cdf2975d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "seasons",
+                    ":seasonNumber",
+                    "pitches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "VOTING"
+                    },
+                    {
+                      "key": "status",
+                      "value": "CANCELLED"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "seasonNumber",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageNumber\": 3544,\n  \"pageSize\": 1282,\n  \"totalElements\": 1257,\n  \"totalPages\": 357,\n  \"content\": [\n    {\n      \"id\": 7522,\n      \"season\": {\n        \"id\": 8851,\n        \"number\": 1853,\n        \"displayName\": \"string\",\n        \"shortDescription\": \"string\",\n        \"description\": \"string\",\n        \"status\": \"OPEN\",\n        \"start\": \"2026-06-25T13:43:59.581Z\",\n        \"end\": \"2009-09-26T09:37:33.709Z\",\n        \"stakeGoal\": 7388,\n        \"createdAt\": \"1967-11-21T06:59:31.906Z\"\n      },\n      \"name\": \"string\",\n      \"organizer\": {\n        \"id\": 9873,\n        \"name\": \"string\",\n        \"displayName\": \"string\",\n        \"onChainId\": \"string\",\n        \"logoImageUrl\": \"string\",\n        \"bannerImageUrl\": \"string\",\n        \"stake\": {\n          \"prefix\": \"string\",\n          \"suffix\": \"string\",\n          \"scale\": 7893\n        }\n      },\n      \"displayName\": \"string\",\n      \"shortDescription\": \"string\",\n      \"status\": \"VOTING\",\n      \"githubRepository\": \"string\",\n      \"websiteUrl\": \"string\",\n      \"discordUrl\": \"string\",\n      \"twitterUrl\": \"string\",\n      \"externalUrl\": \"string\",\n      \"externalUrlText\": \"string\",\n      \"stake\": {\n        \"prefix\": \"string\",\n        \"suffix\": \"string\",\n        \"scale\": 6308\n      },\n      \"createdAt\": \"1965-11-15T15:56:22.231Z\"\n    },\n    {\n      \"id\": 5215,\n      \"season\": {\n        \"id\": 9746,\n        \"number\": 6448,\n        \"displayName\": \"string\",\n        \"shortDescription\": \"string\",\n        \"description\": \"string\",\n        \"status\": \"CLOSED\",\n        \"start\": \"1980-04-27T15:26:30.415Z\",\n        \"end\": \"1985-05-06T13:40:16.643Z\",\n        \"stakeGoal\": 5592,\n        \"createdAt\": \"2019-06-15T18:24:41.707Z\"\n      },\n      \"name\": \"string\",\n      \"organizer\": {\n        \"id\": 6750,\n        \"name\": \"string\",\n        \"displayName\": \"string\",\n        \"onChainId\": \"string\",\n        \"logoImageUrl\": \"string\",\n        \"bannerImageUrl\": \"string\",\n        \"stake\": {\n          \"prefix\": \"string\",\n          \"suffix\": \"string\",\n          \"scale\": 5816\n        }\n      },\n      \"displayName\": \"string\",\n      \"shortDescription\": \"string\",\n      \"status\": \"CANCELLED\",\n      \"githubRepository\": \"string\",\n      \"websiteUrl\": \"string\",\n      \"discordUrl\": \"string\",\n      \"twitterUrl\": \"string\",\n      \"externalUrl\": \"string\",\n      \"externalUrlText\": \"string\",\n      \"stake\": {\n        \"prefix\": \"string\",\n        \"suffix\": \"string\",\n        \"scale\": 1562\n      },\n      \"createdAt\": \"2000-06-02T01:42:15.475Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cbc8360a-3b56-426a-ad1b-dcacc37e374a",
+          "name": "Show a pitch.",
+          "request": {
+            "name": "Show a pitch.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "seasons",
+                ":seasonNumber",
+                "pitches",
+                ":pitchName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "seasonNumber",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pitchName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d5ba668c-8f96-4eb5-86d3-a0d2670080a3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "seasons",
+                    ":seasonNumber",
+                    "pitches",
+                    ":pitchName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "seasonNumber",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pitchName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 255,\n  \"season\": {\n    \"id\": 5915,\n    \"number\": 9919,\n    \"displayName\": \"string\",\n    \"shortDescription\": \"string\",\n    \"description\": \"string\",\n    \"status\": \"CLOSED\",\n    \"start\": \"1976-07-30T01:18:14.023Z\",\n    \"end\": \"1995-05-10T17:50:20.896Z\",\n    \"stakeGoal\": 5389,\n    \"createdAt\": \"2001-08-14T14:23:56.509Z\"\n  },\n  \"name\": \"string\",\n  \"organizer\": {\n    \"id\": 2972,\n    \"name\": \"string\",\n    \"displayName\": \"string\",\n    \"onChainId\": \"string\",\n    \"logoImageUrl\": \"string\",\n    \"bannerImageUrl\": \"string\",\n    \"stake\": {\n      \"prefix\": \"string\",\n      \"suffix\": \"string\",\n      \"scale\": 578\n    }\n  },\n  \"displayName\": \"string\",\n  \"shortDescription\": \"string\",\n  \"status\": \"VOTING\",\n  \"githubRepository\": \"string\",\n  \"websiteUrl\": \"string\",\n  \"discordUrl\": \"string\",\n  \"twitterUrl\": \"string\",\n  \"externalUrl\": \"string\",\n  \"externalUrlText\": \"string\",\n  \"stake\": {\n    \"prefix\": \"string\",\n    \"suffix\": \"string\",\n    \"scale\": 2995\n  },\n  \"createdAt\": \"2009-04-07T06:11:03.354Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.hub.crunchdao.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "57f64744-4061-4f89-8861-4039ccdab19a",
+    "name": "Tournament activity pitch API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CrunchDAO Tournament Platform API Endpoints",
+      "type": "text/plain"
+    }
+  }
+}

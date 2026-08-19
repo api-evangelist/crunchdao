@@ -1,0 +1,231 @@
+{
+  "item": [
+    {
+      "id": "ccecc08f-9e36-4370-9289-321f43f6af47",
+      "name": "user:profile",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9103a916-a051-4dbe-b385-dd080b2e87d3",
+          "name": "show User Profile",
+          "request": {
+            "name": "show User Profile",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "users",
+                ":userIdentifier",
+                "profile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "082947bc-50f0-49dc-9a08-9cc40d9607e8",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    ":userIdentifier",
+                    "profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user\": {\n    \"id\": 6300,\n    \"login\": \"string\"\n  },\n  \"biography\": \"string\",\n  \"connections\": [\n    {\n      \"id\": 4126,\n      \"type\": \"GOOGLE\",\n      \"handle\": \"string\",\n      \"username\": \"string\",\n      \"profileUrl\": \"string\",\n      \"createdAt\": \"2010-02-25T20:02:27.463Z\",\n      \"updatedAt\": \"1985-10-17T13:40:39.774Z\",\n      \"public\": true\n    },\n    {\n      \"id\": 6035,\n      \"type\": \"DISCORD\",\n      \"handle\": \"string\",\n      \"username\": \"string\",\n      \"profileUrl\": \"string\",\n      \"createdAt\": \"1970-02-03T01:23:34.395Z\",\n      \"updatedAt\": \"2010-06-30T08:41:53.341Z\",\n      \"public\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d71642c1-45f7-44ff-b952-153ec313ac44",
+          "name": "update User Profile",
+          "request": {
+            "name": "update User Profile",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "users",
+                ":userIdentifier",
+                "profile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"biography\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b4bc5b5d-0896-4191-8719-fba1b8d4c51f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    ":userIdentifier",
+                    "profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"biography\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user\": {\n    \"id\": 6300,\n    \"login\": \"string\"\n  },\n  \"biography\": \"string\",\n  \"connections\": [\n    {\n      \"id\": 4126,\n      \"type\": \"GOOGLE\",\n      \"handle\": \"string\",\n      \"username\": \"string\",\n      \"profileUrl\": \"string\",\n      \"createdAt\": \"2010-02-25T20:02:27.463Z\",\n      \"updatedAt\": \"1985-10-17T13:40:39.774Z\",\n      \"public\": true\n    },\n    {\n      \"id\": 6035,\n      \"type\": \"DISCORD\",\n      \"handle\": \"string\",\n      \"username\": \"string\",\n      \"profileUrl\": \"string\",\n      \"createdAt\": \"1970-02-03T01:23:34.395Z\",\n      \"updatedAt\": \"2010-06-30T08:41:53.341Z\",\n      \"public\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.hub.crunchdao.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2b4079ee-46a7-4299-ad00-3e9499828206",
+    "name": "Tournament activity user:profile API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CrunchDAO Tournament Platform API Endpoints",
+      "type": "text/plain"
+    }
+  }
+}

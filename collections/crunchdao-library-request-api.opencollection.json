@@ -1,0 +1,149 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity library:request API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "library:request",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List library requests.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/library-requests",
+            "params": [
+              {
+                "name": "verdict",
+                "value": "",
+                "type": "query",
+                "description": "Filter by verdict. Include all if not specified."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter on both name and alias. Allow for a pattern (%)."
+              },
+              {
+                "name": "gpuRequirement",
+                "value": "",
+                "type": "query",
+                "description": "Filter for GPU requirement."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort results."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              }
+            ]
+          },
+          "docs": "List library requests."
+        },
+        {
+          "info": {
+            "name": "Create a library request.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/library-requests",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a library request."
+        },
+        {
+          "info": {
+            "name": "Reject a library request.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/library-requests/:libraryRequestId/reject",
+            "params": [
+              {
+                "name": "libraryRequestId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reject a library request."
+        },
+        {
+          "info": {
+            "name": "Approve a library request.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/library-requests/:libraryRequestId/approve",
+            "params": [
+              {
+                "name": "libraryRequestId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Approve a library request."
+        },
+        {
+          "info": {
+            "name": "Test if a library on PyPI.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/library-requests/query",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "language",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Test if a library on PyPI."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

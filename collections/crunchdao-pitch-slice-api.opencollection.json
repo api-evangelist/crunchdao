@@ -1,0 +1,233 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity pitch:slice API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "pitch:slice",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "listPitchSlices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/seasons/:seasonNumber/pitches/:pitchName/slices",
+            "params": [
+              {
+                "name": "seasonNumber",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pitchName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "createPitchSlice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/seasons/:seasonNumber/pitches/:pitchName/slices",
+            "params": [
+              {
+                "name": "seasonNumber",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pitchName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "importPitchSlicesFromMarkdown",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/seasons/:seasonNumber/pitches/:pitchName/slices/~/import/markdown",
+            "params": [
+              {
+                "name": "seasonNumber",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pitchName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "importPitchSlicesFromGitBook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/seasons/:seasonNumber/pitches/:pitchName/slices/~/import/gitbook",
+            "params": [
+              {
+                "name": "seasonNumber",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pitchName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "getPitchSlice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/seasons/:seasonNumber/pitches/:pitchName/slices/:sliceName",
+            "params": [
+              {
+                "name": "seasonNumber",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pitchName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "sliceName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "updatePitchSlice",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://api.hub.crunchdao.com/v1/seasons/:seasonNumber/pitches/:pitchName/slices/:sliceName",
+            "params": [
+              {
+                "name": "seasonNumber",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pitchName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "sliceName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "deletePitchSlice",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://api.hub.crunchdao.com/v1/seasons/:seasonNumber/pitches/:pitchName/slices/:sliceName",
+            "params": [
+              {
+                "name": "seasonNumber",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pitchName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "sliceName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,133 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity season API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "season",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List seasons with filters.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/stakers",
+            "params": [
+              {
+                "name": "organizerName",
+                "value": "",
+                "type": "query",
+                "description": "Filter for a specific organizer."
+              },
+              {
+                "name": "organizerOnChainId",
+                "value": "",
+                "type": "query",
+                "description": "Filter for a specific organizer."
+              },
+              {
+                "name": "address",
+                "value": "",
+                "type": "query",
+                "description": "Filter for a specific organizer."
+              },
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "query",
+                "description": "Filter for a specific organizer."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+              },
+              {
+                "name": "includeTarget",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List seasons with filters."
+        },
+        {
+          "info": {
+            "name": "List seasons with filters.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/seasons",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter for seasons with a specific status(es)."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort seasons."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              }
+            ]
+          },
+          "docs": "List seasons with filters."
+        },
+        {
+          "info": {
+            "name": "Show a season.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/seasons/:seasonNumber",
+            "params": [
+              {
+                "name": "seasonNumber",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Show a season."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

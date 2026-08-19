@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity broadcast API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "broadcast",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List broadcasts of a competition.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/broadcasts",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List broadcasts of a competition."
+        },
+        {
+          "info": {
+            "name": "List global broadcasts.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/broadcasts"
+          },
+          "docs": "List global broadcasts."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

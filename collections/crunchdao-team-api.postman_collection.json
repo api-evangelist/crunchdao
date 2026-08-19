@@ -1,0 +1,730 @@
+{
+  "item": [
+    {
+      "id": "5c2e48ee-21ed-446e-b386-247f27aaf64a",
+      "name": "team",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f0dcfa13-8205-4bc4-acc8-2420fe00fdbd",
+          "name": "List teams.",
+          "request": {
+            "name": "List teams.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "teams"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0e3f7c7d-48e2-4ddf-9a10-c7f6bce54dcb",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "teams"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 359,\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"leader\": {\n      \"id\": 9578,\n      \"login\": \"string\"\n    },\n    \"size\": 2312,\n    \"deleted\": true,\n    \"lookingForTeammates\": true,\n    \"members\": [\n      {\n        \"id\": 8569,\n        \"user\": {\n          \"id\": 5447,\n          \"login\": \"string\"\n        },\n        \"createdAt\": \"2015-07-31T14:31:37.087Z\",\n        \"userId\": 7734\n      },\n      {\n        \"id\": 161,\n        \"user\": {\n          \"id\": 9294,\n          \"login\": \"string\"\n        },\n        \"createdAt\": \"1998-07-22T05:49:05.414Z\",\n        \"userId\": 91\n      }\n    ],\n    \"createdAt\": \"2023-12-03T20:20:39.410Z\",\n    \"updatedAt\": \"1991-11-22T18:31:23.089Z\"\n  },\n  {\n    \"id\": 5281,\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"leader\": {\n      \"id\": 8684,\n      \"login\": \"string\"\n    },\n    \"size\": 5330,\n    \"deleted\": true,\n    \"lookingForTeammates\": false,\n    \"members\": [\n      {\n        \"id\": 686,\n        \"user\": {\n          \"id\": 7912,\n          \"login\": \"string\"\n        },\n        \"createdAt\": \"2003-05-08T08:55:50.747Z\",\n        \"userId\": 5274\n      },\n      {\n        \"id\": 4230,\n        \"user\": {\n          \"id\": 1244,\n          \"login\": \"string\"\n        },\n        \"createdAt\": \"1947-10-06T06:43:00.908Z\",\n        \"userId\": 8068\n      }\n    ],\n    \"createdAt\": \"1989-06-04T09:07:11.669Z\",\n    \"updatedAt\": \"2019-05-16T12:24:49.381Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "050013f8-eb9a-47bf-b2bf-5fd9b054fae5",
+          "name": "Create a team.",
+          "request": {
+            "name": "Create a team.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "teams"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lookingForTeammates\": \"<boolean>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a1b7f1f2-7c8f-4c73-b2da-02db316e9d99",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "teams"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lookingForTeammates\": \"<boolean>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 5015,\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"leader\": {\n    \"id\": 9863,\n    \"login\": \"string\"\n  },\n  \"size\": 9205,\n  \"deleted\": false,\n  \"lookingForTeammates\": true,\n  \"members\": [\n    {\n      \"id\": 3822,\n      \"user\": {\n        \"id\": 1749,\n        \"login\": \"string\"\n      },\n      \"createdAt\": \"1966-09-20T17:32:27.677Z\",\n      \"userId\": 96\n    },\n    {\n      \"id\": 3575,\n      \"user\": {\n        \"id\": 2206,\n        \"login\": \"string\"\n      },\n      \"createdAt\": \"2025-06-27T19:08:13.041Z\",\n      \"userId\": 6102\n    }\n  ],\n  \"createdAt\": \"1976-12-02T23:11:09.874Z\",\n  \"updatedAt\": \"1970-11-14T09:42:15.724Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "85868102-3646-4c1d-ac9f-95eb5996cc1a",
+          "name": "Show a team.",
+          "request": {
+            "name": "Show a team.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "teams",
+                ":teamIdentifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "teamIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f3da7d86-6ec9-4aa8-b08e-8987edc4f6be",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "teams",
+                    ":teamIdentifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "teamIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 5015,\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"leader\": {\n    \"id\": 9863,\n    \"login\": \"string\"\n  },\n  \"size\": 9205,\n  \"deleted\": false,\n  \"lookingForTeammates\": true,\n  \"members\": [\n    {\n      \"id\": 3822,\n      \"user\": {\n        \"id\": 1749,\n        \"login\": \"string\"\n      },\n      \"createdAt\": \"1966-09-20T17:32:27.677Z\",\n      \"userId\": 96\n    },\n    {\n      \"id\": 3575,\n      \"user\": {\n        \"id\": 2206,\n        \"login\": \"string\"\n      },\n      \"createdAt\": \"2025-06-27T19:08:13.041Z\",\n      \"userId\": 6102\n    }\n  ],\n  \"createdAt\": \"1976-12-02T23:11:09.874Z\",\n  \"updatedAt\": \"1970-11-14T09:42:15.724Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fb74f46a-a86e-450c-bff3-348104b4e1e1",
+          "name": "Update a team.",
+          "request": {
+            "name": "Update a team.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "teams",
+                ":teamIdentifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "teamIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"lookingForTeammates\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bb8374ef-f244-436c-b665-a782bebde383",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "teams",
+                    ":teamIdentifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "teamIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"lookingForTeammates\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 5015,\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"leader\": {\n    \"id\": 9863,\n    \"login\": \"string\"\n  },\n  \"size\": 9205,\n  \"deleted\": false,\n  \"lookingForTeammates\": true,\n  \"members\": [\n    {\n      \"id\": 3822,\n      \"user\": {\n        \"id\": 1749,\n        \"login\": \"string\"\n      },\n      \"createdAt\": \"1966-09-20T17:32:27.677Z\",\n      \"userId\": 96\n    },\n    {\n      \"id\": 3575,\n      \"user\": {\n        \"id\": 2206,\n        \"login\": \"string\"\n      },\n      \"createdAt\": \"2025-06-27T19:08:13.041Z\",\n      \"userId\": 6102\n    }\n  ],\n  \"createdAt\": \"1976-12-02T23:11:09.874Z\",\n  \"updatedAt\": \"1970-11-14T09:42:15.724Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c7e098cd-d1e7-4fb0-aae1-c32cd17ff97f",
+          "name": "List teams with filters.",
+          "request": {
+            "name": "List teams with filters.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "competitions",
+                ":competitionIdentifier",
+                "teams"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter on name, display name and full name. Allow for a pattern (%)."
+                },
+                {
+                  "disabled": false,
+                  "key": "deleted",
+                  "value": "<boolean>",
+                  "description": "Filter on deleted."
+                },
+                {
+                  "disabled": false,
+                  "key": "lookingForTeammates",
+                  "value": "<boolean>",
+                  "description": "Filter on looking for teammates."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort teams."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeMembers",
+                  "value": "<string>",
+                  "description": "Include the members in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Zero-based page index (0..N)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "The size of the page to be returned"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "164940b4-b025-4bf6-a0d2-c1139aea87f6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "teams"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deleted",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "lookingForTeammates",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeMembers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageNumber\": 1768,\n  \"pageSize\": 5297,\n  \"totalElements\": 1054,\n  \"totalPages\": 9166,\n  \"content\": [\n    {\n      \"id\": 4124,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"leader\": {\n        \"id\": 1912,\n        \"login\": \"string\"\n      },\n      \"size\": 2015,\n      \"deleted\": false,\n      \"lookingForTeammates\": false,\n      \"members\": [\n        {\n          \"id\": 1611,\n          \"user\": {\n            \"id\": 3388,\n            \"login\": \"string\"\n          },\n          \"createdAt\": \"2005-08-22T23:38:00.129Z\",\n          \"userId\": 2886\n        },\n        {\n          \"id\": 8728,\n          \"user\": {\n            \"id\": 7030,\n            \"login\": \"string\"\n          },\n          \"createdAt\": \"2004-04-21T16:39:31.413Z\",\n          \"userId\": 2731\n        }\n      ],\n      \"createdAt\": \"2019-11-19T12:07:49.387Z\",\n      \"updatedAt\": \"1993-12-22T03:23:08.283Z\"\n    },\n    {\n      \"id\": 6168,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"leader\": {\n        \"id\": 4082,\n        \"login\": \"string\"\n      },\n      \"size\": 9988,\n      \"deleted\": true,\n      \"lookingForTeammates\": false,\n      \"members\": [\n        {\n          \"id\": 6203,\n          \"user\": {\n            \"id\": 7851,\n            \"login\": \"string\"\n          },\n          \"createdAt\": \"2022-07-11T18:23:39.748Z\",\n          \"userId\": 8780\n        },\n        {\n          \"id\": 8742,\n          \"user\": {\n            \"id\": 389,\n            \"login\": \"string\"\n          },\n          \"createdAt\": \"1967-02-21T12:31:33.526Z\",\n          \"userId\": 8878\n        }\n      ],\n      \"createdAt\": \"1965-05-30T18:43:33.047Z\",\n      \"updatedAt\": \"1968-07-21T00:36:31.664Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "976e7811-c729-456a-ba07-df613c9bb8e9",
+          "name": "List a team's members.",
+          "request": {
+            "name": "List a team's members.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "teams",
+                ":teamIdentifier",
+                "members"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "teamIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cb20429e-0f62-42c3-b756-bceb866bfddc",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "teams",
+                    ":teamIdentifier",
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "teamIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 860,\n    \"user\": {\n      \"id\": 4707,\n      \"login\": \"string\"\n    },\n    \"createdAt\": \"1991-08-23T12:23:47.162Z\",\n    \"userId\": 6371\n  },\n  {\n    \"id\": 2671,\n    \"user\": {\n      \"id\": 2231,\n      \"login\": \"string\"\n    },\n    \"createdAt\": \"1961-07-01T10:00:21.715Z\",\n    \"userId\": 7622\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.hub.crunchdao.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "788cf263-129b-4086-9ff4-2a5beed1de46",
+    "name": "Tournament activity team API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CrunchDAO Tournament Platform API Endpoints",
+      "type": "text/plain"
+    }
+  }
+}

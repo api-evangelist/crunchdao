@@ -1,0 +1,214 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity news API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "news",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List news.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/news"
+          },
+          "docs": "List news."
+        },
+        {
+          "info": {
+            "name": "Create a news.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/news",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a news."
+        },
+        {
+          "info": {
+            "name": "List news.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/news",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "mix",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List news."
+        },
+        {
+          "info": {
+            "name": "Create a news.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/news",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a news."
+        },
+        {
+          "info": {
+            "name": "List news.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v2/news",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "query",
+                "description": "Limit news to a specific competition. Return global news if not specified."
+              },
+              {
+                "name": "mixed",
+                "value": "",
+                "type": "query",
+                "description": "Should competition news be mixed with global news?"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort news."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              }
+            ]
+          },
+          "docs": "List news."
+        },
+        {
+          "info": {
+            "name": "Show a news.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/news/:newsId",
+            "params": [
+              {
+                "name": "newsId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Show a news."
+        },
+        {
+          "info": {
+            "name": "Delete a news.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://api.hub.crunchdao.com/v1/news/:newsId",
+            "params": [
+              {
+                "name": "newsId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a news."
+        },
+        {
+          "info": {
+            "name": "Show a news.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/news/:newsId",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "newsId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Show a news."
+        },
+        {
+          "info": {
+            "name": "Delete a news.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/news/:newsId",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "newsId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a news."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

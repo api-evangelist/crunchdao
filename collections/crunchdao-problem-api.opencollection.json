@@ -1,0 +1,109 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity problem API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "problem",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List problems of a user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v2/problems",
+            "params": [
+              {
+                "name": "resolved",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List problems of a user."
+        },
+        {
+          "info": {
+            "name": "Create a problem for a user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://api.hub.crunchdao.com/v2/problems",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a problem for a user."
+        },
+        {
+          "info": {
+            "name": "Resolve a problem.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v2/problems/:problemId/resolve",
+            "params": [
+              {
+                "name": "problemId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Resolve a problem."
+        },
+        {
+          "info": {
+            "name": "Show a problem.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v2/problems/:problemId",
+            "params": [
+              {
+                "name": "problemId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Show a problem."
+        },
+        {
+          "info": {
+            "name": "Delete a problem.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://api.hub.crunchdao.com/v2/problems/:problemId",
+            "params": [
+              {
+                "name": "problemId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a problem."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

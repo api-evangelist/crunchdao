@@ -1,0 +1,1910 @@
+{
+  "item": [
+    {
+      "id": "072f968b-1ce1-458a-9491-8f881afcf47e",
+      "name": "project",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4497b442-def0-41a9-ace0-fddbfe4ae83b",
+          "name": "Find project by ID in batch.",
+          "request": {
+            "name": "Find project by ID in batch.",
+            "description": {},
+            "url": {
+              "path": [
+                "v4",
+                "projects",
+                "~"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  \"<long>\",\n  \"<long>\"\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e2eaa07e-a555-4043-bd88-a95bc91933b9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "projects",
+                    "~"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<long>\",\n  \"<long>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 6554,\n    \"competitionId\": 653,\n    \"userId\": 4359,\n    \"user\": {\n      \"id\": 9635,\n      \"login\": \"string\"\n    },\n    \"name\": \"string\"\n  },\n  {\n    \"id\": 9876,\n    \"competitionId\": 3444,\n    \"userId\": 1628,\n    \"user\": {\n      \"id\": 7158,\n      \"login\": \"string\"\n    },\n    \"name\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f8dff321-27cb-4ae7-95c4-a85a8ebb638e",
+          "name": "Search projects by filters",
+          "request": {
+            "name": "Search projects by filters",
+            "description": {},
+            "url": {
+              "path": [
+                "v4",
+                "projects",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Zero-based page index (0..N)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "The size of the page to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"sortBy\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "261eae00-4182-4b4a-ae9c-3c967817d8bc",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "projects",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"sortBy\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageNumber\": 1724,\n  \"pageSize\": 5152,\n  \"totalElements\": 8630,\n  \"totalPages\": 5114,\n  \"content\": [\n    {\n      \"name\": \"string\",\n      \"projectId\": 6875,\n      \"projectName\": \"string\",\n      \"userId\": 9283,\n      \"userName\": \"string\",\n      \"competitionsNames\": [\n        \"string\",\n        \"string\"\n      ],\n      \"totalOfRewards\": 7715.766365866832,\n      \"lastModified\": \"1996-04-11T20:15:09.699Z\",\n      \"createdAt\": \"1991-09-11T16:09:28.293Z\",\n      \"private\": true\n    },\n    {\n      \"name\": \"string\",\n      \"projectId\": 537,\n      \"projectName\": \"string\",\n      \"userId\": 7361,\n      \"userName\": \"string\",\n      \"competitionsNames\": [\n        \"string\",\n        \"string\"\n      ],\n      \"totalOfRewards\": 284.94791616434645,\n      \"lastModified\": \"2022-10-18T14:43:36.893Z\",\n      \"createdAt\": \"1997-12-16T16:26:41.218Z\",\n      \"private\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6bef4221-c53d-42ca-ace9-35d5ded33ea1",
+          "name": "Show a project selection.",
+          "request": {
+            "name": "Show a project selection.",
+            "description": {},
+            "url": {
+              "path": [
+                "v4",
+                "competitions",
+                ":competitionIdentifier",
+                "projects",
+                ":userLogin",
+                ":projectIdentifier",
+                "selection"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "roundNumber",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userLogin",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "62f98c1a-efc2-4c56-b79d-575394f7b086",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "projects",
+                    ":userLogin",
+                    ":projectIdentifier",
+                    "selection"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "roundNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userLogin",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"project\": {\n    \"id\": 8992,\n    \"competitionId\": 8283,\n    \"user\": {\n      \"id\": 8600,\n      \"login\": \"string\"\n    },\n    \"name\": \"string\",\n    \"selected\": false,\n    \"submitted\": true,\n    \"note\": \"string\",\n    \"writeupUrl\": \"string\",\n    \"writeupArchived\": true,\n    \"createdAt\": \"2024-01-21T15:32:19.533Z\",\n    \"updatedAt\": \"2023-09-20T12:20:47.884Z\",\n    \"userId\": 2039\n  },\n  \"submission\": {\n    \"id\": 7431,\n    \"number\": 5381\n  },\n  \"trainFrequency\": 5301,\n  \"forceFirstTrain\": true,\n  \"runtimeType\": \"COPY\",\n  \"runId\": 2231,\n  \"runnable\": false,\n  \"origin\": \"PREVIOUS_ROUND\",\n  \"createdAt\": \"1986-05-25T08:46:47.427Z\",\n  \"updatedAt\": \"2018-02-18T16:57:12.669Z\",\n  \"submissionId\": 3077\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d21b4a0-dc2b-49db-ac31-cfc59ce651eb",
+          "name": "Edit a project selection.",
+          "request": {
+            "name": "Edit a project selection.",
+            "description": {},
+            "url": {
+              "path": [
+                "v4",
+                "competitions",
+                ":competitionIdentifier",
+                "projects",
+                ":userLogin",
+                ":projectIdentifier",
+                "selection"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "roundNumber",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userLogin",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"runId\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f8febf84-b55e-48ad-9570-027241241731",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "projects",
+                    ":userLogin",
+                    ":projectIdentifier",
+                    "selection"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "roundNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userLogin",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"runId\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"project\": {\n    \"id\": 8992,\n    \"competitionId\": 8283,\n    \"user\": {\n      \"id\": 8600,\n      \"login\": \"string\"\n    },\n    \"name\": \"string\",\n    \"selected\": false,\n    \"submitted\": true,\n    \"note\": \"string\",\n    \"writeupUrl\": \"string\",\n    \"writeupArchived\": true,\n    \"createdAt\": \"2024-01-21T15:32:19.533Z\",\n    \"updatedAt\": \"2023-09-20T12:20:47.884Z\",\n    \"userId\": 2039\n  },\n  \"submission\": {\n    \"id\": 7431,\n    \"number\": 5381\n  },\n  \"trainFrequency\": 5301,\n  \"forceFirstTrain\": true,\n  \"runtimeType\": \"COPY\",\n  \"runId\": 2231,\n  \"runnable\": false,\n  \"origin\": \"PREVIOUS_ROUND\",\n  \"createdAt\": \"1986-05-25T08:46:47.427Z\",\n  \"updatedAt\": \"2018-02-18T16:57:12.669Z\",\n  \"submissionId\": 3077\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "160c529d-d327-4ab1-9ac8-c36d29e5714a",
+          "name": "List the projects of a user.",
+          "request": {
+            "name": "List the projects of a user.",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "competitions",
+                ":competitionIdentifier",
+                "projects",
+                ":userLogin"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userLogin",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3f977ec4-a913-4450-9dd6-34e2bb3bc00b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "projects",
+                    ":userLogin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userLogin",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 8880,\n    \"competitionId\": 1837,\n    \"user\": {\n      \"id\": 2087,\n      \"login\": \"string\"\n    },\n    \"name\": \"string\",\n    \"selected\": true,\n    \"submitted\": true,\n    \"note\": \"string\",\n    \"writeupUrl\": \"string\",\n    \"writeupArchived\": true,\n    \"createdAt\": \"2006-08-11T11:47:26.215Z\",\n    \"updatedAt\": \"2019-06-02T18:40:00.862Z\",\n    \"userId\": 6204\n  },\n  {\n    \"id\": 2527,\n    \"competitionId\": 5196,\n    \"user\": {\n      \"id\": 4594,\n      \"login\": \"string\"\n    },\n    \"name\": \"string\",\n    \"selected\": true,\n    \"submitted\": false,\n    \"note\": \"string\",\n    \"writeupUrl\": \"string\",\n    \"writeupArchived\": false,\n    \"createdAt\": \"2026-06-17T15:59:40.543Z\",\n    \"updatedAt\": \"2022-01-29T12:52:49.474Z\",\n    \"userId\": 9921\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f868d02-ba12-4fe6-830e-914f21d3707e",
+          "name": "Create a project.",
+          "request": {
+            "name": "Create a project.",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "competitions",
+                ":competitionIdentifier",
+                "projects",
+                ":userLogin"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userLogin",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e91b3e8e-c44b-439c-84f9-b16d8e14cc31",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "projects",
+                    ":userLogin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userLogin",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8960,\n  \"competitionId\": 1618,\n  \"user\": {\n    \"id\": 2923,\n    \"login\": \"string\"\n  },\n  \"name\": \"string\",\n  \"selected\": false,\n  \"submitted\": true,\n  \"note\": \"string\",\n  \"writeupUrl\": \"string\",\n  \"writeupArchived\": false,\n  \"createdAt\": \"1960-12-09T21:56:43.878Z\",\n  \"updatedAt\": \"1988-12-27T09:25:59.489Z\",\n  \"userId\": 2794\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "752a0107-612c-4108-b138-b42911fc5f0c",
+          "name": "Select a project for the leaderboard.",
+          "request": {
+            "name": "Select a project for the leaderboard.",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "competitions",
+                ":competitionIdentifier",
+                "projects",
+                ":userLogin",
+                ":projectIdentifier",
+                "select"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userLogin",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3ba29e00-d9d1-4846-84e7-6778e7e758f3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "projects",
+                    ":userLogin",
+                    ":projectIdentifier",
+                    "select"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userLogin",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8960,\n  \"competitionId\": 1618,\n  \"user\": {\n    \"id\": 2923,\n    \"login\": \"string\"\n  },\n  \"name\": \"string\",\n  \"selected\": false,\n  \"submitted\": true,\n  \"note\": \"string\",\n  \"writeupUrl\": \"string\",\n  \"writeupArchived\": false,\n  \"createdAt\": \"1960-12-09T21:56:43.878Z\",\n  \"updatedAt\": \"1988-12-27T09:25:59.489Z\",\n  \"userId\": 2794\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3934b970-f999-459d-bfe2-381b8add0e59",
+          "name": "Show a project.",
+          "request": {
+            "name": "Show a project.",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "competitions",
+                ":competitionIdentifier",
+                "projects",
+                ":userLogin",
+                ":projectIdentifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userLogin",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a856a444-eefd-4286-b5e0-74ce4c019be8",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "projects",
+                    ":userLogin",
+                    ":projectIdentifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userLogin",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8960,\n  \"competitionId\": 1618,\n  \"user\": {\n    \"id\": 2923,\n    \"login\": \"string\"\n  },\n  \"name\": \"string\",\n  \"selected\": false,\n  \"submitted\": true,\n  \"note\": \"string\",\n  \"writeupUrl\": \"string\",\n  \"writeupArchived\": false,\n  \"createdAt\": \"1960-12-09T21:56:43.878Z\",\n  \"updatedAt\": \"1988-12-27T09:25:59.489Z\",\n  \"userId\": 2794\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "36dd5582-9aa9-44f4-9a97-f84037f479a5",
+          "name": "Update a project.",
+          "request": {
+            "name": "Update a project.",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "competitions",
+                ":competitionIdentifier",
+                "projects",
+                ":userLogin",
+                ":projectIdentifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userLogin",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"note\": \"<string>\",\n  \"writeupUrl\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "643055a3-a8bd-471b-b744-5297c1c80661",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "projects",
+                    ":userLogin",
+                    ":projectIdentifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userLogin",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"note\": \"<string>\",\n  \"writeupUrl\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8960,\n  \"competitionId\": 1618,\n  \"user\": {\n    \"id\": 2923,\n    \"login\": \"string\"\n  },\n  \"name\": \"string\",\n  \"selected\": false,\n  \"submitted\": true,\n  \"note\": \"string\",\n  \"writeupUrl\": \"string\",\n  \"writeupArchived\": false,\n  \"createdAt\": \"1960-12-09T21:56:43.878Z\",\n  \"updatedAt\": \"1988-12-27T09:25:59.489Z\",\n  \"userId\": 2794\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9e8ba535-4f6f-4c8f-b2da-1b6af4f0fed9",
+          "name": "Performance of project",
+          "request": {
+            "name": "Performance of project",
+            "description": {},
+            "url": {
+              "path": [
+                "v4",
+                "projects",
+                ":projectId",
+                "performance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "69c53182-e37b-4c22-af2d-e2d6c0b82545",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "projects",
+                    ":projectId",
+                    "performance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"roundNumber\": 1656,\n    \"phaseType\": \"string\",\n    \"crunchNumber\": 7308,\n    \"scoreValue\": 1803.622946103699,\n    \"metricId\": 3522,\n    \"runId\": 8492\n  },\n  {\n    \"roundNumber\": 2780,\n    \"phaseType\": \"string\",\n    \"crunchNumber\": 6206,\n    \"scoreValue\": 3491.3198106087375,\n    \"metricId\": 6628,\n    \"runId\": 3332\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ed86fa07-f7f3-42fc-b228-36b01f4ab61b",
+          "name": "Use `/compute` instead.",
+          "request": {
+            "name": "Use `/compute` instead.",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "competitions",
+                ":competitionIdentifier",
+                "projects",
+                ":userLogin",
+                ":projectIdentifier",
+                "quota"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "roundNumber",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userLogin",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c9d7a199-7946-48d7-90de-fbee6ed4f896",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "projects",
+                    ":userLogin",
+                    ":projectIdentifier",
+                    "quota"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "roundNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userLogin",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"running\": false,\n  \"available\": {},\n  \"used\": {},\n  \"remaining\": {},\n  \"details\": [\n    {\n      \"crunch\": {\n        \"id\": 515,\n        \"phase\": {\n          \"id\": 1090,\n          \"type\": \"OUT_OF_SAMPLE\",\n          \"start\": \"2003-12-02T02:08:33.295Z\",\n          \"end\": \"1961-11-26T11:41:23.117Z\",\n          \"dataReleaseId\": 3403,\n          \"localDataReleaseId\": 3719,\n          \"cloudCredits\": {},\n          \"perCrunchWeight\": 6516.846436226462,\n          \"autoCompute\": true,\n          \"runDisabled\": true,\n          \"showPositions\": true,\n          \"showProjectNames\": false,\n          \"runDeterminismCheckEnabled\": false,\n          \"showOnlyRewardedProjectsDefault\": false,\n          \"splits\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"number\": 6528,\n        \"start\": \"2001-05-01T21:35:31.117Z\",\n        \"end\": \"1950-04-30T14:05:24.123Z\",\n        \"showRuns\": false,\n        \"showMetricsDetails\": false,\n        \"showRunLogs\": true,\n        \"showScoresValue\": false,\n        \"leaderboardSimilarityThreshold\": 7091.318770195264,\n        \"published\": true,\n        \"dataReleaseId\": 4963,\n        \"splits\": [\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"available\": {},\n      \"used\": {},\n      \"runCount\": 5554\n    },\n    {\n      \"crunch\": {\n        \"id\": 5087,\n        \"phase\": {\n          \"id\": 7881,\n          \"type\": \"SUBMISSION\",\n          \"start\": \"1998-09-03T09:46:28.950Z\",\n          \"end\": \"1951-12-27T16:12:20.963Z\",\n          \"dataReleaseId\": 2220,\n          \"localDataReleaseId\": 8771,\n          \"cloudCredits\": {},\n          \"perCrunchWeight\": 1062.4592495697127,\n          \"autoCompute\": true,\n          \"runDisabled\": true,\n          \"showPositions\": false,\n          \"showProjectNames\": true,\n          \"runDeterminismCheckEnabled\": true,\n          \"showOnlyRewardedProjectsDefault\": true,\n          \"splits\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"number\": 8004,\n        \"start\": \"1959-10-24T17:31:48.209Z\",\n        \"end\": \"1966-01-03T17:22:28.731Z\",\n        \"showRuns\": false,\n        \"showMetricsDetails\": true,\n        \"showRunLogs\": true,\n        \"showScoresValue\": true,\n        \"leaderboardSimilarityThreshold\": 8733.140110665536,\n        \"published\": false,\n        \"dataReleaseId\": 6267,\n        \"splits\": [\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"available\": {},\n      \"used\": {},\n      \"runCount\": 4277\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5d80ad7-1b05-41b0-8d5f-232c6e319e37",
+          "name": "Show a project's submit quota.",
+          "request": {
+            "name": "Show a project's submit quota.",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "competitions",
+                ":competitionIdentifier",
+                "projects",
+                ":userLogin",
+                ":projectIdentifier",
+                "quota",
+                "submit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "roundNumber",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userLogin",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0f062226-6405-47f6-bfce-eebe5634f020",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "projects",
+                    ":userLogin",
+                    ":projectIdentifier",
+                    "quota",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "roundNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userLogin",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"codeFiles\": {\n    \"totalSize\": 254\n  },\n  \"modelFiles\": {\n    \"totalSize\": 8111\n  },\n  \"notebookFile\": {\n    \"totalSize\": 1193\n  },\n  \"predictionFile\": {\n    \"totalSize\": 1710\n  },\n  \"submissionsPerDay\": {\n    \"current\": 5788,\n    \"maximum\": 1965,\n    \"bypass\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3971b405-5b44-43d4-9fe1-476ddca7d8f8",
+          "name": "Show a project's quota.",
+          "request": {
+            "name": "Show a project's quota.",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "competitions",
+                ":competitionIdentifier",
+                "projects",
+                ":userLogin",
+                ":projectIdentifier",
+                "quota",
+                "compute"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "roundNumber",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userLogin",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1f50b325-2f56-4acc-8a2b-4c7f010c3b9d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "projects",
+                    ":userLogin",
+                    ":projectIdentifier",
+                    "quota",
+                    "compute"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "roundNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userLogin",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"running\": false,\n  \"available\": {},\n  \"used\": {},\n  \"remaining\": {},\n  \"details\": [\n    {\n      \"crunch\": {\n        \"id\": 515,\n        \"phase\": {\n          \"id\": 1090,\n          \"type\": \"OUT_OF_SAMPLE\",\n          \"start\": \"2003-12-02T02:08:33.295Z\",\n          \"end\": \"1961-11-26T11:41:23.117Z\",\n          \"dataReleaseId\": 3403,\n          \"localDataReleaseId\": 3719,\n          \"cloudCredits\": {},\n          \"perCrunchWeight\": 6516.846436226462,\n          \"autoCompute\": true,\n          \"runDisabled\": true,\n          \"showPositions\": true,\n          \"showProjectNames\": false,\n          \"runDeterminismCheckEnabled\": false,\n          \"showOnlyRewardedProjectsDefault\": false,\n          \"splits\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"number\": 6528,\n        \"start\": \"2001-05-01T21:35:31.117Z\",\n        \"end\": \"1950-04-30T14:05:24.123Z\",\n        \"showRuns\": false,\n        \"showMetricsDetails\": false,\n        \"showRunLogs\": true,\n        \"showScoresValue\": false,\n        \"leaderboardSimilarityThreshold\": 7091.318770195264,\n        \"published\": true,\n        \"dataReleaseId\": 4963,\n        \"splits\": [\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"available\": {},\n      \"used\": {},\n      \"runCount\": 5554\n    },\n    {\n      \"crunch\": {\n        \"id\": 5087,\n        \"phase\": {\n          \"id\": 7881,\n          \"type\": \"SUBMISSION\",\n          \"start\": \"1998-09-03T09:46:28.950Z\",\n          \"end\": \"1951-12-27T16:12:20.963Z\",\n          \"dataReleaseId\": 2220,\n          \"localDataReleaseId\": 8771,\n          \"cloudCredits\": {},\n          \"perCrunchWeight\": 1062.4592495697127,\n          \"autoCompute\": true,\n          \"runDisabled\": true,\n          \"showPositions\": false,\n          \"showProjectNames\": true,\n          \"runDeterminismCheckEnabled\": true,\n          \"showOnlyRewardedProjectsDefault\": true,\n          \"splits\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"number\": 8004,\n        \"start\": \"1959-10-24T17:31:48.209Z\",\n        \"end\": \"1966-01-03T17:22:28.731Z\",\n        \"showRuns\": false,\n        \"showMetricsDetails\": true,\n        \"showRunLogs\": true,\n        \"showScoresValue\": true,\n        \"leaderboardSimilarityThreshold\": 8733.140110665536,\n        \"published\": false,\n        \"dataReleaseId\": 6267,\n        \"splits\": [\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"available\": {},\n      \"used\": {},\n      \"runCount\": 4277\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8fb87ba6-6599-4de0-9d1e-99b120e2cf62",
+          "name": "Generate a random project name.",
+          "request": {
+            "name": "Generate a random project name.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "projects",
+                ":userLogin",
+                "recommend-name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userLogin",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "00ed8488-c82e-4c06-b39a-721ca87b0a3b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "projects",
+                    ":userLogin",
+                    "recommend-name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userLogin",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.hub.crunchdao.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a952f538-7f40-40b3-a1cf-8d59e513e5b2",
+    "name": "Tournament activity project API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CrunchDAO Tournament Platform API Endpoints",
+      "type": "text/plain"
+    }
+  }
+}

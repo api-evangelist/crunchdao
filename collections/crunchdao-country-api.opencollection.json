@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity country API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "country",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Refresh the university database.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/universities/refresh"
+          },
+          "docs": "Refresh the university database."
+        },
+        {
+          "info": {
+            "name": "List all universities.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/universities"
+          },
+          "docs": "List all universities."
+        },
+        {
+          "info": {
+            "name": "List all universities' name.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/universities/names"
+          },
+          "docs": "List all universities' name."
+        },
+        {
+          "info": {
+            "name": "List all countries.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/countries"
+          },
+          "docs": "List all countries."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

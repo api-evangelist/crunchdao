@@ -1,0 +1,123 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity organizer:application API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "organizer:application",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List organizer applications.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/organizer-applications",
+            "params": [
+              {
+                "name": "reviewStatus",
+                "value": "",
+                "type": "query",
+                "description": "Filter applications with specific review status."
+              },
+              {
+                "name": "potentialSpam",
+                "value": "",
+                "type": "query",
+                "description": "Filter applications with that are potential spam."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort applications."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              }
+            ]
+          },
+          "docs": "List organizer applications."
+        },
+        {
+          "info": {
+            "name": "Create an organizer application.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/organizer-applications",
+            "params": [
+              {
+                "name": "reCaptchaResponse",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an organizer application."
+        },
+        {
+          "info": {
+            "name": "Get an organizer application.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/organizer-applications/:organizerApplicationId",
+            "params": [
+              {
+                "name": "organizerApplicationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get an organizer application."
+        },
+        {
+          "info": {
+            "name": "Update an organizer application.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://api.hub.crunchdao.com/v1/organizer-applications/:organizerApplicationId",
+            "params": [
+              {
+                "name": "organizerApplicationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an organizer application."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

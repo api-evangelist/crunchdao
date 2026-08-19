@@ -1,0 +1,351 @@
+{
+  "item": [
+    {
+      "id": "b8d0f978-3c27-4494-ba2c-a1aa6f361a13",
+      "name": "metric",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5fc45bcf-07f6-4ad7-a748-339593102202",
+          "name": "List metrics of this competitions.",
+          "request": {
+            "name": "List metrics of this competitions.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "targets",
+                ":targetName",
+                "metrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "targetName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5bab90c0-fed7-41b9-9964-e6adffb6b73a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "targets",
+                    ":targetName",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "targetName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 1869,\n    \"target\": {\n      \"id\": 4267,\n      \"name\": \"string\",\n      \"displayName\": \"string\",\n      \"weight\": 1401.7057944909307,\n      \"weightedMeanUnit\": {\n        \"prefix\": \"string\",\n        \"suffix\": \"string\",\n        \"scale\": 5082\n      },\n      \"primary\": true,\n      \"virtual\": true,\n      \"rankOrder\": \"ASCENDING\",\n      \"weightedMeanDisplayUnit\": \"string\"\n    },\n    \"metricDefinition\": {\n      \"id\": 9104,\n      \"name\": \"string\",\n      \"displayName\": \"string\"\n    },\n    \"name\": \"string\",\n    \"displayName\": \"string\",\n    \"unit\": {\n      \"prefix\": \"string\",\n      \"suffix\": \"string\",\n      \"scale\": 2528\n    },\n    \"signless\": false,\n    \"weight\": 6183,\n    \"minimum\": 8708.325485986185,\n    \"maximum\": 658.7497841824619,\n    \"score\": true,\n    \"multiplier\": 6792.894128974004,\n    \"cumulative\": false,\n    \"scorerFunction\": \"CUSTOM__BROAD__SCORING\",\n    \"reducerFunction\": \"MEAN\",\n    \"reducedDisplayName\": \"string\",\n    \"visualizationType\": \"HISTOGRAM\",\n    \"colors\": {\n      \"details\": \"string\",\n      \"submissionPhase\": \"string\",\n      \"outOfSamplePhase\": \"string\"\n    },\n    \"visibleOnPerformanceGraph\": true,\n    \"createdAt\": \"1971-11-02T14:52:12.964Z\",\n    \"displayUnit\": \"string\"\n  },\n  {\n    \"id\": 7386,\n    \"target\": {\n      \"id\": 1969,\n      \"name\": \"string\",\n      \"displayName\": \"string\",\n      \"weight\": 2804.196677500983,\n      \"weightedMeanUnit\": {\n        \"prefix\": \"string\",\n        \"suffix\": \"string\",\n        \"scale\": 5327\n      },\n      \"primary\": true,\n      \"virtual\": false,\n      \"rankOrder\": \"ASCENDING\",\n      \"weightedMeanDisplayUnit\": \"string\"\n    },\n    \"metricDefinition\": {\n      \"id\": 8035,\n      \"name\": \"string\",\n      \"displayName\": \"string\"\n    },\n    \"name\": \"string\",\n    \"displayName\": \"string\",\n    \"unit\": {\n      \"prefix\": \"string\",\n      \"suffix\": \"string\",\n      \"scale\": 6245\n    },\n    \"signless\": true,\n    \"weight\": 128,\n    \"minimum\": 8749.541443692971,\n    \"maximum\": 8609.315040766855,\n    \"score\": false,\n    \"multiplier\": 4537.477880600605,\n    \"cumulative\": false,\n    \"scorerFunction\": \"DOT_PRODUCT\",\n    \"reducerFunction\": \"MEAN\",\n    \"reducedDisplayName\": \"string\",\n    \"visualizationType\": \"HISTOGRAM\",\n    \"colors\": {\n      \"details\": \"string\",\n      \"submissionPhase\": \"string\",\n      \"outOfSamplePhase\": \"string\"\n    },\n    \"visibleOnPerformanceGraph\": true,\n    \"createdAt\": \"1966-08-26T08:51:35.302Z\",\n    \"displayUnit\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd6e2eee-7574-4a3d-9e7d-bb5a5786bae6",
+          "name": "get Metric",
+          "request": {
+            "name": "get Metric",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "targets",
+                ":targetName",
+                "metrics",
+                ":metricName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "targetName",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "metricName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "339db089-d5f1-4dbc-8186-4e68aa65dc38",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "targets",
+                    ":targetName",
+                    "metrics",
+                    ":metricName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "targetName",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "metricName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 7627,\n  \"target\": {\n    \"id\": 9821,\n    \"name\": \"string\",\n    \"displayName\": \"string\",\n    \"weight\": 9747.589658907798,\n    \"weightedMeanUnit\": {\n      \"prefix\": \"string\",\n      \"suffix\": \"string\",\n      \"scale\": 275\n    },\n    \"primary\": false,\n    \"virtual\": false,\n    \"rankOrder\": \"ASCENDING\",\n    \"weightedMeanDisplayUnit\": \"string\"\n  },\n  \"metricDefinition\": {\n    \"id\": 8318,\n    \"name\": \"string\",\n    \"displayName\": \"string\"\n  },\n  \"name\": \"string\",\n  \"displayName\": \"string\",\n  \"unit\": {\n    \"prefix\": \"string\",\n    \"suffix\": \"string\",\n    \"scale\": 5523\n  },\n  \"signless\": false,\n  \"weight\": 9718,\n  \"minimum\": 8628.338403330083,\n  \"maximum\": 4348.5762492729145,\n  \"score\": false,\n  \"multiplier\": 872.4903131737838,\n  \"cumulative\": false,\n  \"scorerFunction\": \"PRECISION\",\n  \"reducerFunction\": \"PRODUCT_PLUS_MINUS_1\",\n  \"reducedDisplayName\": \"string\",\n  \"visualizationType\": \"LINE\",\n  \"colors\": {\n    \"details\": \"string\",\n    \"submissionPhase\": \"string\",\n    \"outOfSamplePhase\": \"string\"\n  },\n  \"visibleOnPerformanceGraph\": false,\n  \"createdAt\": \"1983-05-16T20:58:53.860Z\",\n  \"displayUnit\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "929e0778-68e8-433e-8e76-7c08137caffa",
+          "name": "List all metrics of this competitions.",
+          "request": {
+            "name": "List all metrics of this competitions.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "metrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "88233579-14b8-42c2-ac96-93ab0e8b1931",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 1869,\n    \"target\": {\n      \"id\": 4267,\n      \"name\": \"string\",\n      \"displayName\": \"string\",\n      \"weight\": 1401.7057944909307,\n      \"weightedMeanUnit\": {\n        \"prefix\": \"string\",\n        \"suffix\": \"string\",\n        \"scale\": 5082\n      },\n      \"primary\": true,\n      \"virtual\": true,\n      \"rankOrder\": \"ASCENDING\",\n      \"weightedMeanDisplayUnit\": \"string\"\n    },\n    \"metricDefinition\": {\n      \"id\": 9104,\n      \"name\": \"string\",\n      \"displayName\": \"string\"\n    },\n    \"name\": \"string\",\n    \"displayName\": \"string\",\n    \"unit\": {\n      \"prefix\": \"string\",\n      \"suffix\": \"string\",\n      \"scale\": 2528\n    },\n    \"signless\": false,\n    \"weight\": 6183,\n    \"minimum\": 8708.325485986185,\n    \"maximum\": 658.7497841824619,\n    \"score\": true,\n    \"multiplier\": 6792.894128974004,\n    \"cumulative\": false,\n    \"scorerFunction\": \"CUSTOM__BROAD__SCORING\",\n    \"reducerFunction\": \"MEAN\",\n    \"reducedDisplayName\": \"string\",\n    \"visualizationType\": \"HISTOGRAM\",\n    \"colors\": {\n      \"details\": \"string\",\n      \"submissionPhase\": \"string\",\n      \"outOfSamplePhase\": \"string\"\n    },\n    \"visibleOnPerformanceGraph\": true,\n    \"createdAt\": \"1971-11-02T14:52:12.964Z\",\n    \"displayUnit\": \"string\"\n  },\n  {\n    \"id\": 7386,\n    \"target\": {\n      \"id\": 1969,\n      \"name\": \"string\",\n      \"displayName\": \"string\",\n      \"weight\": 2804.196677500983,\n      \"weightedMeanUnit\": {\n        \"prefix\": \"string\",\n        \"suffix\": \"string\",\n        \"scale\": 5327\n      },\n      \"primary\": true,\n      \"virtual\": false,\n      \"rankOrder\": \"ASCENDING\",\n      \"weightedMeanDisplayUnit\": \"string\"\n    },\n    \"metricDefinition\": {\n      \"id\": 8035,\n      \"name\": \"string\",\n      \"displayName\": \"string\"\n    },\n    \"name\": \"string\",\n    \"displayName\": \"string\",\n    \"unit\": {\n      \"prefix\": \"string\",\n      \"suffix\": \"string\",\n      \"scale\": 6245\n    },\n    \"signless\": true,\n    \"weight\": 128,\n    \"minimum\": 8749.541443692971,\n    \"maximum\": 8609.315040766855,\n    \"score\": false,\n    \"multiplier\": 4537.477880600605,\n    \"cumulative\": false,\n    \"scorerFunction\": \"DOT_PRODUCT\",\n    \"reducerFunction\": \"MEAN\",\n    \"reducedDisplayName\": \"string\",\n    \"visualizationType\": \"HISTOGRAM\",\n    \"colors\": {\n      \"details\": \"string\",\n      \"submissionPhase\": \"string\",\n      \"outOfSamplePhase\": \"string\"\n    },\n    \"visibleOnPerformanceGraph\": true,\n    \"createdAt\": \"1966-08-26T08:51:35.302Z\",\n    \"displayUnit\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.hub.crunchdao.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "09367fa6-4942-4825-87cd-ab0a42b70f2b",
+    "name": "Tournament activity metric API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CrunchDAO Tournament Platform API Endpoints",
+      "type": "text/plain"
+    }
+  }
+}

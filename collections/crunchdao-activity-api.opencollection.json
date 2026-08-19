@@ -1,0 +1,130 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "activity",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Show a user activities at a week.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v2/users/:userLogin/activities/weekly/:week",
+            "params": [
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "week",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Show a user activities at a week."
+        },
+        {
+          "info": {
+            "name": "Show a weekly user activity summary.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v2/users/:userLogin/activities/weekly/summary",
+            "params": [
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ignoreZeros",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Show a weekly user activity summary."
+        },
+        {
+          "info": {
+            "name": "Show a user activities at a date.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v2/users/:userLogin/activities/daily/:date",
+            "params": [
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Show a user activities at a date."
+        },
+        {
+          "info": {
+            "name": "Show a daily user activity summary.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v2/users/:userLogin/activities/daily/summary",
+            "params": [
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ignoreZeros",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Show a daily user activity summary."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

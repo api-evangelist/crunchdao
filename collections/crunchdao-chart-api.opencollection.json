@@ -1,0 +1,102 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity chart API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "chart",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List competition chart definition sets with data.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v2/competitions/:competitionIdentifier/charts",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Start date of the data."
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "End date of the data."
+              },
+              {
+                "name": "targetName",
+                "value": "",
+                "type": "query",
+                "description": "Target name to filter the chart data by."
+              },
+              {
+                "name": "projectIdentifiers",
+                "value": "",
+                "type": "query",
+                "description": "Project IDs to filter the chart data by."
+              }
+            ]
+          },
+          "docs": "List competition chart definition sets with data."
+        },
+        {
+          "info": {
+            "name": "List competition chart definition sets with data.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/charts",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Start date of the data."
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "End date of the data."
+              },
+              {
+                "name": "targetName",
+                "value": "",
+                "type": "query",
+                "description": "Target name to filter the chart data by."
+              },
+              {
+                "name": "projectIdentifiers",
+                "value": "",
+                "type": "query",
+                "description": "Project IDs to filter the chart data by."
+              }
+            ]
+          },
+          "docs": "List competition chart definition sets with data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

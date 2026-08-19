@@ -1,0 +1,247 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity organizer API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "organizer",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List organizers with some filters.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/organizers",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter on name and display name. Allow for a pattern (%)."
+              },
+              {
+                "name": "member",
+                "value": "",
+                "type": "query",
+                "description": "Filter for organizers where the currnet user is a member of."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort competitions."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              }
+            ]
+          },
+          "docs": "List organizers with some filters."
+        },
+        {
+          "info": {
+            "name": "Create an organizer.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/organizers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an organizer."
+        },
+        {
+          "info": {
+            "name": "List an organizer's members.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/organizers/:organizerIdentifier/members",
+            "params": [
+              {
+                "name": "organizerIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+              }
+            ]
+          },
+          "docs": "List an organizer's members."
+        },
+        {
+          "info": {
+            "name": "Add a member to an organizer.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/organizers/:organizerIdentifier/members",
+            "params": [
+              {
+                "name": "organizerIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a member to an organizer."
+        },
+        {
+          "info": {
+            "name": "Show an organizer.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/organizers/:organizerIdentifier",
+            "params": [
+              {
+                "name": "organizerIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Show an organizer."
+        },
+        {
+          "info": {
+            "name": "Update an organizer.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://api.hub.crunchdao.com/v1/organizers/:organizerIdentifier",
+            "params": [
+              {
+                "name": "organizerIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an organizer."
+        },
+        {
+          "info": {
+            "name": "Show a member from an organizer.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/organizers/:organizerIdentifier/members/:userLogin",
+            "params": [
+              {
+                "name": "organizerIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Show a member from an organizer."
+        },
+        {
+          "info": {
+            "name": "Update a member from an organizer.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://api.hub.crunchdao.com/v1/organizers/:organizerIdentifier/members/:userLogin",
+            "params": [
+              {
+                "name": "organizerIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a member from an organizer."
+        },
+        {
+          "info": {
+            "name": "Delete a member from an organizer.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://api.hub.crunchdao.com/v1/organizers/:organizerIdentifier/members/:userLogin",
+            "params": [
+              {
+                "name": "organizerIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a member from an organizer."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

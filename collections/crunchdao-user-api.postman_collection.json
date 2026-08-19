@@ -1,0 +1,1071 @@
+{
+  "item": [
+    {
+      "id": "ba6ef5eb-998a-4a41-9e08-32c1738fb7fc",
+      "name": "user",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2372cbde-f5eb-4903-8ad9-ee6e6b018df4",
+          "name": "show 1",
+          "request": {
+            "name": "show 1",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "users",
+                ":userIdOrLogin"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userIdOrLogin",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "64428d05-f8fe-4b4f-ba6c-4725974cfbb3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "users",
+                    ":userIdOrLogin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userIdOrLogin",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 5993,\n  \"login\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d9a5c093-36dc-4f7d-9743-43a66cddbaaa",
+          "name": "update 1",
+          "request": {
+            "name": "update 1",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "users",
+                ":userIdOrLogin"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userIdOrLogin",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"verified\": \"<boolean>\",\n  \"champion\": \"<boolean>\",\n  \"restriction\": \"<string>\",\n  \"ethereumAddress\": \"<string>\",\n  \"solanaAddress\": \"<string>\",\n  \"login\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"country\": \"<string>\",\n  \"university\": \"<string>\",\n  \"quantClub\": \"<string>\",\n  \"restricted\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3dc84044-dfa8-409a-86d2-ce8715d7cf15",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "users",
+                    ":userIdOrLogin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userIdOrLogin",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"verified\": \"<boolean>\",\n  \"champion\": \"<boolean>\",\n  \"restriction\": \"<string>\",\n  \"ethereumAddress\": \"<string>\",\n  \"solanaAddress\": \"<string>\",\n  \"login\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"country\": \"<string>\",\n  \"university\": \"<string>\",\n  \"quantClub\": \"<string>\",\n  \"restricted\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1150,\n  \"login\": \"string\",\n  \"country\": \"string\",\n  \"quantClub\": \"PARIS\",\n  \"deleted\": false,\n  \"createdAt\": \"2005-10-05T22:28:48.677Z\",\n  \"university\": \"string\",\n  \"restriction\": \"PARTIAL\",\n  \"role\": \"USER\",\n  \"ethereumAddress\": \"string\",\n  \"solanaAddress\": \"string\",\n  \"deletedAt\": \"1969-10-03T16:02:56.489Z\",\n  \"verified\": false,\n  \"verifiedAt\": \"2023-01-20T03:31:30.071Z\",\n  \"email\": \"string\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"restricted\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "53451f64-0d0b-4563-827f-522c63fc8dd7",
+          "name": "show 2",
+          "request": {
+            "name": "show 2",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "users",
+                "@me"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3666c7b3-5afd-4e1f-93be-560f7611b5e2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "users",
+                    "@me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1150,\n  \"login\": \"string\",\n  \"country\": \"string\",\n  \"quantClub\": \"PARIS\",\n  \"deleted\": false,\n  \"createdAt\": \"2005-10-05T22:28:48.677Z\",\n  \"university\": \"string\",\n  \"restriction\": \"PARTIAL\",\n  \"role\": \"USER\",\n  \"ethereumAddress\": \"string\",\n  \"solanaAddress\": \"string\",\n  \"deletedAt\": \"1969-10-03T16:02:56.489Z\",\n  \"verified\": false,\n  \"verifiedAt\": \"2023-01-20T03:31:30.071Z\",\n  \"email\": \"string\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"restricted\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "135a51fa-06c6-4236-bbe9-0166e741be95",
+          "name": "destroy",
+          "request": {
+            "name": "destroy",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "users",
+                "@me"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "recaptchaResponse",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8b46f678-85e5-4239-bcbf-83c392603a0e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "users",
+                    "@me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "recaptchaResponse",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1150,\n  \"login\": \"string\",\n  \"country\": \"string\",\n  \"quantClub\": \"PARIS\",\n  \"deleted\": false,\n  \"createdAt\": \"2005-10-05T22:28:48.677Z\",\n  \"university\": \"string\",\n  \"restriction\": \"PARTIAL\",\n  \"role\": \"USER\",\n  \"ethereumAddress\": \"string\",\n  \"solanaAddress\": \"string\",\n  \"deletedAt\": \"1969-10-03T16:02:56.489Z\",\n  \"verified\": false,\n  \"verifiedAt\": \"2023-01-20T03:31:30.071Z\",\n  \"email\": \"string\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"restricted\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "358b3d72-bef9-4962-bf1d-25464e2008d8",
+          "name": "update 2",
+          "request": {
+            "name": "update 2",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "users",
+                "@me"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"verified\": \"<boolean>\",\n  \"champion\": \"<boolean>\",\n  \"restriction\": \"<string>\",\n  \"ethereumAddress\": \"<string>\",\n  \"solanaAddress\": \"<string>\",\n  \"login\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"country\": \"<string>\",\n  \"university\": \"<string>\",\n  \"quantClub\": \"<string>\",\n  \"restricted\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cf195b02-7adc-4eb3-ad17-1c5b8ad1f9eb",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "users",
+                    "@me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"verified\": \"<boolean>\",\n  \"champion\": \"<boolean>\",\n  \"restriction\": \"<string>\",\n  \"ethereumAddress\": \"<string>\",\n  \"solanaAddress\": \"<string>\",\n  \"login\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"country\": \"<string>\",\n  \"university\": \"<string>\",\n  \"quantClub\": \"<string>\",\n  \"restricted\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1150,\n  \"login\": \"string\",\n  \"country\": \"string\",\n  \"quantClub\": \"PARIS\",\n  \"deleted\": false,\n  \"createdAt\": \"2005-10-05T22:28:48.677Z\",\n  \"university\": \"string\",\n  \"restriction\": \"PARTIAL\",\n  \"role\": \"USER\",\n  \"ethereumAddress\": \"string\",\n  \"solanaAddress\": \"string\",\n  \"deletedAt\": \"1969-10-03T16:02:56.489Z\",\n  \"verified\": false,\n  \"verifiedAt\": \"2023-01-20T03:31:30.071Z\",\n  \"email\": \"string\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"restricted\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4130458d-34d4-4127-897b-c2225d39de36",
+          "name": "show User Profile",
+          "request": {
+            "name": "show User Profile",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "users",
+                ":userIdentifier",
+                "profile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f24cc7a3-1e26-4bea-990d-888b3aa1f4ee",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    ":userIdentifier",
+                    "profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user\": {\n    \"id\": 9855,\n    \"login\": \"string\"\n  },\n  \"biography\": \"string\",\n  \"connections\": [\n    {\n      \"id\": 3236,\n      \"type\": \"TWITTER\",\n      \"handle\": \"string\",\n      \"username\": \"string\",\n      \"profileUrl\": \"string\",\n      \"createdAt\": \"1963-02-19T06:04:33.125Z\",\n      \"updatedAt\": \"1951-08-13T16:40:25.692Z\",\n      \"public\": true\n    },\n    {\n      \"id\": 8449,\n      \"type\": \"REDDIT\",\n      \"handle\": \"string\",\n      \"username\": \"string\",\n      \"profileUrl\": \"string\",\n      \"createdAt\": \"1980-11-14T14:05:23.249Z\",\n      \"updatedAt\": \"1986-04-13T19:09:29.712Z\",\n      \"public\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "88d9c204-26ea-4afe-8fb9-f2613a524af3",
+          "name": "update User Profile",
+          "request": {
+            "name": "update User Profile",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "users",
+                ":userIdentifier",
+                "profile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"biography\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6e660260-fc12-4e9e-807a-ebca694660ee",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    ":userIdentifier",
+                    "profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"biography\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user\": {\n    \"id\": 9855,\n    \"login\": \"string\"\n  },\n  \"biography\": \"string\",\n  \"connections\": [\n    {\n      \"id\": 3236,\n      \"type\": \"TWITTER\",\n      \"handle\": \"string\",\n      \"username\": \"string\",\n      \"profileUrl\": \"string\",\n      \"createdAt\": \"1963-02-19T06:04:33.125Z\",\n      \"updatedAt\": \"1951-08-13T16:40:25.692Z\",\n      \"public\": true\n    },\n    {\n      \"id\": 8449,\n      \"type\": \"REDDIT\",\n      \"handle\": \"string\",\n      \"username\": \"string\",\n      \"profileUrl\": \"string\",\n      \"createdAt\": \"1980-11-14T14:05:23.249Z\",\n      \"updatedAt\": \"1986-04-13T19:09:29.712Z\",\n      \"public\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "236f071c-b661-42c3-9c56-9615ee898cc8",
+          "name": "index 2",
+          "request": {
+            "name": "index 2",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "simple",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "376c1f77-65b4-43e8-b181-c29aeb5dfc66",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "simple",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 434,\n    \"login\": \"string\"\n  },\n  {\n    \"id\": 2149,\n    \"login\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9aee802e-bf07-4204-a894-4efd561c53ff",
+          "name": "Show multiple users.",
+          "request": {
+            "name": "Show multiple users.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "users",
+                "~"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "identifier",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "identifier",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d93117f3-8d57-4a6d-a7be-77463669fc55",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "users",
+                    "~"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identifier",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 434,\n    \"login\": \"string\"\n  },\n  {\n    \"id\": 2149,\n    \"login\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c9a00174-df17-497d-b12a-850966fe8e13",
+          "name": "Get a login-to-id mapping.",
+          "request": {
+            "name": "Get a login-to-id mapping.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "users",
+                "mapping"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "reverse",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1762d0cd-11c0-442c-ac1f-1c86710ee1ff",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "users",
+                    "mapping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reverse",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": {},\n  \"key_1\": {},\n  \"key_2\": {},\n  \"key_3\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "21e5f502-918e-480a-b624-3f5db3ccf049",
+          "name": "Get yourself.",
+          "request": {
+            "name": "Get yourself.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "self"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "competitionName",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9f215a6f-1d79-44f2-bcd4-2b65a580a060",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "self"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "competitionName",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user\": {\n    \"id\": 2849,\n    \"login\": \"string\",\n    \"country\": \"string\",\n    \"quantClub\": \"DUBAI\",\n    \"deleted\": true,\n    \"createdAt\": \"1993-07-12T20:55:11.724Z\",\n    \"university\": \"string\",\n    \"restriction\": \"FULL\",\n    \"role\": \"ADMINISTRATOR\",\n    \"ethereumAddress\": \"string\",\n    \"solanaAddress\": \"string\",\n    \"deletedAt\": \"1995-10-13T02:26:35.307Z\",\n    \"verified\": true,\n    \"verifiedAt\": \"1955-03-05T23:50:39.469Z\",\n    \"email\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"restricted\": false\n  },\n  \"participant\": {\n    \"id\": 4116,\n    \"competition\": {\n      \"id\": 6709,\n      \"name\": \"string\",\n      \"displayName\": \"string\",\n      \"fullName\": \"string\",\n      \"shortDescription\": \"string\",\n      \"type\": \"OPEN\",\n      \"format\": \"STREAM\",\n      \"mode\": \"REAL_TIME\",\n      \"status\": \"CLOSED\",\n      \"splitKeyType\": \"STRING\",\n      \"start\": \"2023-05-24T00:20:20.111Z\",\n      \"end\": \"1983-07-15T22:18:30.163Z\",\n      \"continuous\": false,\n      \"external\": false,\n      \"featured\": false,\n      \"visibility\": \"HIDDEN\",\n      \"url\": \"string\",\n      \"onChainId\": \"string\",\n      \"cardImageUrl\": \"string\",\n      \"bannerImageUrl\": \"string\",\n      \"documentationUrl\": \"string\",\n      \"notebookUrl\": \"string\",\n      \"advancedNotebookUrl\": \"string\",\n      \"discussionUrl\": \"string\",\n      \"codeUrl\": \"string\",\n      \"hostedByName\": \"string\",\n      \"prizePoolText\": \"string\",\n      \"prizePoolShortText\": \"string\",\n      \"prizePoolUsd\": 5754.193817394358,\n      \"projectNameFormat\": \"string\",\n      \"teamBased\": true,\n      \"onlyTeamLeader\": true,\n      \"maxTeamSize\": 500,\n      \"projectCreationLimit\": 1928,\n      \"projectSelectionLimit\": 5442,\n      \"allowPredictions\": false,\n      \"encryptSubmissions\": true,\n      \"phalaKeyUrl\": \"string\",\n      \"hideDashboard\": false,\n      \"hideChanges\": true,\n      \"hidePerformance\": false,\n      \"hideRunPerformance\": false,\n      \"hideStatistics\": false,\n      \"hideNotebookSetupCommand\": false,\n      \"hideTrainFrequency\": true,\n      \"hideForceFirstTrain\": true,\n      \"web3\": false,\n      \"order\": 3705,\n      \"statistics\": {\n        \"entrants\": 703,\n        \"participants\": 6524,\n        \"teams\": 1145,\n        \"submissions\": 8540,\n        \"runnables\": 5139\n      },\n      \"session\": {\n        \"state\": \"OPEN\",\n        \"nextChange\": \"1958-04-17T05:32:58.868Z\"\n      },\n      \"createdAt\": \"2004-06-01T21:55:55.887Z\",\n      \"updatedAt\": \"2009-12-10T17:41:34.644Z\",\n      \"tags\": [\n        {\n          \"name\": \"string\",\n          \"displayName\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"displayName\": \"string\"\n        }\n      ],\n      \"timelineEvents\": [\n        {\n          \"id\": 5281,\n          \"type\": \"RULES\",\n          \"title\": \"string\",\n          \"description\": \"string\",\n          \"date\": \"2026-03-09\",\n          \"color\": \"string\",\n          \"detailed\": false,\n          \"button\": {\n            \"text\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"link\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"color\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"createdAt\": \"1982-02-12T14:11:29.186Z\",\n          \"updatedAt\": \"1996-12-23T01:44:45.535Z\"\n        },\n        {\n          \"id\": 9610,\n          \"type\": \"GENERIC\",\n          \"title\": \"string\",\n          \"description\": \"string\",\n          \"date\": \"2000-01-08\",\n          \"color\": \"string\",\n          \"detailed\": true,\n          \"button\": {\n            \"text\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"link\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"color\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"createdAt\": \"1983-12-17T23:30:44.795Z\",\n          \"updatedAt\": \"1975-05-22T20:35:45.660Z\"\n        }\n      ]\n    },\n    \"user\": {\n      \"id\": 8365,\n      \"login\": \"string\"\n    },\n    \"cruncherPubkey\": \"string\",\n    \"hidden\": true,\n    \"role\": \"ADMINISTRATOR\",\n    \"crowned\": false,\n    \"certified\": false,\n    \"rewarded\": true,\n    \"benchmarked\": false,\n    \"ruleAccepted\": false,\n    \"ruleAcceptedAt\": \"1971-06-20T18:01:09.270Z\",\n    \"submitted\": true,\n    \"createdAt\": \"2022-05-19T08:01:01.428Z\",\n    \"updatedAt\": \"1977-11-25T23:08:51.577Z\",\n    \"userId\": 8212\n  },\n  \"ruleAgreement\": {\n    \"accepted\": false,\n    \"acceptedAt\": \"1977-03-28T20:57:41.771Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.hub.crunchdao.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "83716017-76f2-4c54-bc0e-aa9d1491a3f8",
+    "name": "Tournament activity user API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CrunchDAO Tournament Platform API Endpoints",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity user:profile API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "user:profile",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "showUserProfile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/users/:userIdentifier/profile",
+            "params": [
+              {
+                "name": "userIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "updateUserProfile",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://api.hub.crunchdao.com/v1/users/:userIdentifier/profile",
+            "params": [
+              {
+                "name": "userIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

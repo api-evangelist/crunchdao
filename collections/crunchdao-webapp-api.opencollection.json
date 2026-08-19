@@ -1,0 +1,192 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity webapp API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "webapp",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "View a summary of a user for display on the dashboard.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v2/webapp/dashboard/monthly-rewards",
+            "params": [
+              {
+                "name": "cumulative",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "View a summary of a user for display on the dashboard."
+        },
+        {
+          "info": {
+            "name": "View a summary of a user for display on the dashboard.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/webapp/dashboard/summary"
+          },
+          "docs": "View a summary of a user for display on the dashboard."
+        },
+        {
+          "info": {
+            "name": "View the most recent runs.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/webapp/dashboard/recent-runs",
+            "params": [
+              {
+                "name": "nDays",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "View the most recent runs."
+        },
+        {
+          "info": {
+            "name": "View a summary of a user for display on the dashboard.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/webapp/dashboard/monthly-rewards",
+            "params": [
+              {
+                "name": "year",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "View a summary of a user for display on the dashboard."
+        },
+        {
+          "info": {
+            "name": "View the latest runs of every competitions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/webapp/dashboard/last-runs"
+          },
+          "docs": "View the latest runs of every competitions."
+        },
+        {
+          "info": {
+            "name": "View a summary of a user for display on the dashboard.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/webapp/dashboard/last-rewards",
+            "params": [
+              {
+                "name": "n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "shuffle",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "View a summary of a user for display on the dashboard."
+        },
+        {
+          "info": {
+            "name": "List events of a specific day for display on the dashboard.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/webapp/dashboard/calendar/:date",
+            "params": [
+              {
+                "name": "date",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List events of a specific day for display on the dashboard."
+        },
+        {
+          "info": {
+            "name": "View a summary of the calendar for display on the dashboard.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/webapp/dashboard/calendar/summary",
+            "params": [
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ignoreZeros",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "View a summary of the calendar for display on the dashboard."
+        },
+        {
+          "info": {
+            "name": "Show competitions that the user joined.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/webapp/dashboard/active-competitions"
+          },
+          "docs": "Show competitions that the user joined."
+        },
+        {
+          "info": {
+            "name": "Show competitions that the user joined.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/webapp/dashboard/active-competitions/:competitionIdentifier",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Show competitions that the user joined."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

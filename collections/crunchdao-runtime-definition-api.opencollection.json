@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity runtime:definition API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "runtime:definition",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List runtime definitions for a competition.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/runtime-definitions",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+              }
+            ]
+          },
+          "docs": "List runtime definitions for a competition."
+        },
+        {
+          "info": {
+            "name": "Get runtime definitions for a competition.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/runtime-definitions/:runtimeDefinitionName",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "runtimeDefinitionName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get runtime definitions for a competition."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

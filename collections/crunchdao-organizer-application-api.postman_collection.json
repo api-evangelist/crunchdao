@@ -1,0 +1,497 @@
+{
+  "item": [
+    {
+      "id": "16eb4b9b-add7-4298-bc77-a1e0f08cbef5",
+      "name": "organizer:application",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c22ab553-8bcf-41da-a4d2-40d3abafcc4d",
+          "name": "List organizer applications.",
+          "request": {
+            "name": "List organizer applications.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "organizer-applications"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "reviewStatus",
+                  "value": "<string>",
+                  "description": "Filter applications with specific review status."
+                },
+                {
+                  "disabled": false,
+                  "key": "potentialSpam",
+                  "value": "<boolean>",
+                  "description": "Filter applications with that are potential spam."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort applications."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Zero-based page index (0..N)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "The size of the page to be returned"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "685270a2-bf08-470e-af59-fa8b20a00650",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizer-applications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reviewStatus",
+                      "value": "REJECTED"
+                    },
+                    {
+                      "key": "potentialSpam",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageNumber\": 8841,\n  \"pageSize\": 9055,\n  \"totalElements\": 4791,\n  \"totalPages\": 7645,\n  \"content\": [\n    {\n      \"id\": 5591,\n      \"name\": \"string\",\n      \"email\": \"string\",\n      \"discordUsername\": \"string\",\n      \"projectName\": \"string\",\n      \"goal\": \"string\",\n      \"evaluationMethod\": \"string\",\n      \"dataSources\": \"string\",\n      \"payoutStructure\": \"string\",\n      \"timeline\": \"string\",\n      \"reviewStatus\": \"REJECTED\",\n      \"createdAt\": \"2008-04-18T21:45:33.746Z\"\n    },\n    {\n      \"id\": 7859,\n      \"name\": \"string\",\n      \"email\": \"string\",\n      \"discordUsername\": \"string\",\n      \"projectName\": \"string\",\n      \"goal\": \"string\",\n      \"evaluationMethod\": \"string\",\n      \"dataSources\": \"string\",\n      \"payoutStructure\": \"string\",\n      \"timeline\": \"string\",\n      \"reviewStatus\": \"APPROVED\",\n      \"createdAt\": \"2013-12-08T12:21:58.597Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f2d3133-464b-42d4-8d84-78c9ba4e86d6",
+          "name": "Create an organizer application.",
+          "request": {
+            "name": "Create an organizer application.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "organizer-applications"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "reCaptchaResponse",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"discordUsername\": \"<string>\",\n  \"projectName\": \"<string>\",\n  \"goal\": \"<string>\",\n  \"evaluationMethod\": \"<string>\",\n  \"dataSources\": \"<string>\",\n  \"payoutStructure\": \"<string>\",\n  \"timeline\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "392098f1-1b2a-4ef6-96d2-30866c6b1fe6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizer-applications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reCaptchaResponse",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"discordUsername\": \"<string>\",\n  \"projectName\": \"<string>\",\n  \"goal\": \"<string>\",\n  \"evaluationMethod\": \"<string>\",\n  \"dataSources\": \"<string>\",\n  \"payoutStructure\": \"<string>\",\n  \"timeline\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 908,\n  \"name\": \"string\",\n  \"email\": \"string\",\n  \"discordUsername\": \"string\",\n  \"projectName\": \"string\",\n  \"goal\": \"string\",\n  \"evaluationMethod\": \"string\",\n  \"dataSources\": \"string\",\n  \"payoutStructure\": \"string\",\n  \"timeline\": \"string\",\n  \"reviewStatus\": \"APPROVED\",\n  \"createdAt\": \"2015-09-14T19:58:12.520Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "836361ae-b311-4d8d-a1c6-bc42ca6cd232",
+          "name": "Get an organizer application.",
+          "request": {
+            "name": "Get an organizer application.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "organizer-applications",
+                ":organizerApplicationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "organizerApplicationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1e15cf11-8873-41e0-acb9-d177a464e741",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizer-applications",
+                    ":organizerApplicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "organizerApplicationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 908,\n  \"name\": \"string\",\n  \"email\": \"string\",\n  \"discordUsername\": \"string\",\n  \"projectName\": \"string\",\n  \"goal\": \"string\",\n  \"evaluationMethod\": \"string\",\n  \"dataSources\": \"string\",\n  \"payoutStructure\": \"string\",\n  \"timeline\": \"string\",\n  \"reviewStatus\": \"APPROVED\",\n  \"createdAt\": \"2015-09-14T19:58:12.520Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3650d6d5-7b27-4b12-b580-072d707eedac",
+          "name": "Update an organizer application.",
+          "request": {
+            "name": "Update an organizer application.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "organizer-applications",
+                ":organizerApplicationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "organizerApplicationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reviewStatus\": \"<string>\",\n  \"potentialSpam\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9eeaffe9-812a-45d8-85f9-5b7bd09f259c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizer-applications",
+                    ":organizerApplicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "organizerApplicationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reviewStatus\": \"<string>\",\n  \"potentialSpam\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 908,\n  \"name\": \"string\",\n  \"email\": \"string\",\n  \"discordUsername\": \"string\",\n  \"projectName\": \"string\",\n  \"goal\": \"string\",\n  \"evaluationMethod\": \"string\",\n  \"dataSources\": \"string\",\n  \"payoutStructure\": \"string\",\n  \"timeline\": \"string\",\n  \"reviewStatus\": \"APPROVED\",\n  \"createdAt\": \"2015-09-14T19:58:12.520Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.hub.crunchdao.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6be3b275-ca7a-410d-9bd3-5426f3cb292b",
+    "name": "Tournament activity organizer:application API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CrunchDAO Tournament Platform API Endpoints",
+      "type": "text/plain"
+    }
+  }
+}

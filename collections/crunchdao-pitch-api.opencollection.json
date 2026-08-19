@@ -1,0 +1,83 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity pitch API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "pitch",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List pitches with filters.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/seasons/:seasonNumber/pitches",
+            "params": [
+              {
+                "name": "seasonNumber",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter for pitches with a specific status(es)."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort pitches."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              }
+            ]
+          },
+          "docs": "List pitches with filters."
+        },
+        {
+          "info": {
+            "name": "Show a pitch.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/seasons/:seasonNumber/pitches/:pitchName",
+            "params": [
+              {
+                "name": "seasonNumber",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pitchName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Show a pitch."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

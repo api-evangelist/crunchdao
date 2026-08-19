@@ -1,0 +1,147 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity library API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "library",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Map imports to a frozen requirements.txt file.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v2/libraries/requirements/freeze/imported"
+          },
+          "docs": "Map imports to a frozen requirements.txt file."
+        },
+        {
+          "info": {
+            "name": "Map imports to a frozen requirements.txt file.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/libraries/requirements/freeze/imported"
+          },
+          "docs": "Map imports to a frozen requirements.txt file."
+        },
+        {
+          "info": {
+            "name": "List whitelisted libraries.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v2/libraries",
+            "params": [
+              {
+                "name": "standard",
+                "value": "",
+                "type": "query",
+                "description": "Only filter for package from the stdlib. Include all if not specified."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter on both name and alias. Allow for a pattern (%)."
+              },
+              {
+                "name": "gpuRequirement",
+                "value": "",
+                "type": "query",
+                "description": "Filter for GPU requirement."
+              },
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Filter for a specific language."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort results."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Order results."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              }
+            ]
+          },
+          "docs": "List whitelisted libraries."
+        },
+        {
+          "info": {
+            "name": "Get the constraints document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/libraries/:libraryLanguage/~/constraints",
+            "params": [
+              {
+                "name": "libraryLanguage",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the constraints document"
+        },
+        {
+          "info": {
+            "name": "Get a whitelisted library its latest version.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/libraries/:libraryLanguage/:libraryName/latest",
+            "params": [
+              {
+                "name": "libraryLanguage",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "libraryName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "beforeAt",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a whitelisted library its latest version."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

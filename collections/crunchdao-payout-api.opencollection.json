@@ -1,0 +1,268 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity payout API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "payout",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List a competition's payouts.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/payouts",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List a competition's payouts."
+        },
+        {
+          "info": {
+            "name": "Create a competition payout.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/payouts",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a competition payout."
+        },
+        {
+          "info": {
+            "name": "Compute the payout from the bounties.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/payouts/:payoutId/compute-from-bounties",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "payoutId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Compute the payout from the bounties."
+        },
+        {
+          "info": {
+            "name": "Update a competition payout.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/payouts/checkpoint/:payoutNumber/claim",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "payoutNumber",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a competition payout."
+        },
+        {
+          "info": {
+            "name": "Update a competition payout.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/payouts/:payoutId",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "payoutId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a competition payout."
+        },
+        {
+          "info": {
+            "name": "List payouts with filters.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v5/payouts",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "query",
+                "description": "Filter on competition."
+              },
+              {
+                "name": "currencyName",
+                "value": "",
+                "type": "query",
+                "description": "Filter on currency."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter on type."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter on status."
+              },
+              {
+                "name": "recipient",
+                "value": "",
+                "type": "query",
+                "description": "Filter for payouts where the user is a recipient, return an empty list if not logged in."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort payouts. If `recipient = true`, `AMOUNT` will sort by the received amount, not the payout amount."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              }
+            ]
+          },
+          "docs": "List payouts with filters."
+        },
+        {
+          "info": {
+            "name": "Show a payout.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v5/payouts/:payoutId",
+            "params": [
+              {
+                "name": "payoutId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Show a payout."
+        },
+        {
+          "info": {
+            "name": "Show a payout.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v4/payouts/:payoutId",
+            "params": [
+              {
+                "name": "payoutId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Show a payout."
+        },
+        {
+          "info": {
+            "name": "List a user total received rewards.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/users/:userLogin/total-rewards",
+            "params": [
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List a user total received rewards."
+        },
+        {
+          "info": {
+            "name": "List a competition total distributed rewards.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/total-rewards",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List a competition total distributed rewards."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

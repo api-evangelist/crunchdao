@@ -1,0 +1,234 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity upload API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "upload",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create an upload.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/uploads",
+            "headers": [
+              {
+                "name": "X-Run-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "pushToken",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an upload."
+        },
+        {
+          "info": {
+            "name": "Complete an upload.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/uploads/:uploadId/complete",
+            "headers": [
+              {
+                "name": "X-Run-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "uploadId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pushToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Complete an upload."
+        },
+        {
+          "info": {
+            "name": "Confirm an upload chunk.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/uploads/:uploadId/chunks/:chunkNumber/confirm",
+            "headers": [
+              {
+                "name": "X-Run-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "uploadId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "chunkNumber",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pushToken",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Confirm an upload chunk."
+        },
+        {
+          "info": {
+            "name": "Abort an upload.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/uploads/:uploadId/abort",
+            "headers": [
+              {
+                "name": "X-Run-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "uploadId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pushToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Abort an upload."
+        },
+        {
+          "info": {
+            "name": "Show an upload.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/uploads/:uploadId",
+            "headers": [
+              {
+                "name": "X-Run-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "uploadId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pushToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Show an upload."
+        },
+        {
+          "info": {
+            "name": "Delete an upload.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://api.hub.crunchdao.com/v1/uploads/:uploadId",
+            "headers": [
+              {
+                "name": "X-Run-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "uploadId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pushToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete an upload."
+        },
+        {
+          "info": {
+            "name": "Get request information for an upload chunk.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/uploads/:uploadId/chunks/:chunkNumber/request",
+            "headers": [
+              {
+                "name": "X-Run-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "uploadId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "chunkNumber",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pushToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get request information for an upload chunk."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

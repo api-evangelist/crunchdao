@@ -1,0 +1,105 @@
+{
+  "item": [
+    {
+      "id": "c03e951e-fa53-4491-bd9b-bc699a10f243",
+      "name": "transparency",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7e819d5e-63c9-410c-9e93-f87f38277995",
+          "name": "Get statistics about the platform.",
+          "request": {
+            "name": "Get statistics about the platform.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "transparency",
+                "global",
+                "report"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "72fbc25b-e54d-43c3-8488-217f76b82c13",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "transparency",
+                    "global",
+                    "report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"registrations\": {\n    \"data\": [\n      {\n        \"group\": \"string\",\n        \"value\": {}\n      },\n      {\n        \"group\": \"string\",\n        \"value\": {}\n      }\n    ]\n  },\n  \"firstSubmissions\": {\n    \"data\": [\n      {\n        \"group\": \"string\",\n        \"value\": {}\n      },\n      {\n        \"group\": \"string\",\n        \"value\": {}\n      }\n    ]\n  },\n  \"dailySubmissions\": {\n    \"data\": [\n      {\n        \"group\": \"string\",\n        \"value\": {}\n      },\n      {\n        \"group\": \"string\",\n        \"value\": {}\n      }\n    ]\n  },\n  \"userCountries\": {\n    \"data\": [\n      {\n        \"group\": \"string\",\n        \"value\": {}\n      },\n      {\n        \"group\": \"string\",\n        \"value\": {}\n      }\n    ]\n  },\n  \"userStudyLevel\": {\n    \"data\": [\n      {\n        \"group\": \"string\",\n        \"value\": {}\n      },\n      {\n        \"group\": \"string\",\n        \"value\": {}\n      }\n    ]\n  },\n  \"userExperienceWithData\": {\n    \"data\": [\n      {\n        \"group\": \"string\",\n        \"value\": {}\n      },\n      {\n        \"group\": \"string\",\n        \"value\": {}\n      }\n    ]\n  },\n  \"monthlyRewards\": {\n    \"data\": [\n      {\n        \"group\": \"string\",\n        \"value\": {}\n      },\n      {\n        \"group\": \"string\",\n        \"value\": {}\n      }\n    ]\n  },\n  \"averageSubmissionCountPerUser\": {\n    \"data\": 6164.388592328965\n  },\n  \"percentageOfUsersWhoSubmitted\": {\n    \"data\": 7066.459443904856\n  },\n  \"yearToDateUserGrowthPercentage\": {\n    \"data\": 8878.144016426866\n  },\n  \"quarterToDateUserGrowthPercentage\": {\n    \"data\": 2486.7965016369076\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.hub.crunchdao.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0ab3a1cb-6a71-4bc9-994d-6c6f9ea4d73c",
+    "name": "Tournament activity transparency API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CrunchDAO Tournament Platform API Endpoints",
+      "type": "text/plain"
+    }
+  }
+}

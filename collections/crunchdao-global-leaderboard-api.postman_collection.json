@@ -1,0 +1,981 @@
+{
+  "item": [
+    {
+      "id": "ea894695-f38b-4c29-8236-a2a5423c349a",
+      "name": "global-leaderboard",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "753686dc-8f9e-422a-9cf8-b137d5080cb4",
+          "name": "Compute some global leaderboards.",
+          "request": {
+            "name": "Compute some global leaderboards.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "global-leaderboards",
+                "~",
+                "compute"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dates\": [\n    \"<date>\",\n    \"<date>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1ed27440-58e4-45d0-8833-ab6e14773130",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "global-leaderboards",
+                    "~",
+                    "compute"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dates\": [\n    \"<date>\",\n    \"<date>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "191a9755-8fa4-4b59-8109-9779c0600065",
+          "name": "Get a global leaderboard.",
+          "request": {
+            "name": "Get a global leaderboard.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "global-leaderboards",
+                ":globalLeaderboardIdentifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "globalLeaderboardIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "98f20659-4f57-43d6-83c3-a13ebbe176c4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "global-leaderboards",
+                    ":globalLeaderboardIdentifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "globalLeaderboardIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 5155,\n  \"date\": \"2017-06-22\",\n  \"userCount\": 851,\n  \"institutionCount\": 5527,\n  \"published\": false,\n  \"createdAt\": \"1988-10-15T23:36:23.754Z\",\n  \"updatedAt\": \"2006-07-28T12:08:00.267Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "58c0edb1-59ef-4f29-88c3-0f26dbcd614c",
+          "name": "Delete a global leaderboard.",
+          "request": {
+            "name": "Delete a global leaderboard.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "global-leaderboards",
+                ":globalLeaderboardIdentifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "globalLeaderboardIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "08c22c08-7d7b-4ad5-b19e-28eb88751ee7",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "global-leaderboards",
+                    ":globalLeaderboardIdentifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "globalLeaderboardIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "43e484cc-b08a-411d-ab53-045afed730cc",
+          "name": "Update a global leaderboard.",
+          "request": {
+            "name": "Update a global leaderboard.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "global-leaderboards",
+                ":globalLeaderboardIdentifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "globalLeaderboardIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"published\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "43e7340d-41b0-4215-afa0-3303c7e96a8e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "global-leaderboards",
+                    ":globalLeaderboardIdentifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "globalLeaderboardIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"published\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 5155,\n  \"date\": \"2017-06-22\",\n  \"userCount\": 851,\n  \"institutionCount\": 5527,\n  \"published\": false,\n  \"createdAt\": \"1988-10-15T23:36:23.754Z\",\n  \"updatedAt\": \"2006-07-28T12:08:00.267Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "00277e2d-f8a4-43b6-8c7b-0f9fb15075c8",
+          "name": "Get the user positions of a global leaderboard.",
+          "request": {
+            "name": "Get the user positions of a global leaderboard.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "users",
+                ":userIdentifier",
+                "global-leaderboards",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1d76a5e6-aa00-4593-9f64-d73dcf2bddb6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    ":userIdentifier",
+                    "global-leaderboards",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"date\": \"1967-05-12\",\n    \"rank\": 8262,\n    \"points\": 6892,\n    \"bestRank\": 7677,\n    \"participationCount\": 6209,\n    \"submissionCount\": 3424\n  },\n  {\n    \"date\": \"1988-11-17\",\n    \"rank\": 9324,\n    \"points\": 5061,\n    \"bestRank\": 6526,\n    \"participationCount\": 981,\n    \"submissionCount\": 3017\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "08812b29-f779-4473-a880-f30ed4b86fc0",
+          "name": "Get the institution positions of a global leaderboard.",
+          "request": {
+            "name": "Get the institution positions of a global leaderboard.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "institutions",
+                ":institutionIdentifier",
+                "global-leaderboards",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "institutionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "abac8207-e7bf-481a-a0ec-7ce1fb21e7b9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "institutions",
+                    ":institutionIdentifier",
+                    "global-leaderboards",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "institutionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"date\": \"2008-05-31\",\n    \"rank\": 9720,\n    \"totalPoints\": 7618,\n    \"userCount\": 5101,\n    \"averagePointsPerUser\": 5722\n  },\n  {\n    \"date\": \"2008-04-21\",\n    \"rank\": 3883,\n    \"totalPoints\": 3287,\n    \"userCount\": 4569,\n    \"averagePointsPerUser\": 2900\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9bfb5ea6-4d22-43de-9bb1-d22831beb8c6",
+          "name": "List global leaderboards.",
+          "request": {
+            "name": "List global leaderboards.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "global-leaderboards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Zero-based page index (0..N)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "The size of the page to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2d9980ab-2e61-471f-80b5-8a280dcbac20",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "global-leaderboards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageNumber\": 2420,\n  \"pageSize\": 5695,\n  \"totalElements\": 1544,\n  \"totalPages\": 5607,\n  \"content\": [\n    {\n      \"id\": 5665,\n      \"date\": \"2017-11-04\",\n      \"userCount\": 9258,\n      \"institutionCount\": 3419,\n      \"published\": false,\n      \"createdAt\": \"1986-02-19T02:09:09.229Z\",\n      \"updatedAt\": \"1980-11-29T13:15:58.120Z\"\n    },\n    {\n      \"id\": 3990,\n      \"date\": \"2019-01-08\",\n      \"userCount\": 2397,\n      \"institutionCount\": 2995,\n      \"published\": false,\n      \"createdAt\": \"2003-11-19T19:26:30.126Z\",\n      \"updatedAt\": \"1951-12-07T23:11:10.641Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "30cba1c9-8700-4624-9645-5514043809ed",
+          "name": "Get the user positions of a global leaderboard.",
+          "request": {
+            "name": "Get the user positions of a global leaderboard.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "global-leaderboards",
+                ":globalLeaderboardIdentifier",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userLogin",
+                  "value": "<string>",
+                  "description": "Filter on user login. Allow for a pattern (%)."
+                },
+                {
+                  "disabled": false,
+                  "key": "institutionIdentifier",
+                  "value": "<string>",
+                  "description": "Filter on a specific institution."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Zero-based page index (0..N)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "The size of the page to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "globalLeaderboardIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d169eb1f-2124-4507-8cd2-f9a255042177",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "global-leaderboards",
+                    ":globalLeaderboardIdentifier",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "institutionIdentifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "globalLeaderboardIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageNumber\": 3626,\n  \"pageSize\": 1078,\n  \"totalElements\": 6968,\n  \"totalPages\": 5416,\n  \"content\": [\n    {\n      \"id\": 2552,\n      \"user\": {\n        \"id\": 2480,\n        \"login\": \"string\",\n        \"country\": \"string\",\n        \"points\": 15,\n        \"globalRank\": 3857\n      },\n      \"rank\": 9472,\n      \"points\": 9811,\n      \"bestRank\": 4078,\n      \"participationCount\": 6913,\n      \"submissionCount\": 7933\n    },\n    {\n      \"id\": 5670,\n      \"user\": {\n        \"id\": 7476,\n        \"login\": \"string\",\n        \"country\": \"string\",\n        \"points\": 4559,\n        \"globalRank\": 6481\n      },\n      \"rank\": 6058,\n      \"points\": 974,\n      \"bestRank\": 340,\n      \"participationCount\": 2649,\n      \"submissionCount\": 2963\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "db0c2244-7ad4-4643-ad3c-a38d93e2ea80",
+          "name": "Get the institution positions of a global leaderboard.",
+          "request": {
+            "name": "Get the institution positions of a global leaderboard.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "global-leaderboards",
+                ":globalLeaderboardIdentifier",
+                "institutions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "institutionDisplayName",
+                  "value": "<string>",
+                  "description": "Filter on institution display name. Allow for a pattern (%)."
+                },
+                {
+                  "disabled": false,
+                  "key": "institutionCountry",
+                  "value": "<string>",
+                  "description": "Filter on institution in a country (ISO 3166-1 alpha-3)."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Zero-based page index (0..N)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "The size of the page to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "globalLeaderboardIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8838b65c-fd61-4da7-8b07-0b8fa2542b1d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "global-leaderboards",
+                    ":globalLeaderboardIdentifier",
+                    "institutions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "institutionDisplayName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "institutionCountry",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "globalLeaderboardIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageNumber\": 8614,\n  \"pageSize\": 9787,\n  \"totalElements\": 8363,\n  \"totalPages\": 6034,\n  \"content\": [\n    {\n      \"id\": 4612,\n      \"institution\": {\n        \"id\": 1868,\n        \"name\": \"string\",\n        \"displayName\": \"string\",\n        \"country\": \"string\",\n        \"totalPoints\": 9638,\n        \"memberCount\": 7350,\n        \"globalRank\": 5156,\n        \"about\": \"string\",\n        \"websiteUrl\": \"string\",\n        \"twitterUrl\": \"string\",\n        \"linkedInUrl\": \"string\",\n        \"createdAt\": \"1985-06-09T16:30:17.643Z\",\n        \"updatedAt\": \"1966-07-08T05:14:47.932Z\"\n      },\n      \"rank\": 9966,\n      \"totalPoints\": 6721,\n      \"userCount\": 7299,\n      \"topUsers\": [\n        {\n          \"id\": 6923,\n          \"login\": \"string\",\n          \"country\": \"string\",\n          \"points\": 7157,\n          \"globalRank\": 489\n        },\n        {\n          \"id\": 2794,\n          \"login\": \"string\",\n          \"country\": \"string\",\n          \"points\": 5675,\n          \"globalRank\": 5598\n        }\n      ],\n      \"averagePointsPerUser\": 6098\n    },\n    {\n      \"id\": 8462,\n      \"institution\": {\n        \"id\": 7272,\n        \"name\": \"string\",\n        \"displayName\": \"string\",\n        \"country\": \"string\",\n        \"totalPoints\": 4609,\n        \"memberCount\": 2013,\n        \"globalRank\": 6589,\n        \"about\": \"string\",\n        \"websiteUrl\": \"string\",\n        \"twitterUrl\": \"string\",\n        \"linkedInUrl\": \"string\",\n        \"createdAt\": \"1970-10-15T08:52:49.949Z\",\n        \"updatedAt\": \"1954-11-01T20:03:44.148Z\"\n      },\n      \"rank\": 16,\n      \"totalPoints\": 9682,\n      \"userCount\": 858,\n      \"topUsers\": [\n        {\n          \"id\": 1945,\n          \"login\": \"string\",\n          \"country\": \"string\",\n          \"points\": 605,\n          \"globalRank\": 5891\n        },\n        {\n          \"id\": 4347,\n          \"login\": \"string\",\n          \"country\": \"string\",\n          \"points\": 6662,\n          \"globalRank\": 9756\n        }\n      ],\n      \"averagePointsPerUser\": 7368\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.hub.crunchdao.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7fa4e112-2153-45d4-a2ff-5b60002e2ed8",
+    "name": "Tournament activity global-leaderboard API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CrunchDAO Tournament Platform API Endpoints",
+      "type": "text/plain"
+    }
+  }
+}

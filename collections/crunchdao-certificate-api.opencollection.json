@@ -1,0 +1,144 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity certificate API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "certificate",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a certificate.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/certificates",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "competitionId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "loginPngFile",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "loginPdfFile",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "firstLastPngFile",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "firstLastPdfFile",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Create a certificate."
+        },
+        {
+          "info": {
+            "name": "Show a certificate by identifier.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/certificates/:certificateUuid",
+            "params": [
+              {
+                "name": "certificateUuid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "nameVariant",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "extensionVariant",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Show a certificate by identifier."
+        },
+        {
+          "info": {
+            "name": "Update a certificate.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://api.hub.crunchdao.com/v1/certificates/:certificateUuid",
+            "params": [
+              {
+                "name": "certificateUuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a certificate."
+        },
+        {
+          "info": {
+            "name": "List certificates of a users.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/users/:userLogin/certificates",
+            "params": [
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List certificates of a users."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

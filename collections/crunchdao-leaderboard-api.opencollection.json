@@ -1,0 +1,275 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity leaderboard API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "leaderboard",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List leaderboards.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v2/competitions/:competitionIdentifier/leaderboards",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List leaderboards."
+        },
+        {
+          "info": {
+            "name": "Update leaderboards.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v2/competitions/:competitionIdentifier/leaderboards",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "apiKey",
+              "value": "{{apiKey}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Update leaderboards."
+        },
+        {
+          "info": {
+            "name": "List available leaderboards.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v4/competitions/:competitionIdentifier/leaderboards",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "crunchId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List available leaderboards."
+        },
+        {
+          "info": {
+            "name": "List leaderboards.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v3/competitions/:competitionIdentifier/leaderboards",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List leaderboards."
+        },
+        {
+          "info": {
+            "name": "Show a leaderboard with positions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v3/competitions/:competitionIdentifier/leaderboards/:leaderboardDefinitionIdentifier",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "leaderboardDefinitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "crunchId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "showPositions",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "teamIdentifier",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Show a leaderboard with positions."
+        },
+        {
+          "info": {
+            "name": "Show a user changes.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v3/competitions/:competitionIdentifier/leaderboards/:leaderboardDefinitionIdentifier/changes/users/:userLogin",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "leaderboardDefinitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "crunchId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "projectIdentifier",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Show a user changes."
+        },
+        {
+          "info": {
+            "name": "Show a leaderboard with positions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v2/competitions/:competitionIdentifier/leaderboards/:leaderboardDefinitionIdentifier",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "leaderboardDefinitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "crunchId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "showPositions",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "teamIdentifier",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Show a leaderboard with positions."
+        },
+        {
+          "info": {
+            "name": "Show a leaderboard progress.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v2/competitions/:competitionIdentifier/leaderboards/progress",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "crunchId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Show a leaderboard progress."
+        },
+        {
+          "info": {
+            "name": "Show a user changes.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v2/competitions/:competitionIdentifier/leaderboards/changes/users/:userLogin",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userLogin",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "crunchId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "projectIdentifier",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Show a user changes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

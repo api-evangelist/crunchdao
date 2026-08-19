@@ -1,0 +1,103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity auth API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "auth",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create an account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v3/auth/register",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an account."
+        },
+        {
+          "info": {
+            "name": "Cancel the registration.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v3/auth/register/cancel",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel the registration."
+        },
+        {
+          "info": {
+            "name": "Impersonate a user on the platform only.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v3/auth/impersonate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Impersonate a user on the platform only."
+        },
+        {
+          "info": {
+            "name": "Test if an email is allowed for registration.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v3/auth/email-validation",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Test if an email is allowed for registration."
+        },
+        {
+          "info": {
+            "name": "Generate a random login.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v2/auth/random-login"
+          },
+          "docs": "Generate a random login."
+        },
+        {
+          "info": {
+            "name": "Public key to validate the signature of a signed JWT.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/.well-known/jwks.json"
+          },
+          "docs": "Public key to validate the signature of a signed JWT."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

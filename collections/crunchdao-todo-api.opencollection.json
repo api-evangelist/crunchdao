@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity todo API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "todo",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Show todos.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/todos"
+          },
+          "docs": "Show todos."
+        },
+        {
+          "info": {
+            "name": "Get todos.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/todos",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get todos."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1399 @@
+{
+  "item": [
+    {
+      "id": "c830c39a-fa9e-46e3-b6f7-94e08ba99762",
+      "name": "zzz-admin",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ca4de087-fe33-4450-b7df-196aedda505c",
+          "name": "Search users.",
+          "request": {
+            "name": "Search users.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "admin",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "deleted",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Zero-based page index (0..N)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "The size of the page to be returned"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ccaedcbb-9051-4f1e-b3dc-62b1325e0fa4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "admin",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deleted",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageNumber\": 3201,\n  \"pageSize\": 6292,\n  \"totalElements\": 7414,\n  \"totalPages\": 886,\n  \"content\": [\n    {\n      \"id\": 1633,\n      \"login\": \"string\",\n      \"email\": \"string\",\n      \"role\": \"ADMINISTRATOR\",\n      \"ethereumAddress\": \"string\",\n      \"country\": \"string\"\n    },\n    {\n      \"id\": 2445,\n      \"login\": \"string\",\n      \"email\": \"string\",\n      \"role\": \"ADMINISTRATOR\",\n      \"ethereumAddress\": \"string\",\n      \"country\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5bf355c7-dc37-49db-8c9e-32a76fd5cc69",
+          "name": "Compute predictions.",
+          "request": {
+            "name": "Compute predictions.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "competitions",
+                ":competitionIdentifier",
+                "admin",
+                "predictions",
+                "compute"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "competitionIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"crunchId\": \"<long>\",\n  \"targetNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"onlyMissing\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "80be2439-40ac-4933-b86b-d16588ce7b8f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "competitions",
+                    ":competitionIdentifier",
+                    "admin",
+                    "predictions",
+                    "compute"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "competitionIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"crunchId\": \"<long>\",\n  \"targetNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"onlyMissing\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f1dc44a-762f-4e44-bb1e-9b9642f9c518",
+          "name": "Archive a run's logs.",
+          "request": {
+            "name": "Archive a run's logs.",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "runs",
+                ":runId",
+                "logs",
+                "archive"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "runId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5416abe7-98c2-41a2-afb1-52ee162cd6c3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "runs",
+                    ":runId",
+                    "logs",
+                    "archive"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "runId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "70559759-8115-42c8-ae7b-ca851d5e2fb6",
+          "name": "Try to map lost logs to their original runs.",
+          "request": {
+            "name": "Try to map lost logs to their original runs.",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "runs",
+                "try-map-lost-logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"runIds\": [\n    \"<long>\",\n    \"<long>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7a4a430d-5e50-45d0-a5e5-4fc17b87d063",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "runs",
+                    "try-map-lost-logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"runIds\": [\n    \"<long>\",\n    \"<long>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b6ceae3b-7f38-4bed-889a-bd35ba918f57",
+          "name": "Archive old runs.",
+          "request": {
+            "name": "Archive old runs.",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "runs",
+                "archive-old-runs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3442d134-3147-4099-919e-4450ac3a0397",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "runs",
+                    "archive-old-runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e3d118f-c2e9-4f53-9696-7b5dda0ff236",
+          "name": "Freeze project parameters selection.",
+          "request": {
+            "name": "Freeze project parameters selection.",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "out-of-sample",
+                "selections",
+                "freeze"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"roundId\": \"<long>\",\n  \"test\": \"<boolean>\",\n  \"userIds\": [\n    \"<long>\",\n    \"<long>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "577eeef9-b012-4ef6-9533-2bb277395ffc",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "out-of-sample",
+                    "selections",
+                    "freeze"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"roundId\": \"<long>\",\n  \"test\": \"<boolean>\",\n  \"userIds\": [\n    \"<long>\",\n    \"<long>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c8e78763-1613-4822-b99b-784c91b47cc5",
+          "name": "Create all runs.",
+          "request": {
+            "name": "Create all runs.",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "out-of-sample",
+                "runs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"all\": \"<boolean>\",\n  \"crunchId\": \"<long>\",\n  \"forceFirstTrainMode\": \"<string>\",\n  \"test\": \"<boolean>\",\n  \"dataReleaseId\": \"<long>\",\n  \"userIds\": [\n    \"<long>\",\n    \"<long>\"\n  ],\n  \"determinismCheckEnabled\": \"<boolean>\",\n  \"determinismCheckEnabledAsOptional\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "22bd45da-efe3-4474-9755-cc22632d21b2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "out-of-sample",
+                    "runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"all\": \"<boolean>\",\n  \"crunchId\": \"<long>\",\n  \"forceFirstTrainMode\": \"<string>\",\n  \"test\": \"<boolean>\",\n  \"dataReleaseId\": \"<long>\",\n  \"userIds\": [\n    \"<long>\",\n    \"<long>\"\n  ],\n  \"determinismCheckEnabled\": \"<boolean>\",\n  \"determinismCheckEnabledAsOptional\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7df1bfef-68fb-4729-9812-cde2a5e963aa",
+          "name": "List all runs.",
+          "request": {
+            "name": "List all runs.",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "runs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "roundId",
+                  "value": "<long>"
+                },
+                {
+                  "disabled": false,
+                  "key": "crunchId",
+                  "value": "<long>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1f435116-8d15-4da8-8f62-2768bcc791a5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "roundId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "crunchId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 4151,\n    \"round\": {\n      \"id\": 5145,\n      \"competition\": {\n        \"id\": 835,\n        \"name\": \"string\",\n        \"displayName\": \"string\",\n        \"fullName\": \"string\",\n        \"shortDescription\": \"string\",\n        \"type\": \"PAUSED\",\n        \"format\": \"UNSTRUCTURED\",\n        \"mode\": \"OFFLINE\",\n        \"status\": \"CLOSED\",\n        \"splitKeyType\": \"STRING\",\n        \"start\": \"2011-09-29T21:51:15.628Z\",\n        \"end\": \"1974-08-10T12:03:13.975Z\",\n        \"continuous\": true,\n        \"external\": false,\n        \"featured\": false,\n        \"visibility\": \"HIDDEN\",\n        \"url\": \"string\",\n        \"onChainId\": \"string\",\n        \"cardImageUrl\": \"string\",\n        \"bannerImageUrl\": \"string\",\n        \"documentationUrl\": \"string\",\n        \"notebookUrl\": \"string\",\n        \"advancedNotebookUrl\": \"string\",\n        \"discussionUrl\": \"string\",\n        \"codeUrl\": \"string\",\n        \"hostedByName\": \"string\",\n        \"prizePoolText\": \"string\",\n        \"prizePoolShortText\": \"string\",\n        \"prizePoolUsd\": 4954.804691113165,\n        \"projectNameFormat\": \"string\",\n        \"teamBased\": true,\n        \"onlyTeamLeader\": true,\n        \"maxTeamSize\": 5381,\n        \"projectCreationLimit\": 5595,\n        \"projectSelectionLimit\": 4067,\n        \"allowPredictions\": true,\n        \"encryptSubmissions\": false,\n        \"phalaKeyUrl\": \"string\",\n        \"hideDashboard\": true,\n        \"hideChanges\": true,\n        \"hidePerformance\": false,\n        \"hideRunPerformance\": true,\n        \"hideStatistics\": false,\n        \"hideNotebookSetupCommand\": false,\n        \"hideTrainFrequency\": true,\n        \"hideForceFirstTrain\": false,\n        \"web3\": false,\n        \"order\": 6190,\n        \"statistics\": {\n          \"entrants\": 6051,\n          \"participants\": 5407,\n          \"teams\": 3478,\n          \"submissions\": 8554,\n          \"runnables\": 2293\n        },\n        \"session\": {\n          \"state\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"nextChange\": \"1987-08-14T20:04:42.063Z\"\n        },\n        \"createdAt\": \"1979-11-12T21:40:12.769Z\",\n        \"updatedAt\": \"2003-11-04T19:40:57.865Z\",\n        \"tags\": [\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"displayName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"displayName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"timelineEvents\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"title\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"description\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"color\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"detailed\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"button\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdAt\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updatedAt\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"title\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"description\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"color\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"detailed\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"button\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdAt\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updatedAt\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"number\": 767,\n      \"start\": \"1946-09-09T09:48:13.411Z\",\n      \"end\": \"2000-08-08T12:08:09.953Z\",\n      \"automaticSelectionFreezeEnabled\": false,\n      \"automaticSubmissionPhaseCrunchCreationEnabled\": false,\n      \"automaticSubmissionPhaseLeaderboardUpdateEnabled\": true,\n      \"predictionSizeLimit\": 5099,\n      \"maxSubmissionsPerDay\": 3673\n    },\n    \"crunch\": {\n      \"id\": 2607,\n      \"phase\": {\n        \"id\": 378,\n        \"type\": \"SUBMISSION\",\n        \"start\": \"2020-06-05T04:54:02.303Z\",\n        \"end\": \"1958-09-15T11:12:05.030Z\",\n        \"dataReleaseId\": 6914,\n        \"localDataReleaseId\": 6508,\n        \"cloudCredits\": {},\n        \"perCrunchWeight\": 4070.426035702932,\n        \"autoCompute\": true,\n        \"runDisabled\": false,\n        \"showPositions\": true,\n        \"showProjectNames\": false,\n        \"runDeterminismCheckEnabled\": false,\n        \"showOnlyRewardedProjectsDefault\": true,\n        \"splits\": [\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"number\": 2475,\n      \"start\": \"1975-05-04T06:41:56.036Z\",\n      \"end\": \"1983-08-12T01:08:59.221Z\",\n      \"showRuns\": false,\n      \"showMetricsDetails\": true,\n      \"showRunLogs\": true,\n      \"showScoresValue\": false,\n      \"leaderboardSimilarityThreshold\": 3693.981068699649,\n      \"published\": false,\n      \"dataReleaseId\": 8401,\n      \"splits\": [\n        {\n          \"key\": 1204\n        },\n        {\n          \"key\": 2354\n        }\n      ]\n    },\n    \"submission\": {\n      \"id\": 1774,\n      \"project\": {\n        \"id\": 2068,\n        \"competitionId\": 5286,\n        \"user\": {\n          \"id\": 7875,\n          \"login\": \"string\"\n        },\n        \"name\": \"string\",\n        \"selected\": false,\n        \"submitted\": true,\n        \"note\": \"string\",\n        \"writeupUrl\": \"string\",\n        \"writeupArchived\": false,\n        \"createdAt\": \"1958-07-20T09:37:23.018Z\",\n        \"updatedAt\": \"1948-06-30T14:26:21.512Z\",\n        \"userId\": 1413\n      },\n      \"number\": 9894,\n      \"type\": \"PREDICTION\",\n      \"message\": \"string\",\n      \"valid\": true,\n      \"mainFilePath\": \"string\",\n      \"modelDirectoryPath\": \"string\",\n      \"gpuRequirement\": \"OPTIONAL\",\n      \"model\": {\n        \"id\": 3803,\n        \"name\": \"string\",\n        \"project\": {\n          \"id\": 8361,\n          \"competitionId\": 9927,\n          \"user\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": \"string\",\n          \"selected\": false,\n          \"submitted\": true,\n          \"note\": \"string\",\n          \"writeupUrl\": \"string\",\n          \"writeupArchived\": false,\n          \"createdAt\": \"2008-04-12T02:03:19.905Z\",\n          \"updatedAt\": \"2008-03-27T17:45:37.341Z\",\n          \"userId\": 9069\n        },\n        \"totalSize\": 4871,\n        \"encrypted\": true,\n        \"encryptionId\": \"string\",\n        \"createdAt\": \"1993-11-21T17:20:10.996Z\"\n      },\n      \"totalSize\": 5774,\n      \"librariesVerified\": false,\n      \"encrypted\": false,\n      \"encryptionId\": \"string\",\n      \"createdAt\": \"2020-03-17T11:56:52.362Z\",\n      \"files\": [\n        {\n          \"name\": \"string\",\n          \"size\": 2975,\n          \"encrypted\": true,\n          \"mimeType\": \"string\",\n          \"foundHardcodedString\": true\n        },\n        {\n          \"name\": \"string\",\n          \"size\": 8348,\n          \"encrypted\": false,\n          \"mimeType\": \"string\",\n          \"foundHardcodedString\": false\n        }\n      ]\n    },\n    \"project\": {\n      \"id\": 9951,\n      \"competitionId\": 4716,\n      \"user\": {\n        \"id\": 1421,\n        \"login\": \"string\"\n      },\n      \"name\": \"string\",\n      \"selected\": true,\n      \"submitted\": true,\n      \"note\": \"string\",\n      \"writeupUrl\": \"string\",\n      \"writeupArchived\": false,\n      \"createdAt\": \"1966-04-06T12:41:40.219Z\",\n      \"updatedAt\": \"1974-10-25T05:26:39.724Z\",\n      \"userId\": 2882\n    },\n    \"initialModel\": {\n      \"id\": 729,\n      \"name\": \"string\",\n      \"project\": {\n        \"id\": 2793,\n        \"competitionId\": 4167,\n        \"user\": {\n          \"id\": 3270,\n          \"login\": \"string\"\n        },\n        \"name\": \"string\",\n        \"selected\": true,\n        \"submitted\": true,\n        \"note\": \"string\",\n        \"writeupUrl\": \"string\",\n        \"writeupArchived\": true,\n        \"createdAt\": \"2009-03-28T01:14:14.699Z\",\n        \"updatedAt\": \"1993-05-07T05:50:05.834Z\",\n        \"userId\": 6108\n      },\n      \"totalSize\": 3744,\n      \"encrypted\": true,\n      \"encryptionId\": \"string\",\n      \"createdAt\": \"2015-12-14T21:57:39.798Z\"\n    },\n    \"terminalModel\": {\n      \"id\": 1025,\n      \"name\": \"string\",\n      \"project\": {\n        \"id\": 1456,\n        \"competitionId\": 6021,\n        \"user\": {\n          \"id\": 3016,\n          \"login\": \"string\"\n        },\n        \"name\": \"string\",\n        \"selected\": false,\n        \"submitted\": false,\n        \"note\": \"string\",\n        \"writeupUrl\": \"string\",\n        \"writeupArchived\": false,\n        \"createdAt\": \"1950-10-22T20:26:57.265Z\",\n        \"updatedAt\": \"1960-07-04T19:14:45.402Z\",\n        \"userId\": 4604\n      },\n      \"totalSize\": 7678,\n      \"encrypted\": false,\n      \"encryptionId\": \"string\",\n      \"createdAt\": \"1995-06-01T01:13:12.382Z\"\n    },\n    \"prediction\": {\n      \"id\": 1075,\n      \"name\": \"string\",\n      \"project\": {\n        \"id\": 2814,\n        \"competitionId\": 229,\n        \"user\": {\n          \"id\": 7907,\n          \"login\": \"string\"\n        },\n        \"name\": \"string\",\n        \"selected\": false,\n        \"submitted\": true,\n        \"note\": \"string\",\n        \"writeupUrl\": \"string\",\n        \"writeupArchived\": true,\n        \"createdAt\": \"1950-01-02T14:17:10.541Z\",\n        \"updatedAt\": \"1961-01-09T22:28:23.367Z\",\n        \"userId\": 6998\n      },\n      \"valid\": true,\n      \"success\": false,\n      \"error\": \"string\",\n      \"deterministic\": true,\n      \"primaryMean\": 6536.788644779796,\n      \"primaryUnit\": {\n        \"prefix\": \"string\",\n        \"suffix\": \"string\",\n        \"scale\": 6127\n      },\n      \"means\": {\n        \"key_0\": 6457.729538166354,\n        \"key_1\": 4511.15050376559\n      },\n      \"files\": [\n        {\n          \"name\": \"string\",\n          \"size\": 1582\n        },\n        {\n          \"name\": \"string\",\n          \"size\": 7258\n        }\n      ],\n      \"managed\": true,\n      \"createdAt\": \"2017-01-25T00:48:13.707Z\",\n      \"bestDisplayUnit\": \"string\",\n      \"bestMean\": 7982.585619620286,\n      \"bestUnit\": {\n        \"prefix\": \"string\",\n        \"suffix\": \"string\",\n        \"scale\": 11\n      }\n    },\n    \"runtimeType\": \"CPU\",\n    \"name\": \"string\",\n    \"trainFrequency\": 4691,\n    \"forceFirstTrain\": false,\n    \"chainHeight\": 6748,\n    \"determinismCheckEnabled\": true,\n    \"deterministic\": false,\n    \"status\": \"RUNNING\",\n    \"success\": true,\n    \"errorMessage\": \"string\",\n    \"errorTrace\": \"string\",\n    \"exitCode\": 3057,\n    \"exitReason\": \"string\",\n    \"terminated\": false,\n    \"managed\": false,\n    \"createdAt\": \"2015-05-01T02:48:06.425Z\",\n    \"updatedAt\": \"2024-01-05T02:57:44.448Z\",\n    \"startedAt\": \"1952-02-19T13:28:43.004Z\",\n    \"endedAt\": \"1967-01-13T05:30:58.723Z\",\n    \"duration\": {},\n    \"cpu\": 1962,\n    \"memory\": 2573\n  },\n  {\n    \"id\": 3479,\n    \"round\": {\n      \"id\": 2812,\n      \"competition\": {\n        \"id\": 5041,\n        \"name\": \"string\",\n        \"displayName\": \"string\",\n        \"fullName\": \"string\",\n        \"shortDescription\": \"string\",\n        \"type\": \"OPEN\",\n        \"format\": \"UNSTRUCTURED\",\n        \"mode\": \"OFFLINE\",\n        \"status\": \"OPEN\",\n        \"splitKeyType\": \"INTEGER\",\n        \"start\": \"1969-08-02T02:37:41.276Z\",\n        \"end\": \"1981-12-26T20:23:22.861Z\",\n        \"continuous\": true,\n        \"external\": true,\n        \"featured\": true,\n        \"visibility\": \"HIDDEN\",\n        \"url\": \"string\",\n        \"onChainId\": \"string\",\n        \"cardImageUrl\": \"string\",\n        \"bannerImageUrl\": \"string\",\n        \"documentationUrl\": \"string\",\n        \"notebookUrl\": \"string\",\n        \"advancedNotebookUrl\": \"string\",\n        \"discussionUrl\": \"string\",\n        \"codeUrl\": \"string\",\n        \"hostedByName\": \"string\",\n        \"prizePoolText\": \"string\",\n        \"prizePoolShortText\": \"string\",\n        \"prizePoolUsd\": 9066.20449564831,\n        \"projectNameFormat\": \"string\",\n        \"teamBased\": false,\n        \"onlyTeamLeader\": false,\n        \"maxTeamSize\": 9417,\n        \"projectCreationLimit\": 657,\n        \"projectSelectionLimit\": 5008,\n        \"allowPredictions\": true,\n        \"encryptSubmissions\": false,\n        \"phalaKeyUrl\": \"string\",\n        \"hideDashboard\": true,\n        \"hideChanges\": true,\n        \"hidePerformance\": true,\n        \"hideRunPerformance\": false,\n        \"hideStatistics\": true,\n        \"hideNotebookSetupCommand\": true,\n        \"hideTrainFrequency\": false,\n        \"hideForceFirstTrain\": false,\n        \"web3\": true,\n        \"order\": 3009,\n        \"statistics\": {\n          \"entrants\": 354,\n          \"participants\": 4748,\n          \"teams\": 6543,\n          \"submissions\": 6077,\n          \"runnables\": 6512\n        },\n        \"session\": {\n          \"state\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"nextChange\": \"1969-06-02T00:26:25.549Z\"\n        },\n        \"createdAt\": \"1988-07-20T05:03:01.460Z\",\n        \"updatedAt\": \"1974-06-12T18:49:56.739Z\",\n        \"tags\": [\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"displayName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"displayName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"timelineEvents\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"title\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"description\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"color\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"detailed\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"button\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdAt\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updatedAt\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"title\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"description\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"color\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"detailed\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"button\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdAt\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updatedAt\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"number\": 3049,\n      \"start\": \"2000-07-30T15:28:37.927Z\",\n      \"end\": \"1984-07-12T08:40:08.076Z\",\n      \"automaticSelectionFreezeEnabled\": true,\n      \"automaticSubmissionPhaseCrunchCreationEnabled\": false,\n      \"automaticSubmissionPhaseLeaderboardUpdateEnabled\": false,\n      \"predictionSizeLimit\": 9022,\n      \"maxSubmissionsPerDay\": 6473\n    },\n    \"crunch\": {\n      \"id\": 6722,\n      \"phase\": {\n        \"id\": 2236,\n        \"type\": \"OUT_OF_SAMPLE\",\n        \"start\": \"2021-11-14T09:55:39.231Z\",\n        \"end\": \"1965-03-09T22:16:44.328Z\",\n        \"dataReleaseId\": 491,\n        \"localDataReleaseId\": 3318,\n        \"cloudCredits\": {},\n        \"perCrunchWeight\": 9535.233604030675,\n        \"autoCompute\": true,\n        \"runDisabled\": true,\n        \"showPositions\": false,\n        \"showProjectNames\": false,\n        \"runDeterminismCheckEnabled\": true,\n        \"showOnlyRewardedProjectsDefault\": false,\n        \"splits\": [\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"number\": 6923,\n      \"start\": \"2016-11-20T03:24:17.452Z\",\n      \"end\": \"1987-10-06T14:46:08.128Z\",\n      \"showRuns\": true,\n      \"showMetricsDetails\": true,\n      \"showRunLogs\": false,\n      \"showScoresValue\": false,\n      \"leaderboardSimilarityThreshold\": 1070.146422114836,\n      \"published\": true,\n      \"dataReleaseId\": 2295,\n      \"splits\": [\n        {\n          \"key\": 1653\n        },\n        {\n          \"key\": 7480\n        }\n      ]\n    },\n    \"submission\": {\n      \"id\": 5856,\n      \"project\": {\n        \"id\": 7473,\n        \"competitionId\": 7034,\n        \"user\": {\n          \"id\": 4330,\n          \"login\": \"string\"\n        },\n        \"name\": \"string\",\n        \"selected\": true,\n        \"submitted\": true,\n        \"note\": \"string\",\n        \"writeupUrl\": \"string\",\n        \"writeupArchived\": false,\n        \"createdAt\": \"2022-02-13T03:44:22.316Z\",\n        \"updatedAt\": \"2008-03-16T19:51:09.505Z\",\n        \"userId\": 6945\n      },\n      \"number\": 8545,\n      \"type\": \"CODE\",\n      \"message\": \"string\",\n      \"valid\": false,\n      \"mainFilePath\": \"string\",\n      \"modelDirectoryPath\": \"string\",\n      \"gpuRequirement\": \"REQUIRED\",\n      \"model\": {\n        \"id\": 580,\n        \"name\": \"string\",\n        \"project\": {\n          \"id\": 3994,\n          \"competitionId\": 439,\n          \"user\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": \"string\",\n          \"selected\": true,\n          \"submitted\": true,\n          \"note\": \"string\",\n          \"writeupUrl\": \"string\",\n          \"writeupArchived\": true,\n          \"createdAt\": \"2008-04-17T15:27:27.676Z\",\n          \"updatedAt\": \"1975-08-07T17:49:58.961Z\",\n          \"userId\": 7469\n        },\n        \"totalSize\": 4093,\n        \"encrypted\": false,\n        \"encryptionId\": \"string\",\n        \"createdAt\": \"1970-11-21T03:16:03.983Z\"\n      },\n      \"totalSize\": 7697,\n      \"librariesVerified\": true,\n      \"encrypted\": true,\n      \"encryptionId\": \"string\",\n      \"createdAt\": \"1983-09-19T02:38:58.454Z\",\n      \"files\": [\n        {\n          \"name\": \"string\",\n          \"size\": 9774,\n          \"encrypted\": false,\n          \"mimeType\": \"string\",\n          \"foundHardcodedString\": true\n        },\n        {\n          \"name\": \"string\",\n          \"size\": 2081,\n          \"encrypted\": true,\n          \"mimeType\": \"string\",\n          \"foundHardcodedString\": false\n        }\n      ]\n    },\n    \"project\": {\n      \"id\": 3175,\n      \"competitionId\": 3774,\n      \"user\": {\n        \"id\": 9110,\n        \"login\": \"string\"\n      },\n      \"name\": \"string\",\n      \"selected\": false,\n      \"submitted\": false,\n      \"note\": \"string\",\n      \"writeupUrl\": \"string\",\n      \"writeupArchived\": true,\n      \"createdAt\": \"1952-09-23T00:13:24.682Z\",\n      \"updatedAt\": \"1984-02-10T10:44:26.737Z\",\n      \"userId\": 9160\n    },\n    \"initialModel\": {\n      \"id\": 9695,\n      \"name\": \"string\",\n      \"project\": {\n        \"id\": 2921,\n        \"competitionId\": 1844,\n        \"user\": {\n          \"id\": 838,\n          \"login\": \"string\"\n        },\n        \"name\": \"string\",\n        \"selected\": false,\n        \"submitted\": true,\n        \"note\": \"string\",\n        \"writeupUrl\": \"string\",\n        \"writeupArchived\": true,\n        \"createdAt\": \"1947-07-27T05:31:53.141Z\",\n        \"updatedAt\": \"1989-04-07T14:20:27.348Z\",\n        \"userId\": 2194\n      },\n      \"totalSize\": 7360,\n      \"encrypted\": true,\n      \"encryptionId\": \"string\",\n      \"createdAt\": \"1978-06-14T23:37:44.097Z\"\n    },\n    \"terminalModel\": {\n      \"id\": 3146,\n      \"name\": \"string\",\n      \"project\": {\n        \"id\": 3464,\n        \"competitionId\": 4676,\n        \"user\": {\n          \"id\": 9367,\n          \"login\": \"string\"\n        },\n        \"name\": \"string\",\n        \"selected\": false,\n        \"submitted\": true,\n        \"note\": \"string\",\n        \"writeupUrl\": \"string\",\n        \"writeupArchived\": true,\n        \"createdAt\": \"1999-05-16T00:44:23.552Z\",\n        \"updatedAt\": \"2009-07-02T17:18:38.809Z\",\n        \"userId\": 6715\n      },\n      \"totalSize\": 1576,\n      \"encrypted\": true,\n      \"encryptionId\": \"string\",\n      \"createdAt\": \"2008-05-23T13:09:42.160Z\"\n    },\n    \"prediction\": {\n      \"id\": 7137,\n      \"name\": \"string\",\n      \"project\": {\n        \"id\": 2849,\n        \"competitionId\": 4336,\n        \"user\": {\n          \"id\": 5588,\n          \"login\": \"string\"\n        },\n        \"name\": \"string\",\n        \"selected\": false,\n        \"submitted\": true,\n        \"note\": \"string\",\n        \"writeupUrl\": \"string\",\n        \"writeupArchived\": false,\n        \"createdAt\": \"1953-09-07T14:59:35.549Z\",\n        \"updatedAt\": \"1971-03-02T17:55:23.052Z\",\n        \"userId\": 7927\n      },\n      \"valid\": false,\n      \"success\": true,\n      \"error\": \"string\",\n      \"deterministic\": true,\n      \"primaryMean\": 7380.211291065862,\n      \"primaryUnit\": {\n        \"prefix\": \"string\",\n        \"suffix\": \"string\",\n        \"scale\": 3949\n      },\n      \"means\": {\n        \"key_0\": 8381.3371177861\n      },\n      \"files\": [\n        {\n          \"name\": \"string\",\n          \"size\": 5702\n        },\n        {\n          \"name\": \"string\",\n          \"size\": 2341\n        }\n      ],\n      \"managed\": false,\n      \"createdAt\": \"1974-07-20T22:50:32.898Z\",\n      \"bestDisplayUnit\": \"string\",\n      \"bestMean\": 348.09495293903205,\n      \"bestUnit\": {\n        \"prefix\": \"string\",\n        \"suffix\": \"string\",\n        \"scale\": 8700\n      }\n    },\n    \"runtimeType\": \"CPU\",\n    \"name\": \"string\",\n    \"trainFrequency\": 118,\n    \"forceFirstTrain\": true,\n    \"chainHeight\": 7665,\n    \"determinismCheckEnabled\": false,\n    \"deterministic\": false,\n    \"status\": \"COMPLETED\",\n    \"success\": true,\n    \"errorMessage\": \"string\",\n    \"errorTrace\": \"string\",\n    \"exitCode\": 3085,\n    \"exitReason\": \"string\",\n    \"terminated\": false,\n    \"managed\": false,\n    \"createdAt\": \"1992-10-26T18:11:00.926Z\",\n    \"updatedAt\": \"1978-01-20T10:38:01.449Z\",\n    \"startedAt\": \"1979-04-26T21:52:32.428Z\",\n    \"endedAt\": \"1972-04-12T22:23:10.642Z\",\n    \"duration\": {},\n    \"cpu\": 794,\n    \"memory\": 4253\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4aab9740-8c8b-48ec-8b0f-7d7191efb813",
+          "name": "Terminate all runs.",
+          "request": {
+            "name": "Terminate all runs.",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "runs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "roundId",
+                  "value": "<long>"
+                },
+                {
+                  "disabled": false,
+                  "key": "crunchId",
+                  "value": "<long>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "658622c7-2cb0-416a-9a1c-8eb0ef85856a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "roundId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "crunchId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e1cf7371-aed3-4d31-8d1e-16a7e6986e9d",
+          "name": "Get a summary of all runs.",
+          "request": {
+            "name": "Get a summary of all runs.",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "runs",
+                "summary"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "roundId",
+                  "value": "<long>"
+                },
+                {
+                  "disabled": false,
+                  "key": "crunchId",
+                  "value": "<long>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "08a16f6f-b6bd-462d-ac38-458026d73d62",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "runs",
+                    "summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "roundId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "crunchId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 2892,\n  \"key_1\": 3048,\n  \"key_2\": 6967\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "76f76a38-97d3-4e93-aa9a-39a9fadff79f",
+          "name": "List selections.",
+          "request": {
+            "name": "List selections.",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "out-of-sample",
+                "selections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "roundId",
+                  "value": "<long>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1b2ec7bc-99c6-4d52-b5b6-fdae3bef414b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "out-of-sample",
+                    "selections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "roundId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"project\": {\n      \"id\": 7277,\n      \"competitionId\": 7347,\n      \"user\": {\n        \"id\": 9304,\n        \"login\": \"string\"\n      },\n      \"name\": \"string\",\n      \"selected\": false,\n      \"submitted\": true,\n      \"note\": \"string\",\n      \"writeupUrl\": \"string\",\n      \"writeupArchived\": false,\n      \"createdAt\": \"1987-09-16T14:35:44.617Z\",\n      \"updatedAt\": \"1977-02-26T18:41:51.186Z\",\n      \"userId\": 1437\n    },\n    \"submission\": {\n      \"id\": 5896,\n      \"number\": 1642\n    },\n    \"trainFrequency\": 1434,\n    \"forceFirstTrain\": false,\n    \"runtimeType\": \"COPY\",\n    \"runId\": 8090,\n    \"runnable\": false,\n    \"origin\": \"PREVIOUS_ROUND\",\n    \"createdAt\": \"1960-06-03T22:32:07.068Z\",\n    \"updatedAt\": \"2022-07-24T13:28:59.144Z\",\n    \"submissionId\": 6380\n  },\n  {\n    \"project\": {\n      \"id\": 9082,\n      \"competitionId\": 2412,\n      \"user\": {\n        \"id\": 1505,\n        \"login\": \"string\"\n      },\n      \"name\": \"string\",\n      \"selected\": true,\n      \"submitted\": true,\n      \"note\": \"string\",\n      \"writeupUrl\": \"string\",\n      \"writeupArchived\": false,\n      \"createdAt\": \"2000-01-01T22:29:17.993Z\",\n      \"updatedAt\": \"1949-07-20T01:33:33.181Z\",\n      \"userId\": 7794\n    },\n    \"submission\": {\n      \"id\": 1241,\n      \"number\": 4328\n    },\n    \"trainFrequency\": 4972,\n    \"forceFirstTrain\": false,\n    \"runtimeType\": \"CPU\",\n    \"runId\": 1972,\n    \"runnable\": false,\n    \"origin\": \"SELECTION\",\n    \"createdAt\": \"1962-02-23T12:19:27.300Z\",\n    \"updatedAt\": \"1987-10-10T02:54:35.979Z\",\n    \"submissionId\": 2202\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "17151079-8b7a-481c-a6f0-ce28b7aaa7f4",
+          "name": "Preview execution parameters",
+          "request": {
+            "name": "Preview execution parameters",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "out-of-sample",
+                "runs",
+                "execution-parameters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "crunchId",
+                  "value": "<long>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "dataReleaseId",
+                  "value": "<long>"
+                },
+                {
+                  "disabled": false,
+                  "key": "test",
+                  "value": "<boolean>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "userIds",
+                  "value": "<long>"
+                },
+                {
+                  "disabled": false,
+                  "key": "userIds",
+                  "value": "<long>"
+                },
+                {
+                  "disabled": false,
+                  "key": "all",
+                  "value": "<boolean>",
+                  "description": "(Required) Include ALL runs, not only thoses who failed or don't have a score."
+                },
+                {
+                  "disabled": false,
+                  "key": "forceFirstTrainMode",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "determinismCheckEnabled",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5614b877-eed3-4c82-8021-3406c0a0d0e4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "out-of-sample",
+                    "runs",
+                    "execution-parameters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "crunchId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "dataReleaseId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "test",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "userIds",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "userIds",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "all",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "forceFirstTrainMode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "determinismCheckEnabled",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"project\": {\n      \"id\": 2844,\n      \"competitionId\": 9201,\n      \"user\": {\n        \"id\": 6951,\n        \"login\": \"string\"\n      },\n      \"name\": \"string\",\n      \"selected\": true,\n      \"submitted\": false,\n      \"note\": \"string\",\n      \"writeupUrl\": \"string\",\n      \"writeupArchived\": true,\n      \"createdAt\": \"1950-08-01T03:26:46.288Z\",\n      \"updatedAt\": \"2009-02-01T15:02:18.818Z\",\n      \"userId\": 2244\n    },\n    \"submission\": {\n      \"id\": 7966,\n      \"number\": 497\n    },\n    \"runtimeDefinitionName\": \"string\",\n    \"runtimeType\": \"GPU\",\n    \"trainFrequency\": 3952,\n    \"forceFirstTrain\": false,\n    \"runName\": \"string\",\n    \"modelName\": \"string\",\n    \"predictionName\": \"string\",\n    \"initialModelId\": 3360,\n    \"determinismCheckEnabled\": false,\n    \"nextChainHeightHint\": 1740,\n    \"userId\": 9957,\n    \"projectId\": 5477,\n    \"submissionId\": 182\n  },\n  {\n    \"project\": {\n      \"id\": 250,\n      \"competitionId\": 9285,\n      \"user\": {\n        \"id\": 7932,\n        \"login\": \"string\"\n      },\n      \"name\": \"string\",\n      \"selected\": false,\n      \"submitted\": true,\n      \"note\": \"string\",\n      \"writeupUrl\": \"string\",\n      \"writeupArchived\": true,\n      \"createdAt\": \"1950-08-16T17:58:20.621Z\",\n      \"updatedAt\": \"1999-12-04T16:31:57.079Z\",\n      \"userId\": 4461\n    },\n    \"submission\": {\n      \"id\": 5264,\n      \"number\": 4378\n    },\n    \"runtimeDefinitionName\": \"string\",\n    \"runtimeType\": \"COPY\",\n    \"trainFrequency\": 109,\n    \"forceFirstTrain\": false,\n    \"runName\": \"string\",\n    \"modelName\": \"string\",\n    \"predictionName\": \"string\",\n    \"initialModelId\": 3201,\n    \"determinismCheckEnabled\": false,\n    \"nextChainHeightHint\": 2985,\n    \"userId\": 8093,\n    \"projectId\": 4366,\n    \"submissionId\": 2158\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "659c4c21-509b-4dd3-8d7d-5d9fe45b1a91",
+          "name": "Delete a run.",
+          "request": {
+            "name": "Delete a run.",
+            "description": {},
+            "url": {
+              "path": [
+                "admin",
+                "runs",
+                ":runId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "runId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "acfdd3b3-b76d-44be-8f87-e6bf508b8bc8",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "runs",
+                    ":runId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "runId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.hub.crunchdao.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a670db98-7fc6-47c0-989a-28bfe8187b0d",
+    "name": "Tournament activity zzz-admin API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CrunchDAO Tournament Platform API Endpoints",
+      "type": "text/plain"
+    }
+  }
+}

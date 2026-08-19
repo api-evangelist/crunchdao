@@ -1,0 +1,182 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tournament activity bounty API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "bounty",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List bounties.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/bounties",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "crunchId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List bounties."
+        },
+        {
+          "info": {
+            "name": "Create a bounty.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/bounties",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a bounty."
+        },
+        {
+          "info": {
+            "name": "List a bounty's rewards.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/bounties/:bountyId/rewards",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "bountyId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List a bounty's rewards."
+        },
+        {
+          "info": {
+            "name": "Compute a bounty's rewards.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/bounties/:bountyId/rewards",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "bountyId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Compute a bounty's rewards."
+        },
+        {
+          "info": {
+            "name": "Clear a bounty's rewards.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/bounties/:bountyId/rewards",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "bountyId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Clear a bounty's rewards."
+        },
+        {
+          "info": {
+            "name": "Show a bounty.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/bounties/:bountyId",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "bountyId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Show a bounty."
+        },
+        {
+          "info": {
+            "name": "Update a bounty.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://api.hub.crunchdao.com/v1/competitions/:competitionIdentifier/bounties/:bountyId",
+            "params": [
+              {
+                "name": "competitionIdentifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "bountyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a bounty."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
