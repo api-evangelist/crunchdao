@@ -34,6 +34,15 @@ modified: '2026-07-18'
 tags:
 - Company
 - Crypto Web3
+- Machine-Learning
+- Data Science
+- Competitions
+- Collective Intelligence
+- Quantitative Finance
+- Predictions
+tags_raw:
+- Company
+- Crypto Web3
 - Machine Learning
 - Data Science
 - Competitions
@@ -47,6 +56,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Activity
+  tags_raw:
   - activity
   properties:
   - type: OpenAPI
@@ -95,6 +106,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Authentication
+  tags_raw:
   - auth
   properties:
   - type: OpenAPI
@@ -119,6 +132,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - auth-oauth
+  tags_raw:
   - auth:oauth
   properties:
   - type: OpenAPI
@@ -143,6 +158,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Avatar
+  tags_raw:
   - avatar
   properties:
   - type: OpenAPI
@@ -191,6 +208,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Broadcast
+  tags_raw:
   - broadcast
   properties:
   - type: OpenAPI
@@ -215,6 +234,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Calendar
+  tags_raw:
   - calendar
   properties:
   - type: OpenAPI
@@ -239,6 +260,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Certificate
+  tags_raw:
   - certificate
   properties:
   - type: OpenAPI
@@ -263,6 +286,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Chart
+  tags_raw:
   - chart
   properties:
   - type: OpenAPI
@@ -311,6 +336,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Competition
+  tags_raw:
   - competition
   properties:
   - type: OpenAPI
@@ -384,6 +411,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Connection
+  tags_raw:
   - connection
   properties:
   - type: OpenAPI
@@ -408,6 +437,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Country
+  tags_raw:
   - country
   properties:
   - type: OpenAPI
@@ -480,6 +511,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Currency
+  tags_raw:
   - currency
   properties:
   - type: OpenAPI
@@ -504,6 +537,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Data
+  tags_raw:
   - data
   properties:
   - type: OpenAPI
@@ -528,6 +563,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Deployment
+  tags_raw:
   - deployment
   properties:
   - type: OpenAPI
@@ -552,6 +589,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Export
+  tags_raw:
   - export
   properties:
   - type: OpenAPI
@@ -576,6 +615,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Feedback
+  tags_raw:
   - feedback
   properties:
   - type: OpenAPI
@@ -648,6 +689,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Leaderboard
+  tags_raw:
   - leaderboard
   properties:
   - type: OpenAPI
@@ -697,6 +740,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Legal
+  tags_raw:
   - legal
   properties:
   - type: OpenAPI
@@ -721,6 +766,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Library
+  tags_raw:
   - library
   properties:
   - type: OpenAPI
@@ -793,6 +840,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Model
+  tags_raw:
   - model
   properties:
   - type: OpenAPI
@@ -817,6 +866,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - News
+  tags_raw:
   - news
   properties:
   - type: OpenAPI
@@ -841,6 +892,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Onboard
+  tags_raw:
   - onboard
   properties:
   - type: OpenAPI
@@ -937,6 +990,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Payout
+  tags_raw:
   - payout
   properties:
   - type: OpenAPI
@@ -961,6 +1016,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Phase
+  tags_raw:
   - phase
   properties:
   - type: OpenAPI
@@ -1033,6 +1090,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Prediction
+  tags_raw:
   - prediction
   properties:
   - type: OpenAPI
@@ -1081,6 +1140,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Project
+  tags_raw:
   - project
   properties:
   - type: OpenAPI
@@ -1201,6 +1262,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Run
+  tags_raw:
   - run
   properties:
   - type: OpenAPI
@@ -1298,6 +1361,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Season
+  tags_raw:
   - season
   properties:
   - type: OpenAPI
@@ -1370,6 +1435,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Submission
+  tags_raw:
   - submission
   properties:
   - type: OpenAPI
@@ -1394,6 +1461,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Target
+  tags_raw:
   - target
   properties:
   - type: OpenAPI
@@ -1418,6 +1487,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Team
+  tags_raw:
   - team
   properties:
   - type: OpenAPI
@@ -1490,6 +1561,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Timelines
+  tags_raw:
   - timeline
   properties:
   - type: OpenAPI
@@ -1514,6 +1587,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - To-Do
+  tags_raw:
   - todo
   properties:
   - type: OpenAPI
@@ -1538,6 +1613,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Transparency
+  tags_raw:
   - transparency
   properties:
   - type: OpenAPI
@@ -1562,6 +1639,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Upload
+  tags_raw:
   - upload
   properties:
   - type: OpenAPI
@@ -1586,6 +1665,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - User
+  tags_raw:
   - user
   properties:
   - type: OpenAPI
@@ -1610,6 +1691,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - User Profile
+  tags_raw:
   - user:profile
   properties:
   - type: OpenAPI
@@ -1634,6 +1717,8 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
+  - Web App
+  tags_raw:
   - webapp
   properties:
   - type: OpenAPI
