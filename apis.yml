@@ -171,7 +171,7 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
-  - Avatar
+  - Avatars
   tags_raw:
   - avatar
   properties:
@@ -349,7 +349,7 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
-  - Competition
+  - Competitions
   tags_raw:
   - competition
   properties:
@@ -702,7 +702,7 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
-  - Leaderboard
+  - Leaderboards
   tags_raw:
   - leaderboard
   properties:
@@ -1103,7 +1103,7 @@ apis:
   humanURL: https://docs.crunchdao.com/technical/tournament-api
   baseURL: https://api.hub.crunchdao.com
   tags:
-  - Prediction
+  - Predictions
   tags_raw:
   - prediction
   properties:
