@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity user:profile API
+  title: Tournament User:profile API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,13 +8,13 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: user:profile
+- name: User Profile
 paths:
   /v1/users/{userIdentifier}/profile:
     x-service-id: account-service
     get:
       tags:
-      - user:profile
+      - User Profile
       operationId: showUserProfile
       parameters:
       - name: userIdentifier
@@ -31,9 +31,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserProfile'
+      summary: Show user profile
+      x-summary-source: derived
     patch:
       tags:
-      - user:profile
+      - User Profile
       operationId: updateUserProfile
       parameters:
       - name: userIdentifier
@@ -56,18 +58,39 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserProfile'
+      summary: Update user profile
+      x-summary-source: derived
 components:
   schemas:
-    ConnectionType:
-      type: string
-      enum:
-      - DISCORD
-      - TWITTER
-      - GITHUB
-      - KAGGLE
-      - REDDIT
-      - LINKEDIN
-      - GOOGLE
+    UserProfile:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
+        biography:
+          type: string
+        connections:
+          type: array
+          items:
+            $ref: '#/components/schemas/Connection'
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+    UserProfileUpdateForm:
+      type: object
+      properties:
+        biography:
+          type: string
+          description: User biography.
+          maxLength: 2048
+          minLength: 0
+      required:
+      - biography
     Connection:
       type: object
       properties:
@@ -90,35 +113,16 @@ components:
           format: date-time
         public:
           type: boolean
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        login:
-          type: string
-    UserProfileUpdateForm:
-      type: object
-      properties:
-        biography:
-          type: string
-          description: User biography.
-          maxLength: 2048
-          minLength: 0
-      required:
-      - biography
-    UserProfile:
-      type: object
-      properties:
-        user:
-          $ref: '#/components/schemas/User'
-        biography:
-          type: string
-        connections:
-          type: array
-          items:
-            $ref: '#/components/schemas/Connection'
+    ConnectionType:
+      type: string
+      enum:
+      - DISCORD
+      - TWITTER
+      - GITHUB
+      - KAGGLE
+      - REDDIT
+      - LINKEDIN
+      - GOOGLE
   securitySchemes:
     apiKey:
       type: apiKey

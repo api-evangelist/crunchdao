@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity auth API
+  title: Tournament Auth API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,14 +8,14 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: auth
+- name: Auth
 paths:
   /v3/auth/register:
     x-service-id: account-service
     post:
       tags:
-      - auth
-      summary: Create an account.
+      - Auth
+      summary: Create an account
       operationId: register
       requestBody:
         content:
@@ -34,8 +34,8 @@ paths:
     x-service-id: account-service
     post:
       tags:
-      - auth
-      summary: Cancel the registration.
+      - Auth
+      summary: Cancel the registration
       operationId: cancelRegistration
       requestBody:
         content:
@@ -50,8 +50,8 @@ paths:
     x-service-id: account-service
     post:
       tags:
-      - auth
-      summary: Impersonate a user on the platform only.
+      - Auth
+      summary: Impersonate a user on the platform only
       operationId: impersonate
       requestBody:
         content:
@@ -73,8 +73,8 @@ paths:
     x-service-id: account-service
     post:
       tags:
-      - auth
-      summary: Test if an email is allowed for registration.
+      - Auth
+      summary: Test if an email is allowed for registration
       operationId: isEmailValid
       parameters:
       - name: address
@@ -95,8 +95,8 @@ paths:
     x-service-id: account-service
     get:
       tags:
-      - auth
-      summary: Generate a random login.
+      - Auth
+      summary: Generate a random login
       operationId: randomLogin
       responses:
         '200':
@@ -112,43 +112,21 @@ paths:
     x-service-id: account-service
     get:
       tags:
-      - auth
-      summary: Public key to validate the signature of a signed JWT.
+      - Auth
+      summary: Public key to validate the signature of a signed JWT
       operationId: login
       responses:
         '200':
           description: OK
 components:
   schemas:
-    AuthImpersonateForm:
+    AuthCancelRegisterForm:
       type: object
       properties:
-        userId:
-          type: integer
-          format: int64
-      required:
-      - userId
-    UserRole:
-      type: string
-      enum:
-      - USER
-      - MODERATOR
-      - ADMINISTRATOR
-    ImpersonateResult:
-      type: object
-      properties:
-        accessToken:
+        authIdToken:
           type: string
-    QuantClub:
-      type: string
-      enum:
-      - NONE
-      - BANDUNG
-      - BENGALURU
-      - DUBAI
-      - LONDON
-      - NEW_YORK
-      - PARIS
+      required:
+      - authIdToken
     FullUser:
       type: object
       properties:
@@ -193,13 +171,23 @@ components:
         restricted:
           type: boolean
           deprecated: true
-    AuthCancelRegisterForm:
+    UserRestriction:
+      type: string
+      enum:
+      - NONE
+      - PARTIAL
+      - FULL
+    UserRole:
+      type: string
+      enum:
+      - USER
+      - MODERATOR
+      - ADMINISTRATOR
+    RegisterResult:
       type: object
       properties:
-        authIdToken:
-          type: string
-      required:
-      - authIdToken
+        user:
+          $ref: '#/components/schemas/FullUser'
     AuthRegisterForm:
       type: object
       properties:
@@ -222,17 +210,29 @@ components:
       - country
       - firstName
       - lastName
-    UserRestriction:
+    AuthImpersonateForm:
+      type: object
+      properties:
+        userId:
+          type: integer
+          format: int64
+      required:
+      - userId
+    ImpersonateResult:
+      type: object
+      properties:
+        accessToken:
+          type: string
+    QuantClub:
       type: string
       enum:
       - NONE
-      - PARTIAL
-      - FULL
-    RegisterResult:
-      type: object
-      properties:
-        user:
-          $ref: '#/components/schemas/FullUser'
+      - BANDUNG
+      - BENGALURU
+      - DUBAI
+      - LONDON
+      - NEW_YORK
+      - PARIS
   securitySchemes:
     apiKey:
       type: apiKey

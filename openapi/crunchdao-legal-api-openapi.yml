@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity legal API
+  title: Tournament Legal API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,14 +8,14 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: legal
+- name: Legal
 paths:
   /v1/legal/accept:
     x-service-id: account-service
     post:
       tags:
-      - legal
-      summary: Accept current legal version.
+      - Legal
+      summary: Accept current legal version
       operationId: acceptLegal
       responses:
         '200':
@@ -31,8 +31,8 @@ paths:
     x-service-id: account-service
     get:
       tags:
-      - legal
-      summary: Get current legal information.
+      - Legal
+      summary: Get current legal information
       operationId: getLegal
       responses:
         '200':

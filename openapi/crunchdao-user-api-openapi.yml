@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity user API
+  title: Tournament User API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,13 +8,13 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: user
+- name: User
 paths:
   /v2/users/{userIdOrLogin}:
     x-service-id: account-service
     get:
       tags:
-      - user
+      - User
       operationId: show_1
       parameters:
       - name: userIdOrLogin
@@ -31,9 +31,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
+      summary: Show 1
+      x-summary-source: derived
     patch:
       tags:
-      - user
+      - User
       operationId: update_1
       parameters:
       - name: userIdOrLogin
@@ -56,11 +58,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FullUser'
+      summary: Update 1
+      x-summary-source: derived
   /v2/users/@me:
     x-service-id: account-service
     get:
       tags:
-      - user
+      - User
       operationId: show_2
       responses:
         '200':
@@ -73,9 +77,11 @@ paths:
       security:
       - accessToken: []
       - apiKey: []
+      summary: Show 2
+      x-summary-source: derived
     delete:
       tags:
-      - user
+      - User
       operationId: destroy
       parameters:
       - name: recaptchaResponse
@@ -95,9 +101,11 @@ paths:
       deprecated: true
       security:
       - accessToken: []
+      summary: Destroy
+      x-summary-source: derived
     patch:
       tags:
-      - user
+      - User
       operationId: update_2
       requestBody:
         content:
@@ -116,11 +124,13 @@ paths:
       security:
       - accessToken: []
       - apiKey: []
+      summary: Update 2
+      x-summary-source: derived
   /v1/users/{userIdentifier}/profile:
     x-service-id: account-service
     get:
       tags:
-      - user
+      - User
       operationId: showUserProfile
       parameters:
       - name: userIdentifier
@@ -137,9 +147,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserProfile'
+      summary: Show user profile
+      x-summary-source: derived
     patch:
       tags:
-      - user
+      - User
       operationId: updateUserProfile
       parameters:
       - name: userIdentifier
@@ -162,11 +174,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserProfile'
+      summary: Update user profile
+      x-summary-source: derived
   /v2/users:
     x-service-id: account-service
     get:
       tags:
-      - user
+      - User
       operationId: index_2
       parameters:
       - name: simple
@@ -185,12 +199,14 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/User'
+      summary: Index 2
+      x-summary-source: derived
   /v2/users/~:
     x-service-id: account-service
     get:
       tags:
-      - user
-      summary: Show multiple users.
+      - User
+      summary: Show multiple users
       operationId: batchShowUserByIdentifier
       parameters:
       - name: identifier
@@ -215,8 +231,8 @@ paths:
     x-service-id: account-service
     get:
       tags:
-      - user
-      summary: Get a login-to-id mapping.
+      - User
+      summary: Get a login-to-id mapping
       operationId: showMapping
       parameters:
       - name: reverse
@@ -239,8 +255,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - user
-      summary: Get yourself.
+      - User
+      summary: Get yourself
       operationId: getSelf
       parameters:
       - name: competitionName
@@ -262,6 +278,80 @@ paths:
       - apiKey: []
 components:
   schemas:
+    CompetitionStatus:
+      type: string
+      enum:
+      - PENDING
+      - OPEN
+      - CLOSED
+    ParticipantRole:
+      type: string
+      enum:
+      - USER
+      - ORGANIZER
+      - ADMINISTRATOR
+    FullUser:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+        country:
+          type: string
+        quantClub:
+          $ref: '#/components/schemas/QuantClub'
+        deleted:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        university:
+          type: string
+        restriction:
+          $ref: '#/components/schemas/UserRestriction'
+        role:
+          $ref: '#/components/schemas/UserRole'
+        ethereumAddress:
+          type: string
+        solanaAddress:
+          type: string
+        deletedAt:
+          type: string
+          format: date-time
+        verified:
+          type: boolean
+        verifiedAt:
+          type: string
+          format: date-time
+        email:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        restricted:
+          type: boolean
+          deprecated: true
+    CompetitionStatistics:
+      type: object
+      properties:
+        entrants:
+          type: integer
+          format: int64
+        participants:
+          type: integer
+          format: int64
+        teams:
+          type: integer
+          format: int64
+        submissions:
+          type: integer
+          format: int64
+        runnables:
+          type: integer
+          format: int64
     Competition:
       type: object
       properties:
@@ -434,13 +524,71 @@ components:
           description: Non-detailed timeline events.
           items:
             $ref: '#/components/schemas/TimelineEvent'
-    User:
+    Self:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/FullUser'
+        participant:
+          $ref: '#/components/schemas/Participant'
+        ruleAgreement:
+          $ref: '#/components/schemas/RuleAgreement'
+    DataReleaseSplitKey:
+      type: string
+      enum:
+      - INTEGER
+      - STRING
+    RuleAgreement:
+      type: object
+      properties:
+        accepted:
+          type: boolean
+        acceptedAt:
+          type: string
+          format: date-time
+    UserRestriction:
+      type: string
+      enum:
+      - NONE
+      - PARTIAL
+      - FULL
+    Connection:
       type: object
       properties:
         id:
           type: integer
           format: int64
-        login:
+        type:
+          $ref: '#/components/schemas/ConnectionType'
+        handle:
+          type: string
+        username:
+          type: string
+        profileUrl:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        public:
+          type: boolean
+    TimelineEventType:
+      type: string
+      enum:
+      - GENERIC
+      - LEADERBOARD
+      - RULES
+      - REWARDS
+    TimelineEventButton:
+      type: object
+      properties:
+        text:
+          type: string
+        link:
+          type: string
+        color:
           type: string
     TimelineEvent:
       type: object
@@ -471,115 +619,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-    CompetitionStatistics:
-      type: object
-      properties:
-        entrants:
-          type: integer
-          format: int64
-        participants:
-          type: integer
-          format: int64
-        teams:
-          type: integer
-          format: int64
-        submissions:
-          type: integer
-          format: int64
-        runnables:
-          type: integer
-          format: int64
-    CompetitionStatus:
-      type: string
-      enum:
-      - PENDING
-      - OPEN
-      - CLOSED
-    ConnectionType:
-      type: string
-      enum:
-      - DISCORD
-      - TWITTER
-      - GITHUB
-      - KAGGLE
-      - REDDIT
-      - LINKEDIN
-      - GOOGLE
-    Connection:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        type:
-          $ref: '#/components/schemas/ConnectionType'
-        handle:
-          type: string
-        username:
-          type: string
-        profileUrl:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        public:
-          type: boolean
-    FullUser:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        login:
-          type: string
-        country:
-          type: string
-        quantClub:
-          $ref: '#/components/schemas/QuantClub'
-        deleted:
-          type: boolean
-        createdAt:
-          type: string
-          format: date-time
-        university:
-          type: string
-        restriction:
-          $ref: '#/components/schemas/UserRestriction'
-        role:
-          $ref: '#/components/schemas/UserRole'
-        ethereumAddress:
-          type: string
-        solanaAddress:
-          type: string
-        deletedAt:
-          type: string
-          format: date-time
-        verified:
-          type: boolean
-        verifiedAt:
-          type: string
-          format: date-time
-        email:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        restricted:
-          type: boolean
-          deprecated: true
-    Self:
-      type: object
-      properties:
-        user:
-          $ref: '#/components/schemas/FullUser'
-        participant:
-          $ref: '#/components/schemas/Participant'
-        ruleAgreement:
-          $ref: '#/components/schemas/RuleAgreement'
     UserUpdateForm:
       type: object
       properties:
@@ -631,33 +670,6 @@ components:
           type: boolean
           deprecated: true
           writeOnly: true
-    UserProfileUpdateForm:
-      type: object
-      properties:
-        biography:
-          type: string
-          description: User biography.
-          maxLength: 2048
-          minLength: 0
-      required:
-      - biography
-    CompetitionFormat:
-      type: string
-      enum:
-      - TIMESERIES
-      - DAG
-      - STREAM
-      - SPATIAL
-      - UNSTRUCTURED
-    TimelineEventButton:
-      type: object
-      properties:
-        text:
-          type: string
-        link:
-          type: string
-        color:
-          type: string
     UserProfile:
       type: object
       properties:
@@ -669,39 +681,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Connection'
-    TimelineEventType:
+    CompetitionFormat:
       type: string
       enum:
-      - GENERIC
-      - LEADERBOARD
-      - RULES
-      - REWARDS
-    ParticipantRole:
-      type: string
-      enum:
-      - USER
-      - ORGANIZER
-      - ADMINISTRATOR
-    CompetitionTag:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Slug-like name.
-        displayName:
-          type: string
-          description: Display name for the UI.
-    UserRole:
-      type: string
-      enum:
-      - USER
-      - MODERATOR
-      - ADMINISTRATOR
-    CompetitionVisibility:
-      type: string
-      enum:
-      - HIDDEN
-      - PUBLIC
+      - TIMESERIES
+      - DAG
+      - STREAM
+      - SPATIAL
+      - UNSTRUCTURED
     QuantClub:
       type: string
       enum:
@@ -712,45 +699,24 @@ components:
       - LONDON
       - NEW_YORK
       - PARIS
-    RuleAgreement:
+    UserProfileUpdateForm:
       type: object
       properties:
-        accepted:
-          type: boolean
-        acceptedAt:
+        biography:
           type: string
-          format: date-time
-    DataReleaseSplitKey:
-      type: string
-      enum:
-      - INTEGER
-      - STRING
-    CompetitionType:
-      type: string
-      enum:
-      - OPEN
-      - PAUSED
-    CompetitionMode:
-      type: string
-      enum:
-      - OFFLINE
-      - REAL_TIME
-    CompetitionSession:
+          description: User biography.
+          maxLength: 2048
+          minLength: 0
+      required:
+      - biography
+    User:
       type: object
       properties:
-        state:
-          $ref: '#/components/schemas/CompetitionType'
-          description: Current session state.
-        nextChange:
+        id:
+          type: integer
+          format: int64
+        login:
           type: string
-          format: date-time
-          description: When should the next session state change happen. Unknown if `null`.
-    UserRestriction:
-      type: string
-      enum:
-      - NONE
-      - PARTIAL
-      - FULL
     Participant:
       type: object
       properties:
@@ -802,6 +768,56 @@ components:
           type: integer
           format: int64
           deprecated: true
+    UserRole:
+      type: string
+      enum:
+      - USER
+      - MODERATOR
+      - ADMINISTRATOR
+    CompetitionVisibility:
+      type: string
+      enum:
+      - HIDDEN
+      - PUBLIC
+    CompetitionType:
+      type: string
+      enum:
+      - OPEN
+      - PAUSED
+    CompetitionMode:
+      type: string
+      enum:
+      - OFFLINE
+      - REAL_TIME
+    CompetitionTag:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name for the UI.
+    CompetitionSession:
+      type: object
+      properties:
+        state:
+          $ref: '#/components/schemas/CompetitionType'
+          description: Current session state.
+        nextChange:
+          type: string
+          format: date-time
+          description: When should the next session state change happen. Unknown if `null`.
+    ConnectionType:
+      type: string
+      enum:
+      - DISCORD
+      - TWITTER
+      - GITHUB
+      - KAGGLE
+      - REDDIT
+      - LINKEDIN
+      - GOOGLE
   securitySchemes:
     apiKey:
       type: apiKey

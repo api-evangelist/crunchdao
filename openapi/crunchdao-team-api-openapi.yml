@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity team API
+  title: Tournament Team API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,14 +8,14 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: team
+- name: Team
 paths:
   /v1/competitions/{competitionIdentifier}/teams:
     x-service-id: competition-service
     get:
       tags:
-      - team
-      summary: List teams.
+      - Team
+      summary: List teams
       operationId: listTeams
       parameters:
       - name: competitionIdentifier
@@ -36,8 +36,8 @@ paths:
                   $ref: '#/components/schemas/Team'
     post:
       tags:
-      - team
-      summary: Create a team.
+      - Team
+      summary: Create a team
       operationId: createTeam
       parameters:
       - name: competitionIdentifier
@@ -64,8 +64,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - team
-      summary: Show a team.
+      - Team
+      summary: Show a team
       operationId: getTeam
       parameters:
       - name: competitionIdentifier
@@ -91,8 +91,8 @@ paths:
                 $ref: '#/components/schemas/Team'
     patch:
       tags:
-      - team
-      summary: Update a team.
+      - Team
+      summary: Update a team
       operationId: updateTeam
       parameters:
       - name: competitionIdentifier
@@ -126,8 +126,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - team
-      summary: List teams with filters.
+      - Team
+      summary: List teams with filters
       operationId: listTeamsV2
       parameters:
       - name: competitionIdentifier
@@ -223,8 +223,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - team
-      summary: List a team's members.
+      - Team
+      summary: List a team's members
       operationId: listTeamMembers
       parameters:
       - name: competitionIdentifier
@@ -252,6 +252,33 @@ paths:
                   $ref: '#/components/schemas/TeamMember'
 components:
   schemas:
+    TeamCreateForm:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        lookingForTeammates:
+          type: boolean
+      required:
+      - lookingForTeammates
+      - name
+    TeamMember:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          type: string
+          format: date-time
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
     TeamUpdateForm:
       type: object
       properties:
@@ -291,41 +318,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-    TeamCreateForm:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        lookingForTeammates:
-          type: boolean
-      required:
-      - lookingForTeammates
-      - name
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        login:
-          type: string
-    TeamMember:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        user:
-          $ref: '#/components/schemas/User'
-        createdAt:
-          type: string
-          format: date-time
-        userId:
-          type: integer
-          format: int64
-          deprecated: true
     PageTeam:
       type: object
       properties:
@@ -345,6 +337,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Team'
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
   securitySchemes:
     apiKey:
       type: apiKey

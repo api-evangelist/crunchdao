@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity season:slice API
+  title: Tournament Season:slice API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -44,6 +44,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Slice'
+      summary: List season slices
+      x-summary-source: derived
     post:
       tags:
       - season:slice
@@ -83,6 +85,8 @@ paths:
       security:
       - accessToken: []
       - apiKey: []
+      summary: Create season slice
+      x-summary-source: derived
   /v1/seasons/{seasonNumber}/slices/~/import/markdown:
     x-service-id: competition-service
     post:
@@ -125,6 +129,8 @@ paths:
       security:
       - accessToken: []
       - apiKey: []
+      summary: Import season slices from markdown
+      x-summary-source: derived
   /v1/seasons/{seasonNumber}/slices/~/import/gitbook:
     x-service-id: competition-service
     post:
@@ -157,6 +163,8 @@ paths:
       security:
       - accessToken: []
       - apiKey: []
+      summary: Import season slices from git book
+      x-summary-source: derived
   /v1/seasons/{seasonNumber}/slices/{sliceName}:
     x-service-id: competition-service
     get:
@@ -196,6 +204,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Slice'
+      summary: Get season slice
+      x-summary-source: derived
     delete:
       tags:
       - season:slice
@@ -232,6 +242,8 @@ paths:
       security:
       - accessToken: []
       - apiKey: []
+      summary: Delete season slice
+      x-summary-source: derived
     patch:
       tags:
       - season:slice
@@ -278,6 +290,8 @@ paths:
       security:
       - accessToken: []
       - apiKey: []
+      summary: Update season slice
+      x-summary-source: derived
 components:
   schemas:
     SliceMarkdownImportForm:
@@ -287,25 +301,6 @@ components:
           type: string
       required:
       - markdown
-    SliceGitBookImportForm:
-      type: object
-      properties:
-        url:
-          type: string
-        changeRequestNumber:
-          type: integer
-          format: int64
-        titleLevel:
-          type: string
-          enum:
-          - PRIMARY
-          - SECONDARY
-        append:
-          type: boolean
-      required:
-      - append
-      - titleLevel
-      - url
     SliceCreateForm:
       type: object
       properties:
@@ -330,6 +325,13 @@ components:
       - nativeConfiguration
       - order
       - type
+    SliceType:
+      type: string
+      enum:
+      - CONTENT
+      - KEY_METRICS
+      - TIMELINE
+      - TEAM
     Slice:
       type: object
       properties:
@@ -357,13 +359,6 @@ components:
         createdAt:
           type: string
           format: date-time
-    SliceType:
-      type: string
-      enum:
-      - CONTENT
-      - KEY_METRICS
-      - TIMELINE
-      - TEAM
     SliceUpdateForm:
       type: object
       properties:
@@ -383,6 +378,25 @@ components:
         order:
           type: integer
           format: int64
+    SliceGitBookImportForm:
+      type: object
+      properties:
+        url:
+          type: string
+        changeRequestNumber:
+          type: integer
+          format: int64
+        titleLevel:
+          type: string
+          enum:
+          - PRIMARY
+          - SECONDARY
+        append:
+          type: boolean
+      required:
+      - append
+      - titleLevel
+      - url
   securitySchemes:
     apiKey:
       type: apiKey

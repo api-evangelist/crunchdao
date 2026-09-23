@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity season API
+  title: Tournament Season API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,14 +8,14 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: season
+- name: Season
 paths:
   /v1/stakers:
     x-service-id: competition-service
     get:
       tags:
-      - season
-      summary: List seasons with filters.
+      - Season
+      summary: List seasons with filters
       operationId: listSeasons
       parameters:
       - name: organizerName
@@ -102,8 +102,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - season
-      summary: List seasons with filters.
+      - Season
+      summary: List seasons with filters
       operationId: listSeasons_1
       parameters:
       - name: status
@@ -160,8 +160,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - season
-      summary: Show a season.
+      - Season
+      summary: Show a season
       operationId: getSeason
       parameters:
       - name: seasonNumber
@@ -181,69 +181,6 @@ paths:
                 $ref: '#/components/schemas/Season'
 components:
   schemas:
-    Staker:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        address:
-          type: string
-          description: Address which placed the stakes.
-        user:
-          $ref: '#/components/schemas/User'
-          description: User who match the address. `null` if none is matching.
-        totalAmount:
-          type: integer
-          description: Total staked amount.
-        organizer:
-          $ref: '#/components/schemas/Organizer'
-          description: Target of the stake. Only included if `includeTarget=true`
-    Organizer:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-          description: Slug-like number.
-        displayName:
-          type: string
-          description: Display name for cards.
-        onChainId:
-          type: string
-          description: On chain address linked to this organizer. Only set if is a coordinator.
-        logoImageUrl:
-          type: string
-          description: Logo image URL for cards.
-        bannerImageUrl:
-          type: string
-          description: Banner URL for cards.
-        stake:
-          $ref: '#/components/schemas/Unit'
-          description: Staking information. Only set if `onChainId` is also set.
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        login:
-          type: string
-    Unit:
-      type: object
-      properties:
-        prefix:
-          type: string
-          description: String to show before the value.
-        suffix:
-          type: string
-          description: String to show after the value.
-        scale:
-          type: integer
-          format: int32
-          description: Number of digits to keep after the comma.
     PageStaker:
       type: object
       properties:
@@ -263,6 +200,24 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Staker'
+    Staker:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        address:
+          type: string
+          description: Address which placed the stakes.
+        user:
+          $ref: '#/components/schemas/User'
+          description: User who match the address. `null` if none is matching.
+        totalAmount:
+          type: integer
+          description: Total staked amount.
+        organizer:
+          $ref: '#/components/schemas/Organizer'
+          description: Target of the stake. Only included if `includeTarget=true`
     Season:
       type: object
       properties:
@@ -299,13 +254,6 @@ components:
           type: string
           format: date-time
           description: Season creation timestamp.
-    SeasonStatus:
-      type: string
-      description: Filter for seasons with a specific status(es).
-      enum:
-      - VOTING
-      - OPEN
-      - CLOSED
     PageSeason:
       type: object
       properties:
@@ -325,6 +273,58 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Season'
+    Unit:
+      type: object
+      properties:
+        prefix:
+          type: string
+          description: String to show before the value.
+        suffix:
+          type: string
+          description: String to show after the value.
+        scale:
+          type: integer
+          format: int32
+          description: Number of digits to keep after the comma.
+    Organizer:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          description: Slug-like number.
+        displayName:
+          type: string
+          description: Display name for cards.
+        onChainId:
+          type: string
+          description: On chain address linked to this organizer. Only set if is a coordinator.
+        logoImageUrl:
+          type: string
+          description: Logo image URL for cards.
+        bannerImageUrl:
+          type: string
+          description: Banner URL for cards.
+        stake:
+          $ref: '#/components/schemas/Unit'
+          description: Staking information. Only set if `onChainId` is also set.
+    SeasonStatus:
+      type: string
+      description: Filter for seasons with a specific status(es).
+      enum:
+      - VOTING
+      - OPEN
+      - CLOSED
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
   securitySchemes:
     apiKey:
       type: apiKey

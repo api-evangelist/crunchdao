@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity library:request API
+  title: Tournament Library:request API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -15,7 +15,7 @@ paths:
     get:
       tags:
       - library:request
-      summary: List library requests.
+      summary: List library requests
       operationId: listLibraryRequests
       parameters:
       - name: verdict
@@ -91,7 +91,7 @@ paths:
     post:
       tags:
       - library:request
-      summary: Create a library request.
+      summary: Create a library request
       operationId: createLibraryRequest
       requestBody:
         content:
@@ -111,7 +111,7 @@ paths:
     post:
       tags:
       - library:request
-      summary: Reject a library request.
+      summary: Reject a library request
       operationId: rejectLibraryRequest
       parameters:
       - name: libraryRequestId
@@ -140,7 +140,7 @@ paths:
     post:
       tags:
       - library:request
-      summary: Approve a library request.
+      summary: Approve a library request
       operationId: approveLibraryRequest
       parameters:
       - name: libraryRequestId
@@ -169,7 +169,7 @@ paths:
     get:
       tags:
       - library:request
-      summary: Test if a library on PyPI.
+      summary: Test if a library on PyPI
       operationId: queryLibraryRequest
       parameters:
       - name: name
@@ -199,6 +199,93 @@ paths:
                 $ref: '#/components/schemas/QueriedPackage'
 components:
   schemas:
+    LibraryRequestVerdict:
+      type: string
+      enum:
+      - PENDING
+      - APPROVED
+      - REJECTED
+    PageLibraryRequest:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/LibraryRequest'
+    LibraryRequestRejectForm:
+      type: object
+      properties:
+        reason:
+          type: string
+          maxLength: 500
+          minLength: 0
+      required:
+      - reason
+    LibraryRequestCreateForm:
+      type: object
+      properties:
+        language:
+          type: string
+          enum:
+          - PYTHON
+          - R
+        name:
+          type: string
+          maxLength: 200
+          minLength: 1
+        alias:
+          type: string
+          maxLength: 200
+          minLength: 1
+        gpuRequirement:
+          type: string
+          enum:
+          - OPTIONAL
+          - RECOMMENDED
+          - REQUIRED
+        additionalDetails:
+          type: string
+          maxLength: 500
+          minLength: 0
+        competitionId:
+          type: integer
+          format: int64
+      required:
+      - competitionId
+      - language
+    LibraryRequestApproveForm:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 200
+          minLength: 0
+        alias:
+          type: string
+          maxLength: 200
+          minLength: 0
+        gpuRequirement:
+          type: string
+          enum:
+          - OPTIONAL
+          - RECOMMENDED
+          - REQUIRED
+      required:
+      - alias
+      - gpuRequirement
+      - name
     LibraryRequest:
       type: object
       properties:
@@ -242,112 +329,11 @@ components:
         createdAt:
           type: string
           format: date-time
-    LibraryRequestVerdict:
-      type: string
-      enum:
-      - PENDING
-      - APPROVED
-      - REJECTED
-    GpuRequirement:
-      type: string
-      enum:
-      - OPTIONAL
-      - RECOMMENDED
-      - REQUIRED
-    LibraryRequestApproveForm:
-      type: object
-      properties:
-        name:
-          type: string
-          maxLength: 200
-          minLength: 0
-        alias:
-          type: string
-          maxLength: 200
-          minLength: 0
-        gpuRequirement:
-          type: string
-          enum:
-          - OPTIONAL
-          - RECOMMENDED
-          - REQUIRED
-      required:
-      - alias
-      - gpuRequirement
-      - name
-    LibraryRequestCreateForm:
-      type: object
-      properties:
-        language:
-          type: string
-          enum:
-          - PYTHON
-          - R
-        name:
-          type: string
-          maxLength: 200
-          minLength: 1
-        alias:
-          type: string
-          maxLength: 200
-          minLength: 1
-        gpuRequirement:
-          type: string
-          enum:
-          - OPTIONAL
-          - RECOMMENDED
-          - REQUIRED
-        additionalDetails:
-          type: string
-          maxLength: 500
-          minLength: 0
-        competitionId:
-          type: integer
-          format: int64
-      required:
-      - competitionId
-      - language
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        login:
-          type: string
     Language:
       type: string
       enum:
       - PYTHON
       - R
-    PageLibraryRequest:
-      type: object
-      properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/LibraryRequest'
-    LibraryRequestRejectForm:
-      type: object
-      properties:
-        reason:
-          type: string
-          maxLength: 500
-          minLength: 0
-      required:
-      - reason
     PayoutCompetitionName:
       type: object
       properties:
@@ -358,6 +344,12 @@ components:
           type: string
         displayName:
           type: string
+    GpuRequirement:
+      type: string
+      enum:
+      - OPTIONAL
+      - RECOMMENDED
+      - REQUIRED
     QueriedPackage:
       type: object
       properties:
@@ -368,6 +360,14 @@ components:
         found:
           type: boolean
         lastestVersion:
+          type: string
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
           type: string
   securitySchemes:
     apiKey:

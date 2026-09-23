@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity auth:oauth API
+  title: Tournament Auth:oauth API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,13 +8,13 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: auth:oauth
+- name: auth oauth
 paths:
   /v2/auth/oauth2/token:
     x-service-id: account-service
     post:
       tags:
-      - auth:oauth
+      - auth oauth
       operationId: consume
       parameters:
       - name: grant_type
@@ -60,11 +60,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AuthorizedToken'
+      summary: Consume
+      x-summary-source: derived
   /v2/auth/oauth2/authorize:
     x-service-id: account-service
     post:
       tags:
-      - auth:oauth
+      - auth oauth
       operationId: authorize
       parameters:
       - name: response_type
@@ -113,11 +115,13 @@ paths:
       security:
       - accessToken: []
       - apiKey: []
+      summary: Authorize
+      x-summary-source: derived
   /v2/auth/oauth2/user:
     x-service-id: account-service
     get:
       tags:
-      - auth:oauth
+      - auth oauth
       operationId: info
       responses:
         '200':
@@ -128,11 +132,13 @@ paths:
                 $ref: '#/components/schemas/OAuthUserInfo'
       security:
       - accessToken: []
+      summary: Info
+      x-summary-source: derived
   /v2/auth/oauth2/registered-clients/{clientId}:
     x-service-id: account-service
     get:
       tags:
-      - auth:oauth
+      - auth oauth
       operationId: showRegisteredClient
       parameters:
       - name: clientId
@@ -150,8 +156,34 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RegisteredClient'
+      summary: Show registered client
+      x-summary-source: derived
 components:
   schemas:
+    AuthorizedToken:
+      type: object
+      properties:
+        access_token:
+          type: string
+        expires_in:
+          type: integer
+          format: int64
+    OAuthUserInfo:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        username:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        verified:
+          type: boolean
+        avatarUrl:
+          type: string
     RegisteredClient:
       type: object
       properties:
@@ -188,14 +220,6 @@ components:
             $comment: ISO 8601 Duration
             example: PT1M
           description: How long is the generated JWT valid?
-    AuthorizedToken:
-      type: object
-      properties:
-        access_token:
-          type: string
-        expires_in:
-          type: integer
-          format: int64
     AuthorizedCodeDto:
       type: object
       discriminator:
@@ -209,22 +233,6 @@ components:
           enum:
           - AUTHORIZATION_CODE
           - IMPLICIT
-    OAuthUserInfo:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        username:
-          type: string
-        name:
-          type: string
-        email:
-          type: string
-        verified:
-          type: boolean
-        avatarUrl:
-          type: string
   securitySchemes:
     apiKey:
       type: apiKey

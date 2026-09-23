@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity deployment API
+  title: Tournament Deployment API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,14 +8,14 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: deployment
+- name: Deployment
 paths:
   /v1/competitions/{competitionIdentifier}/projects/{userLogin}/{projectIdentifier}/deployments/sign:
     x-service-id: competition-service
     post:
       tags:
-      - deployment
-      summary: Get the signature for a deployment.
+      - Deployment
+      summary: Get the signature for a deployment
       operationId: signForDeployment
       parameters:
       - name: competitionIdentifier
@@ -56,8 +56,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - deployment
-      summary: List the deployments of a project.
+      - Deployment
+      summary: List the deployments of a project
       operationId: listDeployments
       parameters:
       - name: competitionIdentifier
@@ -159,8 +159,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - deployment
-      summary: Show a deployment.
+      - Deployment
+      summary: Show a deployment
       operationId: getDeployment
       parameters:
       - name: competitionIdentifier
@@ -203,8 +203,8 @@ paths:
   : x-service-id: competition-service
     get:
       tags:
-      - deployment
-      summary: Show the builder logs of a deployment.
+      - Deployment
+      summary: Show the builder logs of a deployment
       operationId: getDeploymentBuilderLogs
       parameters:
       - name: competitionIdentifier
@@ -265,33 +265,6 @@ paths:
                   $ref: '#/components/schemas/DeploymentLog'
 components:
   schemas:
-    DeploymentDesiredStatus:
-      type: string
-      enum:
-      - RUNNING
-      - REPLACING
-      - STOPPED
-    SubmissionFile:
-      type: object
-      properties:
-        name:
-          type: string
-        size:
-          type: integer
-          format: int64
-        encrypted:
-          type: boolean
-        mimeType:
-          type: string
-        foundHardcodedString:
-          type: boolean
-          deprecated: true
-    GpuRequirement:
-      type: string
-      enum:
-      - OPTIONAL
-      - RECOMMENDED
-      - REQUIRED
     Model:
       type: object
       properties:
@@ -312,6 +285,150 @@ components:
         createdAt:
           type: string
           format: date-time
+    SubmissionFile:
+      type: object
+      properties:
+        name:
+          type: string
+        size:
+          type: integer
+          format: int64
+        encrypted:
+          type: boolean
+        mimeType:
+          type: string
+        foundHardcodedString:
+          type: boolean
+          deprecated: true
+    Project:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        competitionId:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/User'
+        name:
+          type: string
+        selected:
+          type: boolean
+        submitted:
+          type: boolean
+        note:
+          type: string
+        writeupUrl:
+          type: string
+        writeupArchived:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
+    SignedDeploymentDetails:
+      type: object
+      properties:
+        cruncherPubkey:
+          type: string
+        modelId:
+          type: integer
+          format: int64
+          description: The `Project.id`.
+        submissionId:
+          type: integer
+          format: int64
+        resourceId:
+          type: integer
+          format: int64
+          description: The `Model.id`.
+        timestamp:
+          type: integer
+          format: int64
+          description: Timestamp when the signature occurred. In seconds since the epoch.
+        rawMessage:
+          type: string
+          description: The raw message before it is signed.
+    SignedDeployment:
+      type: object
+      properties:
+        signature:
+          type: string
+          description: The signed the deployment details.
+        details:
+          $ref: '#/components/schemas/SignedDeploymentDetails'
+    GpuRequirement:
+      type: string
+      enum:
+      - OPTIONAL
+      - RECOMMENDED
+      - REQUIRED
+    DeploymentDesiredStatus:
+      type: string
+      enum:
+      - RUNNING
+      - REPLACING
+      - STOPPED
+    SubmissionType:
+      type: string
+      enum:
+      - CODE
+      - NOTEBOOK
+      - PREDICTION
+    DeploymentLog:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        message:
+          type: string
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+    PageDeployment:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Deployment'
+    DeploymentSignForm:
+      type: object
+      properties:
+        submissionNumber:
+          type: integer
+          format: int64
+          deprecated: true
+          description: The submission number. Must be specified if `submissionId` is not.
+        submissionId:
+          type: integer
+          format: int64
+          description: The submission id. Must be specified if `submissionNumber` is not. Must be owned by the project.
     Deployment:
       type: object
       properties:
@@ -355,6 +472,12 @@ components:
       - RUNNER_STOPPED
       - RUNNER_RECOVERING
       - RUNNER_FAILED
+    RuntimeType:
+      type: string
+      enum:
+      - CPU
+      - GPU
+      - COPY
     Submission:
       type: object
       properties:
@@ -396,129 +519,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SubmissionFile'
-    DeploymentSignForm:
-      type: object
-      properties:
-        submissionNumber:
-          type: integer
-          format: int64
-          deprecated: true
-          description: The submission number. Must be specified if `submissionId` is not.
-        submissionId:
-          type: integer
-          format: int64
-          description: The submission id. Must be specified if `submissionNumber` is not. Must be owned by the project.
-    Project:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        competitionId:
-          type: integer
-          format: int64
-        user:
-          $ref: '#/components/schemas/User'
-        name:
-          type: string
-        selected:
-          type: boolean
-        submitted:
-          type: boolean
-        note:
-          type: string
-        writeupUrl:
-          type: string
-        writeupArchived:
-          type: boolean
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        userId:
-          type: integer
-          format: int64
-          deprecated: true
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        login:
-          type: string
-    SubmissionType:
-      type: string
-      enum:
-      - CODE
-      - NOTEBOOK
-      - PREDICTION
-    RuntimeType:
-      type: string
-      enum:
-      - CPU
-      - GPU
-      - COPY
-    SignedDeploymentDetails:
-      type: object
-      properties:
-        cruncherPubkey:
-          type: string
-        modelId:
-          type: integer
-          format: int64
-          description: The `Project.id`.
-        submissionId:
-          type: integer
-          format: int64
-        resourceId:
-          type: integer
-          format: int64
-          description: The `Model.id`.
-        timestamp:
-          type: integer
-          format: int64
-          description: Timestamp when the signature occurred. In seconds since the epoch.
-        rawMessage:
-          type: string
-          description: The raw message before it is signed.
-    DeploymentLog:
-      type: object
-      properties:
-        timestamp:
-          type: string
-          format: date-time
-        message:
-          type: string
-    SignedDeployment:
-      type: object
-      properties:
-        signature:
-          type: string
-          description: The signed the deployment details.
-        details:
-          $ref: '#/components/schemas/SignedDeploymentDetails'
-    PageDeployment:
-      type: object
-      properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/Deployment'
   securitySchemes:
     apiKey:
       type: apiKey

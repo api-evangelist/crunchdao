@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity certificate API
+  title: Tournament Certificate API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,14 +8,14 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: certificate
+- name: Certificate
 paths:
   /v1/certificates:
     x-service-id: competition-service
     post:
       tags:
-      - certificate
-      summary: Create a certificate.
+      - Certificate
+      summary: Create a certificate
       operationId: createCertificate
       parameters:
       - name: uuid
@@ -80,8 +80,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - certificate
-      summary: Show a certificate by identifier.
+      - Certificate
+      summary: Show a certificate by identifier
       operationId: getCertificate
       parameters:
       - name: certificateUuid
@@ -122,8 +122,8 @@ paths:
                 $ref: '#/components/schemas/Certificate'
     patch:
       tags:
-      - certificate
-      summary: Update a certificate.
+      - Certificate
+      summary: Update a certificate
       operationId: updateCertificate
       parameters:
       - name: certificateUuid
@@ -151,8 +151,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - certificate
-      summary: List certificates of a users.
+      - Certificate
+      summary: List certificates of a users
       operationId: listCertificates
       parameters:
       - name: userLogin
@@ -173,14 +173,35 @@ paths:
                   $ref: '#/components/schemas/Certificate'
 components:
   schemas:
-    CertificateUpdateForm:
+    CompetitionMode:
+      type: string
+      enum:
+      - OFFLINE
+      - REAL_TIME
+    CompetitionStatus:
+      type: string
+      enum:
+      - PENDING
+      - OPEN
+      - CLOSED
+    CompetitionStatistics:
       type: object
       properties:
-        nameVariant:
-          type: string
-          enum:
-          - LOGIN
-          - FIRST_LAST
+        entrants:
+          type: integer
+          format: int64
+        participants:
+          type: integer
+          format: int64
+        teams:
+          type: integer
+          format: int64
+        submissions:
+          type: integer
+          format: int64
+        runnables:
+          type: integer
+          format: int64
     Competition:
       type: object
       properties:
@@ -353,6 +374,13 @@ components:
           description: Non-detailed timeline events.
           items:
             $ref: '#/components/schemas/TimelineEvent'
+    TimelineEventType:
+      type: string
+      enum:
+      - GENERIC
+      - LEADERBOARD
+      - RULES
+      - REWARDS
     TimelineEventButton:
       type: object
       properties:
@@ -362,26 +390,6 @@ components:
           type: string
         color:
           type: string
-    CompetitionVisibility:
-      type: string
-      enum:
-      - HIDDEN
-      - PUBLIC
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        login:
-          type: string
-    TimelineEventType:
-      type: string
-      enum:
-      - GENERIC
-      - LEADERBOARD
-      - RULES
-      - REWARDS
     TimelineEvent:
       type: object
       properties:
@@ -411,44 +419,16 @@ components:
         updatedAt:
           type: string
           format: date-time
-    CertificateNameVariant:
-      type: string
-      enum:
-      - LOGIN
-      - FIRST_LAST
     DataReleaseSplitKey:
       type: string
       enum:
       - INTEGER
       - STRING
-    CompetitionType:
+    CompetitionVisibility:
       type: string
       enum:
-      - OPEN
-      - PAUSED
-    CompetitionStatistics:
-      type: object
-      properties:
-        entrants:
-          type: integer
-          format: int64
-        participants:
-          type: integer
-          format: int64
-        teams:
-          type: integer
-          format: int64
-        submissions:
-          type: integer
-          format: int64
-        runnables:
-          type: integer
-          format: int64
-    CompetitionMode:
-      type: string
-      enum:
-      - OFFLINE
-      - REAL_TIME
+      - HIDDEN
+      - PUBLIC
     Certificate:
       type: object
       properties:
@@ -476,12 +456,32 @@ components:
           type: integer
           format: int64
           deprecated: true
-    CompetitionStatus:
+    CertificateUpdateForm:
+      type: object
+      properties:
+        nameVariant:
+          type: string
+          enum:
+          - LOGIN
+          - FIRST_LAST
+    CompetitionType:
       type: string
       enum:
-      - PENDING
       - OPEN
-      - CLOSED
+      - PAUSED
+    CertificateNameVariant:
+      type: string
+      enum:
+      - LOGIN
+      - FIRST_LAST
+    CompetitionFormat:
+      type: string
+      enum:
+      - TIMESERIES
+      - DAG
+      - STREAM
+      - SPATIAL
+      - UNSTRUCTURED
     CompetitionSession:
       type: object
       properties:
@@ -492,14 +492,6 @@ components:
           type: string
           format: date-time
           description: When should the next session state change happen. Unknown if `null`.
-    CompetitionFormat:
-      type: string
-      enum:
-      - TIMESERIES
-      - DAG
-      - STREAM
-      - SPATIAL
-      - UNSTRUCTURED
     CompetitionTag:
       type: object
       properties:
@@ -509,6 +501,14 @@ components:
         displayName:
           type: string
           description: Display name for the UI.
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
   securitySchemes:
     apiKey:
       type: apiKey

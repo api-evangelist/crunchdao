@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity data API
+  title: Tournament Data API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,14 +8,14 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: data
+- name: Data
 paths:
   /v2/competitions/{competitionIdentifier}/data-releases:
     x-service-id: competition-service
     get:
       tags:
-      - data
-      summary: List data releases.
+      - Data
+      summary: List data releases
       operationId: listDataReleases
       parameters:
       - name: competitionIdentifier
@@ -67,8 +67,8 @@ paths:
       - apiKey: []
     post:
       tags:
-      - data
-      summary: Create a data releases.
+      - Data
+      summary: Create a data releases
       operationId: createDataRelease
       parameters:
       - name: competitionIdentifier
@@ -98,8 +98,8 @@ paths:
     x-service-id: competition-service
     post:
       tags:
-      - data
-      summary: Resolve a data release's Y.
+      - Data
+      summary: Resolve a data release's Y
       operationId: resolveDataRelease
       parameters:
       - name: competitionIdentifier
@@ -144,8 +144,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - data
-      summary: Get a run's data release.
+      - Data
+      summary: Get a run's data release
       operationId: getPhaseDataRelease
       parameters:
       - name: competitionIdentifier
@@ -201,8 +201,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - data
-      summary: List data releases.
+      - Data
+      summary: List data releases
       operationId: listDataReleases_1
       parameters:
       - name: competitionIdentifier
@@ -229,8 +229,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - data
-      summary: Show a data releases.
+      - Data
+      summary: Show a data releases
       operationId: getDataRelease
       parameters:
       - name: competitionIdentifier
@@ -291,86 +291,6 @@ paths:
       - apiKey: []
 components:
   schemas:
-    DataReleaseFileAccess:
-      type: object
-      properties:
-        local:
-          type: boolean
-        runner:
-          type: boolean
-        checking:
-          type: boolean
-        scoring:
-          type: boolean
-        comparing:
-          type: boolean
-    DataReleaseSplit:
-      type: object
-      properties:
-        key:
-          type: object
-          anyOf:
-          - type: integer
-            format: int64
-          - type: string
-          example: 1
-        group:
-          $ref: '#/components/schemas/DataReleaseSplitGroup'
-        reduced:
-          $ref: '#/components/schemas/DataReleaseSplitReduced'
-    DataReleaseSplitGroup:
-      type: string
-      enum:
-      - TRAIN
-      - TEST
-    DataReleaseTargetResolution:
-      type: string
-      enum:
-      - ALREADY
-      - PENDING
-      - RESOLVED
-    DataFile:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        url:
-          type: string
-        size:
-          type: integer
-          format: int64
-        signed:
-          type: boolean
-        compressed:
-          type: boolean
-    DataReleaseFileCreateForm:
-      type: object
-      properties:
-        uploadId:
-          type: string
-          format: uuid
-        sizeVariant:
-          type: string
-          enum:
-          - DEFAULT
-          - SMALL
-          - LARGE
-        name:
-          type: string
-        description:
-          type: string
-        access:
-          $ref: '#/components/schemas/DataReleaseFileAccess'
-        compressed:
-          type: boolean
-      required:
-      - access
-      - compressed
-      - name
-      - sizeVariant
-      - uploadId
     DataReleaseSplitCreateForm:
       type: object
       properties:
@@ -394,11 +314,6 @@ components:
       required:
       - group
       - key
-    DataReleaseSplitKey:
-      type: string
-      enum:
-      - INTEGER
-      - STRING
     DataRelease:
       type: object
       properties:
@@ -445,11 +360,54 @@ components:
           type: object
           additionalProperties:
             $ref: '#/components/schemas/DataFile'
-    DataReleaseSplitReduced:
-      type: string
-      enum:
-      - X
-      - XY
+    PageDataRelease:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataRelease'
+    DataReleaseFileAccess:
+      type: object
+      properties:
+        local:
+          type: boolean
+        runner:
+          type: boolean
+        checking:
+          type: boolean
+        scoring:
+          type: boolean
+        comparing:
+          type: boolean
+    DataFile:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+        size:
+          type: integer
+          format: int64
+        signed:
+          type: boolean
+        compressed:
+          type: boolean
     DataReleaseResolveForm:
       type: object
       properties:
@@ -459,6 +417,22 @@ components:
             $ref: '#/components/schemas/DataReleaseFileResolveForm'
       required:
       - files
+    DataReleaseSplitGroup:
+      type: string
+      enum:
+      - TRAIN
+      - TEST
+    DataReleaseTargetResolution:
+      type: string
+      enum:
+      - ALREADY
+      - PENDING
+      - RESOLVED
+    DataReleaseSplitKey:
+      type: string
+      enum:
+      - INTEGER
+      - STRING
     DataReleaseCreateForm:
       type: object
       properties:
@@ -487,25 +461,20 @@ components:
       - name
       - resolvable
       - splits
-    PageDataRelease:
+    DataReleaseSplit:
       type: object
       properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/DataRelease'
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+        group:
+          $ref: '#/components/schemas/DataReleaseSplitGroup'
+        reduced:
+          $ref: '#/components/schemas/DataReleaseSplitReduced'
     DataReleaseFileResolveForm:
       type: object
       properties:
@@ -522,6 +491,37 @@ components:
       - access
       - compressed
       - name
+      - uploadId
+    DataReleaseSplitReduced:
+      type: string
+      enum:
+      - X
+      - XY
+    DataReleaseFileCreateForm:
+      type: object
+      properties:
+        uploadId:
+          type: string
+          format: uuid
+        sizeVariant:
+          type: string
+          enum:
+          - DEFAULT
+          - SMALL
+          - LARGE
+        name:
+          type: string
+        description:
+          type: string
+        access:
+          $ref: '#/components/schemas/DataReleaseFileAccess'
+        compressed:
+          type: boolean
+      required:
+      - access
+      - compressed
+      - name
+      - sizeVariant
       - uploadId
   securitySchemes:
     apiKey:

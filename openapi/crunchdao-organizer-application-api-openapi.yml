@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity organizer:application API
+  title: Tournament Organizer:application API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -15,7 +15,7 @@ paths:
     get:
       tags:
       - organizer:application
-      summary: List organizer applications.
+      summary: List organizer applications
       operationId: listOrganizerApplications
       parameters:
       - name: reviewStatus
@@ -81,7 +81,7 @@ paths:
     post:
       tags:
       - organizer:application
-      summary: Create an organizer application.
+      summary: Create an organizer application
       operationId: createOrganizerApplication
       parameters:
       - name: reCaptchaResponse
@@ -109,7 +109,7 @@ paths:
     get:
       tags:
       - organizer:application
-      summary: Get an organizer application.
+      summary: Get an organizer application
       operationId: getOrganizerApplication
       parameters:
       - name: organizerApplicationId
@@ -133,7 +133,7 @@ paths:
     patch:
       tags:
       - organizer:application
-      summary: Update an organizer application.
+      summary: Update an organizer application
       operationId: updateOrganizerApplication
       parameters:
       - name: organizerApplicationId
@@ -162,6 +162,31 @@ paths:
       - apiKey: []
 components:
   schemas:
+    PageOrganizerApplication:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganizerApplication'
+    OrganizerApplicationReviewStatus:
+      type: string
+      enum:
+      - PENDING
+      - APPROVED
+      - REJECTED
     OrganizerApplicationUpdateForm:
       type: object
       properties:
@@ -202,12 +227,6 @@ components:
         createdAt:
           type: string
           format: date-time
-    OrganizerApplicationReviewStatus:
-      type: string
-      enum:
-      - PENDING
-      - APPROVED
-      - REJECTED
     OrganizerApplicationCreateForm:
       type: object
       properties:
@@ -247,25 +266,6 @@ components:
           type: string
           maxLength: 65536
           minLength: 0
-    PageOrganizerApplication:
-      type: object
-      properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrganizerApplication'
   securitySchemes:
     apiKey:
       type: apiKey

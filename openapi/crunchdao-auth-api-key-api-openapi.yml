@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity auth:api-key API
+  title: Tournament Auth:api Key API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -15,7 +15,7 @@ paths:
     get:
       tags:
       - auth:api-key
-      summary: List your API Keys.
+      summary: List your API Keys
       operationId: list_1
       responses:
         '200':
@@ -32,7 +32,7 @@ paths:
     post:
       tags:
       - auth:api-key
-      summary: Create an API Key.
+      summary: Create an API Key
       operationId: create_1
       requestBody:
         content:
@@ -55,7 +55,7 @@ paths:
     post:
       tags:
       - auth:api-key
-      summary: Regenerate an API Key.
+      summary: Regenerate an API Key
       operationId: refresh
       parameters:
       - name: apiKeyId
@@ -81,7 +81,7 @@ paths:
     get:
       tags:
       - auth:api-key
-      summary: Show an API Key.
+      summary: Show an API Key
       operationId: show_4
       parameters:
       - name: apiKeyId
@@ -105,7 +105,7 @@ paths:
     delete:
       tags:
       - auth:api-key
-      summary: Delete an API Key.
+      summary: Delete an API Key
       operationId: delete_1
       parameters:
       - name: apiKeyId
@@ -124,24 +124,6 @@ paths:
       - apiKey: []
 components:
   schemas:
-    ApiKeyCreateForm:
-      type: object
-      properties:
-        name:
-          type: string
-          maxLength: 120
-          minLength: 4
-        description:
-          type: string
-          maxLength: 4096
-          minLength: 0
-        ranges:
-          type: array
-          items:
-            type: string
-      required:
-      - name
-      - ranges
     ApiKey:
       type: object
       properties:
@@ -170,6 +152,24 @@ components:
         updatedAt:
           type: string
           format: date-time
+    ApiKeyCreateForm:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 120
+          minLength: 4
+        description:
+          type: string
+          maxLength: 4096
+          minLength: 0
+        ranges:
+          type: array
+          items:
+            type: string
+      required:
+      - name
+      - ranges
   securitySchemes:
     apiKey:
       type: apiKey

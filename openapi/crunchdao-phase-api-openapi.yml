@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity phase API
+  title: Tournament Phase API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,14 +8,14 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: phase
+- name: Phase
 paths:
   /v2/competitions/{competitionIdentifier}/rounds/{roundIdentifier}/phases:
     x-service-id: competition-service
     get:
       tags:
-      - phase
-      summary: List phases.
+      - Phase
+      summary: List phases
       operationId: listPhases
       parameters:
       - name: competitionIdentifier
@@ -43,8 +43,8 @@ paths:
                   $ref: '#/components/schemas/Phase'
     post:
       tags:
-      - phase
-      summary: Create a phase.
+      - Phase
+      summary: Create a phase
       operationId: createPhase
       parameters:
       - name: competitionIdentifier
@@ -78,8 +78,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - phase
-      summary: Show a phase.
+      - Phase
+      summary: Show a phase
       operationId: getPhase
       parameters:
       - name: competitionIdentifier
@@ -112,8 +112,8 @@ paths:
                 $ref: '#/components/schemas/Phase'
     patch:
       tags:
-      - phase
-      summary: Show a phase.
+      - Phase
+      summary: Show a phase
       operationId: updatePhase
       parameters:
       - name: competitionIdentifier
@@ -152,6 +152,18 @@ paths:
                 $ref: '#/components/schemas/Phase'
 components:
   schemas:
+    PhaseSplitCreateForm:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+      required:
+      - key
     PhaseUpdateForm:
       type: object
       properties:
@@ -195,18 +207,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PhaseSplitCreateForm'
-    PhaseSplitCreateForm:
-      type: object
-      properties:
-        key:
-          type: object
-          anyOf:
-          - type: integer
-            format: int64
-          - type: string
-          example: 1
-      required:
-      - key
     PhaseCreateForm:
       type: object
       properties:

@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity quickstarter API
+  title: Tournament Quickstarter API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -15,7 +15,7 @@ paths:
     get:
       tags:
       - quickstarter
-      summary: List quickstarters of a competition.
+      summary: List quickstarters of a competition
       operationId: listCompetitionQuickstarters
       parameters:
       - name: competitionIdentifier
@@ -37,7 +37,7 @@ paths:
     post:
       tags:
       - quickstarter
-      summary: Create a quickstarter for a competition.
+      summary: Create a quickstarter for a competition
       operationId: createCompetitionQuickstarter
       parameters:
       - name: competitionIdentifier
@@ -68,7 +68,7 @@ paths:
     post:
       tags:
       - quickstarter
-      summary: Update the quickstarter library.
+      summary: Update the quickstarter library
       operationId: batchCreateQuickstarter
       parameters:
       - name: competitionIdentifier
@@ -99,7 +99,7 @@ paths:
     get:
       tags:
       - quickstarter
-      summary: Show a quickstarter of a competition.
+      summary: Show a quickstarter of a competition
       operationId: getCompetitionQuickstarter
       parameters:
       - name: competitionIdentifier
@@ -126,7 +126,7 @@ paths:
     post:
       tags:
       - quickstarter
-      summary: Update a quickstarter of a competition.
+      summary: Update a quickstarter of a competition
       operationId: updateCompetitionQuickstarter
       parameters:
       - name: competitionIdentifier
@@ -162,7 +162,7 @@ paths:
     delete:
       tags:
       - quickstarter
-      summary: Delete a quickstarter of a competition.
+      summary: Delete a quickstarter of a competition
       operationId: deleteCompetitionQuickstarter
       parameters:
       - name: competitionIdentifier
@@ -190,7 +190,7 @@ paths:
     get:
       tags:
       - quickstarter
-      summary: List generic quickstarters.
+      summary: List generic quickstarters
       operationId: listGenericQuickstartersV1
       parameters:
       - name: competitionFormat
@@ -221,7 +221,7 @@ paths:
     get:
       tags:
       - quickstarter
-      summary: Show a generic quickstarter.
+      summary: Show a generic quickstarter
       operationId: getGenericQuickstarterV1
       parameters:
       - name: competitionFormat
@@ -257,7 +257,7 @@ paths:
     get:
       tags:
       - quickstarter
-      summary: List quickstarters of a competition.
+      summary: List quickstarters of a competition
       operationId: listCompetitionQuickstartersV1
       parameters:
       - name: competitionIdentifier
@@ -282,7 +282,7 @@ paths:
     get:
       tags:
       - quickstarter
-      summary: Show a quickstarter of a competition.
+      summary: Show a quickstarter of a competition
       operationId: getCompetitionQuickstarterV1
       parameters:
       - name: competitionIdentifier
@@ -309,73 +309,6 @@ paths:
       deprecated: true
 components:
   schemas:
-    QuickstarterAuthorCreateForm:
-      type: object
-      properties:
-        name:
-          type: string
-        link:
-          type: string
-      required:
-      - name
-    QuickstarterAuthor:
-      type: object
-      properties:
-        name:
-          type: string
-        link:
-          type: string
-    QuickstarterFile:
-      type: object
-      properties:
-        name:
-          type: string
-        url:
-          type: string
-        githubUrl:
-          type: string
-    QuickstarterUpdateForm:
-      type: object
-      properties:
-        title:
-          type: string
-        description:
-          type: string
-        authors:
-          type: array
-          items:
-            $ref: '#/components/schemas/QuickstarterAuthorCreateForm'
-        language:
-          type: string
-          enum:
-          - PYTHON
-          - R
-        usage:
-          type: string
-          enum:
-          - SUBMISSION
-          - EXPLORATION
-        notebook:
-          type: boolean
-        entrypoint:
-          type: string
-        deprecated:
-          type: boolean
-        kaggleUrl:
-          type: string
-        files:
-          type: array
-          items:
-            type: string
-      required:
-      - authors
-      - deprecated
-      - entrypoint
-      - files
-      - language
-      - notebook
-      - title
-      - usage
     Quickstarter:
       type: object
       properties:
@@ -415,37 +348,18 @@ components:
         createdAt:
           type: string
           format: date-time
-    QuickstarterImporterDelta:
-      type: object
-      properties:
-        added:
-          type: integer
-          format: int32
-        updated:
-          type: integer
-          format: int32
-        deleted:
-          type: integer
-          format: int32
-    Language:
-      type: string
-      enum:
-      - PYTHON
-      - R
     QuickstarterUsage:
       type: string
       enum:
       - SUBMISSION
       - EXPLORATION
-    BatchQuickstarterCreateForm:
+    QuickstarterAuthor:
       type: object
       properties:
-        quickstarters:
-          type: array
-          items:
-            $ref: '#/components/schemas/QuickstarterCreateForm'
-      required:
-      - quickstarters
+        name:
+          type: string
+        link:
+          type: string
     QuickstarterCreateForm:
       type: object
       properties:
@@ -491,6 +405,92 @@ components:
       - notebook
       - title
       - usage
+    QuickstarterUpdateForm:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        authors:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuickstarterAuthorCreateForm'
+        language:
+          type: string
+          enum:
+          - PYTHON
+          - R
+        usage:
+          type: string
+          enum:
+          - SUBMISSION
+          - EXPLORATION
+        notebook:
+          type: boolean
+        entrypoint:
+          type: string
+        deprecated:
+          type: boolean
+        kaggleUrl:
+          type: string
+        files:
+          type: array
+          items:
+            type: string
+      required:
+      - authors
+      - deprecated
+      - entrypoint
+      - files
+      - language
+      - notebook
+      - title
+      - usage
+    Language:
+      type: string
+      enum:
+      - PYTHON
+      - R
+    QuickstarterFile:
+      type: object
+      properties:
+        name:
+          type: string
+        url:
+          type: string
+        githubUrl:
+          type: string
+    QuickstarterAuthorCreateForm:
+      type: object
+      properties:
+        name:
+          type: string
+        link:
+          type: string
+      required:
+      - name
+    BatchQuickstarterCreateForm:
+      type: object
+      properties:
+        quickstarters:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuickstarterCreateForm'
+      required:
+      - quickstarters
+    QuickstarterImporterDelta:
+      type: object
+      properties:
+        added:
+          type: integer
+          format: int32
+        updated:
+          type: integer
+          format: int32
+        deleted:
+          type: integer
+          format: int32
   securitySchemes:
     apiKey:
       type: apiKey

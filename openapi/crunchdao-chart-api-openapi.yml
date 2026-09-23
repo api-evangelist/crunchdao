@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity chart API
+  title: Tournament Chart API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,14 +8,14 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: chart
+- name: Chart
 paths:
   /v2/competitions/{competitionIdentifier}/charts:
     x-service-id: competition-service
     get:
       tags:
-      - chart
-      summary: List competition chart definition sets with data.
+      - Chart
+      summary: List competition chart definition sets with data
       operationId: listCompetitionChartsV2
       parameters:
       - name: competitionIdentifier
@@ -77,8 +77,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - chart
-      summary: List competition chart definition sets with data.
+      - Chart
+      summary: List competition chart definition sets with data
       operationId: listCompetitionChartsV1
       parameters:
       - name: competitionIdentifier
@@ -141,31 +141,6 @@ paths:
       deprecated: true
 components:
   schemas:
-    ChartDefinitionSet:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        type:
-          $ref: '#/components/schemas/ChartDefinitionSetType'
-        projectIdProperty:
-          type: string
-        nativeConfiguration:
-          type: string
-        definitions:
-          type: array
-          items:
-            $ref: '#/components/schemas/ChartDefinition'
-        data:
-          type: string
-    ChartDefinitionSetType:
-      type: string
-      enum:
-      - CHART
-      - IFRAME
     ChartDefinition:
       type: object
       properties:
@@ -197,6 +172,11 @@ components:
           type: integer
           format: int64
           description: Ordering order in the UI. Lowest is first.
+    ChartDefinitionSetType:
+      type: string
+      enum:
+      - CHART
+      - IFRAME
     ChartsWithData:
       type: object
       properties:
@@ -208,6 +188,26 @@ components:
           type: object
           additionalProperties:
             type: string
+    ChartDefinitionSet:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/ChartDefinitionSetType'
+        projectIdProperty:
+          type: string
+        nativeConfiguration:
+          type: string
+        definitions:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChartDefinition'
+        data:
+          type: string
   securitySchemes:
     apiKey:
       type: apiKey

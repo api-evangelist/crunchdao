@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity metric API
+  title: Tournament Metric API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,14 +8,14 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: metric
+- name: Metric
 paths:
   /v1/competitions/{competitionIdentifier}/targets/{targetName}/metrics:
     x-service-id: competition-service
     get:
       tags:
-      - metric
-      summary: List metrics of this competitions.
+      - Metric
+      summary: List metrics of this competitions
       operationId: listTargetMetrics
       parameters:
       - name: competitionIdentifier
@@ -45,7 +45,7 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - metric
+      - Metric
       operationId: getMetric
       parameters:
       - name: competitionIdentifier
@@ -76,12 +76,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Metric'
+      summary: Get metric
+      x-summary-source: derived
   /v1/competitions/{competitionIdentifier}/metrics:
     x-service-id: competition-service
     get:
       tags:
-      - metric
-      summary: List all metrics of this competitions.
+      - Metric
+      summary: List all metrics of this competitions
       operationId: listMetrics
       parameters:
       - name: competitionIdentifier
@@ -102,11 +104,6 @@ paths:
                   $ref: '#/components/schemas/Metric'
 components:
   schemas:
-    VisualizationType:
-      type: string
-      enum:
-      - LINE
-      - HISTOGRAM
     MetricColors:
       type: object
       properties:
@@ -116,6 +113,23 @@ components:
           type: string
         outOfSamplePhase:
           type: string
+    VisualizationType:
+      type: string
+      enum:
+      - LINE
+      - HISTOGRAM
+    ReducerFunction:
+      type: string
+      enum:
+      - NONE
+      - SUM
+      - MEAN
+      - PRODUCT_PLUS_MINUS_1
+    LeaderboardRankOrder:
+      type: string
+      enum:
+      - DESCENDING
+      - ASCENDING
     Unit:
       type: object
       properties:
@@ -129,21 +143,6 @@ components:
           type: integer
           format: int32
           description: Number of digits to keep after the comma.
-    MetricDefinition:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        displayName:
-          type: string
-    LeaderboardRankOrder:
-      type: string
-      enum:
-      - DESCENDING
-      - ASCENDING
     ScorerFunction:
       type: string
       enum:
@@ -157,13 +156,16 @@ components:
       - META__EXECUTION_TIME
       - CUSTOM__MID_ONE__PROFIT_AND_LOSS_WITH_TRANSACTION_COST
       - CUSTOM__BROAD__SCORING
-    ReducerFunction:
-      type: string
-      enum:
-      - NONE
-      - SUM
-      - MEAN
-      - PRODUCT_PLUS_MINUS_1
+    MetricDefinition:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        displayName:
+          type: string
     Target:
       type: object
       properties:

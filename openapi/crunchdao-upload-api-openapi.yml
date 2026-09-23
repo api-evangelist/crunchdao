@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity upload API
+  title: Tournament Upload API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,14 +8,14 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: upload
+- name: Upload
 paths:
   /v1/uploads:
     x-service-id: competition-service
     post:
       tags:
-      - upload
-      summary: Create an upload.
+      - Upload
+      summary: Create an upload
       operationId: createUpload
       parameters:
       - name: pushToken
@@ -52,8 +52,8 @@ paths:
     x-service-id: competition-service
     post:
       tags:
-      - upload
-      summary: Complete an upload.
+      - Upload
+      summary: Complete an upload
       operationId: completeUpload
       parameters:
       - name: uploadId
@@ -92,8 +92,8 @@ paths:
     x-service-id: competition-service
     post:
       tags:
-      - upload
-      summary: Confirm an upload chunk.
+      - Upload
+      summary: Confirm an upload chunk
       operationId: confirmUploadChunk
       parameters:
       - name: uploadId
@@ -146,8 +146,8 @@ paths:
     x-service-id: competition-service
     post:
       tags:
-      - upload
-      summary: Abort an upload.
+      - Upload
+      summary: Abort an upload
       operationId: abortUpload
       parameters:
       - name: uploadId
@@ -186,8 +186,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - upload
-      summary: Show an upload.
+      - Upload
+      summary: Show an upload
       operationId: getUpload
       parameters:
       - name: uploadId
@@ -224,8 +224,8 @@ paths:
       - apiKey: []
     delete:
       tags:
-      - upload
-      summary: Delete an upload.
+      - Upload
+      summary: Delete an upload
       operationId: deleteUpload
       parameters:
       - name: uploadId
@@ -260,8 +260,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - upload
-      summary: Get request information for an upload chunk.
+      - Upload
+      summary: Get request information for an upload chunk
       operationId: getUploadChunkUri
       parameters:
       - name: uploadId
@@ -306,6 +306,64 @@ paths:
       - apiKey: []
 components:
   schemas:
+    PresignedUploadRequest:
+      type: object
+      properties:
+        method:
+          type: string
+          enum:
+          - POST
+          - PUT
+        url:
+          type: string
+          format: uri
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+    UploadChunkCompleteForm:
+      type: object
+      properties:
+        hash:
+          type: string
+      required:
+      - hash
+    UploadCreateForm:
+      type: object
+      properties:
+        name:
+          type: string
+        size:
+          type: integer
+          format: int64
+        encrypted:
+          type: boolean
+        preferredChunkSize:
+          type: integer
+          format: int64
+      required:
+      - encrypted
+      - name
+      - size
+    UploadChunkDto:
+      type: object
+      properties:
+        number:
+          type: integer
+          format: int64
+        offset:
+          type: integer
+          format: int64
+        size:
+          type: integer
+          format: int64
+        last:
+          type: boolean
+        completed:
+          type: boolean
+        completedAt:
+          type: string
+          format: date-time
     UploadProvider:
       type: string
       enum:
@@ -343,47 +401,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UploadChunkDto'
-    PresignedUploadRequest:
-      type: object
-      properties:
-        method:
-          type: string
-          enum:
-          - POST
-          - PUT
-        url:
-          type: string
-          format: uri
-        headers:
-          type: object
-          additionalProperties:
-            type: string
-    UploadChunkDto:
-      type: object
-      properties:
-        number:
-          type: integer
-          format: int64
-        offset:
-          type: integer
-          format: int64
-        size:
-          type: integer
-          format: int64
-        last:
-          type: boolean
-        completed:
-          type: boolean
-        completedAt:
-          type: string
-          format: date-time
-    UploadChunkCompleteForm:
-      type: object
-      properties:
-        hash:
-          type: string
-      required:
-      - hash
     UploadStatus:
       type: string
       enum:
@@ -392,23 +409,6 @@ components:
       - SUCCEEDED
       - FAILED
       - EXPIRED
-    UploadCreateForm:
-      type: object
-      properties:
-        name:
-          type: string
-        size:
-          type: integer
-          format: int64
-        encrypted:
-          type: boolean
-        preferredChunkSize:
-          type: integer
-          format: int64
-      required:
-      - encrypted
-      - name
-      - size
   securitySchemes:
     apiKey:
       type: apiKey

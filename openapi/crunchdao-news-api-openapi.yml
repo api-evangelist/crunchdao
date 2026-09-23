@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity news API
+  title: Tournament News API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,14 +8,14 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: news
+- name: News
 paths:
   /v1/news:
     x-service-id: competition-service
     get:
       tags:
-      - news
-      summary: List news.
+      - News
+      summary: List news
       operationId: listNews
       responses:
         '200':
@@ -29,8 +29,8 @@ paths:
       deprecated: true
     post:
       tags:
-      - news
-      summary: Create a news.
+      - News
+      summary: Create a news
       operationId: createNews
       requestBody:
         content:
@@ -49,8 +49,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - news
-      summary: List news.
+      - News
+      summary: List news
       operationId: listCompetitionNews
       parameters:
       - name: competitionIdentifier
@@ -79,8 +79,8 @@ paths:
       deprecated: true
     post:
       tags:
-      - news
-      summary: Create a news.
+      - News
+      summary: Create a news
       operationId: createCompetitionNews
       parameters:
       - name: competitionIdentifier
@@ -107,8 +107,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - news
-      summary: List news.
+      - News
+      summary: List news
       operationId: listNewsV2
       parameters:
       - name: competitionIdentifier
@@ -172,8 +172,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - news
-      summary: Show a news.
+      - News
+      summary: Show a news
       operationId: getNews
       parameters:
       - name: newsId
@@ -193,8 +193,8 @@ paths:
                 $ref: '#/components/schemas/News'
     delete:
       tags:
-      - news
-      summary: Delete a news.
+      - News
+      summary: Delete a news
       operationId: deleteNews
       parameters:
       - name: newsId
@@ -212,8 +212,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - news
-      summary: Show a news.
+      - News
+      summary: Show a news
       operationId: getCompetitionNews
       parameters:
       - name: competitionIdentifier
@@ -240,8 +240,8 @@ paths:
                 $ref: '#/components/schemas/News'
     delete:
       tags:
-      - news
-      summary: Delete a news.
+      - News
+      summary: Delete a news
       operationId: deleteCompetitionNews
       parameters:
       - name: competitionIdentifier
@@ -264,6 +264,15 @@ paths:
           description: OK
 components:
   schemas:
+    NewsAuthor:
+      type: object
+      properties:
+        name:
+          type: string
+        imageUrl:
+          type: string
+        url:
+          type: string
     PageNews:
       type: object
       properties:
@@ -294,20 +303,6 @@ components:
           type: string
       required:
       - name
-    NewsCreateForm:
-      type: object
-      properties:
-        title:
-          type: string
-        imageUrl:
-          type: string
-        url:
-          type: string
-        author:
-          $ref: '#/components/schemas/NewsAuthorCreateForm'
-      required:
-      - author
-      - title
     News:
       type: object
       properties:
@@ -328,15 +323,20 @@ components:
         createdAt:
           type: string
           format: date-time
-    NewsAuthor:
+    NewsCreateForm:
       type: object
       properties:
-        name:
+        title:
           type: string
         imageUrl:
           type: string
         url:
           type: string
+        author:
+          $ref: '#/components/schemas/NewsAuthorCreateForm'
+      required:
+      - author
+      - title
   securitySchemes:
     apiKey:
       type: apiKey

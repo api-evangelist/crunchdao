@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity avatar API
+  title: Tournament Avatar API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,14 +8,14 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: avatar
+- name: Avatar
 paths:
   /v3/users/{userIdentifier}/avatar:
     x-service-id: account-service
     get:
       tags:
-      - avatar
-      summary: Redirect to a user's avatar.
+      - Avatar
+      summary: Redirect to a user's avatar
       operationId: redirect
       parameters:
       - name: userIdentifier
@@ -37,8 +37,8 @@ paths:
           description: Found
     post:
       tags:
-      - avatar
-      summary: Upload a user avatar.
+      - Avatar
+      summary: Upload a user avatar
       operationId: upload
       parameters:
       - name: userIdentifier
@@ -65,8 +65,8 @@ paths:
     x-service-id: account-service
     get:
       tags:
-      - avatar
-      summary: Redirect to a user's banner.
+      - Avatar
+      summary: Redirect to a user's banner
       operationId: redirect_1
       parameters:
       - name: userIdentifier
@@ -81,8 +81,8 @@ paths:
           description: Found
     post:
       tags:
-      - avatar
-      summary: Upload a user banner.
+      - Avatar
+      summary: Upload a user banner
       operationId: upload_1
       parameters:
       - name: userIdentifier
@@ -109,7 +109,7 @@ paths:
     x-service-id: account-service
     get:
       tags:
-      - avatar
+      - Avatar
       operationId: showGravatarAvatar
       parameters:
       - name: idOrLogin
@@ -122,6 +122,8 @@ paths:
       responses:
         '302':
           description: Found
+      summary: Show gravatar avatar
+      x-summary-source: derived
 components:
   securitySchemes:
     apiKey:

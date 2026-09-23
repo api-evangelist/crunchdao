@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity institution API
+  title: Tournament Institution API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,14 +8,14 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: institution
+- name: Institution
 paths:
   /v1/institutions/{institutionIdentifier}:
     x-service-id: competition-service
     get:
       tags:
-      - institution
-      summary: Show an institution.
+      - Institution
+      summary: Show an institution
       operationId: getInstitution
       parameters:
       - name: institutionIdentifier
@@ -36,8 +36,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - institution
-      summary: Get the institution positions of a global leaderboard.
+      - Institution
+      summary: Get the institution positions of a global leaderboard
       operationId: listGlobalLeaderboardInstitutionPositions
       parameters:
       - name: institutionIdentifier
@@ -96,8 +96,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - institution
-      summary: Show an institution.
+      - Institution
+      summary: Show an institution
       operationId: getInstitution_1
       parameters:
       - name: institutionIdentifier
@@ -157,8 +157,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - institution
-      summary: Show an institution's banner.
+      - Institution
+      summary: Show an institution's banner
       operationId: getInstitutionBanner
       parameters:
       - name: institutionIdentifier
@@ -182,8 +182,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - institution
-      summary: Show an institution's avatar.
+      - Institution
+      summary: Show an institution's avatar
       operationId: getInstitutionAvatar
       parameters:
       - name: institutionIdentifier
@@ -205,20 +205,75 @@ paths:
           description: Found
 components:
   schemas:
-    InstitutionParticipationPerformance:
+    CompetitionStatus:
+      type: string
+      enum:
+      - PENDING
+      - OPEN
+      - CLOSED
+    Institution:
       type: object
       properties:
-        bestMember:
-          $ref: '#/components/schemas/InstitutionParticipationPerformanceBestMember'
-          description: Best member on the competition's leaderboard.
-        memberCount:
+        id:
           type: integer
           format: int64
-          description: Number of member on the competition's leaderboard.
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name for cards.
+        country:
+          type: string
+          description: Country of origin.
         totalPoints:
           type: integer
           format: int64
-          description: Total number of points earned by the institution's members on the competition.
+          description: Sum of all members' points.
+        memberCount:
+          type: integer
+          format: int64
+          description: Number of members.
+        globalRank:
+          type: integer
+          format: int64
+          description: Rank of the institution in the global leaderboard. Updated daily.
+        about:
+          type: string
+          description: About description.
+        websiteUrl:
+          type: string
+          description: Website URL.
+        twitterUrl:
+          type: string
+          description: Twitter URL.
+        linkedInUrl:
+          type: string
+          description: LInkedIn URL.
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    CompetitionStatistics:
+      type: object
+      properties:
+        entrants:
+          type: integer
+          format: int64
+        participants:
+          type: integer
+          format: int64
+        teams:
+          type: integer
+          format: int64
+        submissions:
+          type: integer
+          format: int64
+        runnables:
+          type: integer
+          format: int64
     Competition:
       type: object
       properties:
@@ -391,6 +446,29 @@ components:
           description: Non-detailed timeline events.
           items:
             $ref: '#/components/schemas/TimelineEvent'
+    DataReleaseSplitKey:
+      type: string
+      enum:
+      - INTEGER
+      - STRING
+    InstitutionMember:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/GlobalUser'
+        rank:
+          type: integer
+          format: int64
+          description: Rank of the user in the institution. Updated daily.
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
     PageInstitutionMember:
       type: object
       properties:
@@ -410,13 +488,49 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/InstitutionMember'
-    User:
+    InstitutionParticipation:
       type: object
       properties:
         id:
           type: integer
           format: int64
-        login:
+        competition:
+          $ref: '#/components/schemas/Competition'
+        performance:
+          $ref: '#/components/schemas/InstitutionParticipationPerformance'
+          description: Performance of the institution in the competition.
+        createdAt:
+          type: string
+          format: date-time
+    InstitutionParticipationPerformance:
+      type: object
+      properties:
+        bestMember:
+          $ref: '#/components/schemas/InstitutionParticipationPerformanceBestMember'
+          description: Best member on the competition's leaderboard.
+        memberCount:
+          type: integer
+          format: int64
+          description: Number of member on the competition's leaderboard.
+        totalPoints:
+          type: integer
+          format: int64
+          description: Total number of points earned by the institution's members on the competition.
+    TimelineEventType:
+      type: string
+      enum:
+      - GENERIC
+      - LEADERBOARD
+      - RULES
+      - REWARDS
+    TimelineEventButton:
+      type: object
+      properties:
+        text:
+          type: string
+        link:
+          type: string
+        color:
           type: string
     TimelineEvent:
       type: object
@@ -447,106 +561,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-    Institution:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-          description: Slug-like name.
-        displayName:
-          type: string
-          description: Display name for cards.
-        country:
-          type: string
-          description: Country of origin.
-        totalPoints:
-          type: integer
-          format: int64
-          description: Sum of all members' points.
-        memberCount:
-          type: integer
-          format: int64
-          description: Number of members.
-        globalRank:
-          type: integer
-          format: int64
-          description: Rank of the institution in the global leaderboard. Updated daily.
-        about:
-          type: string
-          description: About description.
-        websiteUrl:
-          type: string
-          description: Website URL.
-        twitterUrl:
-          type: string
-          description: Twitter URL.
-        linkedInUrl:
-          type: string
-          description: LInkedIn URL.
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-    CompetitionStatistics:
-      type: object
-      properties:
-        entrants:
-          type: integer
-          format: int64
-        participants:
-          type: integer
-          format: int64
-        teams:
-          type: integer
-          format: int64
-        submissions:
-          type: integer
-          format: int64
-        runnables:
-          type: integer
-          format: int64
-    CompetitionStatus:
-      type: string
-      enum:
-      - PENDING
-      - OPEN
-      - CLOSED
-    InstitutionParticipation:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        competition:
-          $ref: '#/components/schemas/Competition'
-        performance:
-          $ref: '#/components/schemas/InstitutionParticipationPerformance'
-          description: Performance of the institution in the competition.
-        createdAt:
-          type: string
-          format: date-time
-    CompetitionFormat:
-      type: string
-      enum:
-      - TIMESERIES
-      - DAG
-      - STREAM
-      - SPATIAL
-      - UNSTRUCTURED
-    TimelineEventButton:
-      type: object
-      properties:
-        text:
-          type: string
-        link:
-          type: string
-        color:
-          type: string
     PageInstitutionParticipation:
       type: object
       properties:
@@ -566,22 +580,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/InstitutionParticipation'
-    TimelineEventType:
-      type: string
-      enum:
-      - GENERIC
-      - LEADERBOARD
-      - RULES
-      - REWARDS
-    CompetitionTag:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Slug-like name.
-        displayName:
-          type: string
-          description: Display name for the UI.
     InstitutionParticipationPerformanceBestMember:
       type: object
       properties:
@@ -590,21 +588,22 @@ components:
         leaderboardRank:
           type: number
           format: double
-    CompetitionVisibility:
+    CompetitionFormat:
       type: string
       enum:
-      - HIDDEN
-      - PUBLIC
-    DataReleaseSplitKey:
-      type: string
-      enum:
-      - INTEGER
-      - STRING
-    CompetitionType:
-      type: string
-      enum:
-      - OPEN
-      - PAUSED
+      - TIMESERIES
+      - DAG
+      - STREAM
+      - SPATIAL
+      - UNSTRUCTURED
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
     GlobalUser:
       type: object
       properties:
@@ -624,29 +623,30 @@ components:
           type: integer
           format: int64
           description: Rank of the user in the global leaderboard. Updated daily.
+    CompetitionVisibility:
+      type: string
+      enum:
+      - HIDDEN
+      - PUBLIC
+    CompetitionType:
+      type: string
+      enum:
+      - OPEN
+      - PAUSED
     CompetitionMode:
       type: string
       enum:
       - OFFLINE
       - REAL_TIME
-    InstitutionMember:
+    CompetitionTag:
       type: object
       properties:
-        id:
-          type: integer
-          format: int64
-        user:
-          $ref: '#/components/schemas/GlobalUser'
-        rank:
-          type: integer
-          format: int64
-          description: Rank of the user in the institution. Updated daily.
-        createdAt:
+        name:
           type: string
-          format: date-time
-        updatedAt:
+          description: Slug-like name.
+        displayName:
           type: string
-          format: date-time
+          description: Display name for the UI.
     CompetitionSession:
       type: object
       properties:

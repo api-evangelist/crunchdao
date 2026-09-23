@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity runtime:definition API
+  title: Tournament Runtime:definition API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -15,7 +15,7 @@ paths:
     get:
       tags:
       - runtime:definition
-      summary: List runtime definitions for a competition.
+      summary: List runtime definitions for a competition
       operationId: listRuntimeDefinitions
       parameters:
       - name: competitionIdentifier
@@ -67,7 +67,7 @@ paths:
     get:
       tags:
       - runtime:definition
-      summary: Get runtime definitions for a competition.
+      summary: Get runtime definitions for a competition
       operationId: getRuntimeDefinition
       parameters:
       - name: competitionIdentifier
@@ -93,42 +93,6 @@ paths:
                 $ref: '#/components/schemas/RuntimeDefinition'
 components:
   schemas:
-    RuntimeDefinitionSpecificationCpu:
-      type: object
-      properties:
-        coreCount:
-          type: integer
-          format: int32
-    RuntimeDefinitionPoweredBy:
-      type: object
-      properties:
-        text:
-          type: string
-        url:
-          type: string
-    RuntimeDefinitionStatus:
-      type: string
-      enum:
-      - ACTIVE
-      - RESTRICTED
-      - DISABLED
-    RuntimeDefinitionSpecificationSize:
-      type: object
-      properties:
-        size:
-          type: integer
-          format: int32
-          description: Size in gigabytes.
-    RuntimeDefinitionSpecificationGpu:
-      type: object
-      properties:
-        count:
-          type: integer
-          format: int32
-        model:
-          type: string
-        driver:
-          type: string
     RuntimeDefinition:
       type: object
       properties:
@@ -170,11 +134,72 @@ components:
           type: integer
           format: int64
           description: Lower values are shown first.
+    RuntimeDefinitionSpecificationNetworkAccess:
+      type: string
+      enum:
+      - OPEN
+      - FORBIDDEN
+      - LOCAL_ONLY
+    RuntimeDefinitionSpecificationCpu:
+      type: object
+      properties:
+        coreCount:
+          type: integer
+          format: int32
     RuntimeDefinitionSpecificationSoftware:
       type: object
       properties:
         python:
           type: string
+    PageRuntimeDefinition:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/RuntimeDefinition'
+    RuntimeDefinitionPoweredBy:
+      type: object
+      properties:
+        text:
+          type: string
+        url:
+          type: string
+    RuntimeDefinitionStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - RESTRICTED
+      - DISABLED
+    RuntimeDefinitionSpecificationGpu:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+        model:
+          type: string
+        driver:
+          type: string
+    RuntimeDefinitionSpecificationSize:
+      type: object
+      properties:
+        size:
+          type: integer
+          format: int32
+          description: Size in gigabytes.
     RuntimeDefinitionSpecificationNetwork:
       type: object
       properties:
@@ -203,31 +228,6 @@ components:
       - CPU
       - GPU
       - COPY
-    PageRuntimeDefinition:
-      type: object
-      properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/RuntimeDefinition'
-    RuntimeDefinitionSpecificationNetworkAccess:
-      type: string
-      enum:
-      - OPEN
-      - FORBIDDEN
-      - LOCAL_ONLY
   securitySchemes:
     apiKey:
       type: apiKey

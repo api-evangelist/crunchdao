@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity project API
+  title: Tournament Project API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,14 +8,14 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: project
+- name: Project
 paths:
   /v4/projects/~:
     x-service-id: competition-service
     post:
       tags:
-      - project
-      summary: Find project by ID in batch.
+      - Project
+      summary: Find project by ID in batch
       operationId: batchFindProjectById
       requestBody:
         content:
@@ -39,7 +39,7 @@ paths:
     x-service-id: competition-service
     post:
       tags:
-      - project
+      - Project
       summary: Search projects by filters
       operationId: searchProjectV4
       parameters:
@@ -90,8 +90,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - project
-      summary: Show a project selection.
+      - Project
+      summary: Show a project selection
       operationId: getProjectSelectionV3
       parameters:
       - name: competitionIdentifier
@@ -131,8 +131,8 @@ paths:
                 $ref: '#/components/schemas/ProjectSelection'
     post:
       tags:
-      - project
-      summary: Edit a project selection.
+      - Project
+      summary: Edit a project selection
       operationId: updateProjectSelectionV3
       parameters:
       - name: competitionIdentifier
@@ -180,8 +180,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - project
-      summary: List the projects of a user.
+      - Project
+      summary: List the projects of a user
       operationId: listProjectsV3
       parameters:
       - name: competitionIdentifier
@@ -212,8 +212,8 @@ paths:
       - apiKey: []
     post:
       tags:
-      - project
-      summary: Create a project.
+      - Project
+      summary: Create a project
       operationId: createProjectV3
       parameters:
       - name: competitionIdentifier
@@ -250,8 +250,8 @@ paths:
     x-service-id: competition-service
     post:
       tags:
-      - project
-      summary: Select a project for the leaderboard.
+      - Project
+      summary: Select a project for the leaderboard
       operationId: selectProjectV3
       parameters:
       - name: competitionIdentifier
@@ -289,8 +289,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - project
-      summary: Show a project.
+      - Project
+      summary: Show a project
       operationId: showProjectV3
       parameters:
       - name: competitionIdentifier
@@ -326,8 +326,8 @@ paths:
       - apiKey: []
     patch:
       tags:
-      - project
-      summary: Update a project.
+      - Project
+      summary: Update a project
       operationId: updateProjectV3
       parameters:
       - name: competitionIdentifier
@@ -371,7 +371,7 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - project
+      - Project
       summary: Performance of project
       operationId: getProjectPerformanceV4
       parameters:
@@ -396,8 +396,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - project
-      summary: Use `/compute` instead.
+      - Project
+      summary: Use `/compute` instead
       operationId: getQuota
       parameters:
       - name: competitionIdentifier
@@ -443,8 +443,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - project
-      summary: Show a project's submit quota.
+      - Project
+      summary: Show a project's submit quota
       operationId: getSubmitQuota
       parameters:
       - name: competitionIdentifier
@@ -489,8 +489,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - project
-      summary: Show a project's quota.
+      - Project
+      summary: Show a project's quota
       operationId: getComputeQuota
       parameters:
       - name: competitionIdentifier
@@ -535,8 +535,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - project
-      summary: Generate a random project name.
+      - Project
+      summary: Generate a random project name
       operationId: recommendProjectName
       parameters:
       - name: competitionIdentifier
@@ -565,53 +565,88 @@ paths:
       - apiKey: []
 components:
   schemas:
-    PageProjectView:
+    ProjectComputeQuota:
       type: object
       properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
+        running:
+          type: boolean
+          description: Is the project currently running.
+        available:
+          anyOf:
+          - $comment: Seconds
+            example: '60'
+          - format: duration
+            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
+            $comment: ISO 8601 Duration
+            example: PT1M
+          description: Total available compute time.
+        used:
+          anyOf:
+          - $comment: Seconds
+            example: '60'
+          - format: duration
+            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
+            $comment: ISO 8601 Duration
+            example: PT1M
+          description: Used compute time.
+        remaining:
+          anyOf:
+          - $comment: Seconds
+            example: '60'
+          - format: duration
+            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
+            $comment: ISO 8601 Duration
+            example: PT1M
+          description: Remaining compute time.
+        details:
           type: array
+          description: Detailed quota usage for each crunches.
           items:
-            $ref: '#/components/schemas/ProjectView'
-    ProjectSelection:
+            $ref: '#/components/schemas/ProjectComputeQuotaDetail'
+    ProjectSubmitQuotaCountLimit:
       type: object
       properties:
-        project:
-          $ref: '#/components/schemas/Project'
-        submission:
-          $ref: '#/components/schemas/ProjectSelectionSubmission'
-        trainFrequency:
+        current:
           type: integer
           format: int64
-        forceFirstTrain:
-          type: boolean
-        runtimeType:
-          $ref: '#/components/schemas/RuntimeType'
-        runId:
+          description: Current count of submissions.
+        maximum:
           type: integer
           format: int64
-        runnable:
+          description: Maximum count allowed.
+        bypass:
           type: boolean
-        origin:
-          $ref: '#/components/schemas/ProjectSelectionOrigin'
+          description: Allowed to bypass the limit.
+    Project:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        competitionId:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/User'
+        name:
+          type: string
+        selected:
+          type: boolean
+        submitted:
+          type: boolean
+        note:
+          type: string
+        writeupUrl:
+          type: string
+        writeupArchived:
+          type: boolean
         createdAt:
           type: string
           format: date-time
         updatedAt:
           type: string
           format: date-time
-        submissionId:
+        userId:
           type: integer
           format: int64
           deprecated: true
@@ -652,70 +687,85 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CrunchSplit'
-    ProjectComputeQuota:
+    CrunchSplit:
       type: object
       properties:
-        running:
-          type: boolean
-          description: Is the project currently running.
-        available:
+        key:
+          type: object
           anyOf:
-          - $comment: Seconds
-            example: '60'
-          - format: duration
-            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
-            $comment: ISO 8601 Duration
-            example: PT1M
-          description: Total available compute time.
-        used:
-          anyOf:
-          - $comment: Seconds
-            example: '60'
-          - format: duration
-            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
-            $comment: ISO 8601 Duration
-            example: PT1M
-          description: Used compute time.
-        remaining:
-          anyOf:
-          - $comment: Seconds
-            example: '60'
-          - format: duration
-            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
-            $comment: ISO 8601 Duration
-            example: PT1M
-          description: Remaining compute time.
-        details:
-          type: array
-          description: Detailed quota usage for each crunches.
-          items:
-            $ref: '#/components/schemas/ProjectComputeQuotaDetail'
-    User:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+    ProjectCreateForm:
       type: object
       properties:
-        id:
+        name:
+          type: string
+          maxLength: 60
+          minLength: 1
+      required:
+      - name
+    ProjectSelection:
+      type: object
+      properties:
+        project:
+          $ref: '#/components/schemas/Project'
+        submission:
+          $ref: '#/components/schemas/ProjectSelectionSubmission'
+        trainFrequency:
           type: integer
           format: int64
-        login:
+        forceFirstTrain:
+          type: boolean
+        runtimeType:
+          $ref: '#/components/schemas/RuntimeType'
+        runId:
+          type: integer
+          format: int64
+        runnable:
+          type: boolean
+        origin:
+          $ref: '#/components/schemas/ProjectSelectionOrigin'
+        createdAt:
           type: string
-    ProjectSubmitQuota:
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        submissionId:
+          type: integer
+          format: int64
+          deprecated: true
+    ProjectView:
       type: object
       properties:
-        codeFiles:
-          $ref: '#/components/schemas/ProjectSubmitQuotaFileLimit'
-          description: Maximum code size (sum of files).
-        modelFiles:
-          $ref: '#/components/schemas/ProjectSubmitQuotaFileLimit'
-          description: Maximum model size (sum of files).
-        notebookFile:
-          $ref: '#/components/schemas/ProjectSubmitQuotaFileLimit'
-          description: Maximum notebook size.
-        predictionFile:
-          $ref: '#/components/schemas/ProjectSubmitQuotaFileLimit'
-          description: Maximum prediction size.
-        submissionsPerDay:
-          $ref: '#/components/schemas/ProjectSubmitQuotaCountLimit'
-          description: Maximum submissions per day.
+        name:
+          type: string
+        projectId:
+          type: integer
+          format: int64
+        projectName:
+          type: string
+        userId:
+          type: integer
+          format: int64
+        userName:
+          type: string
+        competitionsNames:
+          type: array
+          items:
+            type: string
+        totalOfRewards:
+          type: number
+        lastModified:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+        private:
+          type: boolean
     PhaseSplit:
       type: object
       properties:
@@ -726,7 +776,34 @@ components:
             format: int64
           - type: string
           example: 1
-    Project:
+    ProjectPerformance:
+      type: object
+      properties:
+        roundNumber:
+          type: integer
+          format: int64
+        phaseType:
+          type: string
+        crunchNumber:
+          type: integer
+          format: int64
+        scoreValue:
+          type: number
+          format: double
+        metricId:
+          type: integer
+          format: int64
+        runId:
+          type: integer
+          format: int64
+    ProjectSubmitQuotaFileLimit:
+      type: object
+      properties:
+        totalSize:
+          type: integer
+          format: int64
+          description: Total size in bytes.
+    SimpleProject:
       type: object
       properties:
         id:
@@ -735,90 +812,42 @@ components:
         competitionId:
           type: integer
           format: int64
+        userId:
+          type: integer
+          format: int64
         user:
           $ref: '#/components/schemas/User'
         name:
           type: string
-        selected:
-          type: boolean
-        submitted:
-          type: boolean
-        note:
-          type: string
-        writeupUrl:
-          type: string
-        writeupArchived:
-          type: boolean
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        userId:
-          type: integer
-          format: int64
-          deprecated: true
-    ProjectSelectionOrigin:
-      type: string
-      enum:
-      - SELECTION
-      - PREVIOUS_ROUND
-      - LAST_RUN
-    ProjectSelectionSubmission:
+    ProjectComputeQuotaDetail:
       type: object
       properties:
-        id:
+        crunch:
+          $ref: '#/components/schemas/Crunch'
+        available:
+          anyOf:
+          - $comment: Seconds
+            example: '60'
+          - format: duration
+            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
+            $comment: ISO 8601 Duration
+            example: PT1M
+        used:
+          anyOf:
+          - $comment: Seconds
+            example: '60'
+          - format: duration
+            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
+            $comment: ISO 8601 Duration
+            example: PT1M
+        runCount:
           type: integer
           format: int64
-        number:
-          type: integer
-          format: int64
-    ProjectSubmitQuotaCountLimit:
-      type: object
-      properties:
-        current:
-          type: integer
-          format: int64
-          description: Current count of submissions.
-        maximum:
-          type: integer
-          format: int64
-          description: Maximum count allowed.
-        bypass:
-          type: boolean
-          description: Allowed to bypass the limit.
-    RuntimeType:
-      type: string
-      enum:
-      - CPU
-      - GPU
-      - COPY
-    ProjectsSearchCriteria:
-      type: object
-      properties:
-        name:
-          type: string
-        sortBy:
-          type: string
-          enum:
-          - MOST_REWARDS
-          - RECENTLY_CREATED
-          - RECENTLY_UPDATED
     PhaseType:
       type: string
       enum:
       - SUBMISSION
       - OUT_OF_SAMPLE
-    ProjectCreateForm:
-      type: object
-      properties:
-        name:
-          type: string
-          maxLength: 60
-          minLength: 1
-      required:
-      - name
     Phase:
       type: object
       properties:
@@ -866,59 +895,38 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PhaseSplit'
-    ProjectComputeQuotaDetail:
+    RuntimeType:
+      type: string
+      enum:
+      - CPU
+      - GPU
+      - COPY
+    User:
       type: object
       properties:
-        crunch:
-          $ref: '#/components/schemas/Crunch'
-        available:
-          anyOf:
-          - $comment: Seconds
-            example: '60'
-          - format: duration
-            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
-            $comment: ISO 8601 Duration
-            example: PT1M
-        used:
-          anyOf:
-          - $comment: Seconds
-            example: '60'
-          - format: duration
-            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
-            $comment: ISO 8601 Duration
-            example: PT1M
-        runCount:
+        id:
           type: integer
           format: int64
-    ProjectView:
+        login:
+          type: string
+    ProjectSubmitQuota:
       type: object
       properties:
-        name:
-          type: string
-        projectId:
-          type: integer
-          format: int64
-        projectName:
-          type: string
-        userId:
-          type: integer
-          format: int64
-        userName:
-          type: string
-        competitionsNames:
-          type: array
-          items:
-            type: string
-        totalOfRewards:
-          type: number
-        lastModified:
-          type: string
-          format: date-time
-        createdAt:
-          type: string
-          format: date-time
-        private:
-          type: boolean
+        codeFiles:
+          $ref: '#/components/schemas/ProjectSubmitQuotaFileLimit'
+          description: Maximum code size (sum of files).
+        modelFiles:
+          $ref: '#/components/schemas/ProjectSubmitQuotaFileLimit'
+          description: Maximum model size (sum of files).
+        notebookFile:
+          $ref: '#/components/schemas/ProjectSubmitQuotaFileLimit'
+          description: Maximum notebook size.
+        predictionFile:
+          $ref: '#/components/schemas/ProjectSubmitQuotaFileLimit'
+          description: Maximum prediction size.
+        submissionsPerDay:
+          $ref: '#/components/schemas/ProjectSubmitQuotaCountLimit'
+          description: Maximum submissions per day.
     ProjectUpdateForm:
       type: object
       properties:
@@ -939,6 +947,31 @@ components:
           minLength: 0
       required:
       - name
+    PageProjectView:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProjectView'
+    ProjectSelectionOrigin:
+      type: string
+      enum:
+      - SELECTION
+      - PREVIOUS_ROUND
+      - LAST_RUN
     ProjectSelectionUpdateForm:
       type: object
       properties:
@@ -947,59 +980,26 @@ components:
           format: int64
       required:
       - runId
-    ProjectPerformance:
+    ProjectsSearchCriteria:
       type: object
       properties:
-        roundNumber:
-          type: integer
-          format: int64
-        phaseType:
+        name:
           type: string
-        crunchNumber:
-          type: integer
-          format: int64
-        scoreValue:
-          type: number
-          format: double
-        metricId:
-          type: integer
-          format: int64
-        runId:
-          type: integer
-          format: int64
-    SimpleProject:
+        sortBy:
+          type: string
+          enum:
+          - MOST_REWARDS
+          - RECENTLY_CREATED
+          - RECENTLY_UPDATED
+    ProjectSelectionSubmission:
       type: object
       properties:
         id:
           type: integer
           format: int64
-        competitionId:
+        number:
           type: integer
           format: int64
-        userId:
-          type: integer
-          format: int64
-        user:
-          $ref: '#/components/schemas/User'
-        name:
-          type: string
-    ProjectSubmitQuotaFileLimit:
-      type: object
-      properties:
-        totalSize:
-          type: integer
-          format: int64
-          description: Total size in bytes.
-    CrunchSplit:
-      type: object
-      properties:
-        key:
-          type: object
-          anyOf:
-          - type: integer
-            format: int64
-          - type: string
-          example: 1
   securitySchemes:
     apiKey:
       type: apiKey

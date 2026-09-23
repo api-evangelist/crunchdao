@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity export API
+  title: Tournament Export API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,14 +8,14 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: export
+- name: Export
 paths:
   /v2/competitions/{competitionIdentifier}/export/submissions:
     x-service-id: competition-service
     get:
       tags:
-      - export
-      summary: Export all submissions as CSV.
+      - Export
+      summary: Export all submissions as CSV
       operationId: exportSubmissions
       parameters:
       - name: competitionIdentifier
@@ -41,8 +41,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - export
-      summary: Export all runs as CSV.
+      - Export
+      summary: Export all runs as CSV
       operationId: exportRuns
       parameters:
       - name: competitionIdentifier
@@ -68,8 +68,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - export
-      summary: Export all predictions as CSV.
+      - Export
+      summary: Export all predictions as CSV
       operationId: exportPredictions
       parameters:
       - name: competitionIdentifier
@@ -108,6 +108,54 @@ paths:
       - apiKey: []
 components:
   schemas:
+    PredictionCsvEntry:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        userId:
+          type: integer
+          format: int64
+        userLogin:
+          type: string
+        projectId:
+          type: integer
+          format: int64
+        projectName:
+          type: string
+        teamId:
+          type: integer
+          format: int64
+        teamName:
+          type: string
+        runId:
+          type: integer
+          format: int64
+        submissionId:
+          type: integer
+          format: int64
+        valid:
+          type: boolean
+        success:
+          type: boolean
+        error:
+          type: string
+        deterministic:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        fileName:
+          type: string
+        fileSize:
+          type: integer
+          format: int64
+        fileUri:
+          type: string
+          format: uri
     SubmissionCsvEntry:
       type: object
       properties:
@@ -255,54 +303,6 @@ components:
         memory:
           type: integer
           format: int32
-    PredictionCsvEntry:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        userId:
-          type: integer
-          format: int64
-        userLogin:
-          type: string
-        projectId:
-          type: integer
-          format: int64
-        projectName:
-          type: string
-        teamId:
-          type: integer
-          format: int64
-        teamName:
-          type: string
-        runId:
-          type: integer
-          format: int64
-        submissionId:
-          type: integer
-          format: int64
-        valid:
-          type: boolean
-        success:
-          type: boolean
-        error:
-          type: string
-        deterministic:
-          type: boolean
-        createdAt:
-          type: string
-          format: date-time
-        fileName:
-          type: string
-        fileSize:
-          type: integer
-          format: int64
-        fileUri:
-          type: string
-          format: uri
   securitySchemes:
     apiKey:
       type: apiKey

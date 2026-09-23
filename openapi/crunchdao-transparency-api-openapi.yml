@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity transparency API
+  title: Tournament Transparency API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,14 +8,14 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: transparency
+- name: Transparency
 paths:
   /v1/transparency/global/report:
     x-service-id: competition-service
     get:
       tags:
-      - transparency
-      summary: Get statistics about the platform.
+      - Transparency
+      summary: Get statistics about the platform
       operationId: getGlobalTransparencyReport
       responses:
         '200':
@@ -26,26 +26,6 @@ paths:
                 $ref: '#/components/schemas/TransparencyReport'
 components:
   schemas:
-    TransparencyReportGroupedAndCountedValues:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/TransparencyReportCount'
-    TransparencyReportCount:
-      type: object
-      properties:
-        group:
-          type: string
-        value:
-          type: object
-    TransparencyReportSingleValue:
-      type: object
-      properties:
-        data:
-          type: number
-          format: double
     TransparencyReport:
       type: object
       properties:
@@ -71,6 +51,26 @@ components:
           $ref: '#/components/schemas/TransparencyReportSingleValue'
         quarterToDateUserGrowthPercentage:
           $ref: '#/components/schemas/TransparencyReportSingleValue'
+    TransparencyReportGroupedAndCountedValues:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransparencyReportCount'
+    TransparencyReportCount:
+      type: object
+      properties:
+        group:
+          type: string
+        value:
+          type: object
+    TransparencyReportSingleValue:
+      type: object
+      properties:
+        data:
+          type: number
+          format: double
   securitySchemes:
     apiKey:
       type: apiKey

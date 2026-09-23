@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity team:invitation API
+  title: Tournament Team:invitation API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -15,7 +15,7 @@ paths:
     get:
       tags:
       - team:invitation
-      summary: Show an invitation.
+      summary: Show an invitation
       operationId: getTeamInvitation
       parameters:
       - name: competitionIdentifier
@@ -42,7 +42,7 @@ paths:
     delete:
       tags:
       - team:invitation
-      summary: Decline an invitation.
+      summary: Decline an invitation
       operationId: declineTeamInvitation
       parameters:
       - name: competitionIdentifier
@@ -65,7 +65,7 @@ paths:
     patch:
       tags:
       - team:invitation
-      summary: Accept an invitation.
+      summary: Accept an invitation
       operationId: acceptTeamInvitation
       parameters:
       - name: competitionIdentifier
@@ -90,7 +90,7 @@ paths:
     get:
       tags:
       - team:invitation
-      summary: List pending team invitations.
+      summary: List pending team invitations
       operationId: listPendingTeamInvitations
       parameters:
       - name: competitionIdentifier
@@ -121,7 +121,7 @@ paths:
     get:
       tags:
       - team:invitation
-      summary: List invitations.
+      summary: List invitations
       operationId: listTeamInvitation
       parameters:
       - name: competitionIdentifier
@@ -159,21 +159,6 @@ components:
           type: integer
           format: int64
           deprecated: true
-    TeamMember:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        user:
-          $ref: '#/components/schemas/User'
-        createdAt:
-          type: string
-          format: date-time
-        userId:
-          type: integer
-          format: int64
-          deprecated: true
     Team:
       type: object
       properties:
@@ -204,6 +189,21 @@ components:
         updatedAt:
           type: string
           format: date-time
+    TeamMember:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          type: string
+          format: date-time
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
     User:
       type: object
       properties:

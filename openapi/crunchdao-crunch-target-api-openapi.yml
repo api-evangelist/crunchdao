@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity crunch-target API
+  title: Tournament Crunch Target API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -15,7 +15,7 @@ paths:
     get:
       tags:
       - crunch-target
-      summary: Show a crunch target.
+      summary: Show a crunch target
       operationId: getCrunchTarget
       parameters:
       - name: competitionIdentifier
@@ -63,7 +63,7 @@ paths:
     patch:
       tags:
       - crunch-target
-      summary: Update a crunch target.
+      summary: Update a crunch target
       operationId: updateCrunchTarget
       parameters:
       - name: competitionIdentifier
@@ -119,7 +119,7 @@ paths:
     get:
       tags:
       - crunch-target
-      summary: List crunch targets.
+      summary: List crunch targets
       operationId: listCrunchTargets
       parameters:
       - name: competitionIdentifier
@@ -161,23 +161,6 @@ paths:
                   $ref: '#/components/schemas/CrunchTarget'
 components:
   schemas:
-    CrunchTarget:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        target:
-          $ref: '#/components/schemas/Target'
-        crunch:
-          $ref: '#/components/schemas/Crunch'
-        published:
-          type: boolean
-    CrunchTargetUpdateForm:
-      type: object
-      properties:
-        published:
-          type: boolean
     Crunch:
       type: object
       properties:
@@ -215,26 +198,11 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CrunchSplit'
-    PhaseSplit:
-      type: object
-      properties:
-        key:
-          type: object
-          anyOf:
-          - type: integer
-            format: int64
-          - type: string
-          example: 1
-    CrunchSplit:
-      type: object
-      properties:
-        key:
-          type: object
-          anyOf:
-          - type: integer
-            format: int64
-          - type: string
-          example: 1
+    LeaderboardRankOrder:
+      type: string
+      enum:
+      - DESCENDING
+      - ASCENDING
     Unit:
       type: object
       properties:
@@ -248,11 +216,26 @@ components:
           type: integer
           format: int32
           description: Number of digits to keep after the comma.
-    LeaderboardRankOrder:
-      type: string
-      enum:
-      - DESCENDING
-      - ASCENDING
+    CrunchSplit:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+    PhaseSplit:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
     PhaseType:
       type: string
       enum:
@@ -336,6 +319,23 @@ components:
         weightedMeanDisplayUnit:
           type: string
           deprecated: true
+    CrunchTarget:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        target:
+          $ref: '#/components/schemas/Target'
+        crunch:
+          $ref: '#/components/schemas/Crunch'
+        published:
+          type: boolean
+    CrunchTargetUpdateForm:
+      type: object
+      properties:
+        published:
+          type: boolean
   securitySchemes:
     apiKey:
       type: apiKey

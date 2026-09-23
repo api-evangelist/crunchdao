@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity onboard API
+  title: Tournament Onboard API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,14 +8,14 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: onboard
+- name: Onboard
 paths:
   /v1/onboard:
     x-service-id: account-service
     get:
       tags:
-      - onboard
-      summary: Show onboard process.
+      - Onboard
+      summary: Show onboard process
       operationId: show
       responses:
         '200':
@@ -29,8 +29,8 @@ paths:
       - apiKey: []
     post:
       tags:
-      - onboard
-      summary: Update onboard process.
+      - Onboard
+      summary: Update onboard process
       operationId: update
       requestBody:
         content:
@@ -50,6 +50,53 @@ paths:
       - apiKey: []
 components:
   schemas:
+    OnboardQuestionsParticipationReason:
+      type: string
+      enum:
+      - IMPROVE
+      - GAIN
+      - FUN
+    Onboard:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
+        questions:
+          $ref: '#/components/schemas/OnboardQuestions'
+        completed:
+          type: boolean
+        completedAt:
+          type: string
+          format: date-time
+    OnboardQuestionsStudyLevel:
+      type: string
+      enum:
+      - UNDERGRADUATE
+      - GRADUATE
+      - PHD
+    OnboardQuestions:
+      type: object
+      properties:
+        studyLevel:
+          $ref: '#/components/schemas/OnboardQuestionsStudyLevel'
+        experienceWithData:
+          $ref: '#/components/schemas/OnboardQuestionsExperienceWithData'
+        workingInFinancialInstitution:
+          type: boolean
+        participationReason:
+          $ref: '#/components/schemas/OnboardQuestionsParticipationReason'
+        isMachineLearningEngineer:
+          type: boolean
+        isQuant:
+          type: boolean
+        isEmployerEngagedInAlgorithmicTradingServices:
+          type: boolean
+        employerProvidedServices:
+          type: string
+        university:
+          type: string
+        quantClub:
+          $ref: '#/components/schemas/QuantClub'
     QuantClub:
       type: string
       enum:
@@ -60,27 +107,6 @@ components:
       - LONDON
       - NEW_YORK
       - PARIS
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        login:
-          type: string
-    OnboardQuestionsStudyLevel:
-      type: string
-      enum:
-      - UNDERGRADUATE
-      - GRADUATE
-      - PHD
-    OnboardQuestionsExperienceWithData:
-      type: string
-      enum:
-      - LESS_1_YEAR
-      - BETWEEN_1_AND_3_YEARS
-      - BETWEEN_4_AND_5_YEARS
-      - MORE_THAN_5_YEARS
     OnboardUpdateForm:
       type: object
       properties:
@@ -131,47 +157,21 @@ components:
           type: boolean
       required:
       - completed
-    OnboardQuestionsParticipationReason:
+    OnboardQuestionsExperienceWithData:
       type: string
       enum:
-      - IMPROVE
-      - GAIN
-      - FUN
-    Onboard:
+      - LESS_1_YEAR
+      - BETWEEN_1_AND_3_YEARS
+      - BETWEEN_4_AND_5_YEARS
+      - MORE_THAN_5_YEARS
+    User:
       type: object
       properties:
-        user:
-          $ref: '#/components/schemas/User'
-        questions:
-          $ref: '#/components/schemas/OnboardQuestions'
-        completed:
-          type: boolean
-        completedAt:
+        id:
+          type: integer
+          format: int64
+        login:
           type: string
-          format: date-time
-    OnboardQuestions:
-      type: object
-      properties:
-        studyLevel:
-          $ref: '#/components/schemas/OnboardQuestionsStudyLevel'
-        experienceWithData:
-          $ref: '#/components/schemas/OnboardQuestionsExperienceWithData'
-        workingInFinancialInstitution:
-          type: boolean
-        participationReason:
-          $ref: '#/components/schemas/OnboardQuestionsParticipationReason'
-        isMachineLearningEngineer:
-          type: boolean
-        isQuant:
-          type: boolean
-        isEmployerEngagedInAlgorithmicTradingServices:
-          type: boolean
-        employerProvidedServices:
-          type: string
-        university:
-          type: string
-        quantClub:
-          $ref: '#/components/schemas/QuantClub'
   securitySchemes:
     apiKey:
       type: apiKey

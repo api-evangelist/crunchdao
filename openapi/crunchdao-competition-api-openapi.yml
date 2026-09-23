@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity competition API
+  title: Tournament Competition API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,14 +8,14 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: competition
+- name: Competition
 paths:
   /v1/competitions/{competitionIdentifier}/session:
     x-service-id: competition-service
     post:
       tags:
-      - competition
-      summary: Update a competition session.
+      - Competition
+      summary: Update a competition session
       operationId: updateCompetitionSession
       parameters:
       - name: competitionIdentifier
@@ -45,8 +45,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - competition
-      summary: Show a competition.
+      - Competition
+      summary: Show a competition
       operationId: getCompetition
       parameters:
       - name: competitionIdentifier
@@ -65,8 +65,8 @@ paths:
                 $ref: '#/components/schemas/Competition'
     patch:
       tags:
-      - competition
-      summary: Show a competition.
+      - Competition
+      summary: Show a competition
       operationId: updateCompetition
       parameters:
       - name: competitionIdentifier
@@ -93,8 +93,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - competition
-      summary: List competitions with filters.
+      - Competition
+      summary: List competitions with filters
       operationId: listCompetitionsV2
       parameters:
       - name: name
@@ -260,8 +260,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - competition
-      summary: Show competitions.
+      - Competition
+      summary: Show competitions
       operationId: listCompetitions
       responses:
         '200':
@@ -276,8 +276,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - competition
-      summary: Show a competition's current state.
+      - Competition
+      summary: Show a competition's current state
       operationId: getCompetitionState
       parameters:
       - name: competitionIdentifier
@@ -296,6 +296,72 @@ paths:
                 $ref: '#/components/schemas/CompetitionState'
 components:
   schemas:
+    CompetitionStatus:
+      type: string
+      enum:
+      - PENDING
+      - OPEN
+      - CLOSED
+    ParticipantRole:
+      type: string
+      enum:
+      - USER
+      - ORGANIZER
+      - ADMINISTRATOR
+    CompetitionStatistics:
+      type: object
+      properties:
+        entrants:
+          type: integer
+          format: int64
+        participants:
+          type: integer
+          format: int64
+        teams:
+          type: integer
+          format: int64
+        submissions:
+          type: integer
+          format: int64
+        runnables:
+          type: integer
+          format: int64
+    Broadcast:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        markdown:
+          type: string
+        backgroundColor:
+          type: string
+        textColor:
+          type: string
+        active:
+          type: boolean
+        position:
+          type: integer
+          format: int64
+    PageCompetition:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Competition'
     Competition:
       type: object
       properties:
@@ -505,138 +571,26 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CrunchSplit'
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        login:
-          type: string
-    CompetitionSessionUpdateForm:
-      type: object
-      properties:
-        state:
-          type: string
-          enum:
-          - OPEN
-          - PAUSED
-        nextChange:
-          type: string
-          format: date-time
-      required:
-      - state
-    Unit:
-      type: object
-      properties:
-        prefix:
-          type: string
-          description: String to show before the value.
-        suffix:
-          type: string
-          description: String to show after the value.
-        scale:
-          type: integer
-          format: int32
-          description: Number of digits to keep after the comma.
-    CompetitionUpdateForm:
-      type: object
-      properties:
-        name:
-          type: string
-        displayName:
-          type: string
-        fullName:
-          type: string
-        shortDescription:
-          type: string
-        start:
-          type: string
-          format: date-time
-        end:
-          type: string
-          format: date-time
-        visibility:
-          type: string
-          enum:
-          - HIDDEN
-          - PUBLIC
-        cardImageUrl:
-          type: string
-        bannerImageUrl:
-          type: string
-        documentationUrl:
-          type: string
-        notebookUrl:
-          type: string
-        advancedNotebookUrl:
-          type: string
-        discussionUrl:
-          type: string
-        codeUrl:
-          type: string
-        ruleContentUrl:
-          type: string
-        prizePoolText:
-          type: string
-        prizePoolShortText:
-          type: string
-        prizePoolUsd:
-          type: number
-          format: double
-    TimelineEvent:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        type:
-          $ref: '#/components/schemas/TimelineEventType'
-        title:
-          type: string
-        description:
-          type: string
-        date:
-          type: string
-          format: date
-          description: Date on which the event will occur/has occurred.
-        color:
-          type: string
-        detailed:
-          type: boolean
-          description: Detailed event should be hidden in a space constrained UI.
-        button:
-          $ref: '#/components/schemas/TimelineEventButton'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-    CompetitionStatistics:
-      type: object
-      properties:
-        entrants:
-          type: integer
-          format: int64
-        participants:
-          type: integer
-          format: int64
-        teams:
-          type: integer
-          format: int64
-        submissions:
-          type: integer
-          format: int64
-        runnables:
-          type: integer
-          format: int64
-    CompetitionStatus:
+    LeaderboardRankOrder:
       type: string
       enum:
-      - PENDING
-      - OPEN
-      - CLOSED
+      - DESCENDING
+      - ASCENDING
+    DataReleaseSplitKey:
+      type: string
+      enum:
+      - INTEGER
+      - STRING
+    CrunchSplit:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
     Team:
       type: object
       properties:
@@ -667,49 +621,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-    PhaseSplit:
-      type: object
-      properties:
-        key:
-          type: object
-          anyOf:
-          - type: integer
-            format: int64
-          - type: string
-          example: 1
-    CompetitionState:
-      type: object
-      properties:
-        competition:
-          $ref: '#/components/schemas/Competition'
-        round:
-          $ref: '#/components/schemas/Round'
-        phase:
-          $ref: '#/components/schemas/Phase'
-        crunch:
-          $ref: '#/components/schemas/Crunch'
-        participant:
-          $ref: '#/components/schemas/Participant'
-        team:
-          $ref: '#/components/schemas/Team'
-        activeBroadcasts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Broadcast'
-        publishedCrunchTargets:
-          type: array
-          items:
-            $ref: '#/components/schemas/CrunchTarget'
-    LeaderboardRankOrder:
-      type: string
-      enum:
-      - DESCENDING
-      - ASCENDING
-    PhaseType:
-      type: string
-      enum:
-      - SUBMISSION
-      - OUT_OF_SAMPLE
     Round:
       type: object
       properties:
@@ -739,6 +650,138 @@ components:
         maxSubmissionsPerDay:
           type: integer
           format: int64
+    CompetitionState:
+      type: object
+      properties:
+        competition:
+          $ref: '#/components/schemas/Competition'
+        round:
+          $ref: '#/components/schemas/Round'
+        phase:
+          $ref: '#/components/schemas/Phase'
+        crunch:
+          $ref: '#/components/schemas/Crunch'
+        participant:
+          $ref: '#/components/schemas/Participant'
+        team:
+          $ref: '#/components/schemas/Team'
+        activeBroadcasts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Broadcast'
+        publishedCrunchTargets:
+          type: array
+          items:
+            $ref: '#/components/schemas/CrunchTarget'
+    PhaseSplit:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+    CompetitionSessionUpdateForm:
+      type: object
+      properties:
+        state:
+          type: string
+          enum:
+          - OPEN
+          - PAUSED
+        nextChange:
+          type: string
+          format: date-time
+      required:
+      - state
+    TeamMember:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          type: string
+          format: date-time
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
+    TimelineEventType:
+      type: string
+      enum:
+      - GENERIC
+      - LEADERBOARD
+      - RULES
+      - REWARDS
+    TimelineEventButton:
+      type: object
+      properties:
+        text:
+          type: string
+        link:
+          type: string
+        color:
+          type: string
+    TimelineEvent:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/TimelineEventType'
+        title:
+          type: string
+        description:
+          type: string
+        date:
+          type: string
+          format: date
+          description: Date on which the event will occur/has occurred.
+        color:
+          type: string
+        detailed:
+          type: boolean
+          description: Detailed event should be hidden in a space constrained UI.
+        button:
+          $ref: '#/components/schemas/TimelineEventButton'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    Unit:
+      type: object
+      properties:
+        prefix:
+          type: string
+          description: String to show before the value.
+        suffix:
+          type: string
+          description: String to show after the value.
+        scale:
+          type: integer
+          format: int32
+          description: Number of digits to keep after the comma.
+    CompetitionFormat:
+      type: string
+      enum:
+      - TIMESERIES
+      - DAG
+      - STREAM
+      - SPATIAL
+      - UNSTRUCTURED
+    PhaseType:
+      type: string
+      enum:
+      - SUBMISSION
+      - OUT_OF_SAMPLE
     Phase:
       type: object
       properties:
@@ -786,82 +829,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PhaseSplit'
-    CompetitionFormat:
-      type: string
-      enum:
-      - TIMESERIES
-      - DAG
-      - STREAM
-      - SPATIAL
-      - UNSTRUCTURED
-    CrunchTarget:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        target:
-          $ref: '#/components/schemas/Target'
-        crunch:
-          $ref: '#/components/schemas/Crunch'
-        published:
-          type: boolean
-    TimelineEventButton:
-      type: object
-      properties:
-        text:
-          type: string
-        link:
-          type: string
-        color:
-          type: string
-    TimelineEventType:
-      type: string
-      enum:
-      - GENERIC
-      - LEADERBOARD
-      - RULES
-      - REWARDS
-    ParticipantRole:
-      type: string
-      enum:
-      - USER
-      - ORGANIZER
-      - ADMINISTRATOR
-    PageCompetition:
-      type: object
-      properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/Competition'
-    TeamMember:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        user:
-          $ref: '#/components/schemas/User'
-        createdAt:
-          type: string
-          format: date-time
-        userId:
-          type: integer
-          format: int64
-          deprecated: true
     Target:
       type: object
       properties:
@@ -893,72 +860,14 @@ components:
         weightedMeanDisplayUnit:
           type: string
           deprecated: true
-    CompetitionTag:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Slug-like name.
-        displayName:
-          type: string
-          description: Display name for the UI.
-    CompetitionVisibility:
-      type: string
-      enum:
-      - HIDDEN
-      - PUBLIC
-    CrunchSplit:
-      type: object
-      properties:
-        key:
-          type: object
-          anyOf:
-          - type: integer
-            format: int64
-          - type: string
-          example: 1
-    DataReleaseSplitKey:
-      type: string
-      enum:
-      - INTEGER
-      - STRING
-    CompetitionType:
-      type: string
-      enum:
-      - OPEN
-      - PAUSED
-    Broadcast:
+    User:
       type: object
       properties:
         id:
           type: integer
           format: int64
-        markdown:
+        login:
           type: string
-        backgroundColor:
-          type: string
-        textColor:
-          type: string
-        active:
-          type: boolean
-        position:
-          type: integer
-          format: int64
-    CompetitionMode:
-      type: string
-      enum:
-      - OFFLINE
-      - REAL_TIME
-    CompetitionSession:
-      type: object
-      properties:
-        state:
-          $ref: '#/components/schemas/CompetitionType'
-          description: Current session state.
-        nextChange:
-          type: string
-          format: date-time
-          description: When should the next session state change happen. Unknown if `null`.
     Participant:
       type: object
       properties:
@@ -1010,6 +919,97 @@ components:
           type: integer
           format: int64
           deprecated: true
+    CompetitionUpdateForm:
+      type: object
+      properties:
+        name:
+          type: string
+        displayName:
+          type: string
+        fullName:
+          type: string
+        shortDescription:
+          type: string
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        visibility:
+          type: string
+          enum:
+          - HIDDEN
+          - PUBLIC
+        cardImageUrl:
+          type: string
+        bannerImageUrl:
+          type: string
+        documentationUrl:
+          type: string
+        notebookUrl:
+          type: string
+        advancedNotebookUrl:
+          type: string
+        discussionUrl:
+          type: string
+        codeUrl:
+          type: string
+        ruleContentUrl:
+          type: string
+        prizePoolText:
+          type: string
+        prizePoolShortText:
+          type: string
+        prizePoolUsd:
+          type: number
+          format: double
+    CompetitionVisibility:
+      type: string
+      enum:
+      - HIDDEN
+      - PUBLIC
+    CompetitionType:
+      type: string
+      enum:
+      - OPEN
+      - PAUSED
+    CompetitionMode:
+      type: string
+      enum:
+      - OFFLINE
+      - REAL_TIME
+    CompetitionTag:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name for the UI.
+    CompetitionSession:
+      type: object
+      properties:
+        state:
+          $ref: '#/components/schemas/CompetitionType'
+          description: Current session state.
+        nextChange:
+          type: string
+          format: date-time
+          description: When should the next session state change happen. Unknown if `null`.
+    CrunchTarget:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        target:
+          $ref: '#/components/schemas/Target'
+        crunch:
+          $ref: '#/components/schemas/Crunch'
+        published:
+          type: boolean
   securitySchemes:
     apiKey:
       type: apiKey

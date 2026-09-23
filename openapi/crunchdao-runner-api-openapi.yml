@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity runner API
+  title: Tournament Runner API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,14 +8,14 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: runner
+- name: Runner
 paths:
   /v1/runner/runs/{runId}/error:
     x-service-id: competition-service
     put:
       tags:
-      - runner
-      summary: Report a run's trace.
+      - Runner
+      summary: Report a run's trace
       operationId: reportRunnerError
       parameters:
       - name: runId
@@ -46,8 +46,8 @@ paths:
     x-service-id: competition-service
     post:
       tags:
-      - runner
-      summary: Collect the traces.
+      - Runner
+      summary: Collect the traces
       operationId: collectRunnerTraces
       parameters:
       - name: runId
@@ -78,7 +78,7 @@ paths:
     x-service-id: competition-service
     post:
       tags:
-      - runner
+      - Runner
       operationId: reportRunnerTrace
       parameters:
       - name: runId
@@ -106,12 +106,14 @@ paths:
         '200':
           description: OK
       deprecated: true
+      summary: Report runner trace
+      x-summary-source: derived
   /v1/runner/runs/{runId}/result:
     x-service-id: competition-service
     post:
       tags:
-      - runner
-      summary: Submit a run's result.
+      - Runner
+      summary: Submit a run's result
       operationId: submitRunnerPrediction
       parameters:
       - name: runId
@@ -142,7 +144,7 @@ paths:
     x-service-id: competition-service
     post:
       tags:
-      - runner
+      - Runner
       operationId: reportRunnerCurrent
       parameters:
       - name: runId
@@ -163,12 +165,14 @@ paths:
         '200':
           description: OK
       deprecated: true
+      summary: Report runner current
+      x-summary-source: derived
   /v1/runner/runs/{runId}/model:
     x-service-id: competition-service
     get:
       tags:
-      - runner
-      summary: Get a run's model file URLs.
+      - Runner
+      summary: Get a run's model file URLs
       operationId: getRunnerModel
       parameters:
       - name: runId
@@ -200,8 +204,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - runner
-      summary: Get a run's data.
+      - Runner
+      summary: Get a run's data
       operationId: showRunnerData
       parameters:
       - name: runId
@@ -230,8 +234,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - runner
-      summary: Get a run's code.
+      - Runner
+      summary: Get a run's code
       operationId: showRunnerCode
       parameters:
       - name: runId
@@ -263,8 +267,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - runner
-      summary: Check connectivity.
+      - Runner
+      summary: Check connectivity
       operationId: testRunnerPing
       responses:
         '200':
@@ -275,116 +279,11 @@ paths:
                 type: string
 components:
   schemas:
-    JsonNode:
-      type: object
-    RunnerSubmitForm:
-      type: object
-      properties:
-        useInitialModel:
-          type: boolean
-        deterministic:
-          type: boolean
-        predictionFiles:
-          type: object
-          additionalProperties:
-            type: string
-            format: uuid
-        modelFiles:
-          type: object
-          additionalProperties:
-            type: string
-            format: uuid
-      required:
-      - modelFiles
-      - predictionFiles
-    DataReleaseSplit:
-      type: object
-      properties:
-        key:
-          type: object
-          anyOf:
-          - type: integer
-            format: int64
-          - type: string
-          example: 1
-        group:
-          $ref: '#/components/schemas/DataReleaseSplitGroup'
-        reduced:
-          $ref: '#/components/schemas/DataReleaseSplitReduced'
     RunnerReportErrorForm:
       type: object
       properties:
         trace:
           type: string
-    RunnerCollectTracesFormMetric:
-      type: object
-      properties:
-        timestamp:
-          type: string
-          format: date-time
-        cpu:
-          type: number
-          format: float
-        ram:
-          type: integer
-          format: int64
-        disk:
-          type: integer
-          format: int64
-        gpu:
-          type: number
-          format: float
-        vram:
-          type: integer
-          format: int64
-      required:
-      - timestamp
-    DataReleaseSplitGroup:
-      type: string
-      enum:
-      - TRAIN
-      - TEST
-    DataReleaseTargetResolution:
-      type: string
-      enum:
-      - ALREADY
-      - PENDING
-      - RESOLVED
-    DataFile:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        url:
-          type: string
-        size:
-          type: integer
-          format: int64
-        signed:
-          type: boolean
-        compressed:
-          type: boolean
-    RunnerCollectTracesForm:
-      type: object
-      properties:
-        spans:
-          type: array
-          items:
-            $ref: '#/components/schemas/RunnerCollectTracesFormSpan'
-        metrics:
-          type: array
-          items:
-            $ref: '#/components/schemas/RunnerCollectTracesFormMetric'
-      required:
-      - metrics
-      - spans
-    DataReleaseSplitKey:
-      type: string
-      enum:
-      - INTEGER
-      - STRING
     DataRelease:
       type: object
       properties:
@@ -431,11 +330,22 @@ components:
           type: object
           additionalProperties:
             $ref: '#/components/schemas/DataFile'
-    DataReleaseSplitReduced:
-      type: string
-      enum:
-      - X
-      - XY
+    DataFile:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+        size:
+          type: integer
+          format: int64
+        signed:
+          type: boolean
+        compressed:
+          type: boolean
     LegacyRunnerReportTraceForm:
       type: object
       properties:
@@ -443,6 +353,100 @@ components:
           type: string
         content:
           type: string
+    DataReleaseSplitGroup:
+      type: string
+      enum:
+      - TRAIN
+      - TEST
+    DataReleaseTargetResolution:
+      type: string
+      enum:
+      - ALREADY
+      - PENDING
+      - RESOLVED
+    JsonNode:
+      type: object
+    DataReleaseSplitKey:
+      type: string
+      enum:
+      - INTEGER
+      - STRING
+    RunnerSubmitForm:
+      type: object
+      properties:
+        useInitialModel:
+          type: boolean
+        deterministic:
+          type: boolean
+        predictionFiles:
+          type: object
+          additionalProperties:
+            type: string
+            format: uuid
+        modelFiles:
+          type: object
+          additionalProperties:
+            type: string
+            format: uuid
+      required:
+      - modelFiles
+      - predictionFiles
+    DataReleaseSplit:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+        group:
+          $ref: '#/components/schemas/DataReleaseSplitGroup'
+        reduced:
+          $ref: '#/components/schemas/DataReleaseSplitReduced'
+    RunnerCollectTracesForm:
+      type: object
+      properties:
+        spans:
+          type: array
+          items:
+            $ref: '#/components/schemas/RunnerCollectTracesFormSpan'
+        metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/RunnerCollectTracesFormMetric'
+      required:
+      - metrics
+      - spans
+    RunnerCollectTracesFormMetric:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        cpu:
+          type: number
+          format: float
+        ram:
+          type: integer
+          format: int64
+        disk:
+          type: integer
+          format: int64
+        gpu:
+          type: number
+          format: float
+        vram:
+          type: integer
+          format: int64
+      required:
+      - timestamp
+    DataReleaseSplitReduced:
+      type: string
+      enum:
+      - X
+      - XY
     RunnerCollectTracesFormSpan:
       type: object
       properties:

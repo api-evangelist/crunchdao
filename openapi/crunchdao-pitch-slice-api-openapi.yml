@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity pitch:slice API
+  title: Tournament Pitch:slice API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -51,6 +51,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Slice'
+      summary: List pitch slices
+      x-summary-source: derived
     post:
       tags:
       - pitch:slice
@@ -97,6 +99,8 @@ paths:
       security:
       - accessToken: []
       - apiKey: []
+      summary: Create pitch slice
+      x-summary-source: derived
   /v1/seasons/{seasonNumber}/pitches/{pitchName}/slices/~/import/markdown:
     x-service-id: competition-service
     post:
@@ -146,6 +150,8 @@ paths:
       security:
       - accessToken: []
       - apiKey: []
+      summary: Import pitch slices from markdown
+      x-summary-source: derived
   /v1/seasons/{seasonNumber}/pitches/{pitchName}/slices/~/import/gitbook:
     x-service-id: competition-service
     post:
@@ -185,6 +191,8 @@ paths:
       security:
       - accessToken: []
       - apiKey: []
+      summary: Import pitch slices from git book
+      x-summary-source: derived
   /v1/seasons/{seasonNumber}/pitches/{pitchName}/slices/{sliceName}:
     x-service-id: competition-service
     get:
@@ -231,6 +239,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Slice'
+      summary: Get pitch slice
+      x-summary-source: derived
     delete:
       tags:
       - pitch:slice
@@ -274,6 +284,8 @@ paths:
       security:
       - accessToken: []
       - apiKey: []
+      summary: Delete pitch slice
+      x-summary-source: derived
     patch:
       tags:
       - pitch:slice
@@ -327,6 +339,8 @@ paths:
       security:
       - accessToken: []
       - apiKey: []
+      summary: Update pitch slice
+      x-summary-source: derived
 components:
   schemas:
     SliceMarkdownImportForm:
@@ -336,25 +350,6 @@ components:
           type: string
       required:
       - markdown
-    SliceGitBookImportForm:
-      type: object
-      properties:
-        url:
-          type: string
-        changeRequestNumber:
-          type: integer
-          format: int64
-        titleLevel:
-          type: string
-          enum:
-          - PRIMARY
-          - SECONDARY
-        append:
-          type: boolean
-      required:
-      - append
-      - titleLevel
-      - url
     SliceCreateForm:
       type: object
       properties:
@@ -379,6 +374,13 @@ components:
       - nativeConfiguration
       - order
       - type
+    SliceType:
+      type: string
+      enum:
+      - CONTENT
+      - KEY_METRICS
+      - TIMELINE
+      - TEAM
     Slice:
       type: object
       properties:
@@ -406,13 +408,6 @@ components:
         createdAt:
           type: string
           format: date-time
-    SliceType:
-      type: string
-      enum:
-      - CONTENT
-      - KEY_METRICS
-      - TIMELINE
-      - TEAM
     SliceUpdateForm:
       type: object
       properties:
@@ -432,6 +427,25 @@ components:
         order:
           type: integer
           format: int64
+    SliceGitBookImportForm:
+      type: object
+      properties:
+        url:
+          type: string
+        changeRequestNumber:
+          type: integer
+          format: int64
+        titleLevel:
+          type: string
+          enum:
+          - PRIMARY
+          - SECONDARY
+        append:
+          type: boolean
+      required:
+      - append
+      - titleLevel
+      - url
   securitySchemes:
     apiKey:
       type: apiKey

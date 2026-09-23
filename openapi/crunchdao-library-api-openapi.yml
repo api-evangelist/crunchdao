@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity library API
+  title: Tournament Library API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,14 +8,14 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: library
+- name: Library
 paths:
   /v2/libraries/requirements/freeze/imported:
     x-service-id: competition-service
     post:
       tags:
-      - library
-      summary: Map imports to a frozen requirements.txt file.
+      - Library
+      summary: Map imports to a frozen requirements.txt file
       operationId: freezeImportedRequirementsWithMultipleLanguage
       responses:
         '200':
@@ -31,8 +31,8 @@ paths:
     x-service-id: competition-service
     post:
       tags:
-      - library
-      summary: Map imports to a frozen requirements.txt file.
+      - Library
+      summary: Map imports to a frozen requirements.txt file
       operationId: freezeImportedRequirements
       responses:
         '200':
@@ -46,8 +46,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - library
-      summary: List whitelisted libraries.
+      - Library
+      summary: List whitelisted libraries
       operationId: listLibrariesV2
       parameters:
       - name: standard
@@ -145,7 +145,7 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - library
+      - Library
       summary: Get the constraints document
       operationId: getLibrariesConstraints
       parameters:
@@ -173,8 +173,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - library
-      summary: Get a whitelisted library its latest version.
+      - Library
+      summary: Get a whitelisted library its latest version
       operationId: getLibraryLatestVersion
       parameters:
       - name: libraryLanguage
@@ -211,17 +211,6 @@ paths:
                 $ref: '#/components/schemas/LibraryLatestVersion'
 components:
   schemas:
-    GpuRequirement:
-      type: string
-      enum:
-      - OPTIONAL
-      - RECOMMENDED
-      - REQUIRED
-    Language:
-      type: string
-      enum:
-      - PYTHON
-      - R
     LibraryLatestVersion:
       type: object
       properties:
@@ -272,6 +261,17 @@ components:
         createdAt:
           type: string
           format: date-time
+    Language:
+      type: string
+      enum:
+      - PYTHON
+      - R
+    GpuRequirement:
+      type: string
+      enum:
+      - OPTIONAL
+      - RECOMMENDED
+      - REQUIRED
   securitySchemes:
     apiKey:
       type: apiKey

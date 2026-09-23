@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity broadcast API
+  title: Tournament Broadcast API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,14 +8,14 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: broadcast
+- name: Broadcast
 paths:
   /v1/competitions/{competitionIdentifier}/broadcasts:
     x-service-id: competition-service
     get:
       tags:
-      - broadcast
-      summary: List broadcasts of a competition.
+      - Broadcast
+      summary: List broadcasts of a competition
       operationId: listCompetitionBroadcasts
       parameters:
       - name: competitionIdentifier
@@ -38,8 +38,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - broadcast
-      summary: List global broadcasts.
+      - Broadcast
+      summary: List global broadcasts
       operationId: listBroadcasts
       responses:
         '200':

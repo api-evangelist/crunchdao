@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity rule API
+  title: Tournament Rule API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,14 +8,14 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: rule
+- name: Rule
 paths:
   /v1/competitions/{competitionIdentifier}/rules/accept:
     x-service-id: competition-service
     post:
       tags:
-      - rule
-      summary: Accept rules.
+      - Rule
+      summary: Accept rules
       operationId: acceptRules
       parameters:
       - name: competitionIdentifier
@@ -45,8 +45,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - rule
-      summary: Show the rule of a competition.
+      - Rule
+      summary: Show the rule of a competition
       operationId: showRulesContent
       parameters:
       - name: competitionIdentifier
@@ -70,8 +70,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - rule
-      summary: Show current rule agreemeent status.
+      - Rule
+      summary: Show current rule agreemeent status
       operationId: showRulesStatus
       parameters:
       - name: competitionIdentifier
@@ -93,6 +93,13 @@ paths:
       - apiKey: []
 components:
   schemas:
+    RuleAcceptForm:
+      type: object
+      properties:
+        cruncherPubkey:
+          type: string
+      required:
+      - cruncherPubkey
     RuleAgreement:
       type: object
       properties:
@@ -101,13 +108,6 @@ components:
         acceptedAt:
           type: string
           format: date-time
-    RuleAcceptForm:
-      type: object
-      properties:
-        cruncherPubkey:
-          type: string
-      required:
-      - cruncherPubkey
   securitySchemes:
     apiKey:
       type: apiKey

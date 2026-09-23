@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity crunch API
+  title: Tournament Crunch API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -15,7 +15,7 @@ paths:
     get:
       tags:
       - crunch
-      summary: List crunches.
+      summary: List crunches
       operationId: listCrunches
       parameters:
       - name: competitionIdentifier
@@ -51,7 +51,7 @@ paths:
     post:
       tags:
       - crunch
-      summary: Create a crunch.
+      summary: Create a crunch
       operationId: createCrunch
       parameters:
       - name: competitionIdentifier
@@ -93,7 +93,7 @@ paths:
     get:
       tags:
       - crunch
-      summary: Show a crunch.
+      summary: Show a crunch
       operationId: getCrunch
       parameters:
       - name: competitionIdentifier
@@ -134,7 +134,7 @@ paths:
     patch:
       tags:
       - crunch
-      summary: Update a crunch.
+      summary: Update a crunch
       operationId: updateCrunch
       parameters:
       - name: competitionIdentifier
@@ -180,99 +180,6 @@ paths:
                 $ref: '#/components/schemas/Crunch'
 components:
   schemas:
-    PhaseType:
-      type: string
-      enum:
-      - SUBMISSION
-      - OUT_OF_SAMPLE
-    Crunch:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        phase:
-          $ref: '#/components/schemas/Phase'
-        number:
-          type: integer
-          format: int64
-        start:
-          type: string
-          format: date-time
-        end:
-          type: string
-          format: date-time
-        showRuns:
-          type: boolean
-        showMetricsDetails:
-          type: boolean
-        showRunLogs:
-          type: boolean
-        showScoresValue:
-          type: boolean
-        leaderboardSimilarityThreshold:
-          type: number
-          format: float
-        published:
-          type: boolean
-        dataReleaseId:
-          type: integer
-          format: int64
-        splits:
-          type: array
-          items:
-            $ref: '#/components/schemas/CrunchSplit'
-    PhaseSplit:
-      type: object
-      properties:
-        key:
-          type: object
-          anyOf:
-          - type: integer
-            format: int64
-          - type: string
-          example: 1
-    CrunchSplit:
-      type: object
-      properties:
-        key:
-          type: object
-          anyOf:
-          - type: integer
-            format: int64
-          - type: string
-          example: 1
-    CrunchUpdateForm:
-      type: object
-      properties:
-        start:
-          type: string
-          format: date-time
-        end:
-          type: string
-          format: date-time
-        showRuns:
-          type: boolean
-        showMetricsDetails:
-          type: boolean
-        showRunLogs:
-          type: boolean
-        showScoresValue:
-          type: boolean
-        leaderboardSimilarityThreshold:
-          type: number
-          format: float
-        published:
-          type: boolean
-        dataReleaseId:
-          type: integer
-          format: int64
-        splits:
-          type: array
-          items:
-            $ref: '#/components/schemas/CrunchSplitCreateForm'
-      required:
-      - dataReleaseId
     CrunchCreateForm:
       type: object
       properties:
@@ -324,6 +231,99 @@ components:
           example: 1
       required:
       - key
+    Crunch:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        phase:
+          $ref: '#/components/schemas/Phase'
+        number:
+          type: integer
+          format: int64
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        showRuns:
+          type: boolean
+        showMetricsDetails:
+          type: boolean
+        showRunLogs:
+          type: boolean
+        showScoresValue:
+          type: boolean
+        leaderboardSimilarityThreshold:
+          type: number
+          format: float
+        published:
+          type: boolean
+        dataReleaseId:
+          type: integer
+          format: int64
+        splits:
+          type: array
+          items:
+            $ref: '#/components/schemas/CrunchSplit'
+    CrunchSplit:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+    PhaseSplit:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+    PhaseType:
+      type: string
+      enum:
+      - SUBMISSION
+      - OUT_OF_SAMPLE
+    CrunchUpdateForm:
+      type: object
+      properties:
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        showRuns:
+          type: boolean
+        showMetricsDetails:
+          type: boolean
+        showRunLogs:
+          type: boolean
+        showScoresValue:
+          type: boolean
+        leaderboardSimilarityThreshold:
+          type: number
+          format: float
+        published:
+          type: boolean
+        dataReleaseId:
+          type: integer
+          format: int64
+        splits:
+          type: array
+          items:
+            $ref: '#/components/schemas/CrunchSplitCreateForm'
+      required:
+      - dataReleaseId
     Phase:
       type: object
       properties:

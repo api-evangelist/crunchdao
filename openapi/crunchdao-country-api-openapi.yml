@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity country API
+  title: Tournament Country API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,14 +8,14 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: country
+- name: Country
 paths:
   /v1/universities/refresh:
     x-service-id: account-service
     post:
       tags:
-      - country
-      summary: Refresh the university database.
+      - Country
+      summary: Refresh the university database
       operationId: refreshUniversities
       responses:
         '200':
@@ -24,8 +24,8 @@ paths:
     x-service-id: account-service
     get:
       tags:
-      - country
-      summary: List all universities.
+      - Country
+      summary: List all universities
       operationId: listUniversities
       responses:
         '200':
@@ -40,8 +40,8 @@ paths:
     x-service-id: account-service
     get:
       tags:
-      - country
-      summary: List all universities' name.
+      - Country
+      summary: List all universities' name
       operationId: listUniversitiesName
       responses:
         '200':
@@ -56,8 +56,8 @@ paths:
     x-service-id: account-service
     get:
       tags:
-      - country
-      summary: List all countries.
+      - Country
+      summary: List all countries
       operationId: list_2
       responses:
         '200':

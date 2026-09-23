@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity connection API
+  title: Tournament Connection API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,14 +8,14 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: connection
+- name: Connection
 paths:
   /v3/users/@me/connections/twitter/validate:
     x-service-id: account-service
     post:
       tags:
-      - connection
-      summary: Validate the LinkedIn connection.
+      - Connection
+      summary: Validate the LinkedIn connection
       operationId: refreshTwitterConnection
       responses:
         '200':
@@ -31,8 +31,8 @@ paths:
     x-service-id: account-service
     post:
       tags:
-      - connection
-      summary: Validate the LinkedIn connection.
+      - Connection
+      summary: Validate the LinkedIn connection
       operationId: refreshLinkedinConnection
       responses:
         '200':
@@ -48,8 +48,8 @@ paths:
     x-service-id: account-service
     post:
       tags:
-      - connection
-      summary: Create a Kaggle connection.
+      - Connection
+      summary: Create a Kaggle connection
       operationId: createKaggleConnection
       requestBody:
         content:
@@ -71,8 +71,8 @@ paths:
     x-service-id: account-service
     post:
       tags:
-      - connection
-      summary: Validate the Google connection.
+      - Connection
+      summary: Validate the Google connection
       operationId: refreshGoogleConnection
       responses:
         '200':
@@ -88,8 +88,8 @@ paths:
     x-service-id: account-service
     post:
       tags:
-      - connection
-      summary: Validate the LinkedIn connection.
+      - Connection
+      summary: Validate the LinkedIn connection
       operationId: refreshGithubConnection
       responses:
         '200':
@@ -105,8 +105,8 @@ paths:
     x-service-id: account-service
     post:
       tags:
-      - connection
-      summary: Validate the Discord connection.
+      - Connection
+      summary: Validate the Discord connection
       operationId: refreshDiscordConnection
       responses:
         '200':
@@ -122,8 +122,8 @@ paths:
     x-service-id: account-service
     delete:
       tags:
-      - connection
-      summary: Remove a connection.
+      - Connection
+      summary: Remove a connection
       operationId: deleteConnection
       parameters:
       - name: type
@@ -149,8 +149,8 @@ paths:
       - apiKey: []
     patch:
       tags:
-      - connection
-      summary: Update a connection.
+      - Connection
+      summary: Update a connection
       operationId: updateConnection
       parameters:
       - name: type
@@ -188,8 +188,8 @@ paths:
     x-service-id: account-service
     get:
       tags:
-      - connection
-      summary: List connected connections.
+      - Connection
+      summary: List connected connections
       operationId: index
       parameters:
       - name: userIdentifier
@@ -215,8 +215,8 @@ paths:
     x-service-id: account-service
     get:
       tags:
-      - connection
-      summary: List connected connections.
+      - Connection
+      summary: List connected connections
       operationId: index_1
       parameters:
       - name: userIdentifier
@@ -255,8 +255,8 @@ paths:
     x-service-id: account-service
     get:
       tags:
-      - connection
-      summary: List available connections.
+      - Connection
+      summary: List available connections
       operationId: listConnections
       responses:
         '200':
@@ -272,16 +272,18 @@ paths:
       - apiKey: []
 components:
   schemas:
-    ConnectionType:
-      type: string
-      enum:
-      - DISCORD
-      - TWITTER
-      - GITHUB
-      - KAGGLE
-      - REDDIT
-      - LINKEDIN
-      - GOOGLE
+    ConnectionKaggleCreateForm:
+      type: object
+      properties:
+        userName:
+          type: string
+      required:
+      - userName
+    ConnectionUpdateForm:
+      type: object
+      properties:
+        public:
+          type: boolean
     Connection:
       type: object
       properties:
@@ -304,18 +306,16 @@ components:
           format: date-time
         public:
           type: boolean
-    ConnectionKaggleCreateForm:
-      type: object
-      properties:
-        userName:
-          type: string
-      required:
-      - userName
-    ConnectionUpdateForm:
-      type: object
-      properties:
-        public:
-          type: boolean
+    ConnectionType:
+      type: string
+      enum:
+      - DISCORD
+      - TWITTER
+      - GITHUB
+      - KAGGLE
+      - REDDIT
+      - LINKEDIN
+      - GOOGLE
   securitySchemes:
     apiKey:
       type: apiKey

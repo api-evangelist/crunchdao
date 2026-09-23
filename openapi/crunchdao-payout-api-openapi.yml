@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity payout API
+  title: Tournament Payout API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,14 +8,14 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: payout
+- name: Payout
 paths:
   /v1/competitions/{competitionIdentifier}/payouts:
     x-service-id: competition-service
     get:
       tags:
-      - payout
-      summary: List a competition's payouts.
+      - Payout
+      summary: List a competition's payouts
       operationId: listCompetitionPayouts
       parameters:
       - name: competitionIdentifier
@@ -36,8 +36,8 @@ paths:
                   $ref: '#/components/schemas/Payout'
     post:
       tags:
-      - payout
-      summary: Create a competition payout.
+      - Payout
+      summary: Create a competition payout
       operationId: createCompetitionPayout
       parameters:
       - name: competitionIdentifier
@@ -64,8 +64,8 @@ paths:
     x-service-id: competition-service
     post:
       tags:
-      - payout
-      summary: Compute the payout from the bounties.
+      - Payout
+      summary: Compute the payout from the bounties
       operationId: computeCompetitionPayoutFromBounties
       parameters:
       - name: competitionIdentifier
@@ -94,8 +94,8 @@ paths:
     x-service-id: competition-service
     post:
       tags:
-      - payout
-      summary: Update a competition payout.
+      - Payout
+      summary: Update a competition payout
       operationId: claimCompetitionPayout
       parameters:
       - name: competitionIdentifier
@@ -130,8 +130,8 @@ paths:
     x-service-id: competition-service
     patch:
       tags:
-      - payout
-      summary: Update a competition payout.
+      - Payout
+      summary: Update a competition payout
       operationId: updateCompetitionPayout
       parameters:
       - name: competitionIdentifier
@@ -166,8 +166,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - payout
-      summary: List payouts with filters.
+      - Payout
+      summary: List payouts with filters
       operationId: listPayoutsV5
       parameters:
       - name: competitionIdentifier
@@ -259,8 +259,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - payout
-      summary: Show a payout.
+      - Payout
+      summary: Show a payout
       operationId: getPayoutV5
       parameters:
       - name: payoutId
@@ -282,8 +282,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - payout
-      summary: Show a payout.
+      - Payout
+      summary: Show a payout
       operationId: getPayoutV4
       parameters:
       - name: payoutId
@@ -306,8 +306,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - payout
-      summary: List a user total received rewards.
+      - Payout
+      summary: List a user total received rewards
       operationId: listUserTotalRewards
       parameters:
       - name: userLogin
@@ -330,8 +330,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - payout
-      summary: List a competition total distributed rewards.
+      - Payout
+      summary: List a competition total distributed rewards
       operationId: listCompetitionTotalRewards
       parameters:
       - name: competitionIdentifier
@@ -352,6 +352,72 @@ paths:
                   $ref: '#/components/schemas/TotalUserReward'
 components:
   schemas:
+    CompetitionMode:
+      type: string
+      enum:
+      - OFFLINE
+      - REAL_TIME
+    CompetitionStatus:
+      type: string
+      enum:
+      - PENDING
+      - OPEN
+      - CLOSED
+    Currency:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        displayName:
+          type: string
+          description: The display name of the currency.
+        symbol:
+          type: string
+          description: The symbol of the currency. Does not include the `$` prefix.
+        decimals:
+          type: integer
+          format: int32
+          description: The decimals of the currency.
+        dollarExchangeRate:
+          type: number
+          description: The current exchange rate in USD.
+        blockchain:
+          type: string
+          description: Which address should be used to receive the currency. `FIAT` is not supported.
+          enum:
+          - ETHEREUM
+          - SOLANA
+          - FIAT
+        websiteUrl:
+          type: string
+          description: Website URL giving more documentation about the currency.
+        transactionUrlFormat:
+          type: string
+          description: Explorer URL format of a transaction. Use `{transactionHash}` as a variable for the `Payout.transactionHash`.
+        addressUrlFormat:
+          type: string
+          description: Explorer URL format of an address. Use `{address}` as a variable for the `PayoutRecipient.address`.
+    CompetitionStatistics:
+      type: object
+      properties:
+        entrants:
+          type: integer
+          format: int64
+        participants:
+          type: integer
+          format: int64
+        teams:
+          type: integer
+          format: int64
+        submissions:
+          type: integer
+          format: int64
+        runnables:
+          type: integer
+          format: int64
     Competition:
       type: object
       properties:
@@ -524,208 +590,16 @@ components:
           description: Non-detailed timeline events.
           items:
             $ref: '#/components/schemas/TimelineEvent'
-    PayoutDetail:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        type:
-          $ref: '#/components/schemas/PayoutDetailType'
-        name:
-          type: string
-        value:
-          type: number
-        createdAt:
-          type: string
-          format: date-time
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        login:
-          type: string
-    Currency:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        displayName:
-          type: string
-          description: The display name of the currency.
-        symbol:
-          type: string
-          description: The symbol of the currency. Does not include the `$` prefix.
-        decimals:
-          type: integer
-          format: int32
-          description: The decimals of the currency.
-        dollarExchangeRate:
-          type: number
-          description: The current exchange rate in USD.
-        blockchain:
-          type: string
-          description: Which address should be used to receive the currency. `FIAT` is not supported.
-          enum:
-          - ETHEREUM
-          - SOLANA
-          - FIAT
-        websiteUrl:
-          type: string
-          description: Website URL giving more documentation about the currency.
-        transactionUrlFormat:
-          type: string
-          description: Explorer URL format of a transaction. Use `{transactionHash}` as a variable for the `Payout.transactionHash`.
-        addressUrlFormat:
-          type: string
-          description: Explorer URL format of an address. Use `{address}` as a variable for the `PayoutRecipient.address`.
-    PayoutDetailEntryForm:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - REWARD
-          - BONUS
-        name:
-          type: string
-        value:
-          type: number
-      required:
-      - name
-      - type
-      - value
-    TimelineEvent:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        type:
-          $ref: '#/components/schemas/TimelineEventType'
-        title:
-          type: string
-        description:
-          type: string
-        date:
-          type: string
-          format: date
-          description: Date on which the event will occur/has occurred.
-        color:
-          type: string
-        detailed:
-          type: boolean
-          description: Detailed event should be hidden in a space constrained UI.
-        button:
-          $ref: '#/components/schemas/TimelineEventButton'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-    PayoutStatus:
+    DataReleaseSplitKey:
       type: string
       enum:
-      - CREATED
-      - PENDING
-      - PAID
-    CompetitionStatistics:
-      type: object
-      properties:
-        entrants:
-          type: integer
-          format: int64
-        participants:
-          type: integer
-          format: int64
-        teams:
-          type: integer
-          format: int64
-        submissions:
-          type: integer
-          format: int64
-        runnables:
-          type: integer
-          format: int64
-    PayoutClaimForm:
-      type: object
-      properties:
-        transactionHash:
-          type: string
-      required:
-      - transactionHash
-    CompetitionStatus:
+      - INTEGER
+      - STRING
+    PayoutDetailType:
       type: string
       enum:
-      - PENDING
-      - OPEN
-      - CLOSED
-    PayoutUpdateForm:
-      type: object
-      properties:
-        date:
-          type: string
-          format: date
-        displayName:
-          type: string
-        granted:
-          type: number
-        minimumValueThreshold:
-          type: number
-        currencyName:
-          type: string
-        transactionHash:
-          type: string
-        type:
-          type: string
-          enum:
-          - AIRDROP
-          - MONTHLY
-          - CHECKPOINT
-        number:
-          type: integer
-          format: int64
-        recipients:
-          type: array
-          items:
-            $ref: '#/components/schemas/PayoutRecipientEntryForm'
-        recipientResolverMissingBehavior:
-          type: string
-          enum:
-          - THROWS
-          - ZERO
-          - SKIP
-      required:
-      - recipientResolverMissingBehavior
-    TotalUserReward:
-      type: object
-      properties:
-        competition:
-          $ref: '#/components/schemas/Competition'
-        user:
-          $ref: '#/components/schemas/User'
-        paid:
-          type: number
-        pending:
-          type: number
-        projected:
-          type: number
-        userId:
-          type: integer
-          format: int64
-          deprecated: true
-    PayoutType:
-      type: string
-      enum:
-      - AIRDROP
-      - MONTHLY
-      - CHECKPOINT
+      - REWARD
+      - BONUS
     PayoutCreateForm:
       type: object
       properties:
@@ -771,153 +645,29 @@ components:
       - recipientResolverMissingBehavior
       - recipients
       - type
-    CompetitionFormat:
+    PayoutType:
       type: string
       enum:
-      - TIMESERIES
-      - DAG
-      - STREAM
-      - SPATIAL
-      - UNSTRUCTURED
-    PayoutRecipientEntryForm:
+      - AIRDROP
+      - MONTHLY
+      - CHECKPOINT
+    TotalUserReward:
       type: object
       properties:
-        userId:
-          type: integer
-          format: int64
-        cruncherPubkey:
-          type: string
-        address:
-          type: string
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/PayoutDetailEntryForm'
-    TimelineEventButton:
-      type: object
-      properties:
-        text:
-          type: string
-        link:
-          type: string
-        color:
-          type: string
-    CompetitionMode:
-      type: string
-      enum:
-      - OFFLINE
-      - REAL_TIME
-    TimelineEventType:
-      type: string
-      enum:
-      - GENERIC
-      - LEADERBOARD
-      - RULES
-      - REWARDS
-    PagePayout:
-      type: object
-      properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/Payout'
-    CompetitionTag:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Slug-like name.
-        displayName:
-          type: string
-          description: Display name for the UI.
-    PayoutDetailType:
-      type: string
-      enum:
-      - REWARD
-      - BONUS
-    CompetitionVisibility:
-      type: string
-      enum:
-      - HIDDEN
-      - PUBLIC
-    DataReleaseSplitKey:
-      type: string
-      enum:
-      - INTEGER
-      - STRING
-    CompetitionType:
-      type: string
-      enum:
-      - OPEN
-      - PAUSED
-    PayoutCompetitionName:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        displayName:
-          type: string
-    PayoutRecipient:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
+        competition:
+          $ref: '#/components/schemas/Competition'
         user:
           $ref: '#/components/schemas/User'
-        address:
-          type: string
-          description: Address where the payout has been sent to.
-        value:
+        paid:
           type: number
-          description: Amount that has been sent to the address.
-        rank:
-          type: integer
-          format: int64
-          description: Rank of the recipient in the payout.
-        claimed:
-          type: boolean
-          description: If `Payout.type` is `CHECKPOINT`, did the user claim their payout? Uses a 3-state boolean, where null corresponds to a payout that cannot be claimed.
-        claimedAt:
-          type: string
-          format: date-time
-          description: If `Payout.type` is `CHECKPOINT`, when did the user claim their payout?
-        claimTransactionHash:
-          type: string
-          description: If `Payout.type` is `CHECKPOINT`, in which transaction was the claim made?
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/PayoutDetail'
+        pending:
+          type: number
+        projected:
+          type: number
         userId:
           type: integer
           format: int64
           deprecated: true
-    CompetitionSession:
-      type: object
-      properties:
-        state:
-          $ref: '#/components/schemas/CompetitionType'
-          description: Current session state.
-        nextChange:
-          type: string
-          format: date-time
-          description: When should the next session state change happen. Unknown if `null`.
     Payout:
       type: object
       properties:
@@ -955,6 +705,256 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PayoutRecipient'
+    PagePayout:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Payout'
+    PayoutRecipientEntryForm:
+      type: object
+      properties:
+        userId:
+          type: integer
+          format: int64
+        cruncherPubkey:
+          type: string
+        address:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/PayoutDetailEntryForm'
+    PayoutDetail:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/PayoutDetailType'
+        name:
+          type: string
+        value:
+          type: number
+        createdAt:
+          type: string
+          format: date-time
+    TimelineEventType:
+      type: string
+      enum:
+      - GENERIC
+      - LEADERBOARD
+      - RULES
+      - REWARDS
+    TimelineEventButton:
+      type: object
+      properties:
+        text:
+          type: string
+        link:
+          type: string
+        color:
+          type: string
+    PayoutClaimForm:
+      type: object
+      properties:
+        transactionHash:
+          type: string
+      required:
+      - transactionHash
+    TimelineEvent:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/TimelineEventType'
+        title:
+          type: string
+        description:
+          type: string
+        date:
+          type: string
+          format: date
+          description: Date on which the event will occur/has occurred.
+        color:
+          type: string
+        detailed:
+          type: boolean
+          description: Detailed event should be hidden in a space constrained UI.
+        button:
+          $ref: '#/components/schemas/TimelineEventButton'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    PayoutRecipient:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/User'
+        address:
+          type: string
+          description: Address where the payout has been sent to.
+        value:
+          type: number
+          description: Amount that has been sent to the address.
+        rank:
+          type: integer
+          format: int64
+          description: Rank of the recipient in the payout.
+        claimed:
+          type: boolean
+          description: If `Payout.type` is `CHECKPOINT`, did the user claim their payout? Uses a 3-state boolean, where null corresponds to a payout that cannot be claimed.
+        claimedAt:
+          type: string
+          format: date-time
+          description: If `Payout.type` is `CHECKPOINT`, when did the user claim their payout?
+        claimTransactionHash:
+          type: string
+          description: If `Payout.type` is `CHECKPOINT`, in which transaction was the claim made?
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/PayoutDetail'
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
+    CompetitionFormat:
+      type: string
+      enum:
+      - TIMESERIES
+      - DAG
+      - STREAM
+      - SPATIAL
+      - UNSTRUCTURED
+    PayoutUpdateForm:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        displayName:
+          type: string
+        granted:
+          type: number
+        minimumValueThreshold:
+          type: number
+        currencyName:
+          type: string
+        transactionHash:
+          type: string
+        type:
+          type: string
+          enum:
+          - AIRDROP
+          - MONTHLY
+          - CHECKPOINT
+        number:
+          type: integer
+          format: int64
+        recipients:
+          type: array
+          items:
+            $ref: '#/components/schemas/PayoutRecipientEntryForm'
+        recipientResolverMissingBehavior:
+          type: string
+          enum:
+          - THROWS
+          - ZERO
+          - SKIP
+      required:
+      - recipientResolverMissingBehavior
+    PayoutCompetitionName:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        displayName:
+          type: string
+    PayoutDetailEntryForm:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - REWARD
+          - BONUS
+        name:
+          type: string
+        value:
+          type: number
+      required:
+      - name
+      - type
+      - value
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+    CompetitionVisibility:
+      type: string
+      enum:
+      - HIDDEN
+      - PUBLIC
+    CompetitionType:
+      type: string
+      enum:
+      - OPEN
+      - PAUSED
+    CompetitionSession:
+      type: object
+      properties:
+        state:
+          $ref: '#/components/schemas/CompetitionType'
+          description: Current session state.
+        nextChange:
+          type: string
+          format: date-time
+          description: When should the next session state change happen. Unknown if `null`.
+    CompetitionTag:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name for the UI.
+    PayoutStatus:
+      type: string
+      enum:
+      - CREATED
+      - PENDING
+      - PAID
   securitySchemes:
     apiKey:
       type: apiKey

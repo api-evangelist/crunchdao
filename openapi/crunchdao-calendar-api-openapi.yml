@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity calendar API
+  title: Tournament Calendar API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,14 +8,14 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: calendar
+- name: Calendar
 paths:
   /v1/calendar/events:
     x-service-id: competition-service
     get:
       tags:
-      - calendar
-      summary: List a calendar events.
+      - Calendar
+      summary: List a calendar events
       operationId: listCalendarEvents
       parameters:
       - name: start
@@ -79,8 +79,8 @@ paths:
                 $ref: '#/components/schemas/PageCalendarEvent'
     post:
       tags:
-      - calendar
-      summary: Create a calendar event.
+      - Calendar
+      summary: Create a calendar event
       operationId: createCalendarEvent
       requestBody:
         content:
@@ -99,8 +99,8 @@ paths:
     x-service-id: competition-service
     get:
       tags:
-      - calendar
-      summary: Show a calendar event.
+      - Calendar
+      summary: Show a calendar event
       operationId: show_1
       parameters:
       - name: eventId
@@ -120,8 +120,8 @@ paths:
                 $ref: '#/components/schemas/CalendarEvent'
     delete:
       tags:
-      - calendar
-      summary: Delete a calendar event.
+      - Calendar
+      summary: Delete a calendar event
       operationId: deleteCalendarEvent
       parameters:
       - name: eventId
@@ -137,8 +137,8 @@ paths:
           description: Accepted
     patch:
       tags:
-      - calendar
-      summary: Update a calendar event.
+      - Calendar
+      summary: Update a calendar event
       operationId: updateCalendarEvent
       parameters:
       - name: eventId
@@ -164,6 +164,24 @@ paths:
                 $ref: '#/components/schemas/CalendarEvent'
 components:
   schemas:
+    CalendarEventUpdateForm:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        title:
+          type: string
+        location:
+          type: string
+        time:
+          type: string
+          format: time
+          $anchor: https://en.wikipedia.org/wiki/ISO_8601
+          $comment: ISO 8601 Time
+          example: 01:02:03
+        url:
+          type: string
     CalendarEventCreateForm:
       type: object
       properties:
@@ -185,24 +203,25 @@ components:
       required:
       - date
       - title
-    CalendarEventUpdateForm:
+    PageCalendarEvent:
       type: object
       properties:
-        date:
-          type: string
-          format: date
-        title:
-          type: string
-        location:
-          type: string
-        time:
-          type: string
-          format: time
-          $anchor: https://en.wikipedia.org/wiki/ISO_8601
-          $comment: ISO 8601 Time
-          example: 01:02:03
-        url:
-          type: string
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/CalendarEvent'
     CalendarEvent:
       type: object
       properties:
@@ -224,25 +243,6 @@ components:
           example: 01:02:03
         url:
           type: string
-    PageCalendarEvent:
-      type: object
-      properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/CalendarEvent'
   securitySchemes:
     apiKey:
       type: apiKey

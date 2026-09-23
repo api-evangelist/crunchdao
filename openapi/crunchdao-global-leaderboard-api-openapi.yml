@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity global-leaderboard API
+  title: Tournament Global Leaderboard API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -15,7 +15,7 @@ paths:
     post:
       tags:
       - global-leaderboard
-      summary: Compute some global leaderboards.
+      summary: Compute some global leaderboards
       operationId: createGlobalLeaderboards
       requestBody:
         content:
@@ -31,7 +31,7 @@ paths:
     get:
       tags:
       - global-leaderboard
-      summary: Get a global leaderboard.
+      summary: Get a global leaderboard
       operationId: getGlobalLeaderboard
       parameters:
       - name: globalLeaderboardIdentifier
@@ -51,7 +51,7 @@ paths:
     delete:
       tags:
       - global-leaderboard
-      summary: Delete a global leaderboard.
+      summary: Delete a global leaderboard
       operationId: deleteGlobalLeaderboard
       parameters:
       - name: globalLeaderboardIdentifier
@@ -67,7 +67,7 @@ paths:
     patch:
       tags:
       - global-leaderboard
-      summary: Update a global leaderboard.
+      summary: Update a global leaderboard
       operationId: updateGlobalLeaderboard
       parameters:
       - name: globalLeaderboardIdentifier
@@ -95,7 +95,7 @@ paths:
     get:
       tags:
       - global-leaderboard
-      summary: Get the user positions of a global leaderboard.
+      summary: Get the user positions of a global leaderboard
       operationId: getGlobalUserHistoricalPoints
       parameters:
       - name: userIdentifier
@@ -119,7 +119,7 @@ paths:
     get:
       tags:
       - global-leaderboard
-      summary: Get the institution positions of a global leaderboard.
+      summary: Get the institution positions of a global leaderboard
       operationId: getGlobalInstitutionHistoricalPoints
       parameters:
       - name: institutionIdentifier
@@ -143,7 +143,7 @@ paths:
     get:
       tags:
       - global-leaderboard
-      summary: List global leaderboards.
+      summary: List global leaderboards
       operationId: listGlobalLeaderboards
       parameters:
       - name: page
@@ -188,7 +188,7 @@ paths:
     get:
       tags:
       - global-leaderboard
-      summary: Get the user positions of a global leaderboard.
+      summary: Get the user positions of a global leaderboard
       operationId: listGlobalLeaderboardUserPositions
       parameters:
       - name: globalLeaderboardIdentifier
@@ -258,7 +258,7 @@ paths:
     get:
       tags:
       - global-leaderboard
-      summary: Get the institution positions of a global leaderboard.
+      summary: Get the institution positions of a global leaderboard
       operationId: listGlobalLeaderboardInstitutionPositions_1
       parameters:
       - name: globalLeaderboardIdentifier
@@ -327,112 +327,6 @@ paths:
                 $ref: '#/components/schemas/PageGlobalInstitutionPosition'
 components:
   schemas:
-    GlobalLeaderboardComputeForm:
-      type: object
-      properties:
-        dates:
-          type: array
-          items:
-            type: string
-            format: date
-      required:
-      - dates
-    PageGlobalLeaderboard:
-      type: object
-      properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/GlobalLeaderboard'
-    GlobalUserPosition:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        user:
-          $ref: '#/components/schemas/GlobalUser'
-          description: Owner of the position.
-        rank:
-          type: integer
-          format: int64
-          description: Rank of the user for the requested leaderboard.
-        points:
-          type: integer
-          format: int64
-          description: Points of the user for the requested leaderboard.
-        bestRank:
-          type: integer
-          format: int64
-          description: Best rank (from previous leaderboards) of the user for the requested leaderboard.
-        participationCount:
-          type: integer
-          format: int64
-          description: Number of participated competitions for the requested leaderboard.
-        submissionCount:
-          type: integer
-          format: int64
-          description: Number of submissions of the user for the requested leaderboard.
-    GlobalUserPoint:
-      type: object
-      properties:
-        date:
-          type: string
-          format: date
-        rank:
-          type: integer
-          format: int64
-        points:
-          type: integer
-          format: int64
-        bestRank:
-          type: integer
-          format: int64
-        participationCount:
-          type: integer
-          format: int64
-        submissionCount:
-          type: integer
-          format: int64
-    GlobalLeaderboard:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        date:
-          type: string
-          format: date
-          description: Day of the leaderboard.
-        userCount:
-          type: integer
-          format: int64
-          description: Number of users on this leaderboard.
-        institutionCount:
-          type: integer
-          format: int64
-          description: Number of institutions on this leaderboard.
-        published:
-          type: boolean
-          description: Is the leaderboard published for everyone to see?
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
     Institution:
       type: object
       properties:
@@ -478,67 +372,38 @@ components:
         updatedAt:
           type: string
           format: date-time
-    GlobalUser:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        login:
-          type: string
-        country:
-          type: string
-          description: Country of the user.
-        points:
-          type: integer
-          format: int64
-          description: Number of points on the global leaderboard. Updated daily.
-        globalRank:
-          type: integer
-          format: int64
-          description: Rank of the user in the global leaderboard. Updated daily.
     GlobalLeaderboardUpdateForm:
       type: object
       properties:
         published:
           type: boolean
-    PageGlobalUserPosition:
+    GlobalLeaderboard:
       type: object
       properties:
-        pageNumber:
+        id:
           type: integer
           format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/GlobalUserPosition'
-    GlobalInstitutionPoint:
-      type: object
-      properties:
         date:
           type: string
           format: date
-        rank:
-          type: integer
-          format: int64
-        totalPoints:
-          type: integer
-          format: int64
+          description: Day of the leaderboard.
         userCount:
           type: integer
           format: int64
-        averagePointsPerUser:
+          description: Number of users on this leaderboard.
+        institutionCount:
           type: integer
           format: int64
+          description: Number of institutions on this leaderboard.
+        published:
+          type: boolean
+          description: Is the leaderboard published for everyone to see?
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
     GlobalInstitutionPosition:
       type: object
       properties:
@@ -569,6 +434,91 @@ components:
           type: integer
           format: int64
           description: Average number of points of the institution's members for the requested leaderboard.
+    GlobalInstitutionPoint:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        rank:
+          type: integer
+          format: int64
+        totalPoints:
+          type: integer
+          format: int64
+        userCount:
+          type: integer
+          format: int64
+        averagePointsPerUser:
+          type: integer
+          format: int64
+    GlobalUserPosition:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/GlobalUser'
+          description: Owner of the position.
+        rank:
+          type: integer
+          format: int64
+          description: Rank of the user for the requested leaderboard.
+        points:
+          type: integer
+          format: int64
+          description: Points of the user for the requested leaderboard.
+        bestRank:
+          type: integer
+          format: int64
+          description: Best rank (from previous leaderboards) of the user for the requested leaderboard.
+        participationCount:
+          type: integer
+          format: int64
+          description: Number of participated competitions for the requested leaderboard.
+        submissionCount:
+          type: integer
+          format: int64
+          description: Number of submissions of the user for the requested leaderboard.
+    GlobalUser:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+        country:
+          type: string
+          description: Country of the user.
+        points:
+          type: integer
+          format: int64
+          description: Number of points on the global leaderboard. Updated daily.
+        globalRank:
+          type: integer
+          format: int64
+          description: Rank of the user in the global leaderboard. Updated daily.
+    PageGlobalUserPosition:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/GlobalUserPosition'
     PageGlobalInstitutionPosition:
       type: object
       properties:
@@ -588,6 +538,56 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/GlobalInstitutionPosition'
+    GlobalUserPoint:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        rank:
+          type: integer
+          format: int64
+        points:
+          type: integer
+          format: int64
+        bestRank:
+          type: integer
+          format: int64
+        participationCount:
+          type: integer
+          format: int64
+        submissionCount:
+          type: integer
+          format: int64
+    PageGlobalLeaderboard:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/GlobalLeaderboard'
+    GlobalLeaderboardComputeForm:
+      type: object
+      properties:
+        dates:
+          type: array
+          items:
+            type: string
+            format: date
+      required:
+      - dates
   securitySchemes:
     apiKey:
       type: apiKey

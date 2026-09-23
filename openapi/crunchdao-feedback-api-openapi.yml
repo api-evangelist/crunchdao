@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tournament activity feedback API
+  title: Tournament Feedback API
   description: CrunchDAO Tournament Platform API Endpoints
   version: v2
 servers:
@@ -8,13 +8,13 @@ servers:
   description: Generated server url
 security: []
 tags:
-- name: feedback
+- name: Feedback
 paths:
   /v1/feedbacks:
     x-service-id: account-service
     post:
       tags:
-      - feedback
+      - Feedback
       operationId: create_2
       requestBody:
         content:
@@ -25,6 +25,8 @@ paths:
       responses:
         '202':
           description: Accepted
+      summary: Create 2
+      x-summary-source: derived
 components:
   schemas:
     FeedbackCreateForm:
