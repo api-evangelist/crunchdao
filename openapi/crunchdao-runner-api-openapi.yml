@@ -279,11 +279,61 @@ paths:
                 type: string
 components:
   schemas:
-    RunnerReportErrorForm:
+    LegacyRunnerReportTraceForm:
       type: object
       properties:
-        trace:
+        moon:
           type: string
+        content:
+          type: string
+    RunnerCollectTracesFormMetric:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        cpu:
+          type: number
+          format: float
+        ram:
+          type: integer
+          format: int64
+        disk:
+          type: integer
+          format: int64
+        gpu:
+          type: number
+          format: float
+        vram:
+          type: integer
+          format: int64
+      required:
+      - timestamp
+    RunnerSubmitForm:
+      type: object
+      properties:
+        useInitialModel:
+          type: boolean
+        deterministic:
+          type: boolean
+        predictionFiles:
+          type: object
+          additionalProperties:
+            type: string
+            format: uuid
+        modelFiles:
+          type: object
+          additionalProperties:
+            type: string
+            format: uuid
+      required:
+      - modelFiles
+      - predictionFiles
+    DataReleaseSplitKey:
+      type: string
+      enum:
+      - INTEGER
+      - STRING
     DataRelease:
       type: object
       properties:
@@ -330,123 +380,17 @@ components:
           type: object
           additionalProperties:
             $ref: '#/components/schemas/DataFile'
-    DataFile:
+    RunnerReportErrorForm:
       type: object
       properties:
-        name:
+        trace:
           type: string
-        description:
-          type: string
-        url:
-          type: string
-        size:
-          type: integer
-          format: int64
-        signed:
-          type: boolean
-        compressed:
-          type: boolean
-    LegacyRunnerReportTraceForm:
-      type: object
-      properties:
-        moon:
-          type: string
-        content:
-          type: string
-    DataReleaseSplitGroup:
-      type: string
-      enum:
-      - TRAIN
-      - TEST
     DataReleaseTargetResolution:
       type: string
       enum:
       - ALREADY
       - PENDING
       - RESOLVED
-    JsonNode:
-      type: object
-    DataReleaseSplitKey:
-      type: string
-      enum:
-      - INTEGER
-      - STRING
-    RunnerSubmitForm:
-      type: object
-      properties:
-        useInitialModel:
-          type: boolean
-        deterministic:
-          type: boolean
-        predictionFiles:
-          type: object
-          additionalProperties:
-            type: string
-            format: uuid
-        modelFiles:
-          type: object
-          additionalProperties:
-            type: string
-            format: uuid
-      required:
-      - modelFiles
-      - predictionFiles
-    DataReleaseSplit:
-      type: object
-      properties:
-        key:
-          type: object
-          anyOf:
-          - type: integer
-            format: int64
-          - type: string
-          example: 1
-        group:
-          $ref: '#/components/schemas/DataReleaseSplitGroup'
-        reduced:
-          $ref: '#/components/schemas/DataReleaseSplitReduced'
-    RunnerCollectTracesForm:
-      type: object
-      properties:
-        spans:
-          type: array
-          items:
-            $ref: '#/components/schemas/RunnerCollectTracesFormSpan'
-        metrics:
-          type: array
-          items:
-            $ref: '#/components/schemas/RunnerCollectTracesFormMetric'
-      required:
-      - metrics
-      - spans
-    RunnerCollectTracesFormMetric:
-      type: object
-      properties:
-        timestamp:
-          type: string
-          format: date-time
-        cpu:
-          type: number
-          format: float
-        ram:
-          type: integer
-          format: int64
-        disk:
-          type: integer
-          format: int64
-        gpu:
-          type: number
-          format: float
-        vram:
-          type: integer
-          format: int64
-      required:
-      - timestamp
-    DataReleaseSplitReduced:
-      type: string
-      enum:
-      - X
-      - XY
     RunnerCollectTracesFormSpan:
       type: object
       properties:
@@ -474,6 +418,62 @@ components:
           type: string
         attributes:
           $ref: '#/components/schemas/JsonNode'
+    DataReleaseSplitGroup:
+      type: string
+      enum:
+      - TRAIN
+      - TEST
+    DataReleaseSplit:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+        group:
+          $ref: '#/components/schemas/DataReleaseSplitGroup'
+        reduced:
+          $ref: '#/components/schemas/DataReleaseSplitReduced'
+    DataFile:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+        size:
+          type: integer
+          format: int64
+        signed:
+          type: boolean
+        compressed:
+          type: boolean
+    JsonNode:
+      type: object
+    RunnerCollectTracesForm:
+      type: object
+      properties:
+        spans:
+          type: array
+          items:
+            $ref: '#/components/schemas/RunnerCollectTracesFormSpan'
+        metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/RunnerCollectTracesFormMetric'
+      required:
+      - metrics
+      - spans
+    DataReleaseSplitReduced:
+      type: string
+      enum:
+      - X
+      - XY
   securitySchemes:
     apiKey:
       type: apiKey

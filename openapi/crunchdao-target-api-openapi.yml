@@ -88,19 +88,6 @@ components:
       enum:
       - DESCENDING
       - ASCENDING
-    Unit:
-      type: object
-      properties:
-        prefix:
-          type: string
-          description: String to show before the value.
-        suffix:
-          type: string
-          description: String to show after the value.
-        scale:
-          type: integer
-          format: int32
-          description: Number of digits to keep after the comma.
     Target:
       type: object
       properties:
@@ -132,6 +119,19 @@ components:
         weightedMeanDisplayUnit:
           type: string
           deprecated: true
+    Unit:
+      type: object
+      properties:
+        prefix:
+          type: string
+          description: String to show before the value.
+        suffix:
+          type: string
+          description: String to show after the value.
+        scale:
+          type: integer
+          format: int32
+          description: Number of digits to keep after the comma.
   securitySchemes:
     apiKey:
       type: apiKey

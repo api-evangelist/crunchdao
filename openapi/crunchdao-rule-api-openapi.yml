@@ -93,13 +93,6 @@ paths:
       - apiKey: []
 components:
   schemas:
-    RuleAcceptForm:
-      type: object
-      properties:
-        cruncherPubkey:
-          type: string
-      required:
-      - cruncherPubkey
     RuleAgreement:
       type: object
       properties:
@@ -108,6 +101,13 @@ components:
         acceptedAt:
           type: string
           format: date-time
+    RuleAcceptForm:
+      type: object
+      properties:
+        cruncherPubkey:
+          type: string
+      required:
+      - cruncherPubkey
   securitySchemes:
     apiKey:
       type: apiKey

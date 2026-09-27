@@ -152,7 +152,7 @@ paths:
                 $ref: '#/components/schemas/Phase'
 components:
   schemas:
-    PhaseSplitCreateForm:
+    PhaseSplit:
       type: object
       properties:
         key:
@@ -162,51 +162,11 @@ components:
             format: int64
           - type: string
           example: 1
-      required:
-      - key
-    PhaseUpdateForm:
-      type: object
-      properties:
-        start:
-          type: string
-          format: date-time
-        end:
-          type: string
-          format: date-time
-        dataReleaseId:
-          type: integer
-          format: int64
-        localDataReleaseId:
-          type: integer
-          format: int64
-        cloudCredits:
-          anyOf:
-          - $comment: Seconds
-            example: '60'
-          - format: duration
-            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
-            $comment: ISO 8601 Duration
-            example: PT1M
-        perCrunchWeight:
-          type: number
-          maximum: 1
-          minimum: 0
-        autoCompute:
-          type: boolean
-        runDisabled:
-          type: boolean
-        showPositions:
-          type: boolean
-        showProjectNames:
-          type: boolean
-        runDeterminismCheckEnabled:
-          type: boolean
-        showOnlyRewardedProjectsDefault:
-          type: boolean
-        splits:
-          type: array
-          items:
-            $ref: '#/components/schemas/PhaseSplitCreateForm'
+    PhaseType:
+      type: string
+      enum:
+      - SUBMISSION
+      - OUT_OF_SAMPLE
     PhaseCreateForm:
       type: object
       properties:
@@ -265,21 +225,6 @@ components:
       - splits
       - start
       - type
-    PhaseSplit:
-      type: object
-      properties:
-        key:
-          type: object
-          anyOf:
-          - type: integer
-            format: int64
-          - type: string
-          example: 1
-    PhaseType:
-      type: string
-      enum:
-      - SUBMISSION
-      - OUT_OF_SAMPLE
     Phase:
       type: object
       properties:
@@ -327,6 +272,61 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PhaseSplit'
+    PhaseUpdateForm:
+      type: object
+      properties:
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        dataReleaseId:
+          type: integer
+          format: int64
+        localDataReleaseId:
+          type: integer
+          format: int64
+        cloudCredits:
+          anyOf:
+          - $comment: Seconds
+            example: '60'
+          - format: duration
+            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
+            $comment: ISO 8601 Duration
+            example: PT1M
+        perCrunchWeight:
+          type: number
+          maximum: 1
+          minimum: 0
+        autoCompute:
+          type: boolean
+        runDisabled:
+          type: boolean
+        showPositions:
+          type: boolean
+        showProjectNames:
+          type: boolean
+        runDeterminismCheckEnabled:
+          type: boolean
+        showOnlyRewardedProjectsDefault:
+          type: boolean
+        splits:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhaseSplitCreateForm'
+    PhaseSplitCreateForm:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+      required:
+      - key
   securitySchemes:
     apiKey:
       type: apiKey

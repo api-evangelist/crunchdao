@@ -93,6 +93,42 @@ paths:
                 $ref: '#/components/schemas/RuntimeDefinition'
 components:
   schemas:
+    PageRuntimeDefinition:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/RuntimeDefinition'
+    RuntimeDefinitionSpecification:
+      type: object
+      properties:
+        memory:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSize'
+        sharedMemory:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSize'
+        storage:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSize'
+        cpu:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationCpu'
+        gpu:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationGpu'
+        network:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationNetwork'
+        software:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSoftware'
     RuntimeDefinition:
       type: object
       properties:
@@ -134,55 +170,6 @@ components:
           type: integer
           format: int64
           description: Lower values are shown first.
-    RuntimeDefinitionSpecificationNetworkAccess:
-      type: string
-      enum:
-      - OPEN
-      - FORBIDDEN
-      - LOCAL_ONLY
-    RuntimeDefinitionSpecificationCpu:
-      type: object
-      properties:
-        coreCount:
-          type: integer
-          format: int32
-    RuntimeDefinitionSpecificationSoftware:
-      type: object
-      properties:
-        python:
-          type: string
-    PageRuntimeDefinition:
-      type: object
-      properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/RuntimeDefinition'
-    RuntimeDefinitionPoweredBy:
-      type: object
-      properties:
-        text:
-          type: string
-        url:
-          type: string
-    RuntimeDefinitionStatus:
-      type: string
-      enum:
-      - ACTIVE
-      - RESTRICTED
-      - DISABLED
     RuntimeDefinitionSpecificationGpu:
       type: object
       properties:
@@ -193,6 +180,41 @@ components:
           type: string
         driver:
           type: string
+    RuntimeDefinitionSpecificationCpu:
+      type: object
+      properties:
+        coreCount:
+          type: integer
+          format: int32
+    RuntimeDefinitionStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - RESTRICTED
+      - DISABLED
+    RuntimeDefinitionPoweredBy:
+      type: object
+      properties:
+        text:
+          type: string
+        url:
+          type: string
+    RuntimeDefinitionSpecificationNetworkAccess:
+      type: string
+      enum:
+      - OPEN
+      - FORBIDDEN
+      - LOCAL_ONLY
+    RuntimeDefinitionSpecificationSoftware:
+      type: object
+      properties:
+        python:
+          type: string
+    RuntimeDefinitionSpecificationNetwork:
+      type: object
+      properties:
+        access:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationNetworkAccess'
     RuntimeDefinitionSpecificationSize:
       type: object
       properties:
@@ -200,28 +222,6 @@ components:
           type: integer
           format: int32
           description: Size in gigabytes.
-    RuntimeDefinitionSpecificationNetwork:
-      type: object
-      properties:
-        access:
-          $ref: '#/components/schemas/RuntimeDefinitionSpecificationNetworkAccess'
-    RuntimeDefinitionSpecification:
-      type: object
-      properties:
-        memory:
-          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSize'
-        sharedMemory:
-          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSize'
-        storage:
-          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSize'
-        cpu:
-          $ref: '#/components/schemas/RuntimeDefinitionSpecificationCpu'
-        gpu:
-          $ref: '#/components/schemas/RuntimeDefinitionSpecificationGpu'
-        network:
-          $ref: '#/components/schemas/RuntimeDefinitionSpecificationNetwork'
-        software:
-          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSoftware'
     RuntimeType:
       type: string
       enum:

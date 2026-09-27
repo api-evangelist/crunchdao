@@ -196,108 +196,11 @@ components:
         bestUnit:
           $ref: '#/components/schemas/Unit'
           deprecated: true
-    ScoreDetail:
-      type: object
-      properties:
-        key:
-          type: object
-          anyOf:
-          - type: integer
-            format: int64
-          - type: string
-          example: 1
-        value:
-          type: number
-          format: double
-        reduced:
-          type: boolean
-    MetricColors:
-      type: object
-      properties:
-        details:
-          type: string
-        submissionPhase:
-          type: string
-        outOfSamplePhase:
-          type: string
     VisualizationType:
       type: string
       enum:
       - LINE
       - HISTOGRAM
-    ReducerFunction:
-      type: string
-      enum:
-      - NONE
-      - SUM
-      - MEAN
-      - PRODUCT_PLUS_MINUS_1
-    Project:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        competitionId:
-          type: integer
-          format: int64
-        user:
-          $ref: '#/components/schemas/User'
-        name:
-          type: string
-        selected:
-          type: boolean
-        submitted:
-          type: boolean
-        note:
-          type: string
-        writeupUrl:
-          type: string
-        writeupArchived:
-          type: boolean
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        userId:
-          type: integer
-          format: int64
-          deprecated: true
-    LeaderboardRankOrder:
-      type: string
-      enum:
-      - DESCENDING
-      - ASCENDING
-    PredictionFile:
-      type: object
-      properties:
-        name:
-          type: string
-        size:
-          type: integer
-          format: int64
-    Score:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        success:
-          type: boolean
-        metric:
-          $ref: '#/components/schemas/Metric'
-        value:
-          type: number
-          format: double
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/ScoreDetail'
-        createdAt:
-          type: string
-          format: date-time
     Unit:
       type: object
       properties:
@@ -311,6 +214,19 @@ components:
           type: integer
           format: int32
           description: Number of digits to keep after the comma.
+    ScorerFunction:
+      type: string
+      enum:
+      - BALANCED_ACCURACY
+      - DOT_PRODUCT
+      - F1
+      - PRECISION
+      - RANDOM
+      - RECALL
+      - SPEARMAN
+      - META__EXECUTION_TIME
+      - CUSTOM__MID_ONE__PROFIT_AND_LOSS_WITH_TRANSACTION_COST
+      - CUSTOM__BROAD__SCORING
     Metric:
       type: object
       properties:
@@ -379,29 +295,111 @@ components:
         displayUnit:
           type: string
           deprecated: true
-    ScorerFunction:
-      type: string
-      enum:
-      - BALANCED_ACCURACY
-      - DOT_PRODUCT
-      - F1
-      - PRECISION
-      - RANDOM
-      - RECALL
-      - SPEARMAN
-      - META__EXECUTION_TIME
-      - CUSTOM__MID_ONE__PROFIT_AND_LOSS_WITH_TRANSACTION_COST
-      - CUSTOM__BROAD__SCORING
-    MetricDefinition:
+    ScoreDetail:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+        value:
+          type: number
+          format: double
+        reduced:
+          type: boolean
+    Project:
       type: object
       properties:
         id:
           type: integer
           format: int64
+        competitionId:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/User'
         name:
           type: string
-        displayName:
+        selected:
+          type: boolean
+        submitted:
+          type: boolean
+        note:
           type: string
+        writeupUrl:
+          type: string
+        writeupArchived:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
+    Score:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        success:
+          type: boolean
+        metric:
+          $ref: '#/components/schemas/Metric'
+        value:
+          type: number
+          format: double
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScoreDetail'
+        createdAt:
+          type: string
+          format: date-time
+    MetricColors:
+      type: object
+      properties:
+        details:
+          type: string
+        submissionPhase:
+          type: string
+        outOfSamplePhase:
+          type: string
+    PredictionFile:
+      type: object
+      properties:
+        name:
+          type: string
+        size:
+          type: integer
+          format: int64
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+    LeaderboardRankOrder:
+      type: string
+      enum:
+      - DESCENDING
+      - ASCENDING
+    ReducerFunction:
+      type: string
+      enum:
+      - NONE
+      - SUM
+      - MEAN
+      - PRODUCT_PLUS_MINUS_1
     Target:
       type: object
       properties:
@@ -433,13 +431,15 @@ components:
         weightedMeanDisplayUnit:
           type: string
           deprecated: true
-    User:
+    MetricDefinition:
       type: object
       properties:
         id:
           type: integer
           format: int64
-        login:
+        name:
+          type: string
+        displayName:
           type: string
   securitySchemes:
     apiKey:

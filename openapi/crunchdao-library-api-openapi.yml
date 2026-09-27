@@ -216,6 +216,11 @@ components:
       properties:
         version:
           type: string
+    Language:
+      type: string
+      enum:
+      - PYTHON
+      - R
     PageLibrary:
       type: object
       properties:
@@ -261,11 +266,6 @@ components:
         createdAt:
           type: string
           format: date-time
-    Language:
-      type: string
-      enum:
-      - PYTHON
-      - R
     GpuRequirement:
       type: string
       enum:

@@ -264,6 +264,17 @@ paths:
           description: OK
 components:
   schemas:
+    NewsAuthorCreateForm:
+      type: object
+      properties:
+        name:
+          type: string
+        imageUrl:
+          type: string
+        url:
+          type: string
+      required:
+      - name
     NewsAuthor:
       type: object
       properties:
@@ -273,6 +284,20 @@ components:
           type: string
         url:
           type: string
+    NewsCreateForm:
+      type: object
+      properties:
+        title:
+          type: string
+        imageUrl:
+          type: string
+        url:
+          type: string
+        author:
+          $ref: '#/components/schemas/NewsAuthorCreateForm'
+      required:
+      - author
+      - title
     PageNews:
       type: object
       properties:
@@ -292,17 +317,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/News'
-    NewsAuthorCreateForm:
-      type: object
-      properties:
-        name:
-          type: string
-        imageUrl:
-          type: string
-        url:
-          type: string
-      required:
-      - name
     News:
       type: object
       properties:
@@ -323,20 +337,6 @@ components:
         createdAt:
           type: string
           format: date-time
-    NewsCreateForm:
-      type: object
-      properties:
-        title:
-          type: string
-        imageUrl:
-          type: string
-        url:
-          type: string
-        author:
-          $ref: '#/components/schemas/NewsAuthorCreateForm'
-      required:
-      - author
-      - title
   securitySchemes:
     apiKey:
       type: apiKey

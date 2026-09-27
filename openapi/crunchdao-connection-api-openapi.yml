@@ -272,13 +272,16 @@ paths:
       - apiKey: []
 components:
   schemas:
-    ConnectionKaggleCreateForm:
-      type: object
-      properties:
-        userName:
-          type: string
-      required:
-      - userName
+    ConnectionType:
+      type: string
+      enum:
+      - DISCORD
+      - TWITTER
+      - GITHUB
+      - KAGGLE
+      - REDDIT
+      - LINKEDIN
+      - GOOGLE
     ConnectionUpdateForm:
       type: object
       properties:
@@ -306,16 +309,13 @@ components:
           format: date-time
         public:
           type: boolean
-    ConnectionType:
-      type: string
-      enum:
-      - DISCORD
-      - TWITTER
-      - GITHUB
-      - KAGGLE
-      - REDDIT
-      - LINKEDIN
-      - GOOGLE
+    ConnectionKaggleCreateForm:
+      type: object
+      properties:
+        userName:
+          type: string
+      required:
+      - userName
   securitySchemes:
     apiKey:
       type: apiKey

@@ -190,6 +190,27 @@ paths:
       deprecated: true
 components:
   schemas:
+    ProjectToken:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        project:
+          $ref: '#/components/schemas/Project'
+        plain:
+          type: string
+        type:
+          $ref: '#/components/schemas/ProjectTokenType'
+        createdAt:
+          type: string
+          format: date-time
+        validUntil:
+          type: string
+          format: date-time
+        lastUsedAt:
+          type: string
+          format: date-time
     Project:
       type: object
       properties:
@@ -223,6 +244,14 @@ components:
           type: integer
           format: int64
           deprecated: true
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
     ProjectTokenType:
       type: string
       enum:
@@ -232,35 +261,6 @@ components:
       type: object
       properties:
         cloneToken:
-          type: string
-    ProjectToken:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        project:
-          $ref: '#/components/schemas/Project'
-        plain:
-          type: string
-        type:
-          $ref: '#/components/schemas/ProjectTokenType'
-        createdAt:
-          type: string
-          format: date-time
-        validUntil:
-          type: string
-          format: date-time
-        lastUsedAt:
-          type: string
-          format: date-time
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        login:
           type: string
   securitySchemes:
     apiKey:

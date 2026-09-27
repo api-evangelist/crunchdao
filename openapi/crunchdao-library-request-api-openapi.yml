@@ -205,34 +205,11 @@ components:
       - PENDING
       - APPROVED
       - REJECTED
-    PageLibraryRequest:
-      type: object
-      properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/LibraryRequest'
-    LibraryRequestRejectForm:
-      type: object
-      properties:
-        reason:
-          type: string
-          maxLength: 500
-          minLength: 0
-      required:
-      - reason
+    Language:
+      type: string
+      enum:
+      - PYTHON
+      - R
     LibraryRequestCreateForm:
       type: object
       properties:
@@ -265,27 +242,26 @@ components:
       required:
       - competitionId
       - language
-    LibraryRequestApproveForm:
+    LibraryRequestRejectForm:
+      type: object
+      properties:
+        reason:
+          type: string
+          maxLength: 500
+          minLength: 0
+      required:
+      - reason
+    QueriedPackage:
       type: object
       properties:
         name:
           type: string
-          maxLength: 200
-          minLength: 0
-        alias:
+        alreadyAdded:
+          type: boolean
+        found:
+          type: boolean
+        lastestVersion:
           type: string
-          maxLength: 200
-          minLength: 0
-        gpuRequirement:
-          type: string
-          enum:
-          - OPTIONAL
-          - RECOMMENDED
-          - REQUIRED
-      required:
-      - alias
-      - gpuRequirement
-      - name
     LibraryRequest:
       type: object
       properties:
@@ -329,11 +305,6 @@ components:
         createdAt:
           type: string
           format: date-time
-    Language:
-      type: string
-      enum:
-      - PYTHON
-      - R
     PayoutCompetitionName:
       type: object
       properties:
@@ -344,23 +315,6 @@ components:
           type: string
         displayName:
           type: string
-    GpuRequirement:
-      type: string
-      enum:
-      - OPTIONAL
-      - RECOMMENDED
-      - REQUIRED
-    QueriedPackage:
-      type: object
-      properties:
-        name:
-          type: string
-        alreadyAdded:
-          type: boolean
-        found:
-          type: boolean
-        lastestVersion:
-          type: string
     User:
       type: object
       properties:
@@ -369,6 +323,52 @@ components:
           format: int64
         login:
           type: string
+    GpuRequirement:
+      type: string
+      enum:
+      - OPTIONAL
+      - RECOMMENDED
+      - REQUIRED
+    PageLibraryRequest:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/LibraryRequest'
+    LibraryRequestApproveForm:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 200
+          minLength: 0
+        alias:
+          type: string
+          maxLength: 200
+          minLength: 0
+        gpuRequirement:
+          type: string
+          enum:
+          - OPTIONAL
+          - RECOMMENDED
+          - REQUIRED
+      required:
+      - alias
+      - gpuRequirement
+      - name
   securitySchemes:
     apiKey:
       type: apiKey

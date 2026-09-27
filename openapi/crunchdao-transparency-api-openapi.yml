@@ -58,6 +58,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TransparencyReportCount'
+    TransparencyReportSingleValue:
+      type: object
+      properties:
+        data:
+          type: number
+          format: double
     TransparencyReportCount:
       type: object
       properties:
@@ -65,12 +71,6 @@ components:
           type: string
         value:
           type: object
-    TransparencyReportSingleValue:
-      type: object
-      properties:
-        data:
-          type: number
-          format: double
   securitySchemes:
     apiKey:
       type: apiKey

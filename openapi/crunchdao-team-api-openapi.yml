@@ -264,6 +264,15 @@ components:
       required:
       - lookingForTeammates
       - name
+    TeamUpdateForm:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        lookingForTeammates:
+          type: boolean
     TeamMember:
       type: object
       properties:
@@ -279,15 +288,14 @@ components:
           type: integer
           format: int64
           deprecated: true
-    TeamUpdateForm:
+    User:
       type: object
       properties:
-        name:
+        id:
+          type: integer
+          format: int64
+        login:
           type: string
-        description:
-          type: string
-        lookingForTeammates:
-          type: boolean
     Team:
       type: object
       properties:
@@ -337,14 +345,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Team'
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        login:
-          type: string
   securitySchemes:
     apiKey:
       type: apiKey

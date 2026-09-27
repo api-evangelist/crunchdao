@@ -198,11 +198,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CrunchSplit'
-    LeaderboardRankOrder:
-      type: string
-      enum:
-      - DESCENDING
-      - ASCENDING
+    PhaseSplit:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
     Unit:
       type: object
       properties:
@@ -216,31 +221,23 @@ components:
           type: integer
           format: int32
           description: Number of digits to keep after the comma.
-    CrunchSplit:
-      type: object
-      properties:
-        key:
-          type: object
-          anyOf:
-          - type: integer
-            format: int64
-          - type: string
-          example: 1
-    PhaseSplit:
-      type: object
-      properties:
-        key:
-          type: object
-          anyOf:
-          - type: integer
-            format: int64
-          - type: string
-          example: 1
     PhaseType:
       type: string
       enum:
       - SUBMISSION
       - OUT_OF_SAMPLE
+    CrunchTarget:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        target:
+          $ref: '#/components/schemas/Target'
+        crunch:
+          $ref: '#/components/schemas/Crunch'
+        published:
+          type: boolean
     Phase:
       type: object
       properties:
@@ -288,6 +285,26 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PhaseSplit'
+    LeaderboardRankOrder:
+      type: string
+      enum:
+      - DESCENDING
+      - ASCENDING
+    CrunchSplit:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+    CrunchTargetUpdateForm:
+      type: object
+      properties:
+        published:
+          type: boolean
     Target:
       type: object
       properties:
@@ -319,23 +336,6 @@ components:
         weightedMeanDisplayUnit:
           type: string
           deprecated: true
-    CrunchTarget:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        target:
-          $ref: '#/components/schemas/Target'
-        crunch:
-          $ref: '#/components/schemas/Crunch'
-        published:
-          type: boolean
-    CrunchTargetUpdateForm:
-      type: object
-      properties:
-        published:
-          type: boolean
   securitySchemes:
     apiKey:
       type: apiKey

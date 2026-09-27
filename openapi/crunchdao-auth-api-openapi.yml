@@ -120,13 +120,25 @@ paths:
           description: OK
 components:
   schemas:
-    AuthCancelRegisterForm:
+    UserRestriction:
+      type: string
+      enum:
+      - NONE
+      - PARTIAL
+      - FULL
+    AuthImpersonateForm:
       type: object
       properties:
-        authIdToken:
-          type: string
+        userId:
+          type: integer
+          format: int64
       required:
-      - authIdToken
+      - userId
+    RegisterResult:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/FullUser'
     FullUser:
       type: object
       properties:
@@ -171,23 +183,23 @@ components:
         restricted:
           type: boolean
           deprecated: true
-    UserRestriction:
+    AuthCancelRegisterForm:
+      type: object
+      properties:
+        authIdToken:
+          type: string
+      required:
+      - authIdToken
+    QuantClub:
       type: string
       enum:
       - NONE
-      - PARTIAL
-      - FULL
-    UserRole:
-      type: string
-      enum:
-      - USER
-      - MODERATOR
-      - ADMINISTRATOR
-    RegisterResult:
-      type: object
-      properties:
-        user:
-          $ref: '#/components/schemas/FullUser'
+      - BANDUNG
+      - BENGALURU
+      - DUBAI
+      - LONDON
+      - NEW_YORK
+      - PARIS
     AuthRegisterForm:
       type: object
       properties:
@@ -210,29 +222,17 @@ components:
       - country
       - firstName
       - lastName
-    AuthImpersonateForm:
-      type: object
-      properties:
-        userId:
-          type: integer
-          format: int64
-      required:
-      - userId
+    UserRole:
+      type: string
+      enum:
+      - USER
+      - MODERATOR
+      - ADMINISTRATOR
     ImpersonateResult:
       type: object
       properties:
         accessToken:
           type: string
-    QuantClub:
-      type: string
-      enum:
-      - NONE
-      - BANDUNG
-      - BENGALURU
-      - DUBAI
-      - LONDON
-      - NEW_YORK
-      - PARIS
   securitySchemes:
     apiKey:
       type: apiKey

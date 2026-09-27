@@ -144,6 +144,19 @@ components:
           minLength: 0
       required:
       - reason
+    ProblemResolveForm:
+      type: object
+      properties:
+        recaptchaResponse:
+          type: string
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
     Problem:
       type: object
       properties:
@@ -162,19 +175,6 @@ components:
         createdAt:
           type: string
           format: date-time
-    ProblemResolveForm:
-      type: object
-      properties:
-        recaptchaResponse:
-          type: string
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        login:
-          type: string
   securitySchemes:
     apiKey:
       type: apiKey

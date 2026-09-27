@@ -178,12 +178,53 @@ components:
       enum:
       - OFFLINE
       - REAL_TIME
+    CompetitionType:
+      type: string
+      enum:
+      - OPEN
+      - PAUSED
     CompetitionStatus:
       type: string
       enum:
       - PENDING
       - OPEN
       - CLOSED
+    TimelineEvent:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/TimelineEventType'
+        title:
+          type: string
+        description:
+          type: string
+        date:
+          type: string
+          format: date
+          description: Date on which the event will occur/has occurred.
+        color:
+          type: string
+        detailed:
+          type: boolean
+          description: Detailed event should be hidden in a space constrained UI.
+        button:
+          $ref: '#/components/schemas/TimelineEventButton'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    TimelineEventType:
+      type: string
+      enum:
+      - GENERIC
+      - LEADERBOARD
+      - RULES
+      - REWARDS
     CompetitionStatistics:
       type: object
       properties:
@@ -202,6 +243,85 @@ components:
         runnables:
           type: integer
           format: int64
+    CompetitionFormat:
+      type: string
+      enum:
+      - TIMESERIES
+      - DAG
+      - STREAM
+      - SPATIAL
+      - UNSTRUCTURED
+    TimelineEventButton:
+      type: object
+      properties:
+        text:
+          type: string
+        link:
+          type: string
+        color:
+          type: string
+    CertificateUpdateForm:
+      type: object
+      properties:
+        nameVariant:
+          type: string
+          enum:
+          - LOGIN
+          - FIRST_LAST
+    CompetitionVisibility:
+      type: string
+      enum:
+      - HIDDEN
+      - PUBLIC
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+    Certificate:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        uuid:
+          type: string
+          format: uuid
+        user:
+          $ref: '#/components/schemas/User'
+        competition:
+          $ref: '#/components/schemas/Competition'
+        number:
+          type: integer
+          format: int64
+        date:
+          type: string
+          format: date
+        nameVariant:
+          $ref: '#/components/schemas/CertificateNameVariant'
+        pictureUrl:
+          type: string
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
+    CertificateNameVariant:
+      type: string
+      enum:
+      - LOGIN
+      - FIRST_LAST
+    CompetitionTag:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name for the UI.
     Competition:
       type: object
       properties:
@@ -374,114 +494,6 @@ components:
           description: Non-detailed timeline events.
           items:
             $ref: '#/components/schemas/TimelineEvent'
-    TimelineEventType:
-      type: string
-      enum:
-      - GENERIC
-      - LEADERBOARD
-      - RULES
-      - REWARDS
-    TimelineEventButton:
-      type: object
-      properties:
-        text:
-          type: string
-        link:
-          type: string
-        color:
-          type: string
-    TimelineEvent:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        type:
-          $ref: '#/components/schemas/TimelineEventType'
-        title:
-          type: string
-        description:
-          type: string
-        date:
-          type: string
-          format: date
-          description: Date on which the event will occur/has occurred.
-        color:
-          type: string
-        detailed:
-          type: boolean
-          description: Detailed event should be hidden in a space constrained UI.
-        button:
-          $ref: '#/components/schemas/TimelineEventButton'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-    DataReleaseSplitKey:
-      type: string
-      enum:
-      - INTEGER
-      - STRING
-    CompetitionVisibility:
-      type: string
-      enum:
-      - HIDDEN
-      - PUBLIC
-    Certificate:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        uuid:
-          type: string
-          format: uuid
-        user:
-          $ref: '#/components/schemas/User'
-        competition:
-          $ref: '#/components/schemas/Competition'
-        number:
-          type: integer
-          format: int64
-        date:
-          type: string
-          format: date
-        nameVariant:
-          $ref: '#/components/schemas/CertificateNameVariant'
-        pictureUrl:
-          type: string
-        userId:
-          type: integer
-          format: int64
-          deprecated: true
-    CertificateUpdateForm:
-      type: object
-      properties:
-        nameVariant:
-          type: string
-          enum:
-          - LOGIN
-          - FIRST_LAST
-    CompetitionType:
-      type: string
-      enum:
-      - OPEN
-      - PAUSED
-    CertificateNameVariant:
-      type: string
-      enum:
-      - LOGIN
-      - FIRST_LAST
-    CompetitionFormat:
-      type: string
-      enum:
-      - TIMESERIES
-      - DAG
-      - STREAM
-      - SPATIAL
-      - UNSTRUCTURED
     CompetitionSession:
       type: object
       properties:
@@ -492,23 +504,11 @@ components:
           type: string
           format: date-time
           description: When should the next session state change happen. Unknown if `null`.
-    CompetitionTag:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Slug-like name.
-        displayName:
-          type: string
-          description: Display name for the UI.
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        login:
-          type: string
+    DataReleaseSplitKey:
+      type: string
+      enum:
+      - INTEGER
+      - STRING
   securitySchemes:
     apiKey:
       type: apiKey

@@ -50,30 +50,6 @@ paths:
       - apiKey: []
 components:
   schemas:
-    OnboardQuestionsParticipationReason:
-      type: string
-      enum:
-      - IMPROVE
-      - GAIN
-      - FUN
-    Onboard:
-      type: object
-      properties:
-        user:
-          $ref: '#/components/schemas/User'
-        questions:
-          $ref: '#/components/schemas/OnboardQuestions'
-        completed:
-          type: boolean
-        completedAt:
-          type: string
-          format: date-time
-    OnboardQuestionsStudyLevel:
-      type: string
-      enum:
-      - UNDERGRADUATE
-      - GRADUATE
-      - PHD
     OnboardQuestions:
       type: object
       properties:
@@ -107,6 +83,19 @@ components:
       - LONDON
       - NEW_YORK
       - PARIS
+    OnboardQuestionsExperienceWithData:
+      type: string
+      enum:
+      - LESS_1_YEAR
+      - BETWEEN_1_AND_3_YEARS
+      - BETWEEN_4_AND_5_YEARS
+      - MORE_THAN_5_YEARS
+    OnboardQuestionsStudyLevel:
+      type: string
+      enum:
+      - UNDERGRADUATE
+      - GRADUATE
+      - PHD
     OnboardUpdateForm:
       type: object
       properties:
@@ -157,13 +146,6 @@ components:
           type: boolean
       required:
       - completed
-    OnboardQuestionsExperienceWithData:
-      type: string
-      enum:
-      - LESS_1_YEAR
-      - BETWEEN_1_AND_3_YEARS
-      - BETWEEN_4_AND_5_YEARS
-      - MORE_THAN_5_YEARS
     User:
       type: object
       properties:
@@ -172,6 +154,24 @@ components:
           format: int64
         login:
           type: string
+    OnboardQuestionsParticipationReason:
+      type: string
+      enum:
+      - IMPROVE
+      - GAIN
+      - FUN
+    Onboard:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
+        questions:
+          $ref: '#/components/schemas/OnboardQuestions'
+        completed:
+          type: boolean
+        completedAt:
+          type: string
+          format: date-time
   securitySchemes:
     apiKey:
       type: apiKey

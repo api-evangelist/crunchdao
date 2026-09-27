@@ -187,17 +187,6 @@ components:
       - PENDING
       - APPROVED
       - REJECTED
-    OrganizerApplicationUpdateForm:
-      type: object
-      properties:
-        reviewStatus:
-          type: string
-          enum:
-          - PENDING
-          - APPROVED
-          - REJECTED
-        potentialSpam:
-          type: boolean
     OrganizerApplication:
       type: object
       properties:
@@ -266,6 +255,17 @@ components:
           type: string
           maxLength: 65536
           minLength: 0
+    OrganizerApplicationUpdateForm:
+      type: object
+      properties:
+        reviewStatus:
+          type: string
+          enum:
+          - PENDING
+          - APPROVED
+          - REJECTED
+        potentialSpam:
+          type: boolean
   securitySchemes:
     apiKey:
       type: apiKey

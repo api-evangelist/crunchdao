@@ -311,19 +311,6 @@ paths:
                 $ref: '#/components/schemas/Referendum'
 components:
   schemas:
-    ReferendumVoteCreateForm:
-      type: object
-      properties:
-        choice:
-          type: string
-          enum:
-          - AGAINST
-          - FOR
-        signature:
-          type: string
-          deprecated: true
-      required:
-      - choice
     Referendum:
       type: object
       properties:
@@ -372,21 +359,30 @@ components:
           type: integer
           format: int64
           deprecated: true
-    TeamMember:
+    ReferendumVoteChoice:
+      type: string
+      enum:
+      - AGAINST
+      - FOR
+    PageReferendum:
       type: object
       properties:
-        id:
+        pageNumber:
           type: integer
           format: int64
-        user:
-          $ref: '#/components/schemas/User'
-        createdAt:
-          type: string
-          format: date-time
-        userId:
+        pageSize:
           type: integer
           format: int64
-          deprecated: true
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Referendum'
     ReferendumCreateForm:
       type: object
       properties:
@@ -410,6 +406,11 @@ components:
       - targetTeamId
       - targetUserId
       - type
+    ReferendumConsensus:
+      type: string
+      enum:
+      - UNANIMITY
+      - MAJORITY
     ReferendumVote:
       type: object
       properties:
@@ -439,13 +440,45 @@ components:
         verifyUrl:
           type: string
           deprecated: true
-    ReferendumVerdict:
+    ReferendumTarget:
       type: string
       enum:
-      - PENDING
-      - APPROVED
-      - REJECTED
-      - EXPIRED
+      - USER
+      - TEAM
+      - SELF
+    TeamMember:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          type: string
+          format: date-time
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
+    ReferendumType:
+      type: string
+      enum:
+      - INVITE
+      - KICK
+      - PROMOTE
+      - ACCEPT_USER
+      - REQUEST_MERGE
+      - ACCEPT_MERGE
+      - DISBAND
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
     Team:
       type: object
       properties:
@@ -476,59 +509,26 @@ components:
         updatedAt:
           type: string
           format: date-time
-    ReferendumType:
+    ReferendumVerdict:
       type: string
       enum:
-      - INVITE
-      - KICK
-      - PROMOTE
-      - ACCEPT_USER
-      - REQUEST_MERGE
-      - ACCEPT_MERGE
-      - DISBAND
-    ReferendumVoteChoice:
-      type: string
-      enum:
-      - AGAINST
-      - FOR
-    ReferendumTarget:
-      type: string
-      enum:
-      - USER
-      - TEAM
-      - SELF
-    ReferendumConsensus:
-      type: string
-      enum:
-      - UNANIMITY
-      - MAJORITY
-    PageReferendum:
+      - PENDING
+      - APPROVED
+      - REJECTED
+      - EXPIRED
+    ReferendumVoteCreateForm:
       type: object
       properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/Referendum'
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        login:
+        choice:
           type: string
+          enum:
+          - AGAINST
+          - FOR
+        signature:
+          type: string
+          deprecated: true
+      required:
+      - choice
   securitySchemes:
     apiKey:
       type: apiKey

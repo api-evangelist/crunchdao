@@ -348,11 +348,20 @@ components:
         createdAt:
           type: string
           format: date-time
-    QuickstarterUsage:
+    QuickstarterFile:
+      type: object
+      properties:
+        name:
+          type: string
+        url:
+          type: string
+        githubUrl:
+          type: string
+    Language:
       type: string
       enum:
-      - SUBMISSION
-      - EXPLORATION
+      - PYTHON
+      - R
     QuickstarterAuthor:
       type: object
       properties:
@@ -360,6 +369,83 @@ components:
           type: string
         link:
           type: string
+    BatchQuickstarterCreateForm:
+      type: object
+      properties:
+        quickstarters:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuickstarterCreateForm'
+      required:
+      - quickstarters
+    QuickstarterUpdateForm:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        authors:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuickstarterAuthorCreateForm'
+        language:
+          type: string
+          enum:
+          - PYTHON
+          - R
+        usage:
+          type: string
+          enum:
+          - SUBMISSION
+          - EXPLORATION
+        notebook:
+          type: boolean
+        entrypoint:
+          type: string
+        deprecated:
+          type: boolean
+        kaggleUrl:
+          type: string
+        files:
+          type: array
+          items:
+            type: string
+      required:
+      - authors
+      - deprecated
+      - entrypoint
+      - files
+      - language
+      - notebook
+      - title
+      - usage
+    QuickstarterImporterDelta:
+      type: object
+      properties:
+        added:
+          type: integer
+          format: int32
+        updated:
+          type: integer
+          format: int32
+        deleted:
+          type: integer
+          format: int32
+    QuickstarterAuthorCreateForm:
+      type: object
+      properties:
+        name:
+          type: string
+        link:
+          type: string
+      required:
+      - name
+    QuickstarterUsage:
+      type: string
+      enum:
+      - SUBMISSION
+      - EXPLORATION
     QuickstarterCreateForm:
       type: object
       properties:
@@ -405,92 +491,6 @@ components:
       - notebook
       - title
       - usage
-    QuickstarterUpdateForm:
-      type: object
-      properties:
-        title:
-          type: string
-        description:
-          type: string
-        authors:
-          type: array
-          items:
-            $ref: '#/components/schemas/QuickstarterAuthorCreateForm'
-        language:
-          type: string
-          enum:
-          - PYTHON
-          - R
-        usage:
-          type: string
-          enum:
-          - SUBMISSION
-          - EXPLORATION
-        notebook:
-          type: boolean
-        entrypoint:
-          type: string
-        deprecated:
-          type: boolean
-        kaggleUrl:
-          type: string
-        files:
-          type: array
-          items:
-            type: string
-      required:
-      - authors
-      - deprecated
-      - entrypoint
-      - files
-      - language
-      - notebook
-      - title
-      - usage
-    Language:
-      type: string
-      enum:
-      - PYTHON
-      - R
-    QuickstarterFile:
-      type: object
-      properties:
-        name:
-          type: string
-        url:
-          type: string
-        githubUrl:
-          type: string
-    QuickstarterAuthorCreateForm:
-      type: object
-      properties:
-        name:
-          type: string
-        link:
-          type: string
-      required:
-      - name
-    BatchQuickstarterCreateForm:
-      type: object
-      properties:
-        quickstarters:
-          type: array
-          items:
-            $ref: '#/components/schemas/QuickstarterCreateForm'
-      required:
-      - quickstarters
-    QuickstarterImporterDelta:
-      type: object
-      properties:
-        added:
-          type: integer
-          format: int32
-        updated:
-          type: integer
-          format: int32
-        deleted:
-          type: integer
-          format: int32
   securitySchemes:
     apiKey:
       type: apiKey

@@ -150,14 +150,7 @@ paths:
                 $ref: '#/components/schemas/TimelineEvent'
 components:
   schemas:
-    TimelineEventType:
-      type: string
-      enum:
-      - GENERIC
-      - LEADERBOARD
-      - RULES
-      - REWARDS
-    TimelineEventButton:
+    TimelineEventButtonPatchForm:
       type: object
       properties:
         text:
@@ -195,15 +188,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-    TimelineEventButtonPatchForm:
-      type: object
-      properties:
-        text:
-          type: string
-        link:
-          type: string
-        color:
-          type: string
     TimelineEventUpdateForm:
       type: object
       properties:
@@ -227,6 +211,25 @@ components:
           type: boolean
         button:
           $ref: '#/components/schemas/TimelineEventButtonPatchForm'
+    TimelineEventType:
+      type: string
+      enum:
+      - GENERIC
+      - LEADERBOARD
+      - RULES
+      - REWARDS
+    TimelineEventButtonCreateForm:
+      type: object
+      properties:
+        text:
+          type: string
+        link:
+          type: string
+        color:
+          type: string
+      required:
+      - link
+      - text
     TimelineEventCreateForm:
       type: object
       properties:
@@ -255,7 +258,7 @@ components:
       - detailed
       - title
       - type
-    TimelineEventButtonCreateForm:
+    TimelineEventButton:
       type: object
       properties:
         text:
@@ -264,9 +267,6 @@ components:
           type: string
         color:
           type: string
-      required:
-      - link
-      - text
   securitySchemes:
     apiKey:
       type: apiKey

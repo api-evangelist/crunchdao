@@ -327,6 +327,35 @@ paths:
                 $ref: '#/components/schemas/PageGlobalInstitutionPosition'
 components:
   schemas:
+    PageGlobalUserPosition:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/GlobalUserPosition'
+    GlobalLeaderboardComputeForm:
+      type: object
+      properties:
+        dates:
+          type: array
+          items:
+            type: string
+            format: date
+      required:
+      - dates
     Institution:
       type: object
       properties:
@@ -404,6 +433,131 @@ components:
         updatedAt:
           type: string
           format: date-time
+    GlobalInstitutionPoint:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        rank:
+          type: integer
+          format: int64
+        totalPoints:
+          type: integer
+          format: int64
+        userCount:
+          type: integer
+          format: int64
+        averagePointsPerUser:
+          type: integer
+          format: int64
+    PageGlobalInstitutionPosition:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/GlobalInstitutionPosition'
+    PageGlobalLeaderboard:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/GlobalLeaderboard'
+    GlobalUser:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+        country:
+          type: string
+          description: Country of the user.
+        points:
+          type: integer
+          format: int64
+          description: Number of points on the global leaderboard. Updated daily.
+        globalRank:
+          type: integer
+          format: int64
+          description: Rank of the user in the global leaderboard. Updated daily.
+    GlobalUserPosition:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/GlobalUser'
+          description: Owner of the position.
+        rank:
+          type: integer
+          format: int64
+          description: Rank of the user for the requested leaderboard.
+        points:
+          type: integer
+          format: int64
+          description: Points of the user for the requested leaderboard.
+        bestRank:
+          type: integer
+          format: int64
+          description: Best rank (from previous leaderboards) of the user for the requested leaderboard.
+        participationCount:
+          type: integer
+          format: int64
+          description: Number of participated competitions for the requested leaderboard.
+        submissionCount:
+          type: integer
+          format: int64
+          description: Number of submissions of the user for the requested leaderboard.
+    GlobalUserPoint:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        rank:
+          type: integer
+          format: int64
+        points:
+          type: integer
+          format: int64
+        bestRank:
+          type: integer
+          format: int64
+        participationCount:
+          type: integer
+          format: int64
+        submissionCount:
+          type: integer
+          format: int64
     GlobalInstitutionPosition:
       type: object
       properties:
@@ -434,160 +588,6 @@ components:
           type: integer
           format: int64
           description: Average number of points of the institution's members for the requested leaderboard.
-    GlobalInstitutionPoint:
-      type: object
-      properties:
-        date:
-          type: string
-          format: date
-        rank:
-          type: integer
-          format: int64
-        totalPoints:
-          type: integer
-          format: int64
-        userCount:
-          type: integer
-          format: int64
-        averagePointsPerUser:
-          type: integer
-          format: int64
-    GlobalUserPosition:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        user:
-          $ref: '#/components/schemas/GlobalUser'
-          description: Owner of the position.
-        rank:
-          type: integer
-          format: int64
-          description: Rank of the user for the requested leaderboard.
-        points:
-          type: integer
-          format: int64
-          description: Points of the user for the requested leaderboard.
-        bestRank:
-          type: integer
-          format: int64
-          description: Best rank (from previous leaderboards) of the user for the requested leaderboard.
-        participationCount:
-          type: integer
-          format: int64
-          description: Number of participated competitions for the requested leaderboard.
-        submissionCount:
-          type: integer
-          format: int64
-          description: Number of submissions of the user for the requested leaderboard.
-    GlobalUser:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        login:
-          type: string
-        country:
-          type: string
-          description: Country of the user.
-        points:
-          type: integer
-          format: int64
-          description: Number of points on the global leaderboard. Updated daily.
-        globalRank:
-          type: integer
-          format: int64
-          description: Rank of the user in the global leaderboard. Updated daily.
-    PageGlobalUserPosition:
-      type: object
-      properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/GlobalUserPosition'
-    PageGlobalInstitutionPosition:
-      type: object
-      properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/GlobalInstitutionPosition'
-    GlobalUserPoint:
-      type: object
-      properties:
-        date:
-          type: string
-          format: date
-        rank:
-          type: integer
-          format: int64
-        points:
-          type: integer
-          format: int64
-        bestRank:
-          type: integer
-          format: int64
-        participationCount:
-          type: integer
-          format: int64
-        submissionCount:
-          type: integer
-          format: int64
-    PageGlobalLeaderboard:
-      type: object
-      properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/GlobalLeaderboard'
-    GlobalLeaderboardComputeForm:
-      type: object
-      properties:
-        dates:
-          type: array
-          items:
-            type: string
-            format: date
-      required:
-      - dates
   securitySchemes:
     apiKey:
       type: apiKey
