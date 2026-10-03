@@ -141,42 +141,6 @@ paths:
       deprecated: true
 components:
   schemas:
-    ChartDefinitionSetType:
-      type: string
-      enum:
-      - CHART
-      - IFRAME
-    ChartsWithData:
-      type: object
-      properties:
-        definitions:
-          type: array
-          items:
-            $ref: '#/components/schemas/ChartDefinition'
-        data:
-          type: object
-          additionalProperties:
-            type: string
-    ChartDefinitionSet:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        type:
-          $ref: '#/components/schemas/ChartDefinitionSetType'
-        projectIdProperty:
-          type: string
-        nativeConfiguration:
-          type: string
-        definitions:
-          type: array
-          items:
-            $ref: '#/components/schemas/ChartDefinition'
-        data:
-          type: string
     ChartDefinition:
       type: object
       properties:
@@ -208,6 +172,42 @@ components:
           type: integer
           format: int64
           description: Ordering order in the UI. Lowest is first.
+    ChartDefinitionSet:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/ChartDefinitionSetType'
+        projectIdProperty:
+          type: string
+        nativeConfiguration:
+          type: string
+        definitions:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChartDefinition'
+        data:
+          type: string
+    ChartDefinitionSetType:
+      type: string
+      enum:
+      - CHART
+      - IFRAME
+    ChartsWithData:
+      type: object
+      properties:
+        definitions:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChartDefinition'
+        data:
+          type: object
+          additionalProperties:
+            type: string
   securitySchemes:
     apiKey:
       type: apiKey

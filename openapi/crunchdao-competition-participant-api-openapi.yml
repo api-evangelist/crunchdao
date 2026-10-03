@@ -334,13 +334,70 @@ paths:
                 $ref: '#/components/schemas/Participant'
 components:
   schemas:
-    ParticipantStatus:
+    ParticipantRole:
+      type: string
+      enum:
+      - USER
+      - ORGANIZER
+      - ADMINISTRATOR
+    CompetitionVisibility:
+      type: string
+      enum:
+      - HIDDEN
+      - PUBLIC
+    User:
       type: object
       properties:
-        canParticipate:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+    ParticipantUpdateForm:
+      type: object
+      properties:
+        hidden:
           type: boolean
-        details:
-          $ref: '#/components/schemas/ParticipantStatusDetails'
+        crowned:
+          type: boolean
+        certified:
+          type: boolean
+        rewarded:
+          type: boolean
+        benchmarked:
+          type: boolean
+    CompetitionStatus:
+      type: string
+      enum:
+      - PENDING
+      - OPEN
+      - CLOSED
+    ParticipantStatusDetails:
+      type: object
+      properties:
+        ruleAccepted:
+          type: boolean
+        ruleAcceptedAt:
+          type: string
+          format: date-time
+        hasProblem:
+          type: boolean
+        restricted:
+          type: boolean
+        verified:
+          type: boolean
+        isRestricted:
+          type: boolean
+        isVerified:
+          type: boolean
+    CompetitionFormat:
+      type: string
+      enum:
+      - TIMESERIES
+      - DAG
+      - STREAM
+      - SPATIAL
+      - UNSTRUCTURED
     PageParticipant:
       type: object
       properties:
@@ -360,20 +417,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Participant'
-    TimelineEventButton:
-      type: object
-      properties:
-        text:
-          type: string
-        link:
-          type: string
-        color:
-          type: string
-    DataReleaseSplitKey:
-      type: string
-      enum:
-      - INTEGER
-      - STRING
     Participant:
       type: object
       properties:
@@ -430,66 +473,22 @@ components:
       enum:
       - OFFLINE
       - REAL_TIME
-    CompetitionStatus:
-      type: string
-      enum:
-      - PENDING
-      - OPEN
-      - CLOSED
-    CompetitionFormat:
-      type: string
-      enum:
-      - TIMESERIES
-      - DAG
-      - STREAM
-      - SPATIAL
-      - UNSTRUCTURED
-    ParticipantUpdateForm:
+    TimelineEventButton:
       type: object
       properties:
-        hidden:
-          type: boolean
-        crowned:
-          type: boolean
-        certified:
-          type: boolean
-        rewarded:
-          type: boolean
-        benchmarked:
-          type: boolean
-    CompetitionSession:
-      type: object
-      properties:
-        state:
-          $ref: '#/components/schemas/CompetitionType'
-          description: Current session state.
-        nextChange:
+        text:
           type: string
-          format: date-time
-          description: When should the next session state change happen. Unknown if `null`.
-    ParticipantStatusDetails:
-      type: object
-      properties:
-        ruleAccepted:
-          type: boolean
-        ruleAcceptedAt:
+        link:
           type: string
-          format: date-time
-        hasProblem:
-          type: boolean
-        restricted:
-          type: boolean
-        verified:
-          type: boolean
-        isRestricted:
-          type: boolean
-        isVerified:
-          type: boolean
-    CompetitionType:
+        color:
+          type: string
+    TimelineEventType:
       type: string
       enum:
-      - OPEN
-      - PAUSED
+      - GENERIC
+      - LEADERBOARD
+      - RULES
+      - REWARDS
     CompetitionTag:
       type: object
       properties:
@@ -528,19 +527,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-    TimelineEventType:
-      type: string
-      enum:
-      - GENERIC
-      - LEADERBOARD
-      - RULES
-      - REWARDS
-    ParticipantRole:
-      type: string
-      enum:
-      - USER
-      - ORGANIZER
-      - ADMINISTRATOR
     CompetitionStatistics:
       type: object
       properties:
@@ -559,19 +545,33 @@ components:
         runnables:
           type: integer
           format: int64
-    CompetitionVisibility:
-      type: string
-      enum:
-      - HIDDEN
-      - PUBLIC
-    User:
+    ParticipantStatus:
       type: object
       properties:
-        id:
-          type: integer
-          format: int64
-        login:
+        canParticipate:
+          type: boolean
+        details:
+          $ref: '#/components/schemas/ParticipantStatusDetails'
+    CompetitionSession:
+      type: object
+      properties:
+        state:
+          $ref: '#/components/schemas/CompetitionType'
+          description: Current session state.
+        nextChange:
           type: string
+          format: date-time
+          description: When should the next session state change happen. Unknown if `null`.
+    CompetitionType:
+      type: string
+      enum:
+      - OPEN
+      - PAUSED
+    DataReleaseSplitKey:
+      type: string
+      enum:
+      - INTEGER
+      - STRING
     Competition:
       type: object
       properties:

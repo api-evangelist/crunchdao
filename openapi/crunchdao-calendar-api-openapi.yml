@@ -164,12 +164,9 @@ paths:
                 $ref: '#/components/schemas/CalendarEvent'
 components:
   schemas:
-    CalendarEvent:
+    CalendarEventUpdateForm:
       type: object
       properties:
-        id:
-          type: integer
-          format: int64
         date:
           type: string
           format: date
@@ -206,24 +203,6 @@ components:
       required:
       - date
       - title
-    CalendarEventUpdateForm:
-      type: object
-      properties:
-        date:
-          type: string
-          format: date
-        title:
-          type: string
-        location:
-          type: string
-        time:
-          type: string
-          format: time
-          $anchor: https://en.wikipedia.org/wiki/ISO_8601
-          $comment: ISO 8601 Time
-          example: 01:02:03
-        url:
-          type: string
     PageCalendarEvent:
       type: object
       properties:
@@ -243,6 +222,27 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CalendarEvent'
+    CalendarEvent:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        date:
+          type: string
+          format: date
+        title:
+          type: string
+        location:
+          type: string
+        time:
+          type: string
+          format: time
+          $anchor: https://en.wikipedia.org/wiki/ISO_8601
+          $comment: ISO 8601 Time
+          example: 01:02:03
+        url:
+          type: string
   securitySchemes:
     apiKey:
       type: apiKey

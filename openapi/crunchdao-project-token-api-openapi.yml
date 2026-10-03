@@ -211,6 +211,11 @@ components:
         lastUsedAt:
           type: string
           format: date-time
+    ProjectTokenType:
+      type: string
+      enum:
+      - TEMPORARY
+      - PERMANENT
     Project:
       type: object
       properties:
@@ -252,11 +257,6 @@ components:
           format: int64
         login:
           type: string
-    ProjectTokenType:
-      type: string
-      enum:
-      - TEMPORARY
-      - PERMANENT
     ProjectTokenUpgradeForm:
       type: object
       properties:

@@ -291,19 +291,20 @@ paths:
       - apiKey: []
 components:
   schemas:
-    DataReleaseFileAccess:
+    DataReleaseSplit:
       type: object
       properties:
-        local:
-          type: boolean
-        runner:
-          type: boolean
-        checking:
-          type: boolean
-        scoring:
-          type: boolean
-        comparing:
-          type: boolean
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+        group:
+          $ref: '#/components/schemas/DataReleaseSplitGroup'
+        reduced:
+          $ref: '#/components/schemas/DataReleaseSplitReduced'
     DataReleaseFileResolveForm:
       type: object
       properties:
@@ -321,6 +322,31 @@ components:
       - compressed
       - name
       - uploadId
+    DataFile:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+        size:
+          type: integer
+          format: int64
+        signed:
+          type: boolean
+        compressed:
+          type: boolean
+    DataReleaseResolveForm:
+      type: object
+      properties:
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataReleaseFileResolveForm'
+      required:
+      - files
     DataReleaseFileCreateForm:
       type: object
       properties:
@@ -347,6 +373,75 @@ components:
       - name
       - sizeVariant
       - uploadId
+    DataReleaseSplitCreateForm:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+        group:
+          type: string
+          enum:
+          - TRAIN
+          - TEST
+        reduced:
+          type: string
+          enum:
+          - X
+          - XY
+      required:
+      - group
+      - key
+    DataReleaseFileAccess:
+      type: object
+      properties:
+        local:
+          type: boolean
+        runner:
+          type: boolean
+        checking:
+          type: boolean
+        scoring:
+          type: boolean
+        comparing:
+          type: boolean
+    DataReleaseCreateForm:
+      type: object
+      properties:
+        name:
+          type: string
+        embargo:
+          type: integer
+          format: int32
+        numberOfFeatures:
+          type: integer
+          format: int32
+        hash:
+          type: string
+        splits:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataReleaseSplitCreateForm'
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataReleaseFileCreateForm'
+        resolvable:
+          type: boolean
+      required:
+      - files
+      - name
+      - resolvable
+      - splits
+    DataReleaseSplitGroup:
+      type: string
+      enum:
+      - TRAIN
+      - TEST
     DataRelease:
       type: object
       properties:
@@ -399,64 +494,11 @@ components:
       - ALREADY
       - PENDING
       - RESOLVED
-    DataReleaseSplitGroup:
+    DataReleaseSplitReduced:
       type: string
       enum:
-      - TRAIN
-      - TEST
-    DataReleaseSplit:
-      type: object
-      properties:
-        key:
-          type: object
-          anyOf:
-          - type: integer
-            format: int64
-          - type: string
-          example: 1
-        group:
-          $ref: '#/components/schemas/DataReleaseSplitGroup'
-        reduced:
-          $ref: '#/components/schemas/DataReleaseSplitReduced'
-    DataFile:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        url:
-          type: string
-        size:
-          type: integer
-          format: int64
-        signed:
-          type: boolean
-        compressed:
-          type: boolean
-    DataReleaseSplitCreateForm:
-      type: object
-      properties:
-        key:
-          type: object
-          anyOf:
-          - type: integer
-            format: int64
-          - type: string
-          example: 1
-        group:
-          type: string
-          enum:
-          - TRAIN
-          - TEST
-        reduced:
-          type: string
-          enum:
-          - X
-          - XY
-      required:
-      - group
-      - key
+      - X
+      - XY
     PageDataRelease:
       type: object
       properties:
@@ -476,53 +518,11 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DataRelease'
-    DataReleaseCreateForm:
-      type: object
-      properties:
-        name:
-          type: string
-        embargo:
-          type: integer
-          format: int32
-        numberOfFeatures:
-          type: integer
-          format: int32
-        hash:
-          type: string
-        splits:
-          type: array
-          items:
-            $ref: '#/components/schemas/DataReleaseSplitCreateForm'
-        files:
-          type: array
-          items:
-            $ref: '#/components/schemas/DataReleaseFileCreateForm'
-        resolvable:
-          type: boolean
-      required:
-      - files
-      - name
-      - resolvable
-      - splits
-    DataReleaseResolveForm:
-      type: object
-      properties:
-        files:
-          type: array
-          items:
-            $ref: '#/components/schemas/DataReleaseFileResolveForm'
-      required:
-      - files
     DataReleaseSplitKey:
       type: string
       enum:
       - INTEGER
       - STRING
-    DataReleaseSplitReduced:
-      type: string
-      enum:
-      - X
-      - XY
   securitySchemes:
     apiKey:
       type: apiKey

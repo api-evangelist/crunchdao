@@ -352,6 +352,224 @@ paths:
                   $ref: '#/components/schemas/TotalUserReward'
 components:
   schemas:
+    CompetitionVisibility:
+      type: string
+      enum:
+      - HIDDEN
+      - PUBLIC
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+    CompetitionStatus:
+      type: string
+      enum:
+      - PENDING
+      - OPEN
+      - CLOSED
+    TotalUserReward:
+      type: object
+      properties:
+        competition:
+          $ref: '#/components/schemas/Competition'
+        user:
+          $ref: '#/components/schemas/User'
+        paid:
+          type: number
+        pending:
+          type: number
+        projected:
+          type: number
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
+    Currency:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        displayName:
+          type: string
+          description: The display name of the currency.
+        symbol:
+          type: string
+          description: The symbol of the currency. Does not include the `$` prefix.
+        decimals:
+          type: integer
+          format: int32
+          description: The decimals of the currency.
+        dollarExchangeRate:
+          type: number
+          description: The current exchange rate in USD.
+        blockchain:
+          type: string
+          description: Which address should be used to receive the currency. `FIAT` is not supported.
+          enum:
+          - ETHEREUM
+          - SOLANA
+          - FIAT
+        websiteUrl:
+          type: string
+          description: Website URL giving more documentation about the currency.
+        transactionUrlFormat:
+          type: string
+          description: Explorer URL format of a transaction. Use `{transactionHash}` as a variable for the `Payout.transactionHash`.
+        addressUrlFormat:
+          type: string
+          description: Explorer URL format of an address. Use `{address}` as a variable for the `PayoutRecipient.address`.
+    PayoutStatus:
+      type: string
+      enum:
+      - CREATED
+      - PENDING
+      - PAID
+    PayoutDetail:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/PayoutDetailType'
+        name:
+          type: string
+        value:
+          type: number
+        createdAt:
+          type: string
+          format: date-time
+    CompetitionFormat:
+      type: string
+      enum:
+      - TIMESERIES
+      - DAG
+      - STREAM
+      - SPATIAL
+      - UNSTRUCTURED
+    PayoutRecipientEntryForm:
+      type: object
+      properties:
+        userId:
+          type: integer
+          format: int64
+        cruncherPubkey:
+          type: string
+        address:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/PayoutDetailEntryForm'
+    CompetitionMode:
+      type: string
+      enum:
+      - OFFLINE
+      - REAL_TIME
+    PayoutDetailEntryForm:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - REWARD
+          - BONUS
+        name:
+          type: string
+        value:
+          type: number
+      required:
+      - name
+      - type
+      - value
+    TimelineEventButton:
+      type: object
+      properties:
+        text:
+          type: string
+        link:
+          type: string
+        color:
+          type: string
+    Payout:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        competition:
+          $ref: '#/components/schemas/PayoutCompetitionName'
+        date:
+          type: string
+          format: date
+        displayName:
+          type: string
+        granted:
+          type: number
+        minimumValueThreshold:
+          type: number
+        value:
+          type: number
+        currency:
+          $ref: '#/components/schemas/Currency'
+        type:
+          $ref: '#/components/schemas/PayoutType'
+        number:
+          type: integer
+          format: int64
+        transactionHash:
+          type: string
+        status:
+          $ref: '#/components/schemas/PayoutStatus'
+        size:
+          type: integer
+          format: int64
+        recipients:
+          type: array
+          items:
+            $ref: '#/components/schemas/PayoutRecipient'
+    TimelineEventType:
+      type: string
+      enum:
+      - GENERIC
+      - LEADERBOARD
+      - RULES
+      - REWARDS
+    CompetitionTag:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name for the UI.
+    PagePayout:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Payout'
     PayoutCreateForm:
       type: object
       properties:
@@ -397,56 +615,17 @@ components:
       - recipientResolverMissingBehavior
       - recipients
       - type
-    TotalUserReward:
-      type: object
-      properties:
-        competition:
-          $ref: '#/components/schemas/Competition'
-        user:
-          $ref: '#/components/schemas/User'
-        paid:
-          type: number
-        pending:
-          type: number
-        projected:
-          type: number
-        userId:
-          type: integer
-          format: int64
-          deprecated: true
     PayoutDetailType:
       type: string
       enum:
       - REWARD
       - BONUS
-    TimelineEventButton:
-      type: object
-      properties:
-        text:
-          type: string
-        link:
-          type: string
-        color:
-          type: string
-    PayoutRecipientEntryForm:
-      type: object
-      properties:
-        userId:
-          type: integer
-          format: int64
-        cruncherPubkey:
-          type: string
-        address:
-          type: string
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/PayoutDetailEntryForm'
-    DataReleaseSplitKey:
+    PayoutType:
       type: string
       enum:
-      - INTEGER
-      - STRING
+      - AIRDROP
+      - MONTHLY
+      - CHECKPOINT
     PayoutRecipient:
       type: object
       properties:
@@ -483,25 +662,63 @@ components:
           type: integer
           format: int64
           deprecated: true
-    CompetitionMode:
-      type: string
-      enum:
-      - OFFLINE
-      - REAL_TIME
-    CompetitionStatus:
-      type: string
-      enum:
-      - PENDING
-      - OPEN
-      - CLOSED
-    CompetitionFormat:
-      type: string
-      enum:
-      - TIMESERIES
-      - DAG
-      - STREAM
-      - SPATIAL
-      - UNSTRUCTURED
+    PayoutCompetitionName:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        displayName:
+          type: string
+    CompetitionStatistics:
+      type: object
+      properties:
+        entrants:
+          type: integer
+          format: int64
+        participants:
+          type: integer
+          format: int64
+        teams:
+          type: integer
+          format: int64
+        submissions:
+          type: integer
+          format: int64
+        runnables:
+          type: integer
+          format: int64
+    TimelineEvent:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/TimelineEventType'
+        title:
+          type: string
+        description:
+          type: string
+        date:
+          type: string
+          format: date
+          description: Date on which the event will occur/has occurred.
+        color:
+          type: string
+        detailed:
+          type: boolean
+          description: Detailed event should be hidden in a space constrained UI.
+        button:
+          $ref: '#/components/schemas/TimelineEventButton'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
     PayoutUpdateForm:
       type: object
       properties:
@@ -539,12 +756,6 @@ components:
           - SKIP
       required:
       - recipientResolverMissingBehavior
-    PayoutStatus:
-      type: string
-      enum:
-      - CREATED
-      - PENDING
-      - PAID
     CompetitionSession:
       type: object
       properties:
@@ -555,16 +766,6 @@ components:
           type: string
           format: date-time
           description: When should the next session state change happen. Unknown if `null`.
-    PayoutCompetitionName:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        displayName:
-          type: string
     CompetitionType:
       type: string
       enum:
@@ -577,212 +778,11 @@ components:
           type: string
       required:
       - transactionHash
-    CompetitionTag:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Slug-like name.
-        displayName:
-          type: string
-          description: Display name for the UI.
-    PayoutDetailEntryForm:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - REWARD
-          - BONUS
-        name:
-          type: string
-        value:
-          type: number
-      required:
-      - name
-      - type
-      - value
-    PagePayout:
-      type: object
-      properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/Payout'
-    TimelineEvent:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        type:
-          $ref: '#/components/schemas/TimelineEventType'
-        title:
-          type: string
-        description:
-          type: string
-        date:
-          type: string
-          format: date
-          description: Date on which the event will occur/has occurred.
-        color:
-          type: string
-        detailed:
-          type: boolean
-          description: Detailed event should be hidden in a space constrained UI.
-        button:
-          $ref: '#/components/schemas/TimelineEventButton'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-    TimelineEventType:
+    DataReleaseSplitKey:
       type: string
       enum:
-      - GENERIC
-      - LEADERBOARD
-      - RULES
-      - REWARDS
-    PayoutDetail:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        type:
-          $ref: '#/components/schemas/PayoutDetailType'
-        name:
-          type: string
-        value:
-          type: number
-        createdAt:
-          type: string
-          format: date-time
-    Payout:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        competition:
-          $ref: '#/components/schemas/PayoutCompetitionName'
-        date:
-          type: string
-          format: date
-        displayName:
-          type: string
-        granted:
-          type: number
-        minimumValueThreshold:
-          type: number
-        value:
-          type: number
-        currency:
-          $ref: '#/components/schemas/Currency'
-        type:
-          $ref: '#/components/schemas/PayoutType'
-        number:
-          type: integer
-          format: int64
-        transactionHash:
-          type: string
-        status:
-          $ref: '#/components/schemas/PayoutStatus'
-        size:
-          type: integer
-          format: int64
-        recipients:
-          type: array
-          items:
-            $ref: '#/components/schemas/PayoutRecipient'
-    CompetitionStatistics:
-      type: object
-      properties:
-        entrants:
-          type: integer
-          format: int64
-        participants:
-          type: integer
-          format: int64
-        teams:
-          type: integer
-          format: int64
-        submissions:
-          type: integer
-          format: int64
-        runnables:
-          type: integer
-          format: int64
-    Currency:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        displayName:
-          type: string
-          description: The display name of the currency.
-        symbol:
-          type: string
-          description: The symbol of the currency. Does not include the `$` prefix.
-        decimals:
-          type: integer
-          format: int32
-          description: The decimals of the currency.
-        dollarExchangeRate:
-          type: number
-          description: The current exchange rate in USD.
-        blockchain:
-          type: string
-          description: Which address should be used to receive the currency. `FIAT` is not supported.
-          enum:
-          - ETHEREUM
-          - SOLANA
-          - FIAT
-        websiteUrl:
-          type: string
-          description: Website URL giving more documentation about the currency.
-        transactionUrlFormat:
-          type: string
-          description: Explorer URL format of a transaction. Use `{transactionHash}` as a variable for the `Payout.transactionHash`.
-        addressUrlFormat:
-          type: string
-          description: Explorer URL format of an address. Use `{address}` as a variable for the `PayoutRecipient.address`.
-    CompetitionVisibility:
-      type: string
-      enum:
-      - HIDDEN
-      - PUBLIC
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        login:
-          type: string
-    PayoutType:
-      type: string
-      enum:
-      - AIRDROP
-      - MONTHLY
-      - CHECKPOINT
+      - INTEGER
+      - STRING
     Competition:
       type: object
       properties:

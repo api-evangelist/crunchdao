@@ -601,90 +601,48 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SubmissionFile'
-    RuntimeDefinitionSpecificationNetworkAccess:
-      type: string
-      enum:
-      - OPEN
-      - FORBIDDEN
-      - LOCAL_ONLY
-    PageSubmission:
+    RuntimeDefinitionSpecification:
       type: object
       properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/Submission'
+        memory:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSize'
+        sharedMemory:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSize'
+        storage:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSize'
+        cpu:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationCpu'
+        gpu:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationGpu'
+        network:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationNetwork'
+        software:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSoftware'
     RuntimeDefinitionSpecificationNetwork:
       type: object
       properties:
         access:
           $ref: '#/components/schemas/RuntimeDefinitionSpecificationNetworkAccess'
-    RuntimeType:
+    RuntimeDefinitionStatus:
       type: string
       enum:
-      - CPU
-      - GPU
-      - COPY
-    SubmissionFile:
+      - ACTIVE
+      - RESTRICTED
+      - DISABLED
+    User:
       type: object
       properties:
-        name:
-          type: string
-        size:
+        id:
           type: integer
           format: int64
-        encrypted:
-          type: boolean
-        mimeType:
+        login:
           type: string
-        foundHardcodedString:
-          type: boolean
-          deprecated: true
-    RuntimeDefinitionPoweredBy:
+    RuntimeDefinitionSpecificationCpu:
       type: object
       properties:
-        text:
-          type: string
-        url:
-          type: string
-    RuntimeOption:
-      type: object
-      properties:
-        definition:
-          $ref: '#/components/schemas/RuntimeDefinition'
-        quota:
-          anyOf:
-          - $comment: Seconds
-            example: '60'
-          - format: duration
-            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
-            $comment: ISO 8601 Duration
-            example: PT1M
-          description: Remaining quota, with the quota factor applied.
-        recommended:
-          type: boolean
-          description: If this runtime option is recommended for the submission.
-        status:
-          $ref: '#/components/schemas/RuntimeOptionStatus'
-          description: Usability status of this runtime option.
-    SubmissionType:
-      type: string
-      enum:
-      - CODE
-      - NOTEBOOK
-      - PREDICTION
+        coreCount:
+          type: integer
+          format: int32
     RuntimeDefinitionSpecificationGpu:
       type: object
       properties:
@@ -695,6 +653,61 @@ components:
           type: string
         driver:
           type: string
+    RuntimeOptionStatus:
+      type: string
+      enum:
+      - AVAILABLE
+      - REQUESTABLE
+      - REQUESTED
+      - BLOCKED
+    RuntimeDefinitionPoweredBy:
+      type: object
+      properties:
+        text:
+          type: string
+        url:
+          type: string
+    RuntimeDefinition:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          description: Slug-like name.
+        type:
+          $ref: '#/components/schemas/RuntimeType'
+          description: Runtime type.
+        status:
+          $ref: '#/components/schemas/RuntimeDefinitionStatus'
+          description: Runtime status.
+        recommendable:
+          type: boolean
+          description: Can the recommended badge be possible?
+        accessRequestRequired:
+          type: boolean
+          description: Does this runtime requires an approval to be used?
+        displayName:
+          type: string
+          description: Display name for cards.
+        description:
+          type: string
+          description: Description for cards.
+        poweredBy:
+          $ref: '#/components/schemas/RuntimeDefinitionPoweredBy'
+          description: Provider informations.
+        specification:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecification'
+          description: Environment specification.
+        quotaConsumptionRate:
+          type: number
+          format: double
+          description: How fast the quota is consumed for this runtime. `1` is normal speed, `<1` slower (more quota), `>1` faster (less quota).
+        order:
+          type: integer
+          format: int64
+          description: Lower values are shown first.
     Project:
       type: object
       properties:
@@ -728,19 +741,76 @@ components:
           type: integer
           format: int64
           deprecated: true
-    RuntimeDefinitionSpecificationSize:
+    RuntimeOption:
       type: object
       properties:
-        size:
+        definition:
+          $ref: '#/components/schemas/RuntimeDefinition'
+        quota:
+          anyOf:
+          - $comment: Seconds
+            example: '60'
+          - format: duration
+            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
+            $comment: ISO 8601 Duration
+            example: PT1M
+          description: Remaining quota, with the quota factor applied.
+        recommended:
+          type: boolean
+          description: If this runtime option is recommended for the submission.
+        status:
+          $ref: '#/components/schemas/RuntimeOptionStatus'
+          description: Usability status of this runtime option.
+    PageSubmission:
+      type: object
+      properties:
+        pageNumber:
           type: integer
-          format: int32
-          description: Size in gigabytes.
-    GpuRequirement:
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Submission'
+    PageRuntimeOption:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/RuntimeOption'
+    RuntimeDefinitionSpecificationNetworkAccess:
       type: string
       enum:
-      - OPTIONAL
-      - RECOMMENDED
-      - REQUIRED
+      - OPEN
+      - FORBIDDEN
+      - LOCAL_ONLY
+    RuntimeType:
+      type: string
+      enum:
+      - CPU
+      - GPU
+      - COPY
     Model:
       type: object
       properties:
@@ -761,6 +831,45 @@ components:
         createdAt:
           type: string
           format: date-time
+    GpuRequirement:
+      type: string
+      enum:
+      - OPTIONAL
+      - RECOMMENDED
+      - REQUIRED
+    SubmissionFile:
+      type: object
+      properties:
+        name:
+          type: string
+        size:
+          type: integer
+          format: int64
+        encrypted:
+          type: boolean
+        mimeType:
+          type: string
+        foundHardcodedString:
+          type: boolean
+          deprecated: true
+    RuntimeDefinitionSpecificationSize:
+      type: object
+      properties:
+        size:
+          type: integer
+          format: int32
+          description: Size in gigabytes.
+    SubmissionType:
+      type: string
+      enum:
+      - CODE
+      - NOTEBOOK
+      - PREDICTION
+    RuntimeDefinitionSpecificationSoftware:
+      type: object
+      properties:
+        python:
+          type: string
     SubmissionCreateForm:
       type: object
       properties:
@@ -805,115 +914,6 @@ components:
       - modelDirectoryPath
       - pushToken
       - type
-    RuntimeDefinitionSpecification:
-      type: object
-      properties:
-        memory:
-          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSize'
-        sharedMemory:
-          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSize'
-        storage:
-          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSize'
-        cpu:
-          $ref: '#/components/schemas/RuntimeDefinitionSpecificationCpu'
-        gpu:
-          $ref: '#/components/schemas/RuntimeDefinitionSpecificationGpu'
-        network:
-          $ref: '#/components/schemas/RuntimeDefinitionSpecificationNetwork'
-        software:
-          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSoftware'
-    RuntimeDefinition:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-          description: Slug-like name.
-        type:
-          $ref: '#/components/schemas/RuntimeType'
-          description: Runtime type.
-        status:
-          $ref: '#/components/schemas/RuntimeDefinitionStatus'
-          description: Runtime status.
-        recommendable:
-          type: boolean
-          description: Can the recommended badge be possible?
-        accessRequestRequired:
-          type: boolean
-          description: Does this runtime requires an approval to be used?
-        displayName:
-          type: string
-          description: Display name for cards.
-        description:
-          type: string
-          description: Description for cards.
-        poweredBy:
-          $ref: '#/components/schemas/RuntimeDefinitionPoweredBy'
-          description: Provider informations.
-        specification:
-          $ref: '#/components/schemas/RuntimeDefinitionSpecification'
-          description: Environment specification.
-        quotaConsumptionRate:
-          type: number
-          format: double
-          description: How fast the quota is consumed for this runtime. `1` is normal speed, `<1` slower (more quota), `>1` faster (less quota).
-        order:
-          type: integer
-          format: int64
-          description: Lower values are shown first.
-    RuntimeDefinitionStatus:
-      type: string
-      enum:
-      - ACTIVE
-      - RESTRICTED
-      - DISABLED
-    RuntimeOptionStatus:
-      type: string
-      enum:
-      - AVAILABLE
-      - REQUESTABLE
-      - REQUESTED
-      - BLOCKED
-    RuntimeDefinitionSpecificationSoftware:
-      type: object
-      properties:
-        python:
-          type: string
-    PageRuntimeOption:
-      type: object
-      properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/RuntimeOption'
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        login:
-          type: string
-    RuntimeDefinitionSpecificationCpu:
-      type: object
-      properties:
-        coreCount:
-          type: integer
-          format: int32
   securitySchemes:
     apiKey:
       type: apiKey

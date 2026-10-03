@@ -120,12 +120,39 @@ paths:
           description: OK
 components:
   schemas:
-    UserRestriction:
+    UserRole:
+      type: string
+      enum:
+      - USER
+      - MODERATOR
+      - ADMINISTRATOR
+    QuantClub:
       type: string
       enum:
       - NONE
-      - PARTIAL
-      - FULL
+      - BANDUNG
+      - BENGALURU
+      - DUBAI
+      - LONDON
+      - NEW_YORK
+      - PARIS
+    ImpersonateResult:
+      type: object
+      properties:
+        accessToken:
+          type: string
+    AuthCancelRegisterForm:
+      type: object
+      properties:
+        authIdToken:
+          type: string
+      required:
+      - authIdToken
+    RegisterResult:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/FullUser'
     AuthImpersonateForm:
       type: object
       properties:
@@ -134,11 +161,28 @@ components:
           format: int64
       required:
       - userId
-    RegisterResult:
+    AuthRegisterForm:
       type: object
       properties:
-        user:
-          $ref: '#/components/schemas/FullUser'
+        firstName:
+          type: string
+          maxLength: 100
+          minLength: 1
+        lastName:
+          type: string
+          maxLength: 100
+          minLength: 1
+        country:
+          type: string
+          maxLength: 100
+          minLength: 0
+        authIdToken:
+          type: string
+      required:
+      - authIdToken
+      - country
+      - firstName
+      - lastName
     FullUser:
       type: object
       properties:
@@ -183,56 +227,12 @@ components:
         restricted:
           type: boolean
           deprecated: true
-    AuthCancelRegisterForm:
-      type: object
-      properties:
-        authIdToken:
-          type: string
-      required:
-      - authIdToken
-    QuantClub:
+    UserRestriction:
       type: string
       enum:
       - NONE
-      - BANDUNG
-      - BENGALURU
-      - DUBAI
-      - LONDON
-      - NEW_YORK
-      - PARIS
-    AuthRegisterForm:
-      type: object
-      properties:
-        firstName:
-          type: string
-          maxLength: 100
-          minLength: 1
-        lastName:
-          type: string
-          maxLength: 100
-          minLength: 1
-        country:
-          type: string
-          maxLength: 100
-          minLength: 0
-        authIdToken:
-          type: string
-      required:
-      - authIdToken
-      - country
-      - firstName
-      - lastName
-    UserRole:
-      type: string
-      enum:
-      - USER
-      - MODERATOR
-      - ADMINISTRATOR
-    ImpersonateResult:
-      type: object
-      properties:
-        accessToken:
-          type: string
+      - PARTIAL
+      - FULL
   securitySchemes:
     apiKey:
       type: apiKey

@@ -173,22 +173,41 @@ paths:
                   $ref: '#/components/schemas/Certificate'
 components:
   schemas:
-    CompetitionMode:
+    TimelineEventButton:
+      type: object
+      properties:
+        text:
+          type: string
+        link:
+          type: string
+        color:
+          type: string
+    CompetitionFormat:
       type: string
       enum:
-      - OFFLINE
-      - REAL_TIME
-    CompetitionType:
-      type: string
-      enum:
-      - OPEN
-      - PAUSED
-    CompetitionStatus:
-      type: string
-      enum:
-      - PENDING
-      - OPEN
-      - CLOSED
+      - TIMESERIES
+      - DAG
+      - STREAM
+      - SPATIAL
+      - UNSTRUCTURED
+    CompetitionStatistics:
+      type: object
+      properties:
+        entrants:
+          type: integer
+          format: int64
+        participants:
+          type: integer
+          format: int64
+        teams:
+          type: integer
+          format: int64
+        submissions:
+          type: integer
+          format: int64
+        runnables:
+          type: integer
+          format: int64
     TimelineEvent:
       type: object
       properties:
@@ -218,6 +237,11 @@ components:
         updatedAt:
           type: string
           format: date-time
+    CompetitionVisibility:
+      type: string
+      enum:
+      - HIDDEN
+      - PUBLIC
     TimelineEventType:
       type: string
       enum:
@@ -225,54 +249,6 @@ components:
       - LEADERBOARD
       - RULES
       - REWARDS
-    CompetitionStatistics:
-      type: object
-      properties:
-        entrants:
-          type: integer
-          format: int64
-        participants:
-          type: integer
-          format: int64
-        teams:
-          type: integer
-          format: int64
-        submissions:
-          type: integer
-          format: int64
-        runnables:
-          type: integer
-          format: int64
-    CompetitionFormat:
-      type: string
-      enum:
-      - TIMESERIES
-      - DAG
-      - STREAM
-      - SPATIAL
-      - UNSTRUCTURED
-    TimelineEventButton:
-      type: object
-      properties:
-        text:
-          type: string
-        link:
-          type: string
-        color:
-          type: string
-    CertificateUpdateForm:
-      type: object
-      properties:
-        nameVariant:
-          type: string
-          enum:
-          - LOGIN
-          - FIRST_LAST
-    CompetitionVisibility:
-      type: string
-      enum:
-      - HIDDEN
-      - PUBLIC
     User:
       type: object
       properties:
@@ -281,6 +257,16 @@ components:
           format: int64
         login:
           type: string
+    CompetitionSession:
+      type: object
+      properties:
+        state:
+          $ref: '#/components/schemas/CompetitionType'
+          description: Current session state.
+        nextChange:
+          type: string
+          format: date-time
+          description: When should the next session state change happen. Unknown if `null`.
     Certificate:
       type: object
       properties:
@@ -308,11 +294,17 @@ components:
           type: integer
           format: int64
           deprecated: true
-    CertificateNameVariant:
+    CompetitionType:
       type: string
       enum:
-      - LOGIN
-      - FIRST_LAST
+      - OPEN
+      - PAUSED
+    CompetitionStatus:
+      type: string
+      enum:
+      - PENDING
+      - OPEN
+      - CLOSED
     CompetitionTag:
       type: object
       properties:
@@ -322,6 +314,29 @@ components:
         displayName:
           type: string
           description: Display name for the UI.
+    CertificateNameVariant:
+      type: string
+      enum:
+      - LOGIN
+      - FIRST_LAST
+    CompetitionMode:
+      type: string
+      enum:
+      - OFFLINE
+      - REAL_TIME
+    CertificateUpdateForm:
+      type: object
+      properties:
+        nameVariant:
+          type: string
+          enum:
+          - LOGIN
+          - FIRST_LAST
+    DataReleaseSplitKey:
+      type: string
+      enum:
+      - INTEGER
+      - STRING
     Competition:
       type: object
       properties:
@@ -494,21 +509,6 @@ components:
           description: Non-detailed timeline events.
           items:
             $ref: '#/components/schemas/TimelineEvent'
-    CompetitionSession:
-      type: object
-      properties:
-        state:
-          $ref: '#/components/schemas/CompetitionType'
-          description: Current session state.
-        nextChange:
-          type: string
-          format: date-time
-          description: When should the next session state change happen. Unknown if `null`.
-    DataReleaseSplitKey:
-      type: string
-      enum:
-      - INTEGER
-      - STRING
   securitySchemes:
     apiKey:
       type: apiKey

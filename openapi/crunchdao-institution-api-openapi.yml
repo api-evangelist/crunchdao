@@ -205,6 +205,209 @@ paths:
           description: Found
 components:
   schemas:
+    InstitutionParticipationPerformance:
+      type: object
+      properties:
+        bestMember:
+          $ref: '#/components/schemas/InstitutionParticipationPerformanceBestMember'
+          description: Best member on the competition's leaderboard.
+        memberCount:
+          type: integer
+          format: int64
+          description: Number of member on the competition's leaderboard.
+        totalPoints:
+          type: integer
+          format: int64
+          description: Total number of points earned by the institution's members on the competition.
+    CompetitionVisibility:
+      type: string
+      enum:
+      - HIDDEN
+      - PUBLIC
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+    CompetitionStatus:
+      type: string
+      enum:
+      - PENDING
+      - OPEN
+      - CLOSED
+    PageInstitutionParticipation:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/InstitutionParticipation'
+    InstitutionMember:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/GlobalUser'
+        rank:
+          type: integer
+          format: int64
+          description: Rank of the user in the institution. Updated daily.
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    InstitutionParticipation:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        competition:
+          $ref: '#/components/schemas/Competition'
+        performance:
+          $ref: '#/components/schemas/InstitutionParticipationPerformance'
+          description: Performance of the institution in the competition.
+        createdAt:
+          type: string
+          format: date-time
+    CompetitionFormat:
+      type: string
+      enum:
+      - TIMESERIES
+      - DAG
+      - STREAM
+      - SPATIAL
+      - UNSTRUCTURED
+    PageInstitutionMember:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/InstitutionMember'
+    CompetitionMode:
+      type: string
+      enum:
+      - OFFLINE
+      - REAL_TIME
+    TimelineEventButton:
+      type: object
+      properties:
+        text:
+          type: string
+        link:
+          type: string
+        color:
+          type: string
+    TimelineEventType:
+      type: string
+      enum:
+      - GENERIC
+      - LEADERBOARD
+      - RULES
+      - REWARDS
+    CompetitionTag:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name for the UI.
+    TimelineEvent:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/TimelineEventType'
+        title:
+          type: string
+        description:
+          type: string
+        date:
+          type: string
+          format: date
+          description: Date on which the event will occur/has occurred.
+        color:
+          type: string
+        detailed:
+          type: boolean
+          description: Detailed event should be hidden in a space constrained UI.
+        button:
+          $ref: '#/components/schemas/TimelineEventButton'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    CompetitionStatistics:
+      type: object
+      properties:
+        entrants:
+          type: integer
+          format: int64
+        participants:
+          type: integer
+          format: int64
+        teams:
+          type: integer
+          format: int64
+        submissions:
+          type: integer
+          format: int64
+        runnables:
+          type: integer
+          format: int64
+    CompetitionSession:
+      type: object
+      properties:
+        state:
+          $ref: '#/components/schemas/CompetitionType'
+          description: Current session state.
+        nextChange:
+          type: string
+          format: date-time
+          description: When should the next session state change happen. Unknown if `null`.
+    CompetitionType:
+      type: string
+      enum:
+      - OPEN
+      - PAUSED
     Institution:
       type: object
       properties:
@@ -250,214 +453,14 @@ components:
         updatedAt:
           type: string
           format: date-time
-    PageInstitutionParticipation:
+    InstitutionParticipationPerformanceBestMember:
       type: object
       properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/InstitutionParticipation'
-    TimelineEventButton:
-      type: object
-      properties:
-        text:
-          type: string
-        link:
-          type: string
-        color:
-          type: string
-    DataReleaseSplitKey:
-      type: string
-      enum:
-      - INTEGER
-      - STRING
-    PageInstitutionMember:
-      type: object
-      properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/InstitutionMember'
-    CompetitionMode:
-      type: string
-      enum:
-      - OFFLINE
-      - REAL_TIME
-    CompetitionStatus:
-      type: string
-      enum:
-      - PENDING
-      - OPEN
-      - CLOSED
-    InstitutionMember:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
         user:
-          $ref: '#/components/schemas/GlobalUser'
-        rank:
-          type: integer
-          format: int64
-          description: Rank of the user in the institution. Updated daily.
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-    CompetitionFormat:
-      type: string
-      enum:
-      - TIMESERIES
-      - DAG
-      - STREAM
-      - SPATIAL
-      - UNSTRUCTURED
-    CompetitionSession:
-      type: object
-      properties:
-        state:
-          $ref: '#/components/schemas/CompetitionType'
-          description: Current session state.
-        nextChange:
-          type: string
-          format: date-time
-          description: When should the next session state change happen. Unknown if `null`.
-    CompetitionType:
-      type: string
-      enum:
-      - OPEN
-      - PAUSED
-    CompetitionTag:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Slug-like name.
-        displayName:
-          type: string
-          description: Display name for the UI.
-    TimelineEvent:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        type:
-          $ref: '#/components/schemas/TimelineEventType'
-        title:
-          type: string
-        description:
-          type: string
-        date:
-          type: string
-          format: date
-          description: Date on which the event will occur/has occurred.
-        color:
-          type: string
-        detailed:
-          type: boolean
-          description: Detailed event should be hidden in a space constrained UI.
-        button:
-          $ref: '#/components/schemas/TimelineEventButton'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-    TimelineEventType:
-      type: string
-      enum:
-      - GENERIC
-      - LEADERBOARD
-      - RULES
-      - REWARDS
-    InstitutionParticipation:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        competition:
-          $ref: '#/components/schemas/Competition'
-        performance:
-          $ref: '#/components/schemas/InstitutionParticipationPerformance'
-          description: Performance of the institution in the competition.
-        createdAt:
-          type: string
-          format: date-time
-    InstitutionParticipationPerformance:
-      type: object
-      properties:
-        bestMember:
-          $ref: '#/components/schemas/InstitutionParticipationPerformanceBestMember'
-          description: Best member on the competition's leaderboard.
-        memberCount:
-          type: integer
-          format: int64
-          description: Number of member on the competition's leaderboard.
-        totalPoints:
-          type: integer
-          format: int64
-          description: Total number of points earned by the institution's members on the competition.
-    CompetitionStatistics:
-      type: object
-      properties:
-        entrants:
-          type: integer
-          format: int64
-        participants:
-          type: integer
-          format: int64
-        teams:
-          type: integer
-          format: int64
-        submissions:
-          type: integer
-          format: int64
-        runnables:
-          type: integer
-          format: int64
-    CompetitionVisibility:
-      type: string
-      enum:
-      - HIDDEN
-      - PUBLIC
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        login:
-          type: string
+          $ref: '#/components/schemas/User'
+        leaderboardRank:
+          type: number
+          format: double
     GlobalUser:
       type: object
       properties:
@@ -477,6 +480,11 @@ components:
           type: integer
           format: int64
           description: Rank of the user in the global leaderboard. Updated daily.
+    DataReleaseSplitKey:
+      type: string
+      enum:
+      - INTEGER
+      - STRING
     Competition:
       type: object
       properties:
@@ -649,14 +657,6 @@ components:
           description: Non-detailed timeline events.
           items:
             $ref: '#/components/schemas/TimelineEvent'
-    InstitutionParticipationPerformanceBestMember:
-      type: object
-      properties:
-        user:
-          $ref: '#/components/schemas/User'
-        leaderboardRank:
-          type: number
-          format: double
   securitySchemes:
     apiKey:
       type: apiKey

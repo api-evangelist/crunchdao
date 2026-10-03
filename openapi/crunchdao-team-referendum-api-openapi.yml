@@ -311,6 +311,46 @@ paths:
                 $ref: '#/components/schemas/Referendum'
 components:
   schemas:
+    PageReferendum:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Referendum'
+    ReferendumVoteCreateForm:
+      type: object
+      properties:
+        choice:
+          type: string
+          enum:
+          - AGAINST
+          - FOR
+        signature:
+          type: string
+          deprecated: true
+      required:
+      - choice
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
     Referendum:
       type: object
       properties:
@@ -359,58 +399,6 @@ components:
           type: integer
           format: int64
           deprecated: true
-    ReferendumVoteChoice:
-      type: string
-      enum:
-      - AGAINST
-      - FOR
-    PageReferendum:
-      type: object
-      properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/Referendum'
-    ReferendumCreateForm:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - INVITE
-          - KICK
-          - PROMOTE
-          - ACCEPT_USER
-          - REQUEST_MERGE
-          - ACCEPT_MERGE
-          - DISBAND
-        targetUserId:
-          type: integer
-          format: int64
-        targetTeamId:
-          type: integer
-          format: int64
-      required:
-      - targetTeamId
-      - targetUserId
-      - type
-    ReferendumConsensus:
-      type: string
-      enum:
-      - UNANIMITY
-      - MAJORITY
     ReferendumVote:
       type: object
       properties:
@@ -440,45 +428,34 @@ components:
         verifyUrl:
           type: string
           deprecated: true
-    ReferendumTarget:
-      type: string
-      enum:
-      - USER
-      - TEAM
-      - SELF
-    TeamMember:
+    ReferendumCreateForm:
       type: object
       properties:
-        id:
-          type: integer
-          format: int64
-        user:
-          $ref: '#/components/schemas/User'
-        createdAt:
+        type:
           type: string
-          format: date-time
-        userId:
+          enum:
+          - INVITE
+          - KICK
+          - PROMOTE
+          - ACCEPT_USER
+          - REQUEST_MERGE
+          - ACCEPT_MERGE
+          - DISBAND
+        targetUserId:
           type: integer
           format: int64
-          deprecated: true
-    ReferendumType:
+        targetTeamId:
+          type: integer
+          format: int64
+      required:
+      - targetTeamId
+      - targetUserId
+      - type
+    ReferendumVoteChoice:
       type: string
       enum:
-      - INVITE
-      - KICK
-      - PROMOTE
-      - ACCEPT_USER
-      - REQUEST_MERGE
-      - ACCEPT_MERGE
-      - DISBAND
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        login:
-          type: string
+      - AGAINST
+      - FOR
     Team:
       type: object
       properties:
@@ -509,6 +486,42 @@ components:
         updatedAt:
           type: string
           format: date-time
+    ReferendumTarget:
+      type: string
+      enum:
+      - USER
+      - TEAM
+      - SELF
+    ReferendumType:
+      type: string
+      enum:
+      - INVITE
+      - KICK
+      - PROMOTE
+      - ACCEPT_USER
+      - REQUEST_MERGE
+      - ACCEPT_MERGE
+      - DISBAND
+    ReferendumConsensus:
+      type: string
+      enum:
+      - UNANIMITY
+      - MAJORITY
+    TeamMember:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          type: string
+          format: date-time
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
     ReferendumVerdict:
       type: string
       enum:
@@ -516,19 +529,6 @@ components:
       - APPROVED
       - REJECTED
       - EXPIRED
-    ReferendumVoteCreateForm:
-      type: object
-      properties:
-        choice:
-          type: string
-          enum:
-          - AGAINST
-          - FOR
-        signature:
-          type: string
-          deprecated: true
-      required:
-      - choice
   securitySchemes:
     apiKey:
       type: apiKey

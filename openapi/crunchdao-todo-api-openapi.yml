@@ -48,6 +48,13 @@ paths:
                 $ref: '#/components/schemas/CompetitionTasks'
 components:
   schemas:
+    CompetitionTasks:
+      type: object
+      properties:
+        firstSubmission:
+          type: boolean
+        firstRun:
+          type: boolean
     AccountTasks:
       type: object
       properties:
@@ -56,13 +63,6 @@ components:
         discordGuildJoined:
           type: boolean
         walletAdded:
-          type: boolean
-    CompetitionTasks:
-      type: object
-      properties:
-        firstSubmission:
-          type: boolean
-        firstRun:
           type: boolean
   securitySchemes:
     apiKey:

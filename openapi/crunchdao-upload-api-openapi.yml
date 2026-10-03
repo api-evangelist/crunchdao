@@ -306,32 +306,6 @@ paths:
       - apiKey: []
 components:
   schemas:
-    UploadChunkCompleteForm:
-      type: object
-      properties:
-        hash:
-          type: string
-      required:
-      - hash
-    UploadProvider:
-      type: string
-      enum:
-      - AWS_S3
-    PresignedUploadRequest:
-      type: object
-      properties:
-        method:
-          type: string
-          enum:
-          - POST
-          - PUT
-        url:
-          type: string
-          format: uri
-        headers:
-          type: object
-          additionalProperties:
-            type: string
     UploadCreateForm:
       type: object
       properties:
@@ -349,6 +323,40 @@ components:
       - encrypted
       - name
       - size
+    UploadStatus:
+      type: string
+      enum:
+      - PENDING
+      - IN_PROGRESS
+      - SUCCEEDED
+      - FAILED
+      - EXPIRED
+    UploadChunkCompleteForm:
+      type: object
+      properties:
+        hash:
+          type: string
+      required:
+      - hash
+    UploadChunkDto:
+      type: object
+      properties:
+        number:
+          type: integer
+          format: int64
+        offset:
+          type: integer
+          format: int64
+        size:
+          type: integer
+          format: int64
+        last:
+          type: boolean
+        completed:
+          type: boolean
+        completedAt:
+          type: string
+          format: date-time
     UploadDto:
       type: object
       properties:
@@ -382,33 +390,25 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UploadChunkDto'
-    UploadChunkDto:
-      type: object
-      properties:
-        number:
-          type: integer
-          format: int64
-        offset:
-          type: integer
-          format: int64
-        size:
-          type: integer
-          format: int64
-        last:
-          type: boolean
-        completed:
-          type: boolean
-        completedAt:
-          type: string
-          format: date-time
-    UploadStatus:
+    UploadProvider:
       type: string
       enum:
-      - PENDING
-      - IN_PROGRESS
-      - SUCCEEDED
-      - FAILED
-      - EXPIRED
+      - AWS_S3
+    PresignedUploadRequest:
+      type: object
+      properties:
+        method:
+          type: string
+          enum:
+          - POST
+          - PUT
+        url:
+          type: string
+          format: uri
+        headers:
+          type: object
+          additionalProperties:
+            type: string
   securitySchemes:
     apiKey:
       type: apiKey

@@ -62,27 +62,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    UserProfile:
-      type: object
-      properties:
-        user:
-          $ref: '#/components/schemas/User'
-        biography:
-          type: string
-        connections:
-          type: array
-          items:
-            $ref: '#/components/schemas/Connection'
-    UserProfileUpdateForm:
-      type: object
-      properties:
-        biography:
-          type: string
-          description: User biography.
-          maxLength: 2048
-          minLength: 0
-      required:
-      - biography
     Connection:
       type: object
       properties:
@@ -123,6 +102,27 @@ components:
           format: int64
         login:
           type: string
+    UserProfileUpdateForm:
+      type: object
+      properties:
+        biography:
+          type: string
+          description: User biography.
+          maxLength: 2048
+          minLength: 0
+      required:
+      - biography
+    UserProfile:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
+        biography:
+          type: string
+        connections:
+          type: array
+          items:
+            $ref: '#/components/schemas/Connection'
   securitySchemes:
     apiKey:
       type: apiKey

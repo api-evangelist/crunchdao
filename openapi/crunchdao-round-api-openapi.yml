@@ -124,66 +124,41 @@ paths:
                 $ref: '#/components/schemas/Round'
 components:
   schemas:
-    CompetitionMode:
-      type: string
-      enum:
-      - OFFLINE
-      - REAL_TIME
-    CompetitionStatus:
-      type: string
-      enum:
-      - PENDING
-      - OPEN
-      - CLOSED
-    RoundUpdateForm:
+    TimelineEventButton:
       type: object
       properties:
-        start:
+        text:
           type: string
-          format: date-time
-        end:
+        link:
           type: string
-          format: date-time
-        automaticSelectionFreezeEnabled:
-          type: boolean
-        automaticSubmissionPhaseCrunchCreationEnabled:
-          type: boolean
-        automaticSubmissionPhaseLeaderboardUpdateEnabled:
-          type: boolean
-        predictionSizeLimit:
-          type: integer
-          format: int64
-        maxSubmissionsPerDay:
-          type: integer
-          format: int64
-    RoundCreateForm:
+        color:
+          type: string
+    CompetitionFormat:
+      type: string
+      enum:
+      - TIMESERIES
+      - DAG
+      - STREAM
+      - SPATIAL
+      - UNSTRUCTURED
+    CompetitionStatistics:
       type: object
       properties:
-        start:
-          type: string
-          format: date-time
-        end:
-          type: string
-          format: date-time
-        automaticSelectionFreezeEnabled:
-          type: boolean
-        automaticSubmissionPhaseCrunchCreationEnabled:
-          type: boolean
-        automaticSubmissionPhaseLeaderboardUpdateEnabled:
-          type: boolean
-        predictionSizeLimit:
+        entrants:
           type: integer
           format: int64
-        maxSubmissionsPerDay:
+        participants:
           type: integer
           format: int64
-      required:
-      - automaticSelectionFreezeEnabled
-      - automaticSubmissionPhaseCrunchCreationEnabled
-      - automaticSubmissionPhaseLeaderboardUpdateEnabled
-      - end
-      - maxSubmissionsPerDay
-      - start
+        teams:
+          type: integer
+          format: int64
+        submissions:
+          type: integer
+          format: int64
+        runnables:
+          type: integer
+          format: int64
     TimelineEvent:
       type: object
       properties:
@@ -213,39 +188,11 @@ components:
         updatedAt:
           type: string
           format: date-time
-    TimelineEventType:
+    CompetitionVisibility:
       type: string
       enum:
-      - GENERIC
-      - LEADERBOARD
-      - RULES
-      - REWARDS
-    CompetitionStatistics:
-      type: object
-      properties:
-        entrants:
-          type: integer
-          format: int64
-        participants:
-          type: integer
-          format: int64
-        teams:
-          type: integer
-          format: int64
-        submissions:
-          type: integer
-          format: int64
-        runnables:
-          type: integer
-          format: int64
-    CompetitionFormat:
-      type: string
-      enum:
-      - TIMESERIES
-      - DAG
-      - STREAM
-      - SPATIAL
-      - UNSTRUCTURED
+      - HIDDEN
+      - PUBLIC
     Round:
       type: object
       properties:
@@ -275,20 +222,13 @@ components:
         maxSubmissionsPerDay:
           type: integer
           format: int64
-    TimelineEventButton:
-      type: object
-      properties:
-        text:
-          type: string
-        link:
-          type: string
-        color:
-          type: string
-    CompetitionVisibility:
+    TimelineEventType:
       type: string
       enum:
-      - HIDDEN
-      - PUBLIC
+      - GENERIC
+      - LEADERBOARD
+      - RULES
+      - REWARDS
     CompetitionSession:
       type: object
       properties:
@@ -304,6 +244,12 @@ components:
       enum:
       - OPEN
       - PAUSED
+    CompetitionStatus:
+      type: string
+      enum:
+      - PENDING
+      - OPEN
+      - CLOSED
     CompetitionTag:
       type: object
       properties:
@@ -313,6 +259,65 @@ components:
         displayName:
           type: string
           description: Display name for the UI.
+    CompetitionMode:
+      type: string
+      enum:
+      - OFFLINE
+      - REAL_TIME
+    RoundUpdateForm:
+      type: object
+      properties:
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        automaticSelectionFreezeEnabled:
+          type: boolean
+        automaticSubmissionPhaseCrunchCreationEnabled:
+          type: boolean
+        automaticSubmissionPhaseLeaderboardUpdateEnabled:
+          type: boolean
+        predictionSizeLimit:
+          type: integer
+          format: int64
+        maxSubmissionsPerDay:
+          type: integer
+          format: int64
+    DataReleaseSplitKey:
+      type: string
+      enum:
+      - INTEGER
+      - STRING
+    RoundCreateForm:
+      type: object
+      properties:
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        automaticSelectionFreezeEnabled:
+          type: boolean
+        automaticSubmissionPhaseCrunchCreationEnabled:
+          type: boolean
+        automaticSubmissionPhaseLeaderboardUpdateEnabled:
+          type: boolean
+        predictionSizeLimit:
+          type: integer
+          format: int64
+        maxSubmissionsPerDay:
+          type: integer
+          format: int64
+      required:
+      - automaticSelectionFreezeEnabled
+      - automaticSubmissionPhaseCrunchCreationEnabled
+      - automaticSubmissionPhaseLeaderboardUpdateEnabled
+      - end
+      - maxSubmissionsPerDay
+      - start
     Competition:
       type: object
       properties:
@@ -485,11 +490,6 @@ components:
           description: Non-detailed timeline events.
           items:
             $ref: '#/components/schemas/TimelineEvent'
-    DataReleaseSplitKey:
-      type: string
-      enum:
-      - INTEGER
-      - STRING
   securitySchemes:
     apiKey:
       type: apiKey

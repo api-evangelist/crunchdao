@@ -282,11 +282,6 @@ components:
       - REDDIT
       - LINKEDIN
       - GOOGLE
-    ConnectionUpdateForm:
-      type: object
-      properties:
-        public:
-          type: boolean
     Connection:
       type: object
       properties:
@@ -307,6 +302,11 @@ components:
         updatedAt:
           type: string
           format: date-time
+        public:
+          type: boolean
+    ConnectionUpdateForm:
+      type: object
+      properties:
         public:
           type: boolean
     ConnectionKaggleCreateForm:

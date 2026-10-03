@@ -162,25 +162,6 @@ paths:
       - apiKey: []
 components:
   schemas:
-    PageOrganizerApplication:
-      type: object
-      properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrganizerApplication'
     OrganizerApplicationReviewStatus:
       type: string
       enum:
@@ -216,6 +197,36 @@ components:
         createdAt:
           type: string
           format: date-time
+    OrganizerApplicationUpdateForm:
+      type: object
+      properties:
+        reviewStatus:
+          type: string
+          enum:
+          - PENDING
+          - APPROVED
+          - REJECTED
+        potentialSpam:
+          type: boolean
+    PageOrganizerApplication:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganizerApplication'
     OrganizerApplicationCreateForm:
       type: object
       properties:
@@ -255,17 +266,6 @@ components:
           type: string
           maxLength: 65536
           minLength: 0
-    OrganizerApplicationUpdateForm:
-      type: object
-      properties:
-        reviewStatus:
-          type: string
-          enum:
-          - PENDING
-          - APPROVED
-          - REJECTED
-        potentialSpam:
-          type: boolean
   securitySchemes:
     apiKey:
       type: apiKey

@@ -150,7 +150,7 @@ paths:
                 $ref: '#/components/schemas/TimelineEvent'
 components:
   schemas:
-    TimelineEventButtonPatchForm:
+    TimelineEventButton:
       type: object
       properties:
         text:
@@ -188,29 +188,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-    TimelineEventUpdateForm:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - GENERIC
-          - LEADERBOARD
-          - RULES
-          - REWARDS
-        title:
-          type: string
-        description:
-          type: string
-        date:
-          type: string
-          format: date
-        color:
-          type: string
-        detailed:
-          type: boolean
-        button:
-          $ref: '#/components/schemas/TimelineEventButtonPatchForm'
     TimelineEventType:
       type: string
       enum:
@@ -218,7 +195,7 @@ components:
       - LEADERBOARD
       - RULES
       - REWARDS
-    TimelineEventButtonCreateForm:
+    TimelineEventButtonPatchForm:
       type: object
       properties:
         text:
@@ -227,9 +204,6 @@ components:
           type: string
         color:
           type: string
-      required:
-      - link
-      - text
     TimelineEventCreateForm:
       type: object
       properties:
@@ -258,7 +232,30 @@ components:
       - detailed
       - title
       - type
-    TimelineEventButton:
+    TimelineEventUpdateForm:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - GENERIC
+          - LEADERBOARD
+          - RULES
+          - REWARDS
+        title:
+          type: string
+        description:
+          type: string
+        date:
+          type: string
+          format: date
+        color:
+          type: string
+        detailed:
+          type: boolean
+        button:
+          $ref: '#/components/schemas/TimelineEventButtonPatchForm'
+    TimelineEventButtonCreateForm:
       type: object
       properties:
         text:
@@ -267,6 +264,9 @@ components:
           type: string
         color:
           type: string
+      required:
+      - link
+      - text
   securitySchemes:
     apiKey:
       type: apiKey

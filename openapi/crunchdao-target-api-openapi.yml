@@ -83,11 +83,6 @@ paths:
                 $ref: '#/components/schemas/Target'
 components:
   schemas:
-    LeaderboardRankOrder:
-      type: string
-      enum:
-      - DESCENDING
-      - ASCENDING
     Target:
       type: object
       properties:
@@ -132,6 +127,11 @@ components:
           type: integer
           format: int32
           description: Number of digits to keep after the comma.
+    LeaderboardRankOrder:
+      type: string
+      enum:
+      - DESCENDING
+      - ASCENDING
   securitySchemes:
     apiKey:
       type: apiKey

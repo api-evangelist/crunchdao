@@ -70,18 +70,6 @@ paths:
                   $ref: '#/components/schemas/Country'
 components:
   schemas:
-    University:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        url:
-          type: string
-        countryAlpha3:
-          type: string
     Country:
       type: object
       properties:
@@ -97,6 +85,18 @@ components:
         numeric:
           type: integer
           format: int32
+    University:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        url:
+          type: string
+        countryAlpha3:
+          type: string
   securitySchemes:
     apiKey:
       type: apiKey
