@@ -180,6 +180,140 @@ paths:
                 $ref: '#/components/schemas/Crunch'
 components:
   schemas:
+    CrunchUpdateForm:
+      type: object
+      properties:
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        showRuns:
+          type: boolean
+        showMetricsDetails:
+          type: boolean
+        showRunLogs:
+          type: boolean
+        showScoresValue:
+          type: boolean
+        leaderboardSimilarityThreshold:
+          type: number
+          format: float
+        published:
+          type: boolean
+        dataReleaseId:
+          type: integer
+          format: int64
+        splits:
+          type: array
+          items:
+            $ref: '#/components/schemas/CrunchSplitCreateForm'
+      required:
+      - dataReleaseId
+    PhaseType:
+      type: string
+      enum:
+      - SUBMISSION
+      - OUT_OF_SAMPLE
+    CrunchSplit:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+    CrunchCreateForm:
+      type: object
+      properties:
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        showRuns:
+          type: boolean
+        showMetricsDetails:
+          type: boolean
+        showRunLogs:
+          type: boolean
+        showScoresValue:
+          type: boolean
+        leaderboardSimilarityThreshold:
+          type: number
+          format: float
+        published:
+          type: boolean
+        dataReleaseId:
+          type: integer
+          format: int64
+        splits:
+          type: array
+          items:
+            $ref: '#/components/schemas/CrunchSplitCreateForm'
+      required:
+      - dataReleaseId
+      - end
+      - published
+      - showMetricsDetails
+      - showRunLogs
+      - showRuns
+      - showScoresValue
+      - splits
+      - start
+    CrunchSplitCreateForm:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+      required:
+      - key
+    Crunch:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        phase:
+          $ref: '#/components/schemas/Phase'
+        number:
+          type: integer
+          format: int64
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        showRuns:
+          type: boolean
+        showMetricsDetails:
+          type: boolean
+        showRunLogs:
+          type: boolean
+        showScoresValue:
+          type: boolean
+        leaderboardSimilarityThreshold:
+          type: number
+          format: float
+        published:
+          type: boolean
+        dataReleaseId:
+          type: integer
+          format: int64
+        splits:
+          type: array
+          items:
+            $ref: '#/components/schemas/CrunchSplit'
     Phase:
       type: object
       properties:
@@ -227,141 +361,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PhaseSplit'
-    PhaseType:
-      type: string
-      enum:
-      - SUBMISSION
-      - OUT_OF_SAMPLE
-    CrunchCreateForm:
-      type: object
-      properties:
-        start:
-          type: string
-          format: date-time
-        end:
-          type: string
-          format: date-time
-        showRuns:
-          type: boolean
-        showMetricsDetails:
-          type: boolean
-        showRunLogs:
-          type: boolean
-        showScoresValue:
-          type: boolean
-        leaderboardSimilarityThreshold:
-          type: number
-          format: float
-        published:
-          type: boolean
-        dataReleaseId:
-          type: integer
-          format: int64
-        splits:
-          type: array
-          items:
-            $ref: '#/components/schemas/CrunchSplitCreateForm'
-      required:
-      - dataReleaseId
-      - end
-      - published
-      - showMetricsDetails
-      - showRunLogs
-      - showRuns
-      - showScoresValue
-      - splits
-      - start
-    Crunch:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        phase:
-          $ref: '#/components/schemas/Phase'
-        number:
-          type: integer
-          format: int64
-        start:
-          type: string
-          format: date-time
-        end:
-          type: string
-          format: date-time
-        showRuns:
-          type: boolean
-        showMetricsDetails:
-          type: boolean
-        showRunLogs:
-          type: boolean
-        showScoresValue:
-          type: boolean
-        leaderboardSimilarityThreshold:
-          type: number
-          format: float
-        published:
-          type: boolean
-        dataReleaseId:
-          type: integer
-          format: int64
-        splits:
-          type: array
-          items:
-            $ref: '#/components/schemas/CrunchSplit'
-    CrunchUpdateForm:
-      type: object
-      properties:
-        start:
-          type: string
-          format: date-time
-        end:
-          type: string
-          format: date-time
-        showRuns:
-          type: boolean
-        showMetricsDetails:
-          type: boolean
-        showRunLogs:
-          type: boolean
-        showScoresValue:
-          type: boolean
-        leaderboardSimilarityThreshold:
-          type: number
-          format: float
-        published:
-          type: boolean
-        dataReleaseId:
-          type: integer
-          format: int64
-        splits:
-          type: array
-          items:
-            $ref: '#/components/schemas/CrunchSplitCreateForm'
-      required:
-      - dataReleaseId
-    CrunchSplitCreateForm:
-      type: object
-      properties:
-        key:
-          type: object
-          anyOf:
-          - type: integer
-            format: int64
-          - type: string
-          example: 1
-      required:
-      - key
     PhaseSplit:
-      type: object
-      properties:
-        key:
-          type: object
-          anyOf:
-          - type: integer
-            format: int64
-          - type: string
-          example: 1
-    CrunchSplit:
       type: object
       properties:
         key:

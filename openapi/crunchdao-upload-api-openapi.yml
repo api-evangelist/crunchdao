@@ -306,23 +306,28 @@ paths:
       - apiKey: []
 components:
   schemas:
-    UploadCreateForm:
+    PresignedUploadRequest:
       type: object
       properties:
-        name:
+        method:
           type: string
-        size:
-          type: integer
-          format: int64
-        encrypted:
-          type: boolean
-        preferredChunkSize:
-          type: integer
-          format: int64
+          enum:
+          - POST
+          - PUT
+        url:
+          type: string
+          format: uri
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+    UploadChunkCompleteForm:
+      type: object
+      properties:
+        hash:
+          type: string
       required:
-      - encrypted
-      - name
-      - size
+      - hash
     UploadStatus:
       type: string
       enum:
@@ -331,13 +336,6 @@ components:
       - SUCCEEDED
       - FAILED
       - EXPIRED
-    UploadChunkCompleteForm:
-      type: object
-      properties:
-        hash:
-          type: string
-      required:
-      - hash
     UploadChunkDto:
       type: object
       properties:
@@ -394,21 +392,23 @@ components:
       type: string
       enum:
       - AWS_S3
-    PresignedUploadRequest:
+    UploadCreateForm:
       type: object
       properties:
-        method:
+        name:
           type: string
-          enum:
-          - POST
-          - PUT
-        url:
-          type: string
-          format: uri
-        headers:
-          type: object
-          additionalProperties:
-            type: string
+        size:
+          type: integer
+          format: int64
+        encrypted:
+          type: boolean
+        preferredChunkSize:
+          type: integer
+          format: int64
+      required:
+      - encrypted
+      - name
+      - size
   securitySchemes:
     apiKey:
       type: apiKey

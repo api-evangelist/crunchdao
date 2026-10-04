@@ -211,6 +211,36 @@ paths:
                 $ref: '#/components/schemas/LibraryLatestVersion'
 components:
   schemas:
+    PageLibrary:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Library'
+    GpuRequirement:
+      type: string
+      enum:
+      - OPTIONAL
+      - RECOMMENDED
+      - REQUIRED
+    Language:
+      type: string
+      enum:
+      - PYTHON
+      - R
     Library:
       type: object
       properties:
@@ -237,41 +267,11 @@ components:
         createdAt:
           type: string
           format: date-time
-    GpuRequirement:
-      type: string
-      enum:
-      - OPTIONAL
-      - RECOMMENDED
-      - REQUIRED
     LibraryLatestVersion:
       type: object
       properties:
         version:
           type: string
-    PageLibrary:
-      type: object
-      properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/Library'
-    Language:
-      type: string
-      enum:
-      - PYTHON
-      - R
   securitySchemes:
     apiKey:
       type: apiKey

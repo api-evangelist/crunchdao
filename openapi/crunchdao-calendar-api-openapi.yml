@@ -182,27 +182,6 @@ components:
           example: 01:02:03
         url:
           type: string
-    CalendarEventCreateForm:
-      type: object
-      properties:
-        date:
-          type: string
-          format: date
-        title:
-          type: string
-        location:
-          type: string
-        time:
-          type: string
-          format: time
-          $anchor: https://en.wikipedia.org/wiki/ISO_8601
-          $comment: ISO 8601 Time
-          example: 01:02:03
-        url:
-          type: string
-      required:
-      - date
-      - title
     PageCalendarEvent:
       type: object
       properties:
@@ -243,6 +222,27 @@ components:
           example: 01:02:03
         url:
           type: string
+    CalendarEventCreateForm:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        title:
+          type: string
+        location:
+          type: string
+        time:
+          type: string
+          format: time
+          $anchor: https://en.wikipedia.org/wiki/ISO_8601
+          $comment: ISO 8601 Time
+          example: 01:02:03
+        url:
+          type: string
+      required:
+      - date
+      - title
   securitySchemes:
     apiKey:
       type: apiKey

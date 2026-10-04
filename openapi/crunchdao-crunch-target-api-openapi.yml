@@ -161,18 +161,99 @@ paths:
                   $ref: '#/components/schemas/CrunchTarget'
 components:
   schemas:
-    CrunchTarget:
+    PhaseType:
+      type: string
+      enum:
+      - SUBMISSION
+      - OUT_OF_SAMPLE
+    CrunchTargetUpdateForm:
+      type: object
+      properties:
+        published:
+          type: boolean
+    CrunchSplit:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+    Target:
       type: object
       properties:
         id:
           type: integer
           format: int64
-        target:
-          $ref: '#/components/schemas/Target'
-        crunch:
-          $ref: '#/components/schemas/Crunch'
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name for the UI.
+        weight:
+          type: number
+          format: float
+          description: Weight of the target in the global leaderboard.
+        weightedMeanUnit:
+          $ref: '#/components/schemas/Unit'
+          description: Display name for the UI of the weighted mean column.
+        primary:
+          type: boolean
+          description: Is the target displayed on the home page?
+        virtual:
+          type: boolean
+          description: Is the target based on other targets.
+        rankOrder:
+          $ref: '#/components/schemas/LeaderboardRankOrder'
+          description: Orders of the position on the leaderboard.
+        weightedMeanDisplayUnit:
+          type: string
+          deprecated: true
+    Crunch:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        phase:
+          $ref: '#/components/schemas/Phase'
+        number:
+          type: integer
+          format: int64
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        showRuns:
+          type: boolean
+        showMetricsDetails:
+          type: boolean
+        showRunLogs:
+          type: boolean
+        showScoresValue:
+          type: boolean
+        leaderboardSimilarityThreshold:
+          type: number
+          format: float
         published:
           type: boolean
+        dataReleaseId:
+          type: integer
+          format: int64
+        splits:
+          type: array
+          items:
+            $ref: '#/components/schemas/CrunchSplit'
+    LeaderboardRankOrder:
+      type: string
+      enum:
+      - DESCENDING
+      - ASCENDING
     Phase:
       type: object
       properties:
@@ -220,45 +301,26 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PhaseSplit'
-    PhaseType:
-      type: string
-      enum:
-      - SUBMISSION
-      - OUT_OF_SAMPLE
-    Target:
+    PhaseSplit:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+    CrunchTarget:
       type: object
       properties:
         id:
           type: integer
           format: int64
-        name:
-          type: string
-          description: Slug-like name.
-        displayName:
-          type: string
-          description: Display name for the UI.
-        weight:
-          type: number
-          format: float
-          description: Weight of the target in the global leaderboard.
-        weightedMeanUnit:
-          $ref: '#/components/schemas/Unit'
-          description: Display name for the UI of the weighted mean column.
-        primary:
-          type: boolean
-          description: Is the target displayed on the home page?
-        virtual:
-          type: boolean
-          description: Is the target based on other targets.
-        rankOrder:
-          $ref: '#/components/schemas/LeaderboardRankOrder'
-          description: Orders of the position on the leaderboard.
-        weightedMeanDisplayUnit:
-          type: string
-          deprecated: true
-    CrunchTargetUpdateForm:
-      type: object
-      properties:
+        target:
+          $ref: '#/components/schemas/Target'
+        crunch:
+          $ref: '#/components/schemas/Crunch'
         published:
           type: boolean
     Unit:
@@ -274,68 +336,6 @@ components:
           type: integer
           format: int32
           description: Number of digits to keep after the comma.
-    LeaderboardRankOrder:
-      type: string
-      enum:
-      - DESCENDING
-      - ASCENDING
-    Crunch:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        phase:
-          $ref: '#/components/schemas/Phase'
-        number:
-          type: integer
-          format: int64
-        start:
-          type: string
-          format: date-time
-        end:
-          type: string
-          format: date-time
-        showRuns:
-          type: boolean
-        showMetricsDetails:
-          type: boolean
-        showRunLogs:
-          type: boolean
-        showScoresValue:
-          type: boolean
-        leaderboardSimilarityThreshold:
-          type: number
-          format: float
-        published:
-          type: boolean
-        dataReleaseId:
-          type: integer
-          format: int64
-        splits:
-          type: array
-          items:
-            $ref: '#/components/schemas/CrunchSplit'
-    PhaseSplit:
-      type: object
-      properties:
-        key:
-          type: object
-          anyOf:
-          - type: integer
-            format: int64
-          - type: string
-          example: 1
-    CrunchSplit:
-      type: object
-      properties:
-        key:
-          type: object
-          anyOf:
-          - type: integer
-            format: int64
-          - type: string
-          example: 1
   securitySchemes:
     apiKey:
       type: apiKey

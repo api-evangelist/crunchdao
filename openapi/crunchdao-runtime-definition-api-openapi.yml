@@ -93,6 +93,17 @@ paths:
                 $ref: '#/components/schemas/RuntimeDefinition'
 components:
   schemas:
+    RuntimeType:
+      type: string
+      enum:
+      - CPU
+      - GPU
+      - COPY
+    RuntimeDefinitionSpecificationNetwork:
+      type: object
+      properties:
+        access:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationNetworkAccess'
     RuntimeDefinitionSpecification:
       type: object
       properties:
@@ -110,83 +121,6 @@ components:
           $ref: '#/components/schemas/RuntimeDefinitionSpecificationNetwork'
         software:
           $ref: '#/components/schemas/RuntimeDefinitionSpecificationSoftware'
-    RuntimeDefinitionSpecificationNetwork:
-      type: object
-      properties:
-        access:
-          $ref: '#/components/schemas/RuntimeDefinitionSpecificationNetworkAccess'
-    RuntimeDefinitionStatus:
-      type: string
-      enum:
-      - ACTIVE
-      - RESTRICTED
-      - DISABLED
-    RuntimeType:
-      type: string
-      enum:
-      - CPU
-      - GPU
-      - COPY
-    RuntimeDefinitionPoweredBy:
-      type: object
-      properties:
-        text:
-          type: string
-        url:
-          type: string
-    RuntimeDefinitionSpecificationSize:
-      type: object
-      properties:
-        size:
-          type: integer
-          format: int32
-          description: Size in gigabytes.
-    RuntimeDefinitionSpecificationCpu:
-      type: object
-      properties:
-        coreCount:
-          type: integer
-          format: int32
-    RuntimeDefinitionSpecificationGpu:
-      type: object
-      properties:
-        count:
-          type: integer
-          format: int32
-        model:
-          type: string
-        driver:
-          type: string
-    PageRuntimeDefinition:
-      type: object
-      properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/RuntimeDefinition'
-    RuntimeDefinitionSpecificationSoftware:
-      type: object
-      properties:
-        python:
-          type: string
-    RuntimeDefinitionSpecificationNetworkAccess:
-      type: string
-      enum:
-      - OPEN
-      - FORBIDDEN
-      - LOCAL_ONLY
     RuntimeDefinition:
       type: object
       properties:
@@ -228,6 +162,72 @@ components:
           type: integer
           format: int64
           description: Lower values are shown first.
+    PageRuntimeDefinition:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/RuntimeDefinition'
+    RuntimeDefinitionSpecificationNetworkAccess:
+      type: string
+      enum:
+      - OPEN
+      - FORBIDDEN
+      - LOCAL_ONLY
+    RuntimeDefinitionSpecificationSoftware:
+      type: object
+      properties:
+        python:
+          type: string
+    RuntimeDefinitionSpecificationCpu:
+      type: object
+      properties:
+        coreCount:
+          type: integer
+          format: int32
+    RuntimeDefinitionSpecificationGpu:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+        model:
+          type: string
+        driver:
+          type: string
+    RuntimeDefinitionPoweredBy:
+      type: object
+      properties:
+        text:
+          type: string
+        url:
+          type: string
+    RuntimeDefinitionStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - RESTRICTED
+      - DISABLED
+    RuntimeDefinitionSpecificationSize:
+      type: object
+      properties:
+        size:
+          type: integer
+          format: int32
+          description: Size in gigabytes.
   securitySchemes:
     apiKey:
       type: apiKey

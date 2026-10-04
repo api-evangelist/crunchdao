@@ -173,6 +173,35 @@ paths:
                   $ref: '#/components/schemas/Certificate'
 components:
   schemas:
+    CompetitionType:
+      type: string
+      enum:
+      - OPEN
+      - PAUSED
+    CompetitionTag:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name for the UI.
+    CompetitionSession:
+      type: object
+      properties:
+        state:
+          $ref: '#/components/schemas/CompetitionType'
+          description: Current session state.
+        nextChange:
+          type: string
+          format: date-time
+          description: When should the next session state change happen. Unknown if `null`.
+    CertificateNameVariant:
+      type: string
+      enum:
+      - LOGIN
+      - FIRST_LAST
     TimelineEventButton:
       type: object
       properties:
@@ -190,6 +219,65 @@ components:
       - STREAM
       - SPATIAL
       - UNSTRUCTURED
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+    Certificate:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        uuid:
+          type: string
+          format: uuid
+        user:
+          $ref: '#/components/schemas/User'
+        competition:
+          $ref: '#/components/schemas/Competition'
+        number:
+          type: integer
+          format: int64
+        date:
+          type: string
+          format: date
+        nameVariant:
+          $ref: '#/components/schemas/CertificateNameVariant'
+        pictureUrl:
+          type: string
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
+    DataReleaseSplitKey:
+      type: string
+      enum:
+      - INTEGER
+      - STRING
+    CompetitionStatus:
+      type: string
+      enum:
+      - PENDING
+      - OPEN
+      - CLOSED
+    CompetitionVisibility:
+      type: string
+      enum:
+      - HIDDEN
+      - PUBLIC
+    CertificateUpdateForm:
+      type: object
+      properties:
+        nameVariant:
+          type: string
+          enum:
+          - LOGIN
+          - FIRST_LAST
     CompetitionStatistics:
       type: object
       properties:
@@ -237,106 +325,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-    CompetitionVisibility:
-      type: string
-      enum:
-      - HIDDEN
-      - PUBLIC
-    TimelineEventType:
-      type: string
-      enum:
-      - GENERIC
-      - LEADERBOARD
-      - RULES
-      - REWARDS
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        login:
-          type: string
-    CompetitionSession:
-      type: object
-      properties:
-        state:
-          $ref: '#/components/schemas/CompetitionType'
-          description: Current session state.
-        nextChange:
-          type: string
-          format: date-time
-          description: When should the next session state change happen. Unknown if `null`.
-    Certificate:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        uuid:
-          type: string
-          format: uuid
-        user:
-          $ref: '#/components/schemas/User'
-        competition:
-          $ref: '#/components/schemas/Competition'
-        number:
-          type: integer
-          format: int64
-        date:
-          type: string
-          format: date
-        nameVariant:
-          $ref: '#/components/schemas/CertificateNameVariant'
-        pictureUrl:
-          type: string
-        userId:
-          type: integer
-          format: int64
-          deprecated: true
-    CompetitionType:
-      type: string
-      enum:
-      - OPEN
-      - PAUSED
-    CompetitionStatus:
-      type: string
-      enum:
-      - PENDING
-      - OPEN
-      - CLOSED
-    CompetitionTag:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Slug-like name.
-        displayName:
-          type: string
-          description: Display name for the UI.
-    CertificateNameVariant:
-      type: string
-      enum:
-      - LOGIN
-      - FIRST_LAST
-    CompetitionMode:
-      type: string
-      enum:
-      - OFFLINE
-      - REAL_TIME
-    CertificateUpdateForm:
-      type: object
-      properties:
-        nameVariant:
-          type: string
-          enum:
-          - LOGIN
-          - FIRST_LAST
-    DataReleaseSplitKey:
-      type: string
-      enum:
-      - INTEGER
-      - STRING
     Competition:
       type: object
       properties:
@@ -509,6 +497,18 @@ components:
           description: Non-detailed timeline events.
           items:
             $ref: '#/components/schemas/TimelineEvent'
+    CompetitionMode:
+      type: string
+      enum:
+      - OFFLINE
+      - REAL_TIME
+    TimelineEventType:
+      type: string
+      enum:
+      - GENERIC
+      - LEADERBOARD
+      - RULES
+      - REWARDS
   securitySchemes:
     apiKey:
       type: apiKey

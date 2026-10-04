@@ -26,26 +26,6 @@ paths:
                 $ref: '#/components/schemas/TransparencyReport'
 components:
   schemas:
-    TransparencyReportSingleValue:
-      type: object
-      properties:
-        data:
-          type: number
-          format: double
-    TransparencyReportGroupedAndCountedValues:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/TransparencyReportCount'
-    TransparencyReportCount:
-      type: object
-      properties:
-        group:
-          type: string
-        value:
-          type: object
     TransparencyReport:
       type: object
       properties:
@@ -71,6 +51,26 @@ components:
           $ref: '#/components/schemas/TransparencyReportSingleValue'
         quarterToDateUserGrowthPercentage:
           $ref: '#/components/schemas/TransparencyReportSingleValue'
+    TransparencyReportGroupedAndCountedValues:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransparencyReportCount'
+    TransparencyReportSingleValue:
+      type: object
+      properties:
+        data:
+          type: number
+          format: double
+    TransparencyReportCount:
+      type: object
+      properties:
+        group:
+          type: string
+        value:
+          type: object
   securitySchemes:
     apiKey:
       type: apiKey

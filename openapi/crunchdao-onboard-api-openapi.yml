@@ -72,14 +72,6 @@ components:
       - LONDON
       - NEW_YORK
       - PARIS
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        login:
-          type: string
     OnboardQuestions:
       type: object
       properties:
@@ -103,6 +95,26 @@ components:
           type: string
         quantClub:
           $ref: '#/components/schemas/QuantClub'
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+    OnboardQuestionsStudyLevel:
+      type: string
+      enum:
+      - UNDERGRADUATE
+      - GRADUATE
+      - PHD
+    OnboardQuestionsParticipationReason:
+      type: string
+      enum:
+      - IMPROVE
+      - GAIN
+      - FUN
     OnboardUpdateForm:
       type: object
       properties:
@@ -153,18 +165,6 @@ components:
           type: boolean
       required:
       - completed
-    OnboardQuestionsStudyLevel:
-      type: string
-      enum:
-      - UNDERGRADUATE
-      - GRADUATE
-      - PHD
-    OnboardQuestionsParticipationReason:
-      type: string
-      enum:
-      - IMPROVE
-      - GAIN
-      - FUN
     OnboardQuestionsExperienceWithData:
       type: string
       enum:

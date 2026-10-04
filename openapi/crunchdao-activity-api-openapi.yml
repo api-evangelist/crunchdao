@@ -240,23 +240,6 @@ components:
           type: string
       required:
       - type
-    DiscordJoinActivity:
-      allOf:
-      - $ref: '#/components/schemas/Activity'
-      - type: object
-        properties:
-          id:
-            type: integer
-            format: int64
-          guildId:
-            type: string
-          guildName:
-            type: string
-      properties:
-        type:
-          type: string
-          enum:
-          - DISCORD_JOIN
     CompetitionPush:
       allOf:
       - $ref: '#/components/schemas/Activity'
@@ -283,6 +266,23 @@ components:
           type: string
           enum:
           - COMPETITION_PUSH
+    DiscordJoinActivity:
+      allOf:
+      - $ref: '#/components/schemas/Activity'
+      - type: object
+        properties:
+          id:
+            type: integer
+            format: int64
+          guildId:
+            type: string
+          guildName:
+            type: string
+      properties:
+        type:
+          type: string
+          enum:
+          - DISCORD_JOIN
   securitySchemes:
     apiKey:
       type: apiKey

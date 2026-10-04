@@ -334,62 +334,16 @@ paths:
                 $ref: '#/components/schemas/Participant'
 components:
   schemas:
-    ParticipantRole:
-      type: string
-      enum:
-      - USER
-      - ORGANIZER
-      - ADMINISTRATOR
-    CompetitionVisibility:
-      type: string
-      enum:
-      - HIDDEN
-      - PUBLIC
-    User:
+    CompetitionSession:
       type: object
       properties:
-        id:
-          type: integer
-          format: int64
-        login:
-          type: string
-    ParticipantUpdateForm:
-      type: object
-      properties:
-        hidden:
-          type: boolean
-        crowned:
-          type: boolean
-        certified:
-          type: boolean
-        rewarded:
-          type: boolean
-        benchmarked:
-          type: boolean
-    CompetitionStatus:
-      type: string
-      enum:
-      - PENDING
-      - OPEN
-      - CLOSED
-    ParticipantStatusDetails:
-      type: object
-      properties:
-        ruleAccepted:
-          type: boolean
-        ruleAcceptedAt:
+        state:
+          $ref: '#/components/schemas/CompetitionType'
+          description: Current session state.
+        nextChange:
           type: string
           format: date-time
-        hasProblem:
-          type: boolean
-        restricted:
-          type: boolean
-        verified:
-          type: boolean
-        isRestricted:
-          type: boolean
-        isVerified:
-          type: boolean
+          description: When should the next session state change happen. Unknown if `null`.
     CompetitionFormat:
       type: string
       enum:
@@ -398,6 +352,40 @@ components:
       - STREAM
       - SPATIAL
       - UNSTRUCTURED
+    TimelineEventType:
+      type: string
+      enum:
+      - GENERIC
+      - LEADERBOARD
+      - RULES
+      - REWARDS
+    CompetitionType:
+      type: string
+      enum:
+      - OPEN
+      - PAUSED
+    TimelineEventButton:
+      type: object
+      properties:
+        text:
+          type: string
+        link:
+          type: string
+        color:
+          type: string
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+    DataReleaseSplitKey:
+      type: string
+      enum:
+      - INTEGER
+      - STRING
     PageParticipant:
       type: object
       properties:
@@ -417,87 +405,24 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Participant'
-    Participant:
+    CompetitionStatistics:
       type: object
       properties:
-        id:
+        entrants:
           type: integer
           format: int64
-        competition:
-          $ref: '#/components/schemas/Competition'
-        user:
-          $ref: '#/components/schemas/User'
-        cruncherPubkey:
-          type: string
-          description: The Cruncher Pubkey on the blockchain. Only available if `competition.type` is `REAL_TIME`.
-        hidden:
-          type: boolean
-          description: Is the participant hidden from the leaderboard?
-        role:
-          $ref: '#/components/schemas/ParticipantRole'
-          description: Role of the participant in the competition.
-        crowned:
-          type: boolean
-          description: Is the crown badge visible?
-        certified:
-          type: boolean
-          description: Is the certificate badge visible?
-        rewarded:
-          type: boolean
-          description: Is the dollar badge visible?
-        benchmarked:
-          type: boolean
-          description: Is the "benchmark" badge visible?
-        ruleAccepted:
-          type: boolean
-          description: Has the rule been accepted?
-        ruleAcceptedAt:
-          type: string
-          format: date-time
-          description: When were the rule accepted?
-        submitted:
-          type: boolean
-          description: Has the participant submitted at least once?
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        userId:
+        participants:
           type: integer
           format: int64
-          deprecated: true
-    CompetitionMode:
-      type: string
-      enum:
-      - OFFLINE
-      - REAL_TIME
-    TimelineEventButton:
-      type: object
-      properties:
-        text:
-          type: string
-        link:
-          type: string
-        color:
-          type: string
-    TimelineEventType:
-      type: string
-      enum:
-      - GENERIC
-      - LEADERBOARD
-      - RULES
-      - REWARDS
-    CompetitionTag:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Slug-like name.
-        displayName:
-          type: string
-          description: Display name for the UI.
+        teams:
+          type: integer
+          format: int64
+        submissions:
+          type: integer
+          format: int64
+        runnables:
+          type: integer
+          format: int64
     TimelineEvent:
       type: object
       properties:
@@ -527,51 +452,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-    CompetitionStatistics:
-      type: object
-      properties:
-        entrants:
-          type: integer
-          format: int64
-        participants:
-          type: integer
-          format: int64
-        teams:
-          type: integer
-          format: int64
-        submissions:
-          type: integer
-          format: int64
-        runnables:
-          type: integer
-          format: int64
-    ParticipantStatus:
-      type: object
-      properties:
-        canParticipate:
-          type: boolean
-        details:
-          $ref: '#/components/schemas/ParticipantStatusDetails'
-    CompetitionSession:
-      type: object
-      properties:
-        state:
-          $ref: '#/components/schemas/CompetitionType'
-          description: Current session state.
-        nextChange:
-          type: string
-          format: date-time
-          description: When should the next session state change happen. Unknown if `null`.
-    CompetitionType:
-      type: string
-      enum:
-      - OPEN
-      - PAUSED
-    DataReleaseSplitKey:
-      type: string
-      enum:
-      - INTEGER
-      - STRING
     Competition:
       type: object
       properties:
@@ -744,6 +624,126 @@ components:
           description: Non-detailed timeline events.
           items:
             $ref: '#/components/schemas/TimelineEvent'
+    CompetitionMode:
+      type: string
+      enum:
+      - OFFLINE
+      - REAL_TIME
+    ParticipantStatus:
+      type: object
+      properties:
+        canParticipate:
+          type: boolean
+        details:
+          $ref: '#/components/schemas/ParticipantStatusDetails'
+    ParticipantRole:
+      type: string
+      enum:
+      - USER
+      - ORGANIZER
+      - ADMINISTRATOR
+    Participant:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        competition:
+          $ref: '#/components/schemas/Competition'
+        user:
+          $ref: '#/components/schemas/User'
+        cruncherPubkey:
+          type: string
+          description: The Cruncher Pubkey on the blockchain. Only available if `competition.type` is `REAL_TIME`.
+        hidden:
+          type: boolean
+          description: Is the participant hidden from the leaderboard?
+        role:
+          $ref: '#/components/schemas/ParticipantRole'
+          description: Role of the participant in the competition.
+        crowned:
+          type: boolean
+          description: Is the crown badge visible?
+        certified:
+          type: boolean
+          description: Is the certificate badge visible?
+        rewarded:
+          type: boolean
+          description: Is the dollar badge visible?
+        benchmarked:
+          type: boolean
+          description: Is the "benchmark" badge visible?
+        ruleAccepted:
+          type: boolean
+          description: Has the rule been accepted?
+        ruleAcceptedAt:
+          type: string
+          format: date-time
+          description: When were the rule accepted?
+        submitted:
+          type: boolean
+          description: Has the participant submitted at least once?
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
+    CompetitionVisibility:
+      type: string
+      enum:
+      - HIDDEN
+      - PUBLIC
+    CompetitionTag:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name for the UI.
+    CompetitionStatus:
+      type: string
+      enum:
+      - PENDING
+      - OPEN
+      - CLOSED
+    ParticipantUpdateForm:
+      type: object
+      properties:
+        hidden:
+          type: boolean
+        crowned:
+          type: boolean
+        certified:
+          type: boolean
+        rewarded:
+          type: boolean
+        benchmarked:
+          type: boolean
+    ParticipantStatusDetails:
+      type: object
+      properties:
+        ruleAccepted:
+          type: boolean
+        ruleAcceptedAt:
+          type: string
+          format: date-time
+        hasProblem:
+          type: boolean
+        restricted:
+          type: boolean
+        verified:
+          type: boolean
+        isRestricted:
+          type: boolean
+        isVerified:
+          type: boolean
   securitySchemes:
     apiKey:
       type: apiKey

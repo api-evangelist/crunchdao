@@ -272,16 +272,6 @@ paths:
       - apiKey: []
 components:
   schemas:
-    ConnectionType:
-      type: string
-      enum:
-      - DISCORD
-      - TWITTER
-      - GITHUB
-      - KAGGLE
-      - REDDIT
-      - LINKEDIN
-      - GOOGLE
     Connection:
       type: object
       properties:
@@ -316,6 +306,16 @@ components:
           type: string
       required:
       - userName
+    ConnectionType:
+      type: string
+      enum:
+      - DISCORD
+      - TWITTER
+      - GITHUB
+      - KAGGLE
+      - REDDIT
+      - LINKEDIN
+      - GOOGLE
   securitySchemes:
     apiKey:
       type: apiKey

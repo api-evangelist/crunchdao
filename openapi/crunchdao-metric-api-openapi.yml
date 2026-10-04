@@ -104,6 +104,24 @@ paths:
                   $ref: '#/components/schemas/Metric'
 components:
   schemas:
+    ScorerFunction:
+      type: string
+      enum:
+      - BALANCED_ACCURACY
+      - DOT_PRODUCT
+      - F1
+      - PRECISION
+      - RANDOM
+      - RECALL
+      - SPEARMAN
+      - META__EXECUTION_TIME
+      - CUSTOM__MID_ONE__PROFIT_AND_LOSS_WITH_TRANSACTION_COST
+      - CUSTOM__BROAD__SCORING
+    VisualizationType:
+      type: string
+      enum:
+      - LINE
+      - HISTOGRAM
     Target:
       type: object
       properties:
@@ -135,26 +153,6 @@ components:
         weightedMeanDisplayUnit:
           type: string
           deprecated: true
-    ReducerFunction:
-      type: string
-      enum:
-      - NONE
-      - SUM
-      - MEAN
-      - PRODUCT_PLUS_MINUS_1
-    Unit:
-      type: object
-      properties:
-        prefix:
-          type: string
-          description: String to show before the value.
-        suffix:
-          type: string
-          description: String to show after the value.
-        scale:
-          type: integer
-          format: int32
-          description: Number of digits to keep after the comma.
     MetricColors:
       type: object
       properties:
@@ -164,39 +162,13 @@ components:
           type: string
         outOfSamplePhase:
           type: string
-    LeaderboardRankOrder:
+    ReducerFunction:
       type: string
       enum:
-      - DESCENDING
-      - ASCENDING
-    VisualizationType:
-      type: string
-      enum:
-      - LINE
-      - HISTOGRAM
-    MetricDefinition:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        displayName:
-          type: string
-    ScorerFunction:
-      type: string
-      enum:
-      - BALANCED_ACCURACY
-      - DOT_PRODUCT
-      - F1
-      - PRECISION
-      - RANDOM
-      - RECALL
-      - SPEARMAN
-      - META__EXECUTION_TIME
-      - CUSTOM__MID_ONE__PROFIT_AND_LOSS_WITH_TRANSACTION_COST
-      - CUSTOM__BROAD__SCORING
+      - NONE
+      - SUM
+      - MEAN
+      - PRODUCT_PLUS_MINUS_1
     Metric:
       type: object
       properties:
@@ -265,6 +237,34 @@ components:
         displayUnit:
           type: string
           deprecated: true
+    LeaderboardRankOrder:
+      type: string
+      enum:
+      - DESCENDING
+      - ASCENDING
+    MetricDefinition:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        displayName:
+          type: string
+    Unit:
+      type: object
+      properties:
+        prefix:
+          type: string
+          description: String to show before the value.
+        suffix:
+          type: string
+          description: String to show after the value.
+        scale:
+          type: integer
+          format: int32
+          description: Number of digits to keep after the comma.
   securitySchemes:
     apiKey:
       type: apiKey

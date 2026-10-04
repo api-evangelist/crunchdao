@@ -162,6 +162,59 @@ paths:
       - apiKey: []
 components:
   schemas:
+    ChartDefinitionSetType:
+      type: string
+      enum:
+      - CHART
+      - IFRAME
+    ChartDefinitionUpdateForm:
+      type: object
+      properties:
+        name:
+          type: string
+        displayName:
+          type: string
+        type:
+          type: string
+          enum:
+          - CHART
+          - IFRAME
+        endpointUrl:
+          type: string
+        projectIdProperty:
+          type: string
+        nativeConfiguration:
+          type: string
+        order:
+          type: integer
+          format: int64
+    ChartDefinitionCreateForm:
+      type: object
+      properties:
+        name:
+          type: string
+        displayName:
+          type: string
+        type:
+          type: string
+          enum:
+          - CHART
+          - IFRAME
+        endpointUrl:
+          type: string
+        projectIdProperty:
+          type: string
+        nativeConfiguration:
+          type: string
+        order:
+          type: integer
+          format: int64
+      required:
+      - displayName
+      - name
+      - nativeConfiguration
+      - order
+      - type
     ChartDefinition:
       type: object
       properties:
@@ -193,59 +246,6 @@ components:
           type: integer
           format: int64
           description: Ordering order in the UI. Lowest is first.
-    ChartDefinitionUpdateForm:
-      type: object
-      properties:
-        name:
-          type: string
-        displayName:
-          type: string
-        type:
-          type: string
-          enum:
-          - CHART
-          - IFRAME
-        endpointUrl:
-          type: string
-        projectIdProperty:
-          type: string
-        nativeConfiguration:
-          type: string
-        order:
-          type: integer
-          format: int64
-    ChartDefinitionSetType:
-      type: string
-      enum:
-      - CHART
-      - IFRAME
-    ChartDefinitionCreateForm:
-      type: object
-      properties:
-        name:
-          type: string
-        displayName:
-          type: string
-        type:
-          type: string
-          enum:
-          - CHART
-          - IFRAME
-        endpointUrl:
-          type: string
-        projectIdProperty:
-          type: string
-        nativeConfiguration:
-          type: string
-        order:
-          type: integer
-          format: int64
-      required:
-      - displayName
-      - name
-      - nativeConfiguration
-      - order
-      - type
   securitySchemes:
     apiKey:
       type: apiKey

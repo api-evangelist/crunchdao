@@ -352,108 +352,13 @@ paths:
                   $ref: '#/components/schemas/TotalUserReward'
 components:
   schemas:
-    CompetitionVisibility:
-      type: string
-      enum:
-      - HIDDEN
-      - PUBLIC
-    User:
+    PayoutClaimForm:
       type: object
       properties:
-        id:
-          type: integer
-          format: int64
-        login:
+        transactionHash:
           type: string
-    CompetitionStatus:
-      type: string
-      enum:
-      - PENDING
-      - OPEN
-      - CLOSED
-    TotalUserReward:
-      type: object
-      properties:
-        competition:
-          $ref: '#/components/schemas/Competition'
-        user:
-          $ref: '#/components/schemas/User'
-        paid:
-          type: number
-        pending:
-          type: number
-        projected:
-          type: number
-        userId:
-          type: integer
-          format: int64
-          deprecated: true
-    Currency:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        displayName:
-          type: string
-          description: The display name of the currency.
-        symbol:
-          type: string
-          description: The symbol of the currency. Does not include the `$` prefix.
-        decimals:
-          type: integer
-          format: int32
-          description: The decimals of the currency.
-        dollarExchangeRate:
-          type: number
-          description: The current exchange rate in USD.
-        blockchain:
-          type: string
-          description: Which address should be used to receive the currency. `FIAT` is not supported.
-          enum:
-          - ETHEREUM
-          - SOLANA
-          - FIAT
-        websiteUrl:
-          type: string
-          description: Website URL giving more documentation about the currency.
-        transactionUrlFormat:
-          type: string
-          description: Explorer URL format of a transaction. Use `{transactionHash}` as a variable for the `Payout.transactionHash`.
-        addressUrlFormat:
-          type: string
-          description: Explorer URL format of an address. Use `{address}` as a variable for the `PayoutRecipient.address`.
-    PayoutStatus:
-      type: string
-      enum:
-      - CREATED
-      - PENDING
-      - PAID
-    PayoutDetail:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        type:
-          $ref: '#/components/schemas/PayoutDetailType'
-        name:
-          type: string
-        value:
-          type: number
-        createdAt:
-          type: string
-          format: date-time
-    CompetitionFormat:
-      type: string
-      enum:
-      - TIMESERIES
-      - DAG
-      - STREAM
-      - SPATIAL
-      - UNSTRUCTURED
+      required:
+      - transactionHash
     PayoutRecipientEntryForm:
       type: object
       properties:
@@ -468,36 +373,24 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PayoutDetailEntryForm'
-    CompetitionMode:
+    CompetitionSession:
+      type: object
+      properties:
+        state:
+          $ref: '#/components/schemas/CompetitionType'
+          description: Current session state.
+        nextChange:
+          type: string
+          format: date-time
+          description: When should the next session state change happen. Unknown if `null`.
+    CompetitionFormat:
       type: string
       enum:
-      - OFFLINE
-      - REAL_TIME
-    PayoutDetailEntryForm:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - REWARD
-          - BONUS
-        name:
-          type: string
-        value:
-          type: number
-      required:
-      - name
-      - type
-      - value
-    TimelineEventButton:
-      type: object
-      properties:
-        text:
-          type: string
-        link:
-          type: string
-        color:
-          type: string
+      - TIMESERIES
+      - DAG
+      - STREAM
+      - SPATIAL
+      - UNSTRUCTURED
     Payout:
       type: object
       properties:
@@ -542,15 +435,44 @@ components:
       - LEADERBOARD
       - RULES
       - REWARDS
-    CompetitionTag:
+    TotalUserReward:
       type: object
       properties:
+        competition:
+          $ref: '#/components/schemas/Competition'
+        user:
+          $ref: '#/components/schemas/User'
+        paid:
+          type: number
+        pending:
+          type: number
+        projected:
+          type: number
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
+    PayoutDetailEntryForm:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - REWARD
+          - BONUS
         name:
           type: string
-          description: Slug-like name.
-        displayName:
-          type: string
-          description: Display name for the UI.
+        value:
+          type: number
+      required:
+      - name
+      - type
+      - value
+    CompetitionType:
+      type: string
+      enum:
+      - OPEN
+      - PAUSED
     PagePayout:
       type: object
       properties:
@@ -570,7 +492,24 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Payout'
-    PayoutCreateForm:
+    TimelineEventButton:
+      type: object
+      properties:
+        text:
+          type: string
+        link:
+          type: string
+        color:
+          type: string
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+    PayoutUpdateForm:
       type: object
       properties:
         date:
@@ -606,72 +545,18 @@ components:
           - ZERO
           - SKIP
       required:
-      - currencyName
-      - date
-      - displayName
-      - granted
-      - minimumValueThreshold
-      - number
       - recipientResolverMissingBehavior
-      - recipients
-      - type
-    PayoutDetailType:
+    DataReleaseSplitKey:
       type: string
       enum:
-      - REWARD
-      - BONUS
+      - INTEGER
+      - STRING
     PayoutType:
       type: string
       enum:
       - AIRDROP
       - MONTHLY
       - CHECKPOINT
-    PayoutRecipient:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        user:
-          $ref: '#/components/schemas/User'
-        address:
-          type: string
-          description: Address where the payout has been sent to.
-        value:
-          type: number
-          description: Amount that has been sent to the address.
-        rank:
-          type: integer
-          format: int64
-          description: Rank of the recipient in the payout.
-        claimed:
-          type: boolean
-          description: If `Payout.type` is `CHECKPOINT`, did the user claim their payout? Uses a 3-state boolean, where null corresponds to a payout that cannot be claimed.
-        claimedAt:
-          type: string
-          format: date-time
-          description: If `Payout.type` is `CHECKPOINT`, when did the user claim their payout?
-        claimTransactionHash:
-          type: string
-          description: If `Payout.type` is `CHECKPOINT`, in which transaction was the claim made?
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/PayoutDetail'
-        userId:
-          type: integer
-          format: int64
-          deprecated: true
-    PayoutCompetitionName:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        displayName:
-          type: string
     CompetitionStatistics:
       type: object
       properties:
@@ -719,70 +604,12 @@ components:
         updatedAt:
           type: string
           format: date-time
-    PayoutUpdateForm:
-      type: object
-      properties:
-        date:
-          type: string
-          format: date
-        displayName:
-          type: string
-        granted:
-          type: number
-        minimumValueThreshold:
-          type: number
-        currencyName:
-          type: string
-        transactionHash:
-          type: string
-        type:
-          type: string
-          enum:
-          - AIRDROP
-          - MONTHLY
-          - CHECKPOINT
-        number:
-          type: integer
-          format: int64
-        recipients:
-          type: array
-          items:
-            $ref: '#/components/schemas/PayoutRecipientEntryForm'
-        recipientResolverMissingBehavior:
-          type: string
-          enum:
-          - THROWS
-          - ZERO
-          - SKIP
-      required:
-      - recipientResolverMissingBehavior
-    CompetitionSession:
-      type: object
-      properties:
-        state:
-          $ref: '#/components/schemas/CompetitionType'
-          description: Current session state.
-        nextChange:
-          type: string
-          format: date-time
-          description: When should the next session state change happen. Unknown if `null`.
-    CompetitionType:
+    PayoutStatus:
       type: string
       enum:
-      - OPEN
-      - PAUSED
-    PayoutClaimForm:
-      type: object
-      properties:
-        transactionHash:
-          type: string
-      required:
-      - transactionHash
-    DataReleaseSplitKey:
-      type: string
-      enum:
-      - INTEGER
-      - STRING
+      - CREATED
+      - PENDING
+      - PAID
     Competition:
       type: object
       properties:
@@ -955,6 +782,179 @@ components:
           description: Non-detailed timeline events.
           items:
             $ref: '#/components/schemas/TimelineEvent'
+    CompetitionMode:
+      type: string
+      enum:
+      - OFFLINE
+      - REAL_TIME
+    PayoutCompetitionName:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        displayName:
+          type: string
+    CompetitionVisibility:
+      type: string
+      enum:
+      - HIDDEN
+      - PUBLIC
+    PayoutDetail:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/PayoutDetailType'
+        name:
+          type: string
+        value:
+          type: number
+        createdAt:
+          type: string
+          format: date-time
+    PayoutCreateForm:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        displayName:
+          type: string
+        granted:
+          type: number
+        minimumValueThreshold:
+          type: number
+        currencyName:
+          type: string
+        transactionHash:
+          type: string
+        type:
+          type: string
+          enum:
+          - AIRDROP
+          - MONTHLY
+          - CHECKPOINT
+        number:
+          type: integer
+          format: int64
+        recipients:
+          type: array
+          items:
+            $ref: '#/components/schemas/PayoutRecipientEntryForm'
+        recipientResolverMissingBehavior:
+          type: string
+          enum:
+          - THROWS
+          - ZERO
+          - SKIP
+      required:
+      - currencyName
+      - date
+      - displayName
+      - granted
+      - minimumValueThreshold
+      - number
+      - recipientResolverMissingBehavior
+      - recipients
+      - type
+    PayoutRecipient:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/User'
+        address:
+          type: string
+          description: Address where the payout has been sent to.
+        value:
+          type: number
+          description: Amount that has been sent to the address.
+        rank:
+          type: integer
+          format: int64
+          description: Rank of the recipient in the payout.
+        claimed:
+          type: boolean
+          description: If `Payout.type` is `CHECKPOINT`, did the user claim their payout? Uses a 3-state boolean, where null corresponds to a payout that cannot be claimed.
+        claimedAt:
+          type: string
+          format: date-time
+          description: If `Payout.type` is `CHECKPOINT`, when did the user claim their payout?
+        claimTransactionHash:
+          type: string
+          description: If `Payout.type` is `CHECKPOINT`, in which transaction was the claim made?
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/PayoutDetail'
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
+    CompetitionTag:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name for the UI.
+    CompetitionStatus:
+      type: string
+      enum:
+      - PENDING
+      - OPEN
+      - CLOSED
+    PayoutDetailType:
+      type: string
+      enum:
+      - REWARD
+      - BONUS
+    Currency:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        displayName:
+          type: string
+          description: The display name of the currency.
+        symbol:
+          type: string
+          description: The symbol of the currency. Does not include the `$` prefix.
+        decimals:
+          type: integer
+          format: int32
+          description: The decimals of the currency.
+        dollarExchangeRate:
+          type: number
+          description: The current exchange rate in USD.
+        blockchain:
+          type: string
+          description: Which address should be used to receive the currency. `FIAT` is not supported.
+          enum:
+          - ETHEREUM
+          - SOLANA
+          - FIAT
+        websiteUrl:
+          type: string
+          description: Website URL giving more documentation about the currency.
+        transactionUrlFormat:
+          type: string
+          description: Explorer URL format of a transaction. Use `{transactionHash}` as a variable for the `Payout.transactionHash`.
+        addressUrlFormat:
+          type: string
+          description: Explorer URL format of an address. Use `{address}` as a variable for the `PayoutRecipient.address`.
   securitySchemes:
     apiKey:
       type: apiKey

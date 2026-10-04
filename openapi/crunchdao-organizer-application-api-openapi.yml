@@ -162,12 +162,6 @@ paths:
       - apiKey: []
 components:
   schemas:
-    OrganizerApplicationReviewStatus:
-      type: string
-      enum:
-      - PENDING
-      - APPROVED
-      - REJECTED
     OrganizerApplication:
       type: object
       properties:
@@ -227,6 +221,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/OrganizerApplication'
+    OrganizerApplicationReviewStatus:
+      type: string
+      enum:
+      - PENDING
+      - APPROVED
+      - REJECTED
     OrganizerApplicationCreateForm:
       type: object
       properties:

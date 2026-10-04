@@ -140,18 +140,6 @@ components:
           format: int64
         login:
           type: string
-    ProblemCreateForm:
-      type: object
-      properties:
-        userId:
-          type: integer
-          format: int64
-        reason:
-          type: string
-          maxLength: 1000
-          minLength: 0
-      required:
-      - reason
     Problem:
       type: object
       properties:
@@ -170,6 +158,18 @@ components:
         createdAt:
           type: string
           format: date-time
+    ProblemCreateForm:
+      type: object
+      properties:
+        userId:
+          type: integer
+          format: int64
+        reason:
+          type: string
+          maxLength: 1000
+          minLength: 0
+      required:
+      - reason
     ProblemResolveForm:
       type: object
       properties:

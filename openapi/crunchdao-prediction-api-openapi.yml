@@ -162,39 +162,6 @@ components:
       - META__EXECUTION_TIME
       - CUSTOM__MID_ONE__PROFIT_AND_LOSS_WITH_TRANSACTION_COST
       - CUSTOM__BROAD__SCORING
-    Project:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        competitionId:
-          type: integer
-          format: int64
-        user:
-          $ref: '#/components/schemas/User'
-        name:
-          type: string
-        selected:
-          type: boolean
-        submitted:
-          type: boolean
-        note:
-          type: string
-        writeupUrl:
-          type: string
-        writeupArchived:
-          type: boolean
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        userId:
-          type: integer
-          format: int64
-          deprecated: true
     User:
       type: object
       properties:
@@ -203,6 +170,26 @@ components:
           format: int64
         login:
           type: string
+    VisualizationType:
+      type: string
+      enum:
+      - LINE
+      - HISTOGRAM
+    ScoreDetail:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+        value:
+          type: number
+          format: double
+        reduced:
+          type: boolean
     Target:
       type: object
       properties:
@@ -234,60 +221,6 @@ components:
         weightedMeanDisplayUnit:
           type: string
           deprecated: true
-    ReducerFunction:
-      type: string
-      enum:
-      - NONE
-      - SUM
-      - MEAN
-      - PRODUCT_PLUS_MINUS_1
-    Unit:
-      type: object
-      properties:
-        prefix:
-          type: string
-          description: String to show before the value.
-        suffix:
-          type: string
-          description: String to show after the value.
-        scale:
-          type: integer
-          format: int32
-          description: Number of digits to keep after the comma.
-    MetricColors:
-      type: object
-      properties:
-        details:
-          type: string
-        submissionPhase:
-          type: string
-        outOfSamplePhase:
-          type: string
-    LeaderboardRankOrder:
-      type: string
-      enum:
-      - DESCENDING
-      - ASCENDING
-    VisualizationType:
-      type: string
-      enum:
-      - LINE
-      - HISTOGRAM
-    ScoreDetail:
-      type: object
-      properties:
-        key:
-          type: object
-          anyOf:
-          - type: integer
-            format: int64
-          - type: string
-          example: 1
-        value:
-          type: number
-          format: double
-        reduced:
-          type: boolean
     Prediction:
       type: object
       properties:
@@ -335,44 +268,55 @@ components:
         bestUnit:
           $ref: '#/components/schemas/Unit'
           deprecated: true
-    PredictionFile:
+    MetricColors:
       type: object
       properties:
-        name:
-          type: string
-        size:
-          type: integer
-          format: int64
-    MetricDefinition:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        displayName:
-          type: string
-    Score:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        success:
-          type: boolean
-        metric:
-          $ref: '#/components/schemas/Metric'
-        value:
-          type: number
-          format: double
         details:
-          type: array
-          items:
-            $ref: '#/components/schemas/ScoreDetail'
+          type: string
+        submissionPhase:
+          type: string
+        outOfSamplePhase:
+          type: string
+    ReducerFunction:
+      type: string
+      enum:
+      - NONE
+      - SUM
+      - MEAN
+      - PRODUCT_PLUS_MINUS_1
+    Project:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        competitionId:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/User'
+        name:
+          type: string
+        selected:
+          type: boolean
+        submitted:
+          type: boolean
+        note:
+          type: string
+        writeupUrl:
+          type: string
+        writeupArchived:
+          type: boolean
         createdAt:
           type: string
           format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
     Metric:
       type: object
       properties:
@@ -441,6 +385,62 @@ components:
         displayUnit:
           type: string
           deprecated: true
+    LeaderboardRankOrder:
+      type: string
+      enum:
+      - DESCENDING
+      - ASCENDING
+    MetricDefinition:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        displayName:
+          type: string
+    Score:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        success:
+          type: boolean
+        metric:
+          $ref: '#/components/schemas/Metric'
+        value:
+          type: number
+          format: double
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScoreDetail'
+        createdAt:
+          type: string
+          format: date-time
+    PredictionFile:
+      type: object
+      properties:
+        name:
+          type: string
+        size:
+          type: integer
+          format: int64
+    Unit:
+      type: object
+      properties:
+        prefix:
+          type: string
+          description: String to show before the value.
+        suffix:
+          type: string
+          description: String to show after the value.
+        scale:
+          type: integer
+          format: int32
+          description: Number of digits to keep after the comma.
   securitySchemes:
     apiKey:
       type: apiKey

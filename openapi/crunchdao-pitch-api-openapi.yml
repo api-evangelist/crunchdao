@@ -108,6 +108,76 @@ paths:
                 $ref: '#/components/schemas/Pitch'
 components:
   schemas:
+    Pitch:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        season:
+          $ref: '#/components/schemas/Season'
+          description: Promotion season.
+        name:
+          type: string
+          description: Slug-like name.
+        organizer:
+          $ref: '#/components/schemas/Organizer'
+          description: Parent organizer.
+        displayName:
+          type: string
+          description: Display name for cards.
+        shortDescription:
+          type: string
+          description: Short description for cards.
+        status:
+          $ref: '#/components/schemas/PitchStatus'
+        githubRepository:
+          type: string
+          description: GitHub repository name, using `<owner>/<repo>` format.
+        websiteUrl:
+          type: string
+        discordUrl:
+          type: string
+        twitterUrl:
+          type: string
+        externalUrl:
+          type: string
+        externalUrlText:
+          type: string
+          description: Used to change displayed link text for `externalUrl`.
+        stake:
+          $ref: '#/components/schemas/Unit'
+          description: Staking information.
+        createdAt:
+          type: string
+          format: date-time
+          description: Pitch creation timestamp.
+    PitchStatus:
+      type: string
+      description: Filter for pitches with a specific status(es).
+      enum:
+      - VOTING
+      - VALIDATED
+      - CANCELLED
+    PagePitch:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pitch'
     Organizer:
       type: object
       properties:
@@ -132,25 +202,13 @@ components:
         stake:
           $ref: '#/components/schemas/Unit'
           description: Staking information. Only set if `onChainId` is also set.
-    PagePitch:
-      type: object
-      properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/Pitch'
+    SeasonStatus:
+      type: string
+      description: Filter for seasons with a specific status(es).
+      enum:
+      - VOTING
+      - OPEN
+      - CLOSED
     Season:
       type: object
       properties:
@@ -200,64 +258,6 @@ components:
           type: integer
           format: int32
           description: Number of digits to keep after the comma.
-    PitchStatus:
-      type: string
-      description: Filter for pitches with a specific status(es).
-      enum:
-      - VOTING
-      - VALIDATED
-      - CANCELLED
-    Pitch:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        season:
-          $ref: '#/components/schemas/Season'
-          description: Promotion season.
-        name:
-          type: string
-          description: Slug-like name.
-        organizer:
-          $ref: '#/components/schemas/Organizer'
-          description: Parent organizer.
-        displayName:
-          type: string
-          description: Display name for cards.
-        shortDescription:
-          type: string
-          description: Short description for cards.
-        status:
-          $ref: '#/components/schemas/PitchStatus'
-        githubRepository:
-          type: string
-          description: GitHub repository name, using `<owner>/<repo>` format.
-        websiteUrl:
-          type: string
-        discordUrl:
-          type: string
-        twitterUrl:
-          type: string
-        externalUrl:
-          type: string
-        externalUrlText:
-          type: string
-          description: Used to change displayed link text for `externalUrl`.
-        stake:
-          $ref: '#/components/schemas/Unit'
-          description: Staking information.
-        createdAt:
-          type: string
-          format: date-time
-          description: Pitch creation timestamp.
-    SeasonStatus:
-      type: string
-      description: Filter for seasons with a specific status(es).
-      enum:
-      - VOTING
-      - OPEN
-      - CLOSED
   securitySchemes:
     apiKey:
       type: apiKey

@@ -190,6 +190,11 @@ paths:
       deprecated: true
 components:
   schemas:
+    ProjectTokenUpgradeForm:
+      type: object
+      properties:
+        cloneToken:
+          type: string
     ProjectToken:
       type: object
       properties:
@@ -211,6 +216,14 @@ components:
         lastUsedAt:
           type: string
           format: date-time
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
     ProjectTokenType:
       type: string
       enum:
@@ -249,19 +262,6 @@ components:
           type: integer
           format: int64
           deprecated: true
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        login:
-          type: string
-    ProjectTokenUpgradeForm:
-      type: object
-      properties:
-        cloneToken:
-          type: string
   securitySchemes:
     apiKey:
       type: apiKey

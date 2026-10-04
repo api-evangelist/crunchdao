@@ -120,12 +120,6 @@ paths:
           description: OK
 components:
   schemas:
-    UserRole:
-      type: string
-      enum:
-      - USER
-      - MODERATOR
-      - ADMINISTRATOR
     QuantClub:
       type: string
       enum:
@@ -136,53 +130,16 @@ components:
       - LONDON
       - NEW_YORK
       - PARIS
-    ImpersonateResult:
-      type: object
-      properties:
-        accessToken:
-          type: string
-    AuthCancelRegisterForm:
-      type: object
-      properties:
-        authIdToken:
-          type: string
-      required:
-      - authIdToken
     RegisterResult:
       type: object
       properties:
         user:
           $ref: '#/components/schemas/FullUser'
-    AuthImpersonateForm:
+    ImpersonateResult:
       type: object
       properties:
-        userId:
-          type: integer
-          format: int64
-      required:
-      - userId
-    AuthRegisterForm:
-      type: object
-      properties:
-        firstName:
+        accessToken:
           type: string
-          maxLength: 100
-          minLength: 1
-        lastName:
-          type: string
-          maxLength: 100
-          minLength: 1
-        country:
-          type: string
-          maxLength: 100
-          minLength: 0
-        authIdToken:
-          type: string
-      required:
-      - authIdToken
-      - country
-      - firstName
-      - lastName
     FullUser:
       type: object
       properties:
@@ -227,6 +184,49 @@ components:
         restricted:
           type: boolean
           deprecated: true
+    AuthRegisterForm:
+      type: object
+      properties:
+        firstName:
+          type: string
+          maxLength: 100
+          minLength: 1
+        lastName:
+          type: string
+          maxLength: 100
+          minLength: 1
+        country:
+          type: string
+          maxLength: 100
+          minLength: 0
+        authIdToken:
+          type: string
+      required:
+      - authIdToken
+      - country
+      - firstName
+      - lastName
+    AuthImpersonateForm:
+      type: object
+      properties:
+        userId:
+          type: integer
+          format: int64
+      required:
+      - userId
+    AuthCancelRegisterForm:
+      type: object
+      properties:
+        authIdToken:
+          type: string
+      required:
+      - authIdToken
+    UserRole:
+      type: string
+      enum:
+      - USER
+      - MODERATOR
+      - ADMINISTRATOR
     UserRestriction:
       type: string
       enum:

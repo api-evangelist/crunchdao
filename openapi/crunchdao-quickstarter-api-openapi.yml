@@ -309,33 +309,13 @@ paths:
       deprecated: true
 components:
   schemas:
-    QuickstarterFile:
-      type: object
-      properties:
-        name:
-          type: string
-        url:
-          type: string
-        githubUrl:
-          type: string
-    QuickstarterAuthorCreateForm:
+    QuickstarterAuthor:
       type: object
       properties:
         name:
           type: string
         link:
           type: string
-      required:
-      - name
-    BatchQuickstarterCreateForm:
-      type: object
-      properties:
-        quickstarters:
-          type: array
-          items:
-            $ref: '#/components/schemas/QuickstarterCreateForm'
-      required:
-      - quickstarters
     QuickstarterImporterDelta:
       type: object
       properties:
@@ -348,6 +328,53 @@ components:
         deleted:
           type: integer
           format: int32
+    QuickstarterUpdateForm:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        authors:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuickstarterAuthorCreateForm'
+        language:
+          type: string
+          enum:
+          - PYTHON
+          - R
+        usage:
+          type: string
+          enum:
+          - SUBMISSION
+          - EXPLORATION
+        notebook:
+          type: boolean
+        entrypoint:
+          type: string
+        deprecated:
+          type: boolean
+        kaggleUrl:
+          type: string
+        files:
+          type: array
+          items:
+            type: string
+      required:
+      - authors
+      - deprecated
+      - entrypoint
+      - files
+      - language
+      - notebook
+      - title
+      - usage
+    Language:
+      type: string
+      enum:
+      - PYTHON
+      - R
     QuickstarterCreateForm:
       type: object
       properties:
@@ -393,60 +420,24 @@ components:
       - notebook
       - title
       - usage
-    QuickstarterUsage:
-      type: string
-      enum:
-      - SUBMISSION
-      - EXPLORATION
-    QuickstarterUpdateForm:
+    BatchQuickstarterCreateForm:
       type: object
       properties:
-        title:
-          type: string
-        description:
-          type: string
-        authors:
+        quickstarters:
           type: array
           items:
-            $ref: '#/components/schemas/QuickstarterAuthorCreateForm'
-        language:
-          type: string
-          enum:
-          - PYTHON
-          - R
-        usage:
-          type: string
-          enum:
-          - SUBMISSION
-          - EXPLORATION
-        notebook:
-          type: boolean
-        entrypoint:
-          type: string
-        deprecated:
-          type: boolean
-        kaggleUrl:
-          type: string
-        files:
-          type: array
-          items:
-            type: string
+            $ref: '#/components/schemas/QuickstarterCreateForm'
       required:
-      - authors
-      - deprecated
-      - entrypoint
-      - files
-      - language
-      - notebook
-      - title
-      - usage
-    QuickstarterAuthor:
+      - quickstarters
+    QuickstarterAuthorCreateForm:
       type: object
       properties:
         name:
           type: string
         link:
           type: string
+      required:
+      - name
     Quickstarter:
       type: object
       properties:
@@ -486,11 +477,20 @@ components:
         createdAt:
           type: string
           format: date-time
-    Language:
+    QuickstarterUsage:
       type: string
       enum:
-      - PYTHON
-      - R
+      - SUBMISSION
+      - EXPLORATION
+    QuickstarterFile:
+      type: object
+      properties:
+        name:
+          type: string
+        url:
+          type: string
+        githubUrl:
+          type: string
   securitySchemes:
     apiKey:
       type: apiKey

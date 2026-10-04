@@ -150,6 +150,57 @@ paths:
                 $ref: '#/components/schemas/TimelineEvent'
 components:
   schemas:
+    TimelineEventUpdateForm:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - GENERIC
+          - LEADERBOARD
+          - RULES
+          - REWARDS
+        title:
+          type: string
+        description:
+          type: string
+        date:
+          type: string
+          format: date
+        color:
+          type: string
+        detailed:
+          type: boolean
+        button:
+          $ref: '#/components/schemas/TimelineEventButtonPatchForm'
+    TimelineEventCreateForm:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - GENERIC
+          - LEADERBOARD
+          - RULES
+          - REWARDS
+        title:
+          type: string
+        description:
+          type: string
+        date:
+          type: string
+          format: date
+        color:
+          type: string
+        detailed:
+          type: boolean
+        button:
+          $ref: '#/components/schemas/TimelineEventButtonCreateForm'
+      required:
+      - date
+      - detailed
+      - title
+      - type
     TimelineEventButton:
       type: object
       properties:
@@ -159,6 +210,18 @@ components:
           type: string
         color:
           type: string
+    TimelineEventButtonCreateForm:
+      type: object
+      properties:
+        text:
+          type: string
+        link:
+          type: string
+        color:
+          type: string
+      required:
+      - link
+      - text
     TimelineEvent:
       type: object
       properties:
@@ -204,69 +267,6 @@ components:
           type: string
         color:
           type: string
-    TimelineEventCreateForm:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - GENERIC
-          - LEADERBOARD
-          - RULES
-          - REWARDS
-        title:
-          type: string
-        description:
-          type: string
-        date:
-          type: string
-          format: date
-        color:
-          type: string
-        detailed:
-          type: boolean
-        button:
-          $ref: '#/components/schemas/TimelineEventButtonCreateForm'
-      required:
-      - date
-      - detailed
-      - title
-      - type
-    TimelineEventUpdateForm:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - GENERIC
-          - LEADERBOARD
-          - RULES
-          - REWARDS
-        title:
-          type: string
-        description:
-          type: string
-        date:
-          type: string
-          format: date
-        color:
-          type: string
-        detailed:
-          type: boolean
-        button:
-          $ref: '#/components/schemas/TimelineEventButtonPatchForm'
-    TimelineEventButtonCreateForm:
-      type: object
-      properties:
-        text:
-          type: string
-        link:
-          type: string
-        color:
-          type: string
-      required:
-      - link
-      - text
   securitySchemes:
     apiKey:
       type: apiKey

@@ -51,34 +51,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    PhasePerformance:
-      type: object
-      properties:
-        metrics:
-          type: array
-          items:
-            $ref: '#/components/schemas/MetricPerformance'
-    RoundPerformance:
-      type: object
-      properties:
-        phases:
-          type: array
-          items:
-            $ref: '#/components/schemas/PhasePerformance'
-    MetricPerformance:
-      type: object
-      properties:
-        mean:
-          type: number
-          format: double
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/ScoreDetail'
-        cumulativeDetails:
-          type: array
-          items:
-            $ref: '#/components/schemas/ScoreDetail'
     ScoreDetail:
       type: object
       properties:
@@ -94,6 +66,34 @@ components:
           format: double
         reduced:
           type: boolean
+    MetricPerformance:
+      type: object
+      properties:
+        mean:
+          type: number
+          format: double
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScoreDetail'
+        cumulativeDetails:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScoreDetail'
+    PhasePerformance:
+      type: object
+      properties:
+        metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricPerformance'
+    RoundPerformance:
+      type: object
+      properties:
+        phases:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhasePerformance'
   securitySchemes:
     apiKey:
       type: apiKey

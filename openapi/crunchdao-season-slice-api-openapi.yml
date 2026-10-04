@@ -294,25 +294,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    SliceUpdateForm:
-      type: object
-      properties:
-        name:
-          type: string
-        displayName:
-          type: string
-        type:
-          type: string
-          enum:
-          - CONTENT
-          - KEY_METRICS
-          - TIMELINE
-          - TEAM
-        nativeConfiguration:
-          type: string
-        order:
-          type: integer
-          format: int64
     Slice:
       type: object
       properties:
@@ -340,13 +321,6 @@ components:
         createdAt:
           type: string
           format: date-time
-    SliceType:
-      type: string
-      enum:
-      - CONTENT
-      - KEY_METRICS
-      - TIMELINE
-      - TEAM
     SliceCreateForm:
       type: object
       properties:
@@ -371,13 +345,6 @@ components:
       - nativeConfiguration
       - order
       - type
-    SliceMarkdownImportForm:
-      type: object
-      properties:
-        markdown:
-          type: string
-      required:
-      - markdown
     SliceGitBookImportForm:
       type: object
       properties:
@@ -397,6 +364,39 @@ components:
       - append
       - titleLevel
       - url
+    SliceType:
+      type: string
+      enum:
+      - CONTENT
+      - KEY_METRICS
+      - TIMELINE
+      - TEAM
+    SliceUpdateForm:
+      type: object
+      properties:
+        name:
+          type: string
+        displayName:
+          type: string
+        type:
+          type: string
+          enum:
+          - CONTENT
+          - KEY_METRICS
+          - TIMELINE
+          - TEAM
+        nativeConfiguration:
+          type: string
+        order:
+          type: integer
+          format: int64
+    SliceMarkdownImportForm:
+      type: object
+      properties:
+        markdown:
+          type: string
+      required:
+      - markdown
   securitySchemes:
     apiKey:
       type: apiKey

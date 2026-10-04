@@ -265,6 +265,49 @@ paths:
                   $ref: '#/components/schemas/DeploymentLog'
 components:
   schemas:
+    RuntimeType:
+      type: string
+      enum:
+      - CPU
+      - GPU
+      - COPY
+    DeploymentLog:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        message:
+          type: string
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+    GpuRequirement:
+      type: string
+      enum:
+      - OPTIONAL
+      - RECOMMENDED
+      - REQUIRED
+    SubmissionFile:
+      type: object
+      properties:
+        name:
+          type: string
+        size:
+          type: integer
+          format: int64
+        encrypted:
+          type: boolean
+        mimeType:
+          type: string
+        foundHardcodedString:
+          type: boolean
+          deprecated: true
     DeploymentSignForm:
       type: object
       properties:
@@ -277,26 +320,6 @@ components:
           type: integer
           format: int64
           description: The submission id. Must be specified if `submissionNumber` is not. Must be owned by the project.
-    Model:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        project:
-          $ref: '#/components/schemas/Project'
-        totalSize:
-          type: integer
-          format: int64
-        encrypted:
-          type: boolean
-        encryptionId:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
     Submission:
       type: object
       properties:
@@ -338,12 +361,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SubmissionFile'
-    GpuRequirement:
+    SubmissionType:
       type: string
       enum:
-      - OPTIONAL
-      - RECOMMENDED
-      - REQUIRED
+      - CODE
+      - NOTEBOOK
+      - PREDICTION
     Project:
       type: object
       properties:
@@ -377,35 +400,46 @@ components:
           type: integer
           format: int64
           deprecated: true
-    RuntimeType:
+    DeploymentStatus:
       type: string
       enum:
-      - CPU
-      - GPU
-      - COPY
-    SubmissionFile:
-      type: object
-      properties:
-        name:
-          type: string
-        size:
-          type: integer
-          format: int64
-        encrypted:
-          type: boolean
-        mimeType:
-          type: string
-        foundHardcodedString:
-          type: boolean
-          deprecated: true
-    User:
+      - BUILDER_BUILDING
+      - BUILDER_SUCCESS
+      - BUILDER_FAILED
+      - RUNNER_INITIALIZING
+      - RUNNER_RUNNING
+      - RUNNER_STOPPING
+      - RUNNER_STOPPED
+      - RUNNER_RECOVERING
+      - RUNNER_FAILED
+    Model:
       type: object
       properties:
         id:
           type: integer
           format: int64
-        login:
+        name:
           type: string
+        project:
+          $ref: '#/components/schemas/Project'
+        totalSize:
+          type: integer
+          format: int64
+        encrypted:
+          type: boolean
+        encryptionId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    SignedDeployment:
+      type: object
+      properties:
+        signature:
+          type: string
+          description: The signed the deployment details.
+        details:
+          $ref: '#/components/schemas/SignedDeploymentDetails'
     SignedDeploymentDetails:
       type: object
       properties:
@@ -429,46 +463,31 @@ components:
         rawMessage:
           type: string
           description: The raw message before it is signed.
-    DeploymentStatus:
-      type: string
-      enum:
-      - BUILDER_BUILDING
-      - BUILDER_SUCCESS
-      - BUILDER_FAILED
-      - RUNNER_INITIALIZING
-      - RUNNER_RUNNING
-      - RUNNER_STOPPING
-      - RUNNER_STOPPED
-      - RUNNER_RECOVERING
-      - RUNNER_FAILED
-    DeploymentLog:
-      type: object
-      properties:
-        timestamp:
-          type: string
-          format: date-time
-        message:
-          type: string
-    SubmissionType:
-      type: string
-      enum:
-      - CODE
-      - NOTEBOOK
-      - PREDICTION
     DeploymentDesiredStatus:
       type: string
       enum:
       - RUNNING
       - REPLACING
       - STOPPED
-    SignedDeployment:
+    PageDeployment:
       type: object
       properties:
-        signature:
-          type: string
-          description: The signed the deployment details.
-        details:
-          $ref: '#/components/schemas/SignedDeploymentDetails'
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Deployment'
     Deployment:
       type: object
       properties:
@@ -500,25 +519,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-    PageDeployment:
-      type: object
-      properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/Deployment'
   securitySchemes:
     apiKey:
       type: apiKey

@@ -420,126 +420,119 @@ paths:
       - apiKey: []
 components:
   schemas:
-    RunStatus:
+    CompetitionSession:
+      type: object
+      properties:
+        state:
+          $ref: '#/components/schemas/CompetitionType'
+          description: Current session state.
+        nextChange:
+          type: string
+          format: date-time
+          description: When should the next session state change happen. Unknown if `null`.
+    CompetitionFormat:
       type: string
       enum:
-      - CREATED
-      - PENDING
-      - RUNNING
-      - CLEANING
-      - COMPLETED
-    Submission:
+      - TIMESERIES
+      - DAG
+      - STREAM
+      - SPATIAL
+      - UNSTRUCTURED
+    Prediction:
       type: object
       properties:
         id:
           type: integer
           format: int64
+        name:
+          type: string
         project:
           $ref: '#/components/schemas/Project'
-        number:
-          type: integer
-          format: int64
-        type:
-          $ref: '#/components/schemas/SubmissionType'
-        message:
-          type: string
         valid:
           type: boolean
-        mainFilePath:
-          type: string
-        modelDirectoryPath:
-          type: string
-        gpuRequirement:
-          $ref: '#/components/schemas/GpuRequirement'
-        model:
-          $ref: '#/components/schemas/Model'
-        totalSize:
-          type: integer
-          format: int64
-        librariesVerified:
+        success:
           type: boolean
-        encrypted:
+        error:
+          type: string
+        deterministic:
           type: boolean
-        encryptionId:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
+        primaryMean:
+          type: number
+          format: double
+        primaryUnit:
+          $ref: '#/components/schemas/Unit'
+        means:
+          type: object
+          additionalProperties:
+            type: number
+            format: double
         files:
           type: array
           items:
-            $ref: '#/components/schemas/SubmissionFile'
-    CompetitionVisibility:
-      type: string
-      enum:
-      - HIDDEN
-      - PUBLIC
-    User:
+            $ref: '#/components/schemas/PredictionFile'
+        managed:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        bestDisplayUnit:
+          type: string
+          deprecated: true
+        bestMean:
+          type: number
+          format: double
+          deprecated: true
+        bestUnit:
+          $ref: '#/components/schemas/Unit'
+          deprecated: true
+    Phase:
       type: object
       properties:
         id:
           type: integer
           format: int64
-        login:
+        type:
+          $ref: '#/components/schemas/PhaseType'
+        start:
           type: string
-    CompetitionStatus:
-      type: string
-      enum:
-      - PENDING
-      - OPEN
-      - CLOSED
-    OutOfSampleRunCreateForm:
-      type: object
-      properties:
-        crunchId:
-          type: integer
-          format: int64
+          format: date-time
+        end:
+          type: string
+          format: date-time
         dataReleaseId:
           type: integer
           format: int64
-        test:
-          type: boolean
-        userIds:
-          type: array
-          items:
-            type: integer
-            format: int64
-        all:
-          type: boolean
-          description: Include ALL runs, not only thoses who failed or don't have a score.
-        forceFirstTrainMode:
-          type: string
-          enum:
-          - IGNORE
-          - FORCE
-          - RESPECT
-          - AUTOMATIC
-        determinismCheckEnabled:
-          type: boolean
-        determinismCheckEnabledAsOptional:
-          type: boolean
-      required:
-      - all
-      - crunchId
-      - forceFirstTrainMode
-      - test
-    UserAdmin:
-      type: object
-      properties:
-        id:
+        localDataReleaseId:
           type: integer
           format: int64
-        login:
-          type: string
-        email:
-          type: string
-        role:
-          $ref: '#/components/schemas/UserRole'
-        ethereumAddress:
-          type: string
-        country:
-          type: string
-    CrunchSplit:
+        cloudCredits:
+          anyOf:
+          - $comment: Seconds
+            example: '60'
+          - format: duration
+            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
+            $comment: ISO 8601 Duration
+            example: PT1M
+        perCrunchWeight:
+          type: number
+          format: float
+        autoCompute:
+          type: boolean
+        runDisabled:
+          type: boolean
+        showPositions:
+          type: boolean
+        showProjectNames:
+          type: boolean
+        runDeterminismCheckEnabled:
+          type: boolean
+        showOnlyRewardedProjectsDefault:
+          type: boolean
+        splits:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhaseSplit'
+    PhaseSplit:
       type: object
       properties:
         key:
@@ -549,6 +542,86 @@ components:
             format: int64
           - type: string
           example: 1
+    TimelineEventType:
+      type: string
+      enum:
+      - GENERIC
+      - LEADERBOARD
+      - RULES
+      - REWARDS
+    Page:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserAdmin'
+    TryMapLostLogsForm:
+      type: object
+      properties:
+        runIds:
+          type: array
+          items:
+            type: integer
+            format: int64
+      required:
+      - runIds
+    Unit:
+      type: object
+      properties:
+        prefix:
+          type: string
+          description: String to show before the value.
+        suffix:
+          type: string
+          description: String to show after the value.
+        scale:
+          type: integer
+          format: int32
+          description: Number of digits to keep after the comma.
+    CompetitionType:
+      type: string
+      enum:
+      - OPEN
+      - PAUSED
+    ProjectSelectionSubmission:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        number:
+          type: integer
+          format: int64
+    TimelineEventButton:
+      type: object
+      properties:
+        text:
+          type: string
+        link:
+          type: string
+        color:
+          type: string
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
     Run:
       type: object
       properties:
@@ -628,14 +701,56 @@ components:
         memory:
           type: integer
           format: int32
-    CompetitionFormat:
-      type: string
-      enum:
-      - TIMESERIES
-      - DAG
-      - STREAM
-      - SPATIAL
-      - UNSTRUCTURED
+    SubmissionFile:
+      type: object
+      properties:
+        name:
+          type: string
+        size:
+          type: integer
+          format: int64
+        encrypted:
+          type: boolean
+        mimeType:
+          type: string
+        foundHardcodedString:
+          type: boolean
+          deprecated: true
+    OutOfSampleRunCreateForm:
+      type: object
+      properties:
+        crunchId:
+          type: integer
+          format: int64
+        dataReleaseId:
+          type: integer
+          format: int64
+        test:
+          type: boolean
+        userIds:
+          type: array
+          items:
+            type: integer
+            format: int64
+        all:
+          type: boolean
+          description: Include ALL runs, not only thoses who failed or don't have a score.
+        forceFirstTrainMode:
+          type: string
+          enum:
+          - IGNORE
+          - FORCE
+          - RESPECT
+          - AUTOMATIC
+        determinismCheckEnabled:
+          type: boolean
+        determinismCheckEnabledAsOptional:
+          type: boolean
+      required:
+      - all
+      - crunchId
+      - forceFirstTrainMode
+      - test
     OutOfSampleProjectFreezeForm:
       type: object
       properties:
@@ -652,171 +767,6 @@ components:
       required:
       - roundId
       - test
-    Project:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        competitionId:
-          type: integer
-          format: int64
-        user:
-          $ref: '#/components/schemas/User'
-        name:
-          type: string
-        selected:
-          type: boolean
-        submitted:
-          type: boolean
-        note:
-          type: string
-        writeupUrl:
-          type: string
-        writeupArchived:
-          type: boolean
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        userId:
-          type: integer
-          format: int64
-          deprecated: true
-    ProjectSelectionOrigin:
-      type: string
-      enum:
-      - SELECTION
-      - PREVIOUS_ROUND
-      - LAST_RUN
-    Prediction:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        project:
-          $ref: '#/components/schemas/Project'
-        valid:
-          type: boolean
-        success:
-          type: boolean
-        error:
-          type: string
-        deterministic:
-          type: boolean
-        primaryMean:
-          type: number
-          format: double
-        primaryUnit:
-          $ref: '#/components/schemas/Unit'
-        means:
-          type: object
-          additionalProperties:
-            type: number
-            format: double
-        files:
-          type: array
-          items:
-            $ref: '#/components/schemas/PredictionFile'
-        managed:
-          type: boolean
-        createdAt:
-          type: string
-          format: date-time
-        bestDisplayUnit:
-          type: string
-          deprecated: true
-        bestMean:
-          type: number
-          format: double
-          deprecated: true
-        bestUnit:
-          $ref: '#/components/schemas/Unit'
-          deprecated: true
-    CompetitionMode:
-      type: string
-      enum:
-      - OFFLINE
-      - REAL_TIME
-    UserRole:
-      type: string
-      enum:
-      - USER
-      - MODERATOR
-      - ADMINISTRATOR
-    PredictionComputeAdminForm:
-      type: object
-      properties:
-        crunchId:
-          type: integer
-          format: int64
-        targetNames:
-          type: array
-          items:
-            type: string
-        onlyMissing:
-          type: boolean
-      required:
-      - crunchId
-      - targetNames
-    TimelineEventButton:
-      type: object
-      properties:
-        text:
-          type: string
-        link:
-          type: string
-        color:
-          type: string
-    TimelineEventType:
-      type: string
-      enum:
-      - GENERIC
-      - LEADERBOARD
-      - RULES
-      - REWARDS
-    ProjectSelectionSubmission:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        number:
-          type: integer
-          format: int64
-    ExecutionParametersSubmission:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        number:
-          type: integer
-          format: int64
-    CompetitionTag:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Slug-like name.
-        displayName:
-          type: string
-          description: Display name for the UI.
-    PhaseSplit:
-      type: object
-      properties:
-        key:
-          type: object
-          anyOf:
-          - type: integer
-            format: int64
-          - type: string
-          example: 1
     ProjectSelection:
       type: object
       properties:
@@ -848,259 +798,11 @@ components:
           type: integer
           format: int64
           deprecated: true
-    RuntimeType:
+    DataReleaseSplitKey:
       type: string
       enum:
-      - CPU
-      - GPU
-      - COPY
-    Model:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        project:
-          $ref: '#/components/schemas/Project'
-        totalSize:
-          type: integer
-          format: int64
-        encrypted:
-          type: boolean
-        encryptionId:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-    TimelineEvent:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        type:
-          $ref: '#/components/schemas/TimelineEventType'
-        title:
-          type: string
-        description:
-          type: string
-        date:
-          type: string
-          format: date
-          description: Date on which the event will occur/has occurred.
-        color:
-          type: string
-        detailed:
-          type: boolean
-          description: Detailed event should be hidden in a space constrained UI.
-        button:
-          $ref: '#/components/schemas/TimelineEventButton'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-    Phase:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        type:
-          $ref: '#/components/schemas/PhaseType'
-        start:
-          type: string
-          format: date-time
-        end:
-          type: string
-          format: date-time
-        dataReleaseId:
-          type: integer
-          format: int64
-        localDataReleaseId:
-          type: integer
-          format: int64
-        cloudCredits:
-          anyOf:
-          - $comment: Seconds
-            example: '60'
-          - format: duration
-            $anchor: https://en.wikipedia.org/wiki/ISO_week_date
-            $comment: ISO 8601 Duration
-            example: PT1M
-        perCrunchWeight:
-          type: number
-          format: float
-        autoCompute:
-          type: boolean
-        runDisabled:
-          type: boolean
-        showPositions:
-          type: boolean
-        showProjectNames:
-          type: boolean
-        runDeterminismCheckEnabled:
-          type: boolean
-        showOnlyRewardedProjectsDefault:
-          type: boolean
-        splits:
-          type: array
-          items:
-            $ref: '#/components/schemas/PhaseSplit'
-    CompetitionStatistics:
-      type: object
-      properties:
-        entrants:
-          type: integer
-          format: int64
-        participants:
-          type: integer
-          format: int64
-        teams:
-          type: integer
-          format: int64
-        submissions:
-          type: integer
-          format: int64
-        runnables:
-          type: integer
-          format: int64
-    GpuRequirement:
-      type: string
-      enum:
-      - OPTIONAL
-      - RECOMMENDED
-      - REQUIRED
-    ExecutionParameters:
-      type: object
-      properties:
-        project:
-          $ref: '#/components/schemas/Project'
-        submission:
-          $ref: '#/components/schemas/ExecutionParametersSubmission'
-        runtimeDefinitionName:
-          type: string
-        runtimeType:
-          $ref: '#/components/schemas/RuntimeType'
-        trainFrequency:
-          type: integer
-          format: int64
-        forceFirstTrain:
-          type: boolean
-        runName:
-          type: string
-        modelName:
-          type: string
-        predictionName:
-          type: string
-        initialModelId:
-          type: integer
-          format: int64
-        determinismCheckEnabled:
-          type: boolean
-        nextChainHeightHint:
-          type: integer
-          format: int64
-        userId:
-          type: integer
-          format: int64
-          deprecated: true
-        projectId:
-          type: integer
-          format: int64
-          deprecated: true
-        submissionId:
-          type: integer
-          format: int64
-          deprecated: true
-    SubmissionFile:
-      type: object
-      properties:
-        name:
-          type: string
-        size:
-          type: integer
-          format: int64
-        encrypted:
-          type: boolean
-        mimeType:
-          type: string
-        foundHardcodedString:
-          type: boolean
-          deprecated: true
-    PhaseType:
-      type: string
-      enum:
-      - SUBMISSION
-      - OUT_OF_SAMPLE
-    Round:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        competition:
-          $ref: '#/components/schemas/Competition'
-        number:
-          type: integer
-          format: int64
-        start:
-          type: string
-          format: date-time
-        end:
-          type: string
-          format: date-time
-        automaticSelectionFreezeEnabled:
-          type: boolean
-        automaticSubmissionPhaseCrunchCreationEnabled:
-          type: boolean
-        automaticSubmissionPhaseLeaderboardUpdateEnabled:
-          type: boolean
-        predictionSizeLimit:
-          type: integer
-          format: int64
-        maxSubmissionsPerDay:
-          type: integer
-          format: int64
-    CompetitionSession:
-      type: object
-      properties:
-        state:
-          $ref: '#/components/schemas/CompetitionType'
-          description: Current session state.
-        nextChange:
-          type: string
-          format: date-time
-          description: When should the next session state change happen. Unknown if `null`.
-    CompetitionType:
-      type: string
-      enum:
-      - OPEN
-      - PAUSED
-    Unit:
-      type: object
-      properties:
-        prefix:
-          type: string
-          description: String to show before the value.
-        suffix:
-          type: string
-          description: String to show after the value.
-        scale:
-          type: integer
-          format: int32
-          description: Number of digits to keep after the comma.
-    PredictionFile:
-      type: object
-      properties:
-        name:
-          type: string
-        size:
-          type: integer
-          format: int64
+      - INTEGER
+      - STRING
     Crunch:
       type: object
       properties:
@@ -1138,46 +840,70 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CrunchSplit'
-    Page:
-      type: object
-      properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserAdmin'
     SubmissionType:
       type: string
       enum:
       - CODE
       - NOTEBOOK
       - PREDICTION
-    DataReleaseSplitKey:
-      type: string
-      enum:
-      - INTEGER
-      - STRING
-    TryMapLostLogsForm:
+    Round:
       type: object
       properties:
-        runIds:
-          type: array
-          items:
-            type: integer
-            format: int64
-      required:
-      - runIds
+        id:
+          type: integer
+          format: int64
+        competition:
+          $ref: '#/components/schemas/Competition'
+        number:
+          type: integer
+          format: int64
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        automaticSelectionFreezeEnabled:
+          type: boolean
+        automaticSubmissionPhaseCrunchCreationEnabled:
+          type: boolean
+        automaticSubmissionPhaseLeaderboardUpdateEnabled:
+          type: boolean
+        predictionSizeLimit:
+          type: integer
+          format: int64
+        maxSubmissionsPerDay:
+          type: integer
+          format: int64
+    TimelineEvent:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/TimelineEventType'
+        title:
+          type: string
+        description:
+          type: string
+        date:
+          type: string
+          format: date
+          description: Date on which the event will occur/has occurred.
+        color:
+          type: string
+        detailed:
+          type: boolean
+          description: Detailed event should be hidden in a space constrained UI.
+        button:
+          $ref: '#/components/schemas/TimelineEventButton'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
     Competition:
       type: object
       properties:
@@ -1350,6 +1076,280 @@ components:
           description: Non-detailed timeline events.
           items:
             $ref: '#/components/schemas/TimelineEvent'
+    CompetitionStatistics:
+      type: object
+      properties:
+        entrants:
+          type: integer
+          format: int64
+        participants:
+          type: integer
+          format: int64
+        teams:
+          type: integer
+          format: int64
+        submissions:
+          type: integer
+          format: int64
+        runnables:
+          type: integer
+          format: int64
+    CompetitionMode:
+      type: string
+      enum:
+      - OFFLINE
+      - REAL_TIME
+    PredictionFile:
+      type: object
+      properties:
+        name:
+          type: string
+        size:
+          type: integer
+          format: int64
+    RuntimeType:
+      type: string
+      enum:
+      - CPU
+      - GPU
+      - COPY
+    ExecutionParameters:
+      type: object
+      properties:
+        project:
+          $ref: '#/components/schemas/Project'
+        submission:
+          $ref: '#/components/schemas/ExecutionParametersSubmission'
+        runtimeDefinitionName:
+          type: string
+        runtimeType:
+          $ref: '#/components/schemas/RuntimeType'
+        trainFrequency:
+          type: integer
+          format: int64
+        forceFirstTrain:
+          type: boolean
+        runName:
+          type: string
+        modelName:
+          type: string
+        predictionName:
+          type: string
+        initialModelId:
+          type: integer
+          format: int64
+        determinismCheckEnabled:
+          type: boolean
+        nextChainHeightHint:
+          type: integer
+          format: int64
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
+        projectId:
+          type: integer
+          format: int64
+          deprecated: true
+        submissionId:
+          type: integer
+          format: int64
+          deprecated: true
+    CrunchSplit:
+      type: object
+      properties:
+        key:
+          type: object
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+    Project:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        competitionId:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/User'
+        name:
+          type: string
+        selected:
+          type: boolean
+        submitted:
+          type: boolean
+        note:
+          type: string
+        writeupUrl:
+          type: string
+        writeupArchived:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
+    PredictionComputeAdminForm:
+      type: object
+      properties:
+        crunchId:
+          type: integer
+          format: int64
+        targetNames:
+          type: array
+          items:
+            type: string
+        onlyMissing:
+          type: boolean
+      required:
+      - crunchId
+      - targetNames
+    CompetitionVisibility:
+      type: string
+      enum:
+      - HIDDEN
+      - PUBLIC
+    UserAdmin:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+        email:
+          type: string
+        role:
+          $ref: '#/components/schemas/UserRole'
+        ethereumAddress:
+          type: string
+        country:
+          type: string
+    Model:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        project:
+          $ref: '#/components/schemas/Project'
+        totalSize:
+          type: integer
+          format: int64
+        encrypted:
+          type: boolean
+        encryptionId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    UserRole:
+      type: string
+      enum:
+      - USER
+      - MODERATOR
+      - ADMINISTRATOR
+    ExecutionParametersSubmission:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        number:
+          type: integer
+          format: int64
+    CompetitionTag:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name for the UI.
+    PhaseType:
+      type: string
+      enum:
+      - SUBMISSION
+      - OUT_OF_SAMPLE
+    GpuRequirement:
+      type: string
+      enum:
+      - OPTIONAL
+      - RECOMMENDED
+      - REQUIRED
+    ProjectSelectionOrigin:
+      type: string
+      enum:
+      - SELECTION
+      - PREVIOUS_ROUND
+      - LAST_RUN
+    CompetitionStatus:
+      type: string
+      enum:
+      - PENDING
+      - OPEN
+      - CLOSED
+    RunStatus:
+      type: string
+      enum:
+      - CREATED
+      - PENDING
+      - RUNNING
+      - CLEANING
+      - COMPLETED
+    Submission:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        project:
+          $ref: '#/components/schemas/Project'
+        number:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/SubmissionType'
+        message:
+          type: string
+        valid:
+          type: boolean
+        mainFilePath:
+          type: string
+        modelDirectoryPath:
+          type: string
+        gpuRequirement:
+          $ref: '#/components/schemas/GpuRequirement'
+        model:
+          $ref: '#/components/schemas/Model'
+        totalSize:
+          type: integer
+          format: int64
+        librariesVerified:
+          type: boolean
+        encrypted:
+          type: boolean
+        encryptionId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubmissionFile'
   securitySchemes:
     apiKey:
       type: apiKey

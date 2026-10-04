@@ -279,70 +279,26 @@ paths:
                 type: string
 components:
   schemas:
-    JsonNode:
-      type: object
-    DataReleaseSplit:
+    RunnerSubmitForm:
       type: object
       properties:
-        key:
+        useInitialModel:
+          type: boolean
+        deterministic:
+          type: boolean
+        predictionFiles:
           type: object
-          anyOf:
-          - type: integer
-            format: int64
-          - type: string
-          example: 1
-        group:
-          $ref: '#/components/schemas/DataReleaseSplitGroup'
-        reduced:
-          $ref: '#/components/schemas/DataReleaseSplitReduced'
-    DataFile:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        url:
-          type: string
-        size:
-          type: integer
-          format: int64
-        signed:
-          type: boolean
-        compressed:
-          type: boolean
-    RunnerCollectTracesFormSpan:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int32
-        parentId:
-          type: integer
-          format: int32
-        description:
-          type: string
-        status:
-          type: string
-          enum:
-          - STARTED
-          - ENDED
-          - FAILED
-        startedAt:
-          type: string
-          format: date-time
-        endedAt:
-          type: string
-          format: date-time
-        error:
-          type: string
-        attributes:
-          $ref: '#/components/schemas/JsonNode'
-    RunnerReportErrorForm:
-      type: object
-      properties:
-        trace:
-          type: string
+          additionalProperties:
+            type: string
+            format: uuid
+        modelFiles:
+          type: object
+          additionalProperties:
+            type: string
+            format: uuid
+      required:
+      - modelFiles
+      - predictionFiles
     RunnerCollectTracesForm:
       type: object
       properties:
@@ -357,11 +313,24 @@ components:
       required:
       - metrics
       - spans
-    DataReleaseSplitGroup:
+    LegacyRunnerReportTraceForm:
+      type: object
+      properties:
+        moon:
+          type: string
+        content:
+          type: string
+    DataReleaseTargetResolution:
       type: string
       enum:
-      - TRAIN
-      - TEST
+      - ALREADY
+      - PENDING
+      - RESOLVED
+    DataReleaseSplitReduced:
+      type: string
+      enum:
+      - X
+      - XY
     DataRelease:
       type: object
       properties:
@@ -408,29 +377,43 @@ components:
           type: object
           additionalProperties:
             $ref: '#/components/schemas/DataFile'
-    LegacyRunnerReportTraceForm:
+    RunnerReportErrorForm:
       type: object
       properties:
-        moon:
+        trace:
           type: string
-        content:
-          type: string
-    DataReleaseTargetResolution:
-      type: string
-      enum:
-      - ALREADY
-      - PENDING
-      - RESOLVED
-    DataReleaseSplitReduced:
-      type: string
-      enum:
-      - X
-      - XY
     DataReleaseSplitKey:
       type: string
       enum:
       - INTEGER
       - STRING
+    RunnerCollectTracesFormSpan:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        parentId:
+          type: integer
+          format: int32
+        description:
+          type: string
+        status:
+          type: string
+          enum:
+          - STARTED
+          - ENDED
+          - FAILED
+        startedAt:
+          type: string
+          format: date-time
+        endedAt:
+          type: string
+          format: date-time
+        error:
+          type: string
+        attributes:
+          $ref: '#/components/schemas/JsonNode'
     RunnerCollectTracesFormMetric:
       type: object
       properties:
@@ -454,26 +437,43 @@ components:
           format: int64
       required:
       - timestamp
-    RunnerSubmitForm:
+    DataFile:
       type: object
       properties:
-        useInitialModel:
+        name:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+        size:
+          type: integer
+          format: int64
+        signed:
           type: boolean
-        deterministic:
+        compressed:
           type: boolean
-        predictionFiles:
+    DataReleaseSplitGroup:
+      type: string
+      enum:
+      - TRAIN
+      - TEST
+    JsonNode:
+      type: object
+    DataReleaseSplit:
+      type: object
+      properties:
+        key:
           type: object
-          additionalProperties:
-            type: string
-            format: uuid
-        modelFiles:
-          type: object
-          additionalProperties:
-            type: string
-            format: uuid
-      required:
-      - modelFiles
-      - predictionFiles
+          anyOf:
+          - type: integer
+            format: int64
+          - type: string
+          example: 1
+        group:
+          $ref: '#/components/schemas/DataReleaseSplitGroup'
+        reduced:
+          $ref: '#/components/schemas/DataReleaseSplitReduced'
   securitySchemes:
     apiKey:
       type: apiKey

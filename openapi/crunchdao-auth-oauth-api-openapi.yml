@@ -160,19 +160,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    AuthorizedCodeDto:
-      type: object
-      discriminator:
-        propertyName: flow
-        mapping:
-          AUTHORIZATION_CODE: '#/components/schemas/AuthorizedCode'
-          IMPLICIT: '#/components/schemas/ImplicitAuthorizedCode'
-      properties:
-        flow:
-          type: string
-          enum:
-          - AUTHORIZATION_CODE
-          - IMPLICIT
     OAuthUserInfo:
       type: object
       properties:
@@ -225,6 +212,19 @@ components:
             $comment: ISO 8601 Duration
             example: PT1M
           description: How long is the generated JWT valid?
+    AuthorizedCodeDto:
+      type: object
+      discriminator:
+        propertyName: flow
+        mapping:
+          AUTHORIZATION_CODE: '#/components/schemas/AuthorizedCode'
+          IMPLICIT: '#/components/schemas/ImplicitAuthorizedCode'
+      properties:
+        flow:
+          type: string
+          enum:
+          - AUTHORIZATION_CODE
+          - IMPLICIT
     AuthorizedToken:
       type: object
       properties:
