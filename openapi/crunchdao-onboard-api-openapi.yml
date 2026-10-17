@@ -50,6 +50,12 @@ paths:
       - apiKey: []
 components:
   schemas:
+    OnboardQuestionsStudyLevel:
+      type: string
+      enum:
+      - UNDERGRADUATE
+      - GRADUATE
+      - PHD
     Onboard:
       type: object
       properties:
@@ -62,6 +68,21 @@ components:
         completedAt:
           type: string
           format: date-time
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+    OnboardQuestionsExperienceWithData:
+      type: string
+      enum:
+      - LESS_1_YEAR
+      - BETWEEN_1_AND_3_YEARS
+      - BETWEEN_4_AND_5_YEARS
+      - MORE_THAN_5_YEARS
     QuantClub:
       type: string
       enum:
@@ -95,20 +116,6 @@ components:
           type: string
         quantClub:
           $ref: '#/components/schemas/QuantClub'
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        login:
-          type: string
-    OnboardQuestionsStudyLevel:
-      type: string
-      enum:
-      - UNDERGRADUATE
-      - GRADUATE
-      - PHD
     OnboardQuestionsParticipationReason:
       type: string
       enum:
@@ -165,13 +172,6 @@ components:
           type: boolean
       required:
       - completed
-    OnboardQuestionsExperienceWithData:
-      type: string
-      enum:
-      - LESS_1_YEAR
-      - BETWEEN_1_AND_3_YEARS
-      - BETWEEN_4_AND_5_YEARS
-      - MORE_THAN_5_YEARS
   securitySchemes:
     apiKey:
       type: apiKey

@@ -294,6 +294,30 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    SliceCreateForm:
+      type: object
+      properties:
+        name:
+          type: string
+        displayName:
+          type: string
+        type:
+          type: string
+          enum:
+          - CONTENT
+          - KEY_METRICS
+          - TIMELINE
+          - TEAM
+        nativeConfiguration:
+          type: string
+        order:
+          type: integer
+          format: int64
+      required:
+      - name
+      - nativeConfiguration
+      - order
+      - type
     Slice:
       type: object
       properties:
@@ -321,56 +345,6 @@ components:
         createdAt:
           type: string
           format: date-time
-    SliceCreateForm:
-      type: object
-      properties:
-        name:
-          type: string
-        displayName:
-          type: string
-        type:
-          type: string
-          enum:
-          - CONTENT
-          - KEY_METRICS
-          - TIMELINE
-          - TEAM
-        nativeConfiguration:
-          type: string
-        order:
-          type: integer
-          format: int64
-      required:
-      - name
-      - nativeConfiguration
-      - order
-      - type
-    SliceGitBookImportForm:
-      type: object
-      properties:
-        url:
-          type: string
-        changeRequestNumber:
-          type: integer
-          format: int64
-        titleLevel:
-          type: string
-          enum:
-          - PRIMARY
-          - SECONDARY
-        append:
-          type: boolean
-      required:
-      - append
-      - titleLevel
-      - url
-    SliceType:
-      type: string
-      enum:
-      - CONTENT
-      - KEY_METRICS
-      - TIMELINE
-      - TEAM
     SliceUpdateForm:
       type: object
       properties:
@@ -390,6 +364,25 @@ components:
         order:
           type: integer
           format: int64
+    SliceGitBookImportForm:
+      type: object
+      properties:
+        url:
+          type: string
+        changeRequestNumber:
+          type: integer
+          format: int64
+        titleLevel:
+          type: string
+          enum:
+          - PRIMARY
+          - SECONDARY
+        append:
+          type: boolean
+      required:
+      - append
+      - titleLevel
+      - url
     SliceMarkdownImportForm:
       type: object
       properties:
@@ -397,6 +390,13 @@ components:
           type: string
       required:
       - markdown
+    SliceType:
+      type: string
+      enum:
+      - CONTENT
+      - KEY_METRICS
+      - TIMELINE
+      - TEAM
   securitySchemes:
     apiKey:
       type: apiKey

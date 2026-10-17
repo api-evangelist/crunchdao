@@ -93,34 +93,26 @@ paths:
                 $ref: '#/components/schemas/RuntimeDefinition'
 components:
   schemas:
-    RuntimeType:
-      type: string
-      enum:
-      - CPU
-      - GPU
-      - COPY
     RuntimeDefinitionSpecificationNetwork:
       type: object
       properties:
         access:
           $ref: '#/components/schemas/RuntimeDefinitionSpecificationNetworkAccess'
-    RuntimeDefinitionSpecification:
+    RuntimeDefinitionSpecificationGpu:
       type: object
       properties:
-        memory:
-          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSize'
-        sharedMemory:
-          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSize'
-        storage:
-          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSize'
-        cpu:
-          $ref: '#/components/schemas/RuntimeDefinitionSpecificationCpu'
-        gpu:
-          $ref: '#/components/schemas/RuntimeDefinitionSpecificationGpu'
-        network:
-          $ref: '#/components/schemas/RuntimeDefinitionSpecificationNetwork'
-        software:
-          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSoftware'
+        count:
+          type: integer
+          format: int32
+        model:
+          type: string
+        driver:
+          type: string
+    RuntimeDefinitionSpecificationSoftware:
+      type: object
+      properties:
+        python:
+          type: string
     RuntimeDefinition:
       type: object
       properties:
@@ -181,33 +173,35 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RuntimeDefinition'
+    RuntimeDefinitionSpecification:
+      type: object
+      properties:
+        memory:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSize'
+        sharedMemory:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSize'
+        storage:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSize'
+        cpu:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationCpu'
+        gpu:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationGpu'
+        network:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationNetwork'
+        software:
+          $ref: '#/components/schemas/RuntimeDefinitionSpecificationSoftware'
+    RuntimeDefinitionStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - RESTRICTED
+      - DISABLED
     RuntimeDefinitionSpecificationNetworkAccess:
       type: string
       enum:
       - OPEN
       - FORBIDDEN
       - LOCAL_ONLY
-    RuntimeDefinitionSpecificationSoftware:
-      type: object
-      properties:
-        python:
-          type: string
-    RuntimeDefinitionSpecificationCpu:
-      type: object
-      properties:
-        coreCount:
-          type: integer
-          format: int32
-    RuntimeDefinitionSpecificationGpu:
-      type: object
-      properties:
-        count:
-          type: integer
-          format: int32
-        model:
-          type: string
-        driver:
-          type: string
     RuntimeDefinitionPoweredBy:
       type: object
       properties:
@@ -215,12 +209,12 @@ components:
           type: string
         url:
           type: string
-    RuntimeDefinitionStatus:
+    RuntimeType:
       type: string
       enum:
-      - ACTIVE
-      - RESTRICTED
-      - DISABLED
+      - CPU
+      - GPU
+      - COPY
     RuntimeDefinitionSpecificationSize:
       type: object
       properties:
@@ -228,6 +222,12 @@ components:
           type: integer
           format: int32
           description: Size in gigabytes.
+    RuntimeDefinitionSpecificationCpu:
+      type: object
+      properties:
+        coreCount:
+          type: integer
+          format: int32
   securitySchemes:
     apiKey:
       type: apiKey

@@ -324,73 +324,6 @@ paths:
       - apiKey: []
 components:
   schemas:
-    OrganizerMember:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        user:
-          $ref: '#/components/schemas/User'
-        role:
-          $ref: '#/components/schemas/OrganizerMemberRole'
-        createdAt:
-          type: string
-          format: date-time
-    OrganizerMemberRole:
-      type: string
-      enum:
-      - STAFF
-      - ADMINISTRATOR
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        login:
-          type: string
-    OrganizerMemberUpdateForm:
-      type: object
-      properties:
-        role:
-          type: string
-          enum:
-          - STAFF
-          - ADMINISTRATOR
-    OrganizerMemberCreateForm:
-      type: object
-      properties:
-        userId:
-          type: integer
-          format: int64
-        role:
-          type: string
-          enum:
-          - STAFF
-          - ADMINISTRATOR
-      required:
-      - role
-      - userId
-    PageOrganizer:
-      type: object
-      properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/Organizer'
     Organizer:
       type: object
       properties:
@@ -431,6 +364,59 @@ components:
       required:
       - displayName
       - name
+    OrganizerMemberRole:
+      type: string
+      enum:
+      - STAFF
+      - ADMINISTRATOR
+    OrganizerMemberUpdateForm:
+      type: object
+      properties:
+        role:
+          type: string
+          enum:
+          - STAFF
+          - ADMINISTRATOR
+    OrganizerMember:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/User'
+        role:
+          $ref: '#/components/schemas/OrganizerMemberRole'
+        createdAt:
+          type: string
+          format: date-time
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+    PageOrganizer:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Organizer'
     PageOrganizerMember:
       type: object
       properties:
@@ -450,19 +436,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/OrganizerMember'
-    OrganizerUpdateForm:
-      type: object
-      properties:
-        name:
-          type: string
-        displayName:
-          type: string
-        onChainId:
-          type: string
-        logoImageUrl:
-          type: string
-        bannerImageUrl:
-          type: string
     Unit:
       type: object
       properties:
@@ -476,6 +449,33 @@ components:
           type: integer
           format: int32
           description: Number of digits to keep after the comma.
+    OrganizerMemberCreateForm:
+      type: object
+      properties:
+        userId:
+          type: integer
+          format: int64
+        role:
+          type: string
+          enum:
+          - STAFF
+          - ADMINISTRATOR
+      required:
+      - role
+      - userId
+    OrganizerUpdateForm:
+      type: object
+      properties:
+        name:
+          type: string
+        displayName:
+          type: string
+        onChainId:
+          type: string
+        logoImageUrl:
+          type: string
+        bannerImageUrl:
+          type: string
   securitySchemes:
     apiKey:
       type: apiKey

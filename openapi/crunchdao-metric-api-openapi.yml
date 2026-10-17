@@ -104,6 +104,15 @@ paths:
                   $ref: '#/components/schemas/Metric'
 components:
   schemas:
+    MetricColors:
+      type: object
+      properties:
+        details:
+          type: string
+        submissionPhase:
+          type: string
+        outOfSamplePhase:
+          type: string
     ScorerFunction:
       type: string
       enum:
@@ -117,12 +126,7 @@ components:
       - META__EXECUTION_TIME
       - CUSTOM__MID_ONE__PROFIT_AND_LOSS_WITH_TRANSACTION_COST
       - CUSTOM__BROAD__SCORING
-    VisualizationType:
-      type: string
-      enum:
-      - LINE
-      - HISTOGRAM
-    Target:
+    MetricDefinition:
       type: object
       properties:
         id:
@@ -130,38 +134,31 @@ components:
           format: int64
         name:
           type: string
-          description: Slug-like name.
         displayName:
           type: string
-          description: Display name for the UI.
-        weight:
-          type: number
-          format: float
-          description: Weight of the target in the global leaderboard.
-        weightedMeanUnit:
-          $ref: '#/components/schemas/Unit'
-          description: Display name for the UI of the weighted mean column.
-        primary:
-          type: boolean
-          description: Is the target displayed on the home page?
-        virtual:
-          type: boolean
-          description: Is the target based on other targets.
-        rankOrder:
-          $ref: '#/components/schemas/LeaderboardRankOrder'
-          description: Orders of the position on the leaderboard.
-        weightedMeanDisplayUnit:
-          type: string
-          deprecated: true
-    MetricColors:
+    VisualizationType:
+      type: string
+      enum:
+      - LINE
+      - HISTOGRAM
+    Unit:
       type: object
       properties:
-        details:
+        prefix:
           type: string
-        submissionPhase:
+          description: String to show before the value.
+        suffix:
           type: string
-        outOfSamplePhase:
-          type: string
+          description: String to show after the value.
+        scale:
+          type: integer
+          format: int32
+          description: Number of digits to keep after the comma.
+    LeaderboardRankOrder:
+      type: string
+      enum:
+      - DESCENDING
+      - ASCENDING
     ReducerFunction:
       type: string
       enum:
@@ -237,12 +234,7 @@ components:
         displayUnit:
           type: string
           deprecated: true
-    LeaderboardRankOrder:
-      type: string
-      enum:
-      - DESCENDING
-      - ASCENDING
-    MetricDefinition:
+    Target:
       type: object
       properties:
         id:
@@ -250,21 +242,29 @@ components:
           format: int64
         name:
           type: string
+          description: Slug-like name.
         displayName:
           type: string
-    Unit:
-      type: object
-      properties:
-        prefix:
+          description: Display name for the UI.
+        weight:
+          type: number
+          format: float
+          description: Weight of the target in the global leaderboard.
+        weightedMeanUnit:
+          $ref: '#/components/schemas/Unit'
+          description: Display name for the UI of the weighted mean column.
+        primary:
+          type: boolean
+          description: Is the target displayed on the home page?
+        virtual:
+          type: boolean
+          description: Is the target based on other targets.
+        rankOrder:
+          $ref: '#/components/schemas/LeaderboardRankOrder'
+          description: Orders of the position on the leaderboard.
+        weightedMeanDisplayUnit:
           type: string
-          description: String to show before the value.
-        suffix:
-          type: string
-          description: String to show after the value.
-        scale:
-          type: integer
-          format: int32
-          description: Number of digits to keep after the comma.
+          deprecated: true
   securitySchemes:
     apiKey:
       type: apiKey

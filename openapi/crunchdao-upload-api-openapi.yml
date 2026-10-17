@@ -328,33 +328,6 @@ components:
           type: string
       required:
       - hash
-    UploadStatus:
-      type: string
-      enum:
-      - PENDING
-      - IN_PROGRESS
-      - SUCCEEDED
-      - FAILED
-      - EXPIRED
-    UploadChunkDto:
-      type: object
-      properties:
-        number:
-          type: integer
-          format: int64
-        offset:
-          type: integer
-          format: int64
-        size:
-          type: integer
-          format: int64
-        last:
-          type: boolean
-        completed:
-          type: boolean
-        completedAt:
-          type: string
-          format: date-time
     UploadDto:
       type: object
       properties:
@@ -388,10 +361,37 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UploadChunkDto'
+    UploadChunkDto:
+      type: object
+      properties:
+        number:
+          type: integer
+          format: int64
+        offset:
+          type: integer
+          format: int64
+        size:
+          type: integer
+          format: int64
+        last:
+          type: boolean
+        completed:
+          type: boolean
+        completedAt:
+          type: string
+          format: date-time
     UploadProvider:
       type: string
       enum:
       - AWS_S3
+    UploadStatus:
+      type: string
+      enum:
+      - PENDING
+      - IN_PROGRESS
+      - SUCCEEDED
+      - FAILED
+      - EXPIRED
     UploadCreateForm:
       type: object
       properties:

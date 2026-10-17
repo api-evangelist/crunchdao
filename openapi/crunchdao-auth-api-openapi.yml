@@ -120,26 +120,6 @@ paths:
           description: OK
 components:
   schemas:
-    QuantClub:
-      type: string
-      enum:
-      - NONE
-      - BANDUNG
-      - BENGALURU
-      - DUBAI
-      - LONDON
-      - NEW_YORK
-      - PARIS
-    RegisterResult:
-      type: object
-      properties:
-        user:
-          $ref: '#/components/schemas/FullUser'
-    ImpersonateResult:
-      type: object
-      properties:
-        accessToken:
-          type: string
     FullUser:
       type: object
       properties:
@@ -184,6 +164,12 @@ components:
         restricted:
           type: boolean
           deprecated: true
+    UserRole:
+      type: string
+      enum:
+      - USER
+      - MODERATOR
+      - ADMINISTRATOR
     AuthRegisterForm:
       type: object
       properties:
@@ -206,6 +192,12 @@ components:
       - country
       - firstName
       - lastName
+    UserRestriction:
+      type: string
+      enum:
+      - NONE
+      - PARTIAL
+      - FULL
     AuthImpersonateForm:
       type: object
       properties:
@@ -214,6 +206,26 @@ components:
           format: int64
       required:
       - userId
+    ImpersonateResult:
+      type: object
+      properties:
+        accessToken:
+          type: string
+    QuantClub:
+      type: string
+      enum:
+      - NONE
+      - BANDUNG
+      - BENGALURU
+      - DUBAI
+      - LONDON
+      - NEW_YORK
+      - PARIS
+    RegisterResult:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/FullUser'
     AuthCancelRegisterForm:
       type: object
       properties:
@@ -221,18 +233,6 @@ components:
           type: string
       required:
       - authIdToken
-    UserRole:
-      type: string
-      enum:
-      - USER
-      - MODERATOR
-      - ADMINISTRATOR
-    UserRestriction:
-      type: string
-      enum:
-      - NONE
-      - PARTIAL
-      - FULL
   securitySchemes:
     apiKey:
       type: apiKey

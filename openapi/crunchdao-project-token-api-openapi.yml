@@ -190,11 +190,6 @@ paths:
       deprecated: true
 components:
   schemas:
-    ProjectTokenUpgradeForm:
-      type: object
-      properties:
-        cloneToken:
-          type: string
     ProjectToken:
       type: object
       properties:
@@ -229,6 +224,11 @@ components:
       enum:
       - TEMPORARY
       - PERMANENT
+    ProjectTokenUpgradeForm:
+      type: object
+      properties:
+        cloneToken:
+          type: string
     Project:
       type: object
       properties:

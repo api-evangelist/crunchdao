@@ -264,7 +264,7 @@ paths:
           description: OK
 components:
   schemas:
-    NewsAuthor:
+    NewsAuthorCreateForm:
       type: object
       properties:
         name:
@@ -273,39 +273,8 @@ components:
           type: string
         url:
           type: string
-    PageNews:
-      type: object
-      properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/News'
-    NewsCreateForm:
-      type: object
-      properties:
-        title:
-          type: string
-        imageUrl:
-          type: string
-        url:
-          type: string
-        author:
-          $ref: '#/components/schemas/NewsAuthorCreateForm'
       required:
-      - author
-      - title
+      - name
     News:
       type: object
       properties:
@@ -326,7 +295,7 @@ components:
         createdAt:
           type: string
           format: date-time
-    NewsAuthorCreateForm:
+    NewsAuthor:
       type: object
       properties:
         name:
@@ -335,8 +304,39 @@ components:
           type: string
         url:
           type: string
+    NewsCreateForm:
+      type: object
+      properties:
+        title:
+          type: string
+        imageUrl:
+          type: string
+        url:
+          type: string
+        author:
+          $ref: '#/components/schemas/NewsAuthorCreateForm'
       required:
-      - name
+      - author
+      - title
+    PageNews:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/News'
   securitySchemes:
     apiKey:
       type: apiKey

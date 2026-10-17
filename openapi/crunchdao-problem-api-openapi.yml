@@ -132,6 +132,23 @@ paths:
       - apiKey: []
 components:
   schemas:
+    ProblemCreateForm:
+      type: object
+      properties:
+        userId:
+          type: integer
+          format: int64
+        reason:
+          type: string
+          maxLength: 1000
+          minLength: 0
+      required:
+      - reason
+    ProblemResolveForm:
+      type: object
+      properties:
+        recaptchaResponse:
+          type: string
     User:
       type: object
       properties:
@@ -158,23 +175,6 @@ components:
         createdAt:
           type: string
           format: date-time
-    ProblemCreateForm:
-      type: object
-      properties:
-        userId:
-          type: integer
-          format: int64
-        reason:
-          type: string
-          maxLength: 1000
-          minLength: 0
-      required:
-      - reason
-    ProblemResolveForm:
-      type: object
-      properties:
-        recaptchaResponse:
-          type: string
   securitySchemes:
     apiKey:
       type: apiKey

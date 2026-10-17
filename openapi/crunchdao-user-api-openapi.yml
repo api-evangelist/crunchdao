@@ -278,68 +278,7 @@ paths:
       - apiKey: []
 components:
   schemas:
-    CompetitionSession:
-      type: object
-      properties:
-        state:
-          $ref: '#/components/schemas/CompetitionType'
-          description: Current session state.
-        nextChange:
-          type: string
-          format: date-time
-          description: When should the next session state change happen. Unknown if `null`.
-    CompetitionFormat:
-      type: string
-      enum:
-      - TIMESERIES
-      - DAG
-      - STREAM
-      - SPATIAL
-      - UNSTRUCTURED
-    Connection:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        type:
-          $ref: '#/components/schemas/ConnectionType'
-        handle:
-          type: string
-        username:
-          type: string
-        profileUrl:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        public:
-          type: boolean
-    TimelineEventType:
-      type: string
-      enum:
-      - GENERIC
-      - LEADERBOARD
-      - RULES
-      - REWARDS
-    CompetitionType:
-      type: string
-      enum:
-      - OPEN
-      - PAUSED
-    TimelineEventButton:
-      type: object
-      properties:
-        text:
-          type: string
-        link:
-          type: string
-        color:
-          type: string
-    User:
+    FullUser:
       type: object
       properties:
         id:
@@ -347,39 +286,115 @@ components:
           format: int64
         login:
           type: string
-    UserProfileUpdateForm:
-      type: object
-      properties:
-        biography:
+        country:
           type: string
-          description: User biography.
-          maxLength: 2048
-          minLength: 0
-      required:
-      - biography
-    DataReleaseSplitKey:
+        quantClub:
+          $ref: '#/components/schemas/QuantClub'
+        deleted:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        university:
+          type: string
+        restriction:
+          $ref: '#/components/schemas/UserRestriction'
+        role:
+          $ref: '#/components/schemas/UserRole'
+        ethereumAddress:
+          type: string
+        solanaAddress:
+          type: string
+        deletedAt:
+          type: string
+          format: date-time
+        verified:
+          type: boolean
+        verifiedAt:
+          type: string
+          format: date-time
+        email:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        restricted:
+          type: boolean
+          deprecated: true
+    ConnectionType:
       type: string
       enum:
-      - INTEGER
-      - STRING
-    CompetitionStatistics:
+      - DISCORD
+      - TWITTER
+      - GITHUB
+      - KAGGLE
+      - REDDIT
+      - LINKEDIN
+      - GOOGLE
+    CompetitionMode:
+      type: string
+      enum:
+      - OFFLINE
+      - REAL_TIME
+    Participant:
       type: object
       properties:
-        entrants:
+        id:
           type: integer
           format: int64
-        participants:
+        competition:
+          $ref: '#/components/schemas/Competition'
+        user:
+          $ref: '#/components/schemas/User'
+        cruncherPubkey:
+          type: string
+          description: The Cruncher Pubkey on the blockchain. Only available if `competition.type` is `REAL_TIME`.
+        hidden:
+          type: boolean
+          description: Is the participant hidden from the leaderboard?
+        role:
+          $ref: '#/components/schemas/ParticipantRole'
+          description: Role of the participant in the competition.
+        crowned:
+          type: boolean
+          description: Is the crown badge visible?
+        certified:
+          type: boolean
+          description: Is the certificate badge visible?
+        rewarded:
+          type: boolean
+          description: Is the dollar badge visible?
+        benchmarked:
+          type: boolean
+          description: Is the "benchmark" badge visible?
+        ruleAccepted:
+          type: boolean
+          description: Has the rule been accepted?
+        ruleAcceptedAt:
+          type: string
+          format: date-time
+          description: When were the rule accepted?
+        submitted:
+          type: boolean
+          description: Has the participant submitted at least once?
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        userId:
           type: integer
           format: int64
-        teams:
-          type: integer
-          format: int64
-        submissions:
-          type: integer
-          format: int64
-        runnables:
-          type: integer
-          format: int64
+          deprecated: true
+    TimelineEventType:
+      type: string
+      enum:
+      - GENERIC
+      - LEADERBOARD
+      - RULES
+      - REWARDS
     TimelineEvent:
       type: object
       properties:
@@ -409,12 +424,212 @@ components:
         updatedAt:
           type: string
           format: date-time
+    QuantClub:
+      type: string
+      enum:
+      - NONE
+      - BANDUNG
+      - BENGALURU
+      - DUBAI
+      - LONDON
+      - NEW_YORK
+      - PARIS
+    RuleAgreement:
+      type: object
+      properties:
+        accepted:
+          type: boolean
+        acceptedAt:
+          type: string
+          format: date-time
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+    UserUpdateForm:
+      type: object
+      properties:
+        verified:
+          type: boolean
+        champion:
+          type: boolean
+        restriction:
+          type: string
+          enum:
+          - NONE
+          - PARTIAL
+          - FULL
+        ethereumAddress:
+          type: string
+        solanaAddress:
+          type: string
+        login:
+          type: string
+          maxLength: 40
+          minLength: 3
+        firstName:
+          type: string
+          maxLength: 100
+          minLength: 1
+        lastName:
+          type: string
+          maxLength: 100
+          minLength: 1
+        country:
+          type: string
+          maxLength: 3
+          minLength: 0
+        university:
+          type: string
+          maxLength: 200
+          minLength: 0
+        quantClub:
+          type: string
+          enum:
+          - NONE
+          - BANDUNG
+          - BENGALURU
+          - DUBAI
+          - LONDON
+          - NEW_YORK
+          - PARIS
+        restricted:
+          type: boolean
+          deprecated: true
+          writeOnly: true
+    Self:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/FullUser'
+        participant:
+          $ref: '#/components/schemas/Participant'
+        ruleAgreement:
+          $ref: '#/components/schemas/RuleAgreement'
+    CompetitionTag:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Slug-like name.
+        displayName:
+          type: string
+          description: Display name for the UI.
+    UserProfile:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
+        biography:
+          type: string
+        connections:
+          type: array
+          items:
+            $ref: '#/components/schemas/Connection'
+    CompetitionVisibility:
+      type: string
+      enum:
+      - HIDDEN
+      - PUBLIC
+    CompetitionType:
+      type: string
+      enum:
+      - OPEN
+      - PAUSED
+    TimelineEventButton:
+      type: object
+      properties:
+        text:
+          type: string
+        link:
+          type: string
+        color:
+          type: string
     UserRestriction:
       type: string
       enum:
       - NONE
       - PARTIAL
       - FULL
+    CompetitionSession:
+      type: object
+      properties:
+        state:
+          $ref: '#/components/schemas/CompetitionType'
+          description: Current session state.
+        nextChange:
+          type: string
+          format: date-time
+          description: When should the next session state change happen. Unknown if `null`.
+    ParticipantRole:
+      type: string
+      enum:
+      - USER
+      - ORGANIZER
+      - ADMINISTRATOR
+    DataReleaseSplitKey:
+      type: string
+      enum:
+      - INTEGER
+      - STRING
+    UserRole:
+      type: string
+      enum:
+      - USER
+      - MODERATOR
+      - ADMINISTRATOR
+    CompetitionStatistics:
+      type: object
+      properties:
+        entrants:
+          type: integer
+          format: int64
+        participants:
+          type: integer
+          format: int64
+        teams:
+          type: integer
+          format: int64
+        submissions:
+          type: integer
+          format: int64
+        runnables:
+          type: integer
+          format: int64
+    Connection:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          $ref: '#/components/schemas/ConnectionType'
+        handle:
+          type: string
+        username:
+          type: string
+        profileUrl:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        public:
+          type: boolean
+    CompetitionFormat:
+      type: string
+      enum:
+      - TIMESERIES
+      - DAG
+      - STREAM
+      - SPATIAL
+      - UNSTRUCTURED
     Competition:
       type: object
       properties:
@@ -587,237 +802,22 @@ components:
           description: Non-detailed timeline events.
           items:
             $ref: '#/components/schemas/TimelineEvent'
-    CompetitionMode:
-      type: string
-      enum:
-      - OFFLINE
-      - REAL_TIME
-    UserUpdateForm:
+    UserProfileUpdateForm:
       type: object
       properties:
-        verified:
-          type: boolean
-        champion:
-          type: boolean
-        restriction:
-          type: string
-          enum:
-          - NONE
-          - PARTIAL
-          - FULL
-        ethereumAddress:
-          type: string
-        solanaAddress:
-          type: string
-        login:
-          type: string
-          maxLength: 40
-          minLength: 3
-        firstName:
-          type: string
-          maxLength: 100
-          minLength: 1
-        lastName:
-          type: string
-          maxLength: 100
-          minLength: 1
-        country:
-          type: string
-          maxLength: 3
-          minLength: 0
-        university:
-          type: string
-          maxLength: 200
-          minLength: 0
-        quantClub:
-          type: string
-          enum:
-          - NONE
-          - BANDUNG
-          - BENGALURU
-          - DUBAI
-          - LONDON
-          - NEW_YORK
-          - PARIS
-        restricted:
-          type: boolean
-          deprecated: true
-          writeOnly: true
-    RuleAgreement:
-      type: object
-      properties:
-        accepted:
-          type: boolean
-        acceptedAt:
-          type: string
-          format: date-time
-    ParticipantRole:
-      type: string
-      enum:
-      - USER
-      - ORGANIZER
-      - ADMINISTRATOR
-    Participant:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        competition:
-          $ref: '#/components/schemas/Competition'
-        user:
-          $ref: '#/components/schemas/User'
-        cruncherPubkey:
-          type: string
-          description: The Cruncher Pubkey on the blockchain. Only available if `competition.type` is `REAL_TIME`.
-        hidden:
-          type: boolean
-          description: Is the participant hidden from the leaderboard?
-        role:
-          $ref: '#/components/schemas/ParticipantRole'
-          description: Role of the participant in the competition.
-        crowned:
-          type: boolean
-          description: Is the crown badge visible?
-        certified:
-          type: boolean
-          description: Is the certificate badge visible?
-        rewarded:
-          type: boolean
-          description: Is the dollar badge visible?
-        benchmarked:
-          type: boolean
-          description: Is the "benchmark" badge visible?
-        ruleAccepted:
-          type: boolean
-          description: Has the rule been accepted?
-        ruleAcceptedAt:
-          type: string
-          format: date-time
-          description: When were the rule accepted?
-        submitted:
-          type: boolean
-          description: Has the participant submitted at least once?
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        userId:
-          type: integer
-          format: int64
-          deprecated: true
-    UserProfile:
-      type: object
-      properties:
-        user:
-          $ref: '#/components/schemas/User'
         biography:
           type: string
-        connections:
-          type: array
-          items:
-            $ref: '#/components/schemas/Connection'
-    Self:
-      type: object
-      properties:
-        user:
-          $ref: '#/components/schemas/FullUser'
-        participant:
-          $ref: '#/components/schemas/Participant'
-        ruleAgreement:
-          $ref: '#/components/schemas/RuleAgreement'
-    CompetitionVisibility:
-      type: string
-      enum:
-      - HIDDEN
-      - PUBLIC
-    ConnectionType:
-      type: string
-      enum:
-      - DISCORD
-      - TWITTER
-      - GITHUB
-      - KAGGLE
-      - REDDIT
-      - LINKEDIN
-      - GOOGLE
-    UserRole:
-      type: string
-      enum:
-      - USER
-      - MODERATOR
-      - ADMINISTRATOR
-    CompetitionTag:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Slug-like name.
-        displayName:
-          type: string
-          description: Display name for the UI.
-    QuantClub:
-      type: string
-      enum:
-      - NONE
-      - BANDUNG
-      - BENGALURU
-      - DUBAI
-      - LONDON
-      - NEW_YORK
-      - PARIS
+          description: User biography.
+          maxLength: 2048
+          minLength: 0
+      required:
+      - biography
     CompetitionStatus:
       type: string
       enum:
       - PENDING
       - OPEN
       - CLOSED
-    FullUser:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        login:
-          type: string
-        country:
-          type: string
-        quantClub:
-          $ref: '#/components/schemas/QuantClub'
-        deleted:
-          type: boolean
-        createdAt:
-          type: string
-          format: date-time
-        university:
-          type: string
-        restriction:
-          $ref: '#/components/schemas/UserRestriction'
-        role:
-          $ref: '#/components/schemas/UserRole'
-        ethereumAddress:
-          type: string
-        solanaAddress:
-          type: string
-        deletedAt:
-          type: string
-          format: date-time
-        verified:
-          type: boolean
-        verifiedAt:
-          type: string
-          format: date-time
-        email:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        restricted:
-          type: boolean
-          deprecated: true
   securitySchemes:
     apiKey:
       type: apiKey

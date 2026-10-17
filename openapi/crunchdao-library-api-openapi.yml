@@ -230,17 +230,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Library'
-    GpuRequirement:
-      type: string
-      enum:
-      - OPTIONAL
-      - RECOMMENDED
-      - REQUIRED
-    Language:
-      type: string
-      enum:
-      - PYTHON
-      - R
     Library:
       type: object
       properties:
@@ -272,6 +261,17 @@ components:
       properties:
         version:
           type: string
+    GpuRequirement:
+      type: string
+      enum:
+      - OPTIONAL
+      - RECOMMENDED
+      - REQUIRED
+    Language:
+      type: string
+      enum:
+      - PYTHON
+      - R
   securitySchemes:
     apiKey:
       type: apiKey

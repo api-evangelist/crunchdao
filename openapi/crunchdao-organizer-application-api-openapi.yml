@@ -162,35 +162,6 @@ paths:
       - apiKey: []
 components:
   schemas:
-    OrganizerApplication:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        email:
-          type: string
-        discordUsername:
-          type: string
-        projectName:
-          type: string
-        goal:
-          type: string
-        evaluationMethod:
-          type: string
-        dataSources:
-          type: string
-        payoutStructure:
-          type: string
-        timeline:
-          type: string
-        reviewStatus:
-          $ref: '#/components/schemas/OrganizerApplicationReviewStatus'
-        createdAt:
-          type: string
-          format: date-time
     OrganizerApplicationUpdateForm:
       type: object
       properties:
@@ -202,6 +173,12 @@ components:
           - REJECTED
         potentialSpam:
           type: boolean
+    OrganizerApplicationReviewStatus:
+      type: string
+      enum:
+      - PENDING
+      - APPROVED
+      - REJECTED
     PageOrganizerApplication:
       type: object
       properties:
@@ -221,12 +198,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/OrganizerApplication'
-    OrganizerApplicationReviewStatus:
-      type: string
-      enum:
-      - PENDING
-      - APPROVED
-      - REJECTED
     OrganizerApplicationCreateForm:
       type: object
       properties:
@@ -266,6 +237,35 @@ components:
           type: string
           maxLength: 65536
           minLength: 0
+    OrganizerApplication:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        email:
+          type: string
+        discordUsername:
+          type: string
+        projectName:
+          type: string
+        goal:
+          type: string
+        evaluationMethod:
+          type: string
+        dataSources:
+          type: string
+        payoutStructure:
+          type: string
+        timeline:
+          type: string
+        reviewStatus:
+          $ref: '#/components/schemas/OrganizerApplicationReviewStatus'
+        createdAt:
+          type: string
+          format: date-time
   securitySchemes:
     apiKey:
       type: apiKey

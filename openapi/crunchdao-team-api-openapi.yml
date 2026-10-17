@@ -252,21 +252,27 @@ paths:
                   $ref: '#/components/schemas/TeamMember'
 components:
   schemas:
-    TeamMember:
+    TeamUpdateForm:
       type: object
       properties:
-        id:
-          type: integer
-          format: int64
-        user:
-          $ref: '#/components/schemas/User'
-        createdAt:
+        name:
           type: string
-          format: date-time
-        userId:
-          type: integer
-          format: int64
-          deprecated: true
+        description:
+          type: string
+        lookingForTeammates:
+          type: boolean
+    TeamCreateForm:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        lookingForTeammates:
+          type: boolean
+      required:
+      - lookingForTeammates
+      - name
     Team:
       type: object
       properties:
@@ -297,6 +303,21 @@ components:
         updatedAt:
           type: string
           format: date-time
+    TeamMember:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          type: string
+          format: date-time
+        userId:
+          type: integer
+          format: int64
+          deprecated: true
     User:
       type: object
       properties:
@@ -305,27 +326,6 @@ components:
           format: int64
         login:
           type: string
-    TeamCreateForm:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        lookingForTeammates:
-          type: boolean
-      required:
-      - lookingForTeammates
-      - name
-    TeamUpdateForm:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        lookingForTeammates:
-          type: boolean
     PageTeam:
       type: object
       properties:

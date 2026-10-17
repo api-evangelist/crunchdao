@@ -152,32 +152,6 @@ components:
           type: string
           format: date-time
           description: Pitch creation timestamp.
-    PitchStatus:
-      type: string
-      description: Filter for pitches with a specific status(es).
-      enum:
-      - VOTING
-      - VALIDATED
-      - CANCELLED
-    PagePitch:
-      type: object
-      properties:
-        pageNumber:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/Pitch'
     Organizer:
       type: object
       properties:
@@ -202,13 +176,6 @@ components:
         stake:
           $ref: '#/components/schemas/Unit'
           description: Staking information. Only set if `onChainId` is also set.
-    SeasonStatus:
-      type: string
-      description: Filter for seasons with a specific status(es).
-      enum:
-      - VOTING
-      - OPEN
-      - CLOSED
     Season:
       type: object
       properties:
@@ -245,6 +212,13 @@ components:
           type: string
           format: date-time
           description: Season creation timestamp.
+    SeasonStatus:
+      type: string
+      description: Filter for seasons with a specific status(es).
+      enum:
+      - VOTING
+      - OPEN
+      - CLOSED
     Unit:
       type: object
       properties:
@@ -258,6 +232,32 @@ components:
           type: integer
           format: int32
           description: Number of digits to keep after the comma.
+    PitchStatus:
+      type: string
+      description: Filter for pitches with a specific status(es).
+      enum:
+      - VOTING
+      - VALIDATED
+      - CANCELLED
+    PagePitch:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pitch'
   securitySchemes:
     apiKey:
       type: apiKey

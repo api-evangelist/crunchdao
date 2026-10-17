@@ -83,6 +83,24 @@ paths:
                 $ref: '#/components/schemas/Target'
 components:
   schemas:
+    Unit:
+      type: object
+      properties:
+        prefix:
+          type: string
+          description: String to show before the value.
+        suffix:
+          type: string
+          description: String to show after the value.
+        scale:
+          type: integer
+          format: int32
+          description: Number of digits to keep after the comma.
+    LeaderboardRankOrder:
+      type: string
+      enum:
+      - DESCENDING
+      - ASCENDING
     Target:
       type: object
       properties:
@@ -114,24 +132,6 @@ components:
         weightedMeanDisplayUnit:
           type: string
           deprecated: true
-    Unit:
-      type: object
-      properties:
-        prefix:
-          type: string
-          description: String to show before the value.
-        suffix:
-          type: string
-          description: String to show after the value.
-        scale:
-          type: integer
-          format: int32
-          description: Number of digits to keep after the comma.
-    LeaderboardRankOrder:
-      type: string
-      enum:
-      - DESCENDING
-      - ASCENDING
   securitySchemes:
     apiKey:
       type: apiKey
